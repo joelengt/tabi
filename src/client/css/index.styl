@@ -1,0 +1,90 @@
+// ****** Colors *******
+orange_logo = #ff6329
+brown_footer = #80351B
+breen_title = #008095
+letters_color = #fffff
+
+gray_background = #D9DCDB
+black_item_title = #333333
+black_item_sub_title = #606060
+
+blue_dog_icon = #254D80
+
+// Fonts 
+font_open_sans_size_light = 300
+font_open_sans_size_regular = 400
+font_open_sans_size_semi_bold = 600
+font_open_sans_size_bold = 700
+    // font-style: italic;
+      
+// Module for compatibility browser
+@import 'nib'
+
+// Fundamentals
+
+// ****** Fonts *******
+@font-face {
+    font-family: "Open Sans Regular";
+    src: url('../../../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Open Sans Bold";
+    src: url('../../../fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Open Sans Light";
+    src: url('../../../fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+    font-family: "Open Sans SemiBold";
+    src: url('../../../fonts/OpenSans-Semibold.ttf');
+}
+
+@font-face {
+    font-family: "Open Sans BoldItalic";
+    src: url('../../../fonts/OpenSans-BoldItalic.ttf');
+}
+
+@font-face {
+    font-family: "Font Bolita";
+    src: url('../../../fonts/ARLRDBD.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1rem;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: font_open_sans_size_regular;
+}
+
+// Mixins
+border-radius(n) {
+  -webkit-border-radius n;
+  -moz-border-radius n;
+  border-radius n;
+}
+
+//  Reset CSS
+@import './reset_css/index.styl';
+
+// ****** Modulos *******
+
+// HeaderMain
+@import './header/index.styl';
+
+// Elements
+@import './elementos/index.styl';
+
+// FooterMain
+@import './footer/index.styl';
+
+// ModalBox
+@import './utils/modal/index.styl';
