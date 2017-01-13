@@ -54,7 +54,7 @@ npm start
     ``
         npm run build-css
     ``
-    * You can compress directly with
+    * You can compress the css on public directly with
     
     ``
         npm run compress-css
