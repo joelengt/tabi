@@ -9,7 +9,7 @@ var config = {
         },
         db: {
             mongodb: {
-                local: 'mongodb://localhost/astrum',
+                local: 'mongodb://localhost/app_db',
             },
             postgresql: {
                 local: 'postgres://root:postgresql@localhost:4002/app_db',
