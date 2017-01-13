@@ -60,4 +60,9 @@ npm start
         npm run compress-css
     ``
 
+## Testing
+Only for the backend code (In this case, with nodejs), we can use mocha and chai to Unit Testing.
+
+ 
+
 
