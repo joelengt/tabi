@@ -13,6 +13,7 @@ Clone repositorie
 Insite proyect, run commands instalation:
 
 - Install npm dependencies
+
 ``
     npm install
 ``
@@ -24,6 +25,7 @@ Insite proyect, run commands instalation:
 All the commands is on package.json - * scripts *
 
 - Start Server
+
 ``
 npm start
 ``
@@ -41,16 +43,19 @@ npm start
 
 -  Builds JS- browserify (optinal)
    The same way that webpack. 
+   
     ``
         npm run build-js
     ``
 
 - Builds CSS
    We can work with stylus preprocesator for css.
+   
     ``
         npm run build-css
     ``
     * You can compress directly with
+    
     ``
         npm run compress-css
     ``
