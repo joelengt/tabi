@@ -12,10 +12,10 @@ var config = {
                 local: 'mongodb://localhost/astrum',
             },
             postgresql: {
-                local: 'postgres://root:postgress@127.0.0.1:4002/app_db',
+                local: 'postgres://root:postgresql@localhost:4002/app_db',
             },
             mysql: {
-                local: 'mysql://root:mysql@127.0.0.1:3306/app_db',
+                local: 'mysql://root:mysql@localhost:3306/app_db',
             }
         }
     },

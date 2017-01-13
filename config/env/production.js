@@ -7,10 +7,10 @@ var config = {
         },
         db: {
             mongodb:{
-                local: 'mongodb://astrum:astrum@ds145395.mlab.com:45395/app'
+                local: 'mongodb://root:mongodb@ds163758.mlab.com:63758/app_db'
             },
             postgresql: {
-                local: 'postgres://postgres:postgres@localhost:5432/app_db',
+                local: 'postgres://root:postgresql@localhost:5432/app_db',
             },
             mysql: {
                 local: 'mysql://root:mysql@localhost:3306/app_db',
