@@ -83,5 +83,7 @@ server.listen(app.set('port'), function (err) {
     if(err) {
         return console.log('Error al iniciar server en el puerto: ' + err)
     }
-    console.log('Server iniciado en el puerto: ' + app.set('port'))
+
+    console.log(`Server ==> ${ config.server.env } start on port: ${ app.set('port') }`);
+
 })

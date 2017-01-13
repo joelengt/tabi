@@ -1,7 +1,7 @@
 var express = require('express');
 var route = express.Router();
 
-var userController = require('../../controllers/UserController/index.js');
+var userController = require('../../../controllers/UserController/index.js');
 var UserController = new userController();
 
 route.get('/list', UserController.list);
