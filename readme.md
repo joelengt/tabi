@@ -3,7 +3,7 @@
 NodeJS, ExpressJS MVC Project Pretty Setup configuration with ECS6 on frontend, (add ReactJS)
 
 ## Download Proyect
-Clone de repositorie
+Clone repositorie
 
 ``
     git clone https://github.com/joelengt/nodejs-mvc.git
