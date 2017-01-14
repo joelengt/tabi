@@ -20,7 +20,11 @@ Insite proyect, run commands instalation:
 
 ## Static Server Only Frontend
 - Optionally if you work only on frontend, you can start a static server for your public assets
-
+  
+  ``
+     npm run static-server
+  ``
+  
 ## Let's Start
 All the commands is on package.json - * scripts *
 
