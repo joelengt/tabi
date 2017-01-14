@@ -28,7 +28,9 @@ All the commands is on package.json - * scripts *
      Inside *./config/index.js*
      select the env you want to work 'development' or 'production':
      
-       ``module.exports = config['development']
+       ``
+          module.exports = config['development']
+       ``
     
     
    * Config Variables server, db, and other
