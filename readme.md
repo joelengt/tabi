@@ -25,7 +25,7 @@ Insite proyect, run commands instalation:
    npm run static-server
 ``
   
-## Let's Start
+## Start Sever Nodejs
 All the commands is on package.json - * scripts *
 
 - Start Server
@@ -34,7 +34,9 @@ All the commands is on package.json - * scripts *
 npm start
 ``
 
-## Development
+## Development 
+
+### JavaScript
 
 - Builds JS - webpack
   You can work with ECS6 --> Development on ./src/client/js/
@@ -53,6 +55,8 @@ npm start
     ``
         npm run build-js
     ``
+    
+### CSS
 
 - Builds CSS
    We can work with stylus preprocesator for css.
