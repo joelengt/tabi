@@ -34,6 +34,8 @@ All the commands is on package.json - * scripts *
 npm start
 ``
 
+## Development
+
 - Builds JS - webpack
   You can work with ECS6 --> Development on ./src/client/js/
   With this command webpack is watching you code from ECS6 to ECS5 and compress min.js to ./public/js
