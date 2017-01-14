@@ -22,10 +22,13 @@ Insite proyect, run commands instalation:
 All the commands is on package.json - * scripts *
 
 - Config DB, ENV
+
    If you want to work with db, (NoSql, SQL), you need config conexion your local and production(required for deploy)
    
    * Config ENV 
+   
      Inside *./config/index.js*
+     
      select the env you want to work 'development' or 'production':
      
        ``
@@ -34,6 +37,7 @@ All the commands is on package.json - * scripts *
     
     
    * Config Variables server, db, and other
+   
        You can edit the file correct 'development.js' or 'production.js' with your configuration.
    
 - Start Server
