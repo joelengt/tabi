@@ -23,7 +23,7 @@ All the commands is on package.json - * scripts *
 
 - Config DB, ENV
 
-   If you want to work with db, (NoSql, SQL), you need config conexion your local and production(required for deploy)
+   If you want to work with db, (NoSql, SQL), you need config conexion your local and production(required for deploy), all the confing is insite *./config* file.
    
    * Config ENV 
    
