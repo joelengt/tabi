@@ -1,6 +1,6 @@
 
-var PostgreSQL = require('../../database/PostgreSQL/index.js');
-var MySQL = require('../../database/MySQL/index.js');
+var PostgreSQL = require('../../database/index.js').PostgreSQL;
+var MySQL = require('../../database/index.js').MySQL;
 
 class ItemsController {
     list(req, res) {

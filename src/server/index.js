@@ -85,5 +85,4 @@ server.listen(app.set('port'), function (err) {
     }
 
     console.log(`Server ==> ${ config.server.env } start on port: ${ app.set('port') }`);
-
 })
