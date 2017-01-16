@@ -10,25 +10,52 @@ Clone repositorie
 ``
 
 ## Instalation
-Insite proyect, run commands instalation:
+Inside proyect, run commands instalation:
 
 - Install npm dependencies
 
 ``
     npm install
 ``
-
-## Static Server Only Frontend
-- Optionally if you work only on frontend, you can start a static server for your public assets
-
-## Let's Start
+  
+## Start Sever Nodejs
 All the commands is on package.json - * scripts *
 
-- Start Server
+- Config DB, ENV
 
+   If you want to work with db, (NoSql, SQL), you need config conexion your local and production(required for deploy), all the confing is inside *./config* file.
+   
+   * Config ENV 
+   
+     Inside *./config/index.js*
+     
+     select the env you want to work 'development' or 'production':
+     
+       ``
+          module.exports = config['development']
+       ``
+    
+    
+   * Config Variables server, db, and other
+   
+       You can edit the file correct 'development.js' or 'production.js' with your configuration.
+   
+- Start Server
 ``
 npm start
 ``
+
+## Development Frontend
+
+### Static Server Only Frontend
+
+- Optionally if you work only on frontend, you can start a static server for your public assets
+
+``
+   npm run static-server
+``
+
+### JavaScript
 
 - Builds JS - webpack
   You can work with ECS6 --> Development on ./src/client/js/
@@ -47,6 +74,8 @@ npm start
     ``
         npm run build-js
     ``
+    
+### CSS
 
 - Builds CSS
    We can work with stylus preprocesator for css.
@@ -61,8 +90,8 @@ npm start
     ``
 
 ## Testing
-Only for the backend code (In this case, with nodejs), we can use mocha and chai to Unit Testing.
+The Unit Testing (BDD) work with mocha and chai. Only need work your modules for testing on ./test
 
- 
-
-
+  ``
+     npm run test
+  ``
