@@ -12,10 +12,10 @@ var config = {
                 local: 'mongodb://localhost/app_db',
             },
             postgresql: {
-                local: 'postgres://postgres:kuroyukihime2110@localhost:4002/caballeria_db',
+                local: 'postgres://root:postgres@localhost:4002/app_db',
             },
             mysql: {
-                local: 'mysql://root:mysql@localhost:33060/books_db',
+                local: 'mysql://root:mysql@localhost:33060/app_db',
             }
         }
     },
