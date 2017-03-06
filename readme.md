@@ -1,13 +1,5 @@
-# NodeJS Pretty Setup
-
-NodeJS, ExpressJS MVC Project Pretty Setup configuration with ECS6 on frontend, (add ReactJS)
-
-## Download Proyect
-Clone repositorie
-
-``
-    git clone https://github.com/joelengt/nodejs-mvc.git
-``
+# Tabi V0.1
+  Plataforma - Seguros de viaje.
 
 ## Instalation
 Inside proyect, run commands instalation:
@@ -95,3 +87,7 @@ The Unit Testing (BDD) work with mocha and chai. Only need work your modules for
   ``
      npm run test
   ``
+
+## Licencia
+Todos los derechos reservados Tabi SAC - 2017
+
