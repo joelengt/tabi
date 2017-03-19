@@ -23,47 +23,35 @@ font_open_sans_size_bold = 700
 // Fundamentals
 
 // ****** Fonts *******
-@font-face {
-    font-family: "Open Sans Regular";
-    src: url('../../../fonts/OpenSans-Regular.ttf');
-}
+// @font-face {
+//     font-family: "Open Sans Regular";
+//     src: url('../../../fonts/OpenSans-Regular.ttf');
+// }
 
-@font-face {
-    font-family: "Open Sans Bold";
-    src: url('../../../fonts/OpenSans-Bold.ttf');
-}
+// @font-face {
+//     font-family: "Open Sans Bold";
+//     src: url('../../../fonts/OpenSans-Bold.ttf');
+// }
 
-@font-face {
-    font-family: "Open Sans Light";
-    src: url('../../../fonts/OpenSans-Light.ttf');
-}
+// @font-face {
+//     font-family: "Open Sans Light";
+//     src: url('../../../fonts/OpenSans-Light.ttf');
+// }
 
-@font-face {
-    font-family: "Open Sans SemiBold";
-    src: url('../../../fonts/OpenSans-Semibold.ttf');
-}
+// @font-face {
+//     font-family: "Open Sans SemiBold";
+//     src: url('../../../fonts/OpenSans-Semibold.ttf');
+// }
 
-@font-face {
-    font-family: "Open Sans BoldItalic";
-    src: url('../../../fonts/OpenSans-BoldItalic.ttf');
-}
+// @font-face {
+//     font-family: "Open Sans BoldItalic";
+//     src: url('../../../fonts/OpenSans-BoldItalic.ttf');
+// }
 
-@font-face {
-    font-family: "Font Bolita";
-    src: url('../../../fonts/ARLRDBD.ttf');
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-size: 1rem;
-    color: black;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: font_open_sans_size_regular;
-}
+// @font-face {
+//     font-family: "Font Bolita";
+//     src: url('../../../fonts/ARLRDBD.ttf');
+// }
 
 // Mixins
 border-radius(n) {
@@ -75,16 +63,29 @@ border-radius(n) {
 //  Reset CSS
 @import './reset_css/index.styl';
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1rem;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: font_open_sans_size_regular;
+    background: salmon;
+}
+
 // ****** Modulos *******
 
 // HeaderMain
-@import './header/index.styl';
+@import './partials/HeaderMain/index.styl';
 
-// Elements
-@import './elementos/index.styl';
+// CoverForm
+@import './partials/CoverForm/index.styl';
 
 // FooterMain
-@import './footer/index.styl';
+// @import './footer/index.styl';
 
 // ModalBox
-@import './utils/modal/index.styl';
+// @import './utils/modal/index.styl';

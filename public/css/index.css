@@ -1,0 +1,215 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+:focus {
+  outline: 0;
+}
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 1rem;
+  color: #000;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  background: #fa8072;
+}
+.HeaderMain {
+  background: #000;
+  overflow: hidden;
+  padding: 10px 25px;
+}
+.HeaderMain__LogoMain {
+  display: inline-block;
+  vertical-align: middle;
+}
+.HeaderMain__LogoMain__box {
+  width: 170px;
+}
+.HeaderMain__LogoMain__box img {
+  max-width: 100%;
+}
+.HeaderMain__NavMain {
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
+  padding-top: 20px;
+}
+.HeaderMain__NavMain__Container--item {
+  display: inline-block;
+  margin-left: 10px;
+}
+.HeaderMain__NavMain__Container--item figure {
+  width: 20px;
+}
+.HeaderMain__NavMain__Container--item figure img {
+  max-width: 100%;
+}
+.CoverForm {
+  text-align: center;
+  color: #fff;
+  padding-top: 9%;
+}
+.CoverForm__title {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40%;
+  text-align: left;
+}
+.CoverForm__title h1 {
+  font-size: 2.5rem;
+}
+.CoverForm__title p {
+  font-size: 1.2rem;
+}
+.CoverForm__form {
+  display: inline-block;
+  vertical-align: middle;
+  background: rgba(51,47,51,0.24);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 50%;
+  text-align: left;
+  padding: 33px;
+}
+.CoverForm__form--input {
+  display: block;
+  padding-bottom: 1.1rem;
+  width: 100%;
+  overflow: hidden;
+}
+.CoverForm__form--input .item {
+  display: inline-block;
+}
+.CoverForm__form--input .item label {
+  display: block;
+}
+.CoverForm__form--input .item input {
+  display: block;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.8rem;
+  width: 90%;
+  border: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.CoverForm__form--input .input__margin {
+  margin-right: 2rem;
+}
+.CoverForm__form--input .input__email {
+  width: 63%;
+}
+.CoverForm__form--input .btnCotizar {
+  margin-left: 0.6rem;
+}
+.CoverForm__form--input .btnCotizar button {
+  padding: 1rem 3.5rem;
+  width: 100%;
+  border: 0;
+  color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #2bafea;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+}
