@@ -285,14 +285,14 @@ body {
   width: 45%;
   vertical-align: middle;
   text-align: right;
-  margin-left: 3rem;
   overflow: hidden;
 }
 .AboutUs__bottom--icon .item {
   display: block;
-  width: 75%;
+  width: 80%;
   float: right;
-  text-align: left;
+  text-align: right;
+  padding-bottom: 1.5rem;
 }
 .AboutUs__bottom--icon .item .image {
   width: 20%;
@@ -306,9 +306,13 @@ body {
   width: 60%;
   display: inline-block;
   vertical-align: middle;
+  text-align: left;
 }
 .AboutUs__bottom--icon .item .text h3 {
   font-size: 1.5rem;
+}
+.AboutUs__bottom--icon .item .text p {
+  font-size: 1.1rem;
 }
 .AboutUs__bottom--icon .item-left {
   float: left;
