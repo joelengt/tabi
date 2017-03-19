@@ -54,11 +54,24 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
             article(class="CoverForm__form--input")
                 div(class="item  input__margin")
                     label(for="origen") Origen
-                    input(id="origen" name="origen" type="date")
+                    select(id="tipo_viaje")
+                      option(value="dni") Perú
+                      option(value="dni") Argentina
+                      option(value="dni") Mexico
+                      option(value="dni") España
 
                 div(class="item  input__margin")
                     label(for="destino") Destino
-                    input(id="destino" name="destino" type="date")
+                    select(id="tipo_viaje")
+                      option(value="dni") Europa
+                      option(value="dni") Norte America
+                      option(value="dni") Sur America
+                      option(value="dni") America Central
+                      option(value="dni") Caribe
+                      option(value="dni") Asia
+                      option(value="dni") Africa
+                      option(value="dni") Oceania
+
 
                 div(class="item")
                     label(for="tipo_viaje") Tipo de Viaje
@@ -83,11 +96,11 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
             article(class="CoverForm__form--input")
                 div(class="item  input__margin")
-                    label(for="pasajero") Pasajero
+                    label(for="pasajero") Pasajero (0 - 74)
                     input(id="pasajero" name="pasajero" type="number")
 
                 div(class="item  input__margin")
-                    label(for="adulto_mayor") Adulto Mayor
+                    label(for="adulto_mayor") Adulto Mayor (75 - 84)
                     input(id="adulto_mayor" name="adulto_mayor" type="number")
 
                 div(class="item")
@@ -97,10 +110,10 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
             article(class="CoverForm__form--input")
                 div(class="item  input__email")
                     label(for="email") Correo
-                    input(id="email" name="email" type="text")
+                    input(id="email" name="email" type="email")
 
                 div(class="item  btnCotizar")
-                    button Cotizar
+                    a Cotizar
 
 
 

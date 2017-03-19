@@ -108,12 +108,15 @@ body {
   color: #000;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  background: #fa8072;
+  position: relative;
 }
 .HeaderMain {
-  background: #000;
   overflow: hidden;
-  padding: 10px 25px;
+  padding: 30px 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .HeaderMain__LogoMain {
   display: inline-block;
@@ -144,7 +147,13 @@ body {
 .CoverForm {
   text-align: center;
   color: #fff;
-  padding-top: 9%;
+  padding-top: 13%;
+  background-image: url("../images/cover-slider/4.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 75vh;
 }
 .CoverForm__title {
   display: inline-block;
@@ -154,6 +163,7 @@ body {
 }
 .CoverForm__title h1 {
   font-size: 2.5rem;
+  text-shadow: 2px 2px rgba(0,0,0,0.11);
 }
 .CoverForm__title p {
   font-size: 1.2rem;
@@ -161,7 +171,7 @@ body {
 .CoverForm__form {
   display: inline-block;
   vertical-align: middle;
-  background: rgba(51,47,51,0.24);
+  background: rgba(98,100,106,0.38);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -177,6 +187,7 @@ body {
 }
 .CoverForm__form--input .item {
   display: inline-block;
+  width: 30%;
 }
 .CoverForm__form--input .item label {
   display: block;
@@ -185,22 +196,29 @@ body {
   display: block;
   padding: 0.7rem 0.8rem;
   font-size: 0.8rem;
-  width: 90%;
+  width: 86%;
   border: 0;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+.CoverForm__form--input .item select {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.8rem;
+  height: 33px;
+  border: 5px;
+}
 .CoverForm__form--input .input__margin {
   margin-right: 2rem;
 }
 .CoverForm__form--input .input__email {
-  width: 63%;
+  width: 71%;
 }
 .CoverForm__form--input .btnCotizar {
-  margin-left: 0.6rem;
+  width: 20%;
 }
-.CoverForm__form--input .btnCotizar button {
+.CoverForm__form--input .btnCotizar a {
   padding: 1rem 3.5rem;
   width: 100%;
   border: 0;
@@ -212,4 +230,5 @@ body {
   font-size: 1rem;
   text-transform: uppercase;
   text-align: center;
+  cursor: pointer;
 }
