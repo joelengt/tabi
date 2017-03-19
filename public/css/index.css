@@ -232,3 +232,84 @@ body {
   text-align: center;
   cursor: pointer;
 }
+.AboutUs {
+  height: 100vh;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  background-image: url("../images/AboutUs/office-desk-background-2.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.AboutUs__bottom {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+.AboutUs__bottom--text {
+  display: inline-block;
+  width: 40%;
+  vertical-align: middle;
+  text-align: left;
+}
+.AboutUs__bottom--text h1 {
+  font-size: 3.5rem;
+}
+.AboutUs__bottom--text p {
+  font-size: 1.3rem;
+}
+.AboutUs__bottom--icon {
+  display: inline-block;
+  width: 45%;
+  vertical-align: middle;
+  text-align: right;
+  margin-left: 3rem;
+  overflow: hidden;
+}
+.AboutUs__bottom--icon .item {
+  display: block;
+  width: 75%;
+  float: right;
+  text-align: left;
+}
+.AboutUs__bottom--icon .item .image {
+  width: 20%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.AboutUs__bottom--icon .item .image img {
+  max-width: 100%;
+}
+.AboutUs__bottom--icon .item .text {
+  width: 60%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.AboutUs__bottom--icon .item .text h3 {
+  font-size: 1.5rem;
+}
+.AboutUs__bottom--icon .item-left {
+  float: left;
+}
