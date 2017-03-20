@@ -1,7 +1,7 @@
 var express = require('express');
 var route = express.Router();
 
-route.get('/', function (req, res) {
+route.post('/', function (req, res) {
 	res.render('./plataforma/pricing/index.jade');
 });
 

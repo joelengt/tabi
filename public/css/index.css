@@ -238,9 +238,9 @@ body {
   width: 71%;
 }
 .CoverForm__form--input .btnCotizar {
-  width: 20%;
+  width: 29%;
 }
-.CoverForm__form--input .btnCotizar a {
+.CoverForm__form--input .btnCotizar button {
   padding: 1rem 3.5rem;
   width: 100%;
   border: 0;
