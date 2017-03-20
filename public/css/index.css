@@ -144,6 +144,27 @@ body {
 .HeaderMain__NavMain__Container--item figure img {
   max-width: 100%;
 }
+.HeaderMain__NavMain__Container ul {
+  display: inline-block;
+}
+.HeaderMain__NavMain__Container ul li {
+  display: inline-block;
+  margin-left: 2rem;
+}
+.HeaderMain__NavMain__Container ul li a {
+  font-size: 1.2rem;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 5px solid transparent;
+}
+.HeaderMain__NavMain__Container ul li a:hover {
+  border-bottom: 5px solid #fff;
+}
 .CoverForm {
   text-align: center;
   color: #fff;
@@ -191,6 +212,7 @@ body {
 }
 .CoverForm__form--input .item label {
   display: block;
+  padding-bottom: 0.5rem;
 }
 .CoverForm__form--input .item input {
   display: block;
