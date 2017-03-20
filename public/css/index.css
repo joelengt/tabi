@@ -468,3 +468,78 @@ body {
   float: right;
   width: 40%;
 }
+.FooterMain {
+  background: #3b556e;
+  overflow: hidden;
+  color: #fff;
+  padding: 20px 50px;
+}
+.FooterMain p,
+.FooterMain a {
+  font-size: 0.8rem;
+}
+.FooterMain__right {
+  display: inline-block;
+  vertical-align: middle;
+  float: left;
+}
+.FooterMain__right--logo {
+  padding-bottom: 0.5rem;
+}
+.FooterMain__right--logo figure {
+  width: 130px;
+}
+.FooterMain__right--logo figure img {
+  max-width: 100%;
+}
+.FooterMain__right--redes-sociales {
+  padding-bottom: 0.5rem;
+}
+.FooterMain__right--redes-sociales--item {
+  display: inline-block;
+}
+.FooterMain__right--redes-sociales--item figure {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+.FooterMain__right--redes-sociales--item figure img {
+  max-width: 100%;
+}
+.FooterMain__left {
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
+}
+.FooterMain__left--icons {
+  padding-bottom: 0.5rem;
+}
+.FooterMain__left--icons figure {
+  display: inline-block;
+  vertical-align: middle;
+  width: 80px;
+}
+.FooterMain__left--icons figure img {
+  max-width: 100%;
+}
+.FooterMain__left--email {
+  padding-bottom: 0.5rem;
+}
+.FooterMain__left--email figure {
+  display: inline-block;
+  width: 20px;
+}
+.FooterMain__left--email figure img {
+  max-width: 100%;
+}
+.FooterMain__left--email .text {
+  width: 70%;
+  display: inline-block;
+  margin-left: 10px;
+}
+.FooterMain__left--text span {
+  display: block;
+  padding-bottom: 0.5rem;
+}
+.FooterMain__left--text a {
+  color: #fff;
+}
