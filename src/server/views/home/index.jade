@@ -187,8 +187,27 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
 
     section(class="ContactForm")
-        
-    
+        div(class="ContactForm__box")
+            div(class="ContactForm__text")
+                h2 Contáctanos
+                p Porque trabajamos con transparencia, queremos darte el mejor servicio y aclarar tus dudas. Escribemos y nuestro equipo te contactare en breve.
+
+            div(class="ContactForm__form")
+                div(class="ContactForm__form--input")
+                    input(type="text" name="nombre" id="FormContactName" placeholder="Nombre")
+
+                div(class="ContactForm__form--input")
+                    input(type="text" name="email" id="FormContactEmail" placeholder="Email")
+
+                div(class="ContactForm__form--input")
+                    input(type="text" name="telefono" id="FormContactTelefono" placeholder="Telefono")
+
+                div(class="ContactForm__form--input")
+                    textarea(name="", cols="10", rows="4", placeholder="Escribe tu Mensaje")
+
+                div(class="ContactForm__form--input to__right")
+                    a(id="btnFormContactSend" class="btnFormContactSend") Enviar
+
     footer(class="FooterMain")
 
 

@@ -1,0 +1,60 @@
+.ContactForm
+    background salmon
+    color white
+    text-align center
+    height 100vh
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-image url('../images/AboutUs/office-desk-background-2.jpg')
+    background-size cover
+    background-repeat no-repeat
+    color white
+
+    &__text
+        display inline-block
+        width 40%
+        text-align left
+        vertical-align middle
+        
+        h2
+            font-size 3.5rem
+        p
+            font-size 1.5rem
+    
+    &__form
+        display inline-block
+        width 35%
+        vertical-align middle
+            
+        &--input
+            width 80%
+            margin 0 auto
+            padding-bottom 1rem
+            
+            input, textarea
+                display block
+                width 100%
+                padding .7rem
+                border 0
+                border-radius 10px
+                font-size 1rem
+                
+            .btnFormContactSend
+                display block
+                width 70%
+                background blue_brand
+                color white
+                padding 1rem
+                border-radius 10px
+                cursor pointer
+                
+                &:hover
+                    background #528bc1
+                
+        .to__right
+            float right
+            width 40%
