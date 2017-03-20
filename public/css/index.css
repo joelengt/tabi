@@ -565,3 +565,44 @@ body {
 .FooterMain__left--text a {
   color: #fff;
 }
+.PricingElements {
+  padding-top: 5rem;
+  text-align: center;
+}
+.PricingElements__title {
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.PricingElements__title h2 {
+  font-size: 2rem;
+}
+.PricingElements__form {
+  display: inline-block;
+  width: 50%;
+}
+.PricingElements .content-form {
+  width: 100%;
+}
+.PricingElements__list {
+  display: inline-block;
+  width: 30%;
+  height: 400px;
+  vertical-align: top;
+  margin-left: 100px;
+  overflow: scroll;
+}
+.PricingElements__list article {
+  background: #d3d3d3;
+  margin: 5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 3rem 0;
+}
+.PricingElements__list article p,
+.PricingElements__list article strong,
+.PricingElements__list article button {
+  display: block;
+  margin: 0 auto;
+}

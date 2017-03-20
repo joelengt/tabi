@@ -5,7 +5,7 @@ function routes(app) {
     var items = require('./items/index.js');
     
     var home = require('./home/index.js');
-
+    var plataform = require('./plataform/index.js');
 
     app.use('/info', admin);
     app.use('/users', users);
@@ -13,6 +13,8 @@ function routes(app) {
 
     // Viewers
     app.use('/', home);
+    app.use('/plataform-pricing', plataform);
+
 
 }
 

@@ -1,0 +1,118 @@
+doctype strict
+html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
+  head
+    meta(charset='utf-8')
+    //- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='robots', content='noodp,noydir')
+    meta(name='viewport', content='width=device-width, minimum-scale=1, maximum-scale=1')
+    meta(name='description', content='Tabi Assist - Viaja, Disfruta, Explora')
+    title Tabi Assist
+    link(rel='icon', type='image/png', href='/favicon.ico')
+
+    //- Facebook
+    meta(property='og:title', content='Tabi Assist')
+    meta(property='og:description', content='Viaja, Disfruta, Explora')
+    meta(property='og:image', content='/og_image.jpg')
+    meta(property='og:type', content='website')
+    meta(property='og:url', content='/')
+    //- Styles
+    link(rel='stylesheet', href='./css/index.css')
+
+    //- if lt IE 9
+      script(src='./js/html5shiv.js')
+    //- if lt IE 9
+      script(src='./js/respond.src.js')
+    //- if lt IE 9
+      link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+  body
+    header(class="HeaderMain")
+        div(class="HeaderMain__LogoMain")
+            figure(class="HeaderMain__LogoMain__box")
+                img(src="./images/logo.png")
+
+
+    section(class="PricingElements")
+        div(class="PricingElements__title")
+            h2 Elige el mejor plan para ti
+
+        div(class="PricingElements__form")
+            div(class="CoverForm__form  content-form")
+                article(class="CoverForm__form--input")
+                    div(class="item  input__margin")
+                        label(for="origen") Origen
+                        select(id="tipo_viaje")
+                          option(value="dni") Perú
+                          option(value="dni") Argentina
+                          option(value="dni") Mexico
+                          option(value="dni") España
+
+                    div(class="item  input__margin")
+                        label(for="destino") Destino
+                        select(id="tipo_viaje")
+                          option(value="dni") Europa
+                          option(value="dni") Norte America
+                          option(value="dni") Sur America
+                          option(value="dni") America Central
+                          option(value="dni") Caribe
+                          option(value="dni") Asia
+                          option(value="dni") Africa
+                          option(value="dni") Oceania
+
+
+                    div(class="item")
+                        label(for="tipo_viaje") Tipo de Viaje
+                        select(id="tipo_viaje")
+                          option(value="dni") Turismo, Negocio
+                          option(value="dni") Estudio
+                          option(value="dni") Work and Travel
+                          option(value="dni") Multiviaje
+
+                article(class="CoverForm__form--input")
+                    div(class="item  input__margin")
+                        label(for="salida") Salida
+                        input(id="salida" name="salida" type="date")
+
+                    div(class="item  input__margin")
+                        label(for="regreso") Regreso
+                        input(id="regreso" name="regreso" type="date")
+
+                    div(class="item")
+                        label(for="dias") Dias
+                        input(id="dias" name="dias" type="number")
+
+                article(class="CoverForm__form--input")
+                    div(class="item  input__margin")
+                        label(for="pasajero") Pasajero (0 - 74)
+                        input(id="pasajero" name="pasajero" type="number")
+
+                    div(class="item  input__margin")
+                        label(for="adulto_mayor") Adulto Mayor (75 - 84)
+                        input(id="adulto_mayor" name="adulto_mayor" type="number")
+
+                    div(class="item")
+                        label(for="code_promocion") Código Promoción
+                        input(id="code_promocion" name="code_promocion" type="text")
+
+                article(class="CoverForm__form--input")
+                    div(class="item  input__email")
+                        label(for="email") Correo
+                        input(id="email" name="email" type="email")
+
+                    div(class="item  btnCotizar")
+                        a Cotizar
+
+        div(class="PricingElements__list")
+            each item in [1,2,3,4,5,6,7,8,9]
+
+                article
+                    p Elemento
+                    strong S/25.00
+                    button Comprar
+
+
+    script(src='./js/jquery-1.9.1.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
+    script(src='http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+    script(src='./js/index.js')
