@@ -62,70 +62,69 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
             p Hacemos que tu seguridad este 100% Cubierta
         
         div(class="CoverForm__form")
-            form(action="/plataform-pricing" method="post")
-                article(class="CoverForm__form--input")
-                    div(class="item  input__margin")
-                        label(for="origen") Origen
-                        select(id="tipo_viaje")
-                          option(value="dni") Perú
-                          option(value="dni") Argentina
-                          option(value="dni") Mexico
-                          option(value="dni") España
+            article(class="CoverForm__form--input")
+                div(class="item  input__margin")
+                    label(for="input_origen") Origen
+                    select(id="input_origen")
+                      option(value="Perú") Perú
+                      option(value="Argentina") Argentina
+                      option(value="Mexico") Mexico
+                      option(value="España") España
 
-                    div(class="item  input__margin")
-                        label(for="destino") Destino
-                        select(id="tipo_viaje")
-                          option(value="dni") Europa
-                          option(value="dni") Norte America
-                          option(value="dni") Sur America
-                          option(value="dni") America Central
-                          option(value="dni") Caribe
-                          option(value="dni") Asia
-                          option(value="dni") Africa
-                          option(value="dni") Oceania
+                div(class="item  input__margin")
+                    label(for="input_destino") Destino
+                    select(id="input_destino")
+                      option(value="Europa") Europa
+                      option(value="Norte America") Norte America
+                      option(value=" Sur America") Sur America
+                      option(value="America Central") America Central
+                      option(value="Caribe") Caribe
+                      option(value="Asia") Asia
+                      option(value="Africa") Africa
+                      option(value="Oceania") Oceania
 
 
-                    div(class="item")
-                        label(for="tipo_viaje") Tipo de Viaje
-                        select(id="tipo_viaje")
-                          option(value="dni") Turismo, Negocio
-                          option(value="dni") Estudio
-                          option(value="dni") Work and Travel
-                          option(value="dni") Multiviaje
+                div(class="item")
+                    label(for="input_tipo_viaje") Tipo de Viaje
+                    select(id="input_tipo_viaje")
+                      option(value="Turismo, Negocio") Turismo, Negocio
+                      option(value="Estudio") Estudio
+                      option(value="Work and Travel") Work and Travel
+                      option(value="Multiviaje") Multiviaje
 
-                article(class="CoverForm__form--input")
-                    div(class="item  input__margin")
-                        label(for="salida") Salida
-                        input(id="salida" name="salida" type="date")
+            article(class="CoverForm__form--input")
+                div(class="item  input__margin")
+                    label(for="input_salida") Salida
+                    input(id="input_salida" name="salida" type="date")
 
-                    div(class="item  input__margin")
-                        label(for="regreso") Regreso
-                        input(id="regreso" name="regreso" type="date")
+                div(class="item  input__margin")
+                    label(for="input_regreso") Regreso
+                    input(id="input_regreso" name="regreso" type="date")
 
-                    div(class="item")
-                        label(for="dias") Dias
-                        input(id="dias" name="dias" type="number")
+                div(class="item")
+                    label(for="input_dias") Dias
+                    input(id="input_dias" name="dias" type="number")
 
-                article(class="CoverForm__form--input")
-                    div(class="item  input__margin")
-                        label(for="pasajero") Pasajero (0 - 74)
-                        input(id="pasajero" name="pasajero" type="number")
+            article(class="CoverForm__form--input")
+                div(class="item  input__margin")
+                    label(for="input_pasajero") Pasajero (0 - 74)
+                    input(id="input_pasajero" name="pasajero" type="number")
 
-                    div(class="item  input__margin")
-                        label(for="adulto_mayor") Adulto Mayor (75 - 84)
-                        input(id="adulto_mayor" name="adulto_mayor" type="number")
+                div(class="item  input__margin")
+                    label(for="input_adulto_mayor") Adulto Mayor (75 - 84)
+                    input(id="input_adulto_mayor" name="adulto_mayor" type="number")
 
-                    div(class="item")
-                        label(for="code_promocion") Código Promoción
-                        input(id="code_promocion" name="code_promocion" type="text")
+                div(class="item")
+                    label(for="input_code_promocion") Código Promoción
+                    input(id="input_code_promocion" name="code_promocion" type="text")
 
-                article(class="CoverForm__form--input")
-                    div(class="item  input__email")
-                        label(for="email") Correo
-                        input(id="email" name="email" type="email")
+            article(class="CoverForm__form--input")
+                div(class="item  input__email")
+                    label(for="email") Correo
+                    input(id="email" name="email" type="email")
 
-                    div(class="item  btnCotizar")
-                        button(id="btnFormCotizar") Cotizar
+                div(class="item  btnCotizar")
+                    button(id="btnFormCotizar") Cotizar
 
     
     a(name="conocenos" id="a")
@@ -268,4 +267,4 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     script(src='./js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
-    script(src='./js/index.js')
+    script(src='./js/index.min.js')

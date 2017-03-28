@@ -18,7 +18,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     meta(property='og:type', content='website')
     meta(property='og:url', content='/')
     //- Styles
-    link(rel='stylesheet', href='./css/index.css')
+    link(rel='stylesheet', href='../css/index.css')
 
     //- if lt IE 9
       script(src='./js/html5shiv.js')
@@ -30,7 +30,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     header(class="HeaderMain")
         div(class="HeaderMain__LogoMain")
             figure(class="HeaderMain__LogoMain__box")
-                img(src="./images/logo.png")
+                img(src="../images/logo.png")
 
 
     section(class="PricingElements")
@@ -41,67 +41,67 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
               div(class="CoverForm__form  content-form")
                   article(class="CoverForm__form--input")
                       div(class="item  input__margin")
-                          label(for="origen") Origen
-                          select(id="tipo_viaje")
-                            option(value="dni") Perú
-                            option(value="dni") Argentina
-                            option(value="dni") Mexico
-                            option(value="dni") España
+                          label(for="input_origen") Origen
+                          select(id="input_origen" data-value="#{purchase.origen}")
+                            option(value="Perú") Perú
+                            option(value="Argentina") Argentina
+                            option(value="Mexico") Mexico
+                            option(value="España") España
 
                       div(class="item  input__margin")
-                          label(for="destino") Destino
-                          select(id="tipo_viaje")
-                            option(value="dni") Europa
-                            option(value="dni") Norte America
-                            option(value="dni") Sur America
-                            option(value="dni") America Central
-                            option(value="dni") Caribe
-                            option(value="dni") Asia
-                            option(value="dni") Africa
-                            option(value="dni") Oceania
+                          label(for="input_destino") Destino
+                          select(id="input_destino" data-value="#{purchase.destino}")
+                            option(value="Europa") Europa
+                            option(value="Norte America") Norte America
+                            option(value=" Sur America") Sur America
+                            option(value="America Central") America Central
+                            option(value="Caribe") Caribe
+                            option(value="Asia") Asia
+                            option(value="Africa") Africa
+                            option(value="Oceania") Oceania
 
 
                       div(class="item")
-                          label(for="tipo_viaje") Tipo de Viaje
-                          select(id="tipo_viaje")
-                            option(value="dni") Turismo, Negocio
-                            option(value="dni") Estudio
-                            option(value="dni") Work and Travel
-                            option(value="dni") Multiviaje
+                          label(for="input_tipo_viaje") Tipo de Viaje
+                          select(id="input_tipo_viaje" data-value="#{purchase.tipo_viaje}")
+                            option(value="Turismo, Negocio") Turismo, Negocio
+                            option(value="Estudio") Estudio
+                            option(value="Work and Travel") Work and Travel
+                            option(value="Multiviaje") Multiviaje
 
                   article(class="CoverForm__form--input")
                       div(class="item  input__margin")
-                          label(for="salida") Salida
-                          input(id="salida" name="salida" type="date")
+                          label(for="input_salida") Salida
+                          input(id="input_salida" name="salida" type="date" value="#{purchase.salida}")
 
                       div(class="item  input__margin")
-                          label(for="regreso") Regreso
-                          input(id="regreso" name="regreso" type="date")
+                          label(for="input_regreso") Regreso
+                          input(id="input_regreso" name="regreso" type="date" value="#{purchase.regreso}")
 
                       div(class="item")
-                          label(for="dias") Dias
-                          input(id="dias" name="dias" type="number")
+                          label(for="input_dias") Dias
+                          input(id="input_dias" name="dias" type="number" value="#{purchase.dias}")
 
                   article(class="CoverForm__form--input")
                       div(class="item  input__margin")
-                          label(for="pasajero") Pasajero (0 - 74)
-                          input(id="pasajero" name="pasajero" type="number")
+                          label(for="input_pasajero") Pasajero (0 - 74)
+                          input(id="input_pasajero" name="pasajero" type="number" value="#{purchase.pasajero}")
 
                       div(class="item  input__margin")
-                          label(for="adulto_mayor") Adulto Mayor (75 - 84)
-                          input(id="adulto_mayor" name="adulto_mayor" type="number")
+                          label(for="input_adulto_mayor") Adulto Mayor (75 - 84)
+                          input(id="input_adulto_mayor" name="adulto_mayor" type="number" value="#{purchase.adulto_mayor}")
 
                       div(class="item")
-                          label(for="code_promocion") Código Promoción
-                          input(id="code_promocion" name="code_promocion" type="text")
+                          label(for="input_code_promocion") Código Promoción
+                          input(id="input_code_promocion" name="code_promocion" type="text" value="#{purchase.promocion}")
 
                   article(class="CoverForm__form--input")
                       div(class="item  input__email")
                           label(for="email") Correo
-                          input(id="email" name="email" type="email")
+                          input(id="email" name="email" type="email" value="#{purchase.email}")
 
                       div(class="item  btnCotizar")
-                          button Cotizar
+                          button(id="btnFormCotizar") Cotizar
 
           div(class="PricingElements__list")
               each item in [1,2,3,4,5,6,7,8,9]
@@ -112,7 +112,37 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                       button Comprar
 
 
-    script(src='./js/jquery-1.9.1.js')
+    script(src='../js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
-    script(src='./js/index.js')
+    script(src='../js/index.js')
+    script.
+        var $input_origen = $('#input_origen');
+        var $input_destino = $('#input_destino');
+        var $input_tipo_viaje = $('#input_tipo_viaje');
+
+        // select origen
+        for(var i = 0; i <= $input_origen.children().length - 1; i++) {
+
+          if($input_origen.children()[i].value === $('#input_origen').data('value')) {
+              $input_origen.children()[i].setAttribute('selected','selected');
+          }
+        }
+
+        // select destino
+        for(var i = 0; i <= $input_destino.children().length - 1; i++) {
+
+          if($input_destino.children()[i].value === $('#input_destino').data('value')) {
+              $input_destino.children()[i].setAttribute('selected','selected');
+          }
+        }
+
+         // select tipo viaje
+        for(var i = 0; i <= $input_tipo_viaje.children().length - 1; i++) {
+
+          if($input_tipo_viaje.children()[i].value === $('#input_tipo_viaje').data('value')) {
+              $input_tipo_viaje.children()[i].setAttribute('selected','selected');
+          }
+        }
+
+
