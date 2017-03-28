@@ -584,14 +584,14 @@ body {
 }
 .PricingElements__form {
   display: inline-block;
-  width: 50%;
+  width: 40%;
 }
 .PricingElements .content-form {
   width: 100%;
 }
 .PricingElements__list {
   display: inline-block;
-  width: 30%;
+  width: 50%;
   height: 400px;
   vertical-align: top;
   margin-left: 100px;
