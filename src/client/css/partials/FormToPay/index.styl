@@ -1,0 +1,118 @@
+.FormToPay
+    
+    &__title
+        display block
+        width 100%
+        text-align center;
+        
+        h2
+            font-size 2.5rem
+            text-shadow 2px 2px rgba(0, 0, 0, 0.11)
+    
+    &__box
+        display block;
+        height 80vh
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 3rem;
+        
+    &__form
+        display: inline-block
+        // background orange
+        width 50%
+        height 500px
+        vertical-align top
+        margin-left 100px
+        overflow scroll
+        
+        &--section
+            background gray;
+            margin 4rem auto;
+            padding 2rem
+            border-bottom-left-radius 10px
+            border-bottom-right-radius 10px
+            position relative
+            
+            .section--title
+                background salmon
+                position absolute
+                top -45px
+                left 0
+                right 0
+                border-top-left-radius 10px
+                border-top-right-radius 10px
+                width 100%
+                
+                p 
+                    padding-top 1rem
+                    padding-left 1rem 
+                
+
+        &--input
+            display block
+            padding-bottom 1.1rem
+            width 100%
+            overflow hidden
+            
+            .item
+                display inline-block
+                width 50%
+                
+                label
+                    display block
+                    padding-bottom .5rem
+                    
+                input
+                    display block
+                    padding .7rem .8rem
+                    font-size .8rem
+                    width 80%
+                    border 0
+                    border-radius 5px
+                
+                select
+                    width 90%
+                    padding .7rem .8rem
+                    font-size .8rem
+                    height 33px
+                    border 5px
+            
+            // .input__margin
+            //     margin-right 2rem
+                
+            .input__email
+                width 66%
+                
+                #email
+                    width 85%
+
+            .btnCotizar
+                width 28%
+                
+                button
+                    padding 1rem 0.5rem
+                    width 100%
+                    border 0
+                    color white
+                    border-radius 5px
+                    background #2bafea
+                    font-size 1rem
+                    text-transform uppercase
+                    text-align center
+                    cursor pointer
+
+                
+                    
+    
+    &__preview
+        display inline-block
+        vertical-align middle
+        background salmon
+        border-radius 5px
+        width 40%
+        text-align left
+        padding 33px

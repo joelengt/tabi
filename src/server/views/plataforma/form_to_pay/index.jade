@@ -1,0 +1,122 @@
+doctype strict
+html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
+  head
+    meta(charset='utf-8')
+    //- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='robots', content='noodp,noydir')
+    meta(name='viewport', content='width=device-width, minimum-scale=1, maximum-scale=1')
+    meta(name='description', content='Tabi Assist - Viaja, Disfruta, Explora')
+    title Tabi Assist
+    link(rel='icon', type='image/png', href='/favicon.ico')
+
+    //- Facebook
+    meta(property='og:title', content='Tabi Assist')
+    meta(property='og:description', content='Viaja, Disfruta, Explora')
+    meta(property='og:image', content='/og_image.jpg')
+    meta(property='og:type', content='website')
+    meta(property='og:url', content='/')
+    //- Styles
+    link(rel='stylesheet', href='../../css/index.css')
+
+    //- if lt IE 9
+      script(src='./js/html5shiv.js')
+    //- if lt IE 9
+      script(src='./js/respond.src.js')
+    //- if lt IE 9
+      link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+  body
+    header(class="HeaderMain")
+        div(class="HeaderMain__LogoMain")
+            figure(class="HeaderMain__LogoMain__box")
+                img(src="../../images/logo.png")
+
+
+    section(class="FormToPay" data-id="#{code}")
+        div(class="FormToPay__title")
+            h2 #{pack.title}
+
+        div(class="FormToPay__box")
+            div(class="FormToPay__form")
+
+                div(class="FormToPay__form--section")
+                    article(class="FormToPay__form--input section--title")
+                        p Datos del pasajero
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_nombres") Nombres
+                          input(id="input_nombres" name="salida" type="text")
+
+                      div(class="item  input__margin")
+                          label(for="input_apellidos") Apellidos
+                          input(id="input_apellidos" name="regreso" type="text")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item")
+                            label(for="input_tipo_doc") Tipo de Documento
+                            select(id="input_tipo_doc")
+                              option(value="Turismo, Negocio") DNI
+                              option(value="Pasaporte") Pasaporte
+                              option(value="Carnet de Extranjeria") Carnet de Extranjeria
+
+                      div(class="item  input__margin")
+                          label(for="input_doc_number") Numero de Documento
+                          input(id="input_doc_number" name="salida" type="text")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_fecha_nacimiento") Fecha de Nacimiento
+                          input(id="input_fecha_nacimiento" name="regreso" type="date")
+
+                      div(class="item")
+                          label(for="input_email") Email
+                          input(id="input_email" name="dias" type="email")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_domicilio") Domicilio
+                          input(id="input_domicilio" name="pasajero" type="text")
+
+                div(class="FormToPay__form--section")
+                    article(class="FormToPay__form--input  section--title")
+                        p Contactos de Emergencia
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_emergencia_nombres") Nombres
+                          input(id="input_emergencia_nombres" name="salida" type="text")
+
+                      div(class="item  input__margin")
+                          label(for="input_emergencia_apellidos") Apellidos
+                          input(id="input_emergencia_apellidos" name="regreso" type="text")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item")
+                           label(for="input_emergencia_telefono") Teléfono
+                           input(id="input_emergencia_telefono" name="salida" type="tel")
+
+                      div(class="item  input__margin")
+                          label(for="input_emergencia_email") Email
+                          input(id="input_emergencia_email" name="dias" type="email")
+                
+                div(class="FormToPay__form--section")
+                    div(class="input_check")
+                        input(type="checkbox")
+                        p Acepto los #[a(href="#") terminos y condiciones]
+
+                    div(class="btnCotizar")
+                        button(id="btnFormComprar") Comprar
+
+                    div
+                        p(id="message_error" style="display: none;") Error: mensaje campos no validos
+
+
+            div(class="FormToPay__preview")
+              p section pdf preview
+
+    script(src='../../js/jquery-1.9.1.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
+    script(src='http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+    script(src='../../js/index.min.js')
+
+

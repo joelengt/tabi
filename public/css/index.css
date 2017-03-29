@@ -635,3 +635,133 @@ body {
   display: block;
   margin: 0 auto;
 }
+.FormToPay__title {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.FormToPay__title h2 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px rgba(0,0,0,0.11);
+}
+.FormToPay__box {
+  display: block;
+  height: 80vh;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding-top: 3rem;
+}
+.FormToPay__form {
+  display: inline-block;
+  width: 50%;
+  height: 500px;
+  vertical-align: top;
+  margin-left: 100px;
+  overflow: scroll;
+}
+.FormToPay__form--section {
+  background: #808080;
+  margin: 4rem auto;
+  padding: 2rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative;
+}
+.FormToPay__form--section .section--title {
+  background: #fa8072;
+  position: absolute;
+  top: -45px;
+  left: 0;
+  right: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+}
+.FormToPay__form--section .section--title p {
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+.FormToPay__form--input {
+  display: block;
+  padding-bottom: 1.1rem;
+  width: 100%;
+  overflow: hidden;
+}
+.FormToPay__form--input .item {
+  display: inline-block;
+  width: 50%;
+}
+.FormToPay__form--input .item label {
+  display: block;
+  padding-bottom: 0.5rem;
+}
+.FormToPay__form--input .item input {
+  display: block;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.8rem;
+  width: 80%;
+  border: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.FormToPay__form--input .item select {
+  width: 90%;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.8rem;
+  height: 33px;
+  border: 5px;
+}
+.FormToPay__form--input .input__email {
+  width: 66%;
+}
+.FormToPay__form--input .input__email #email {
+  width: 85%;
+}
+.FormToPay__form--input .btnCotizar {
+  width: 28%;
+}
+.FormToPay__form--input .btnCotizar button {
+  padding: 1rem 0.5rem;
+  width: 100%;
+  border: 0;
+  color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #2bafea;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+.FormToPay__preview {
+  display: inline-block;
+  vertical-align: middle;
+  background: #fa8072;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 40%;
+  text-align: left;
+  padding: 33px;
+}

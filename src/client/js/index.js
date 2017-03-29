@@ -1,5 +1,6 @@
 
 import { sendFormCotizar } from './formCotizar/index.js';
+import { eventClickItems } from './plataform/index.js';
 
 console.log('OK');
 
@@ -25,3 +26,5 @@ function calDays() {
    }
  
  }
+
+eventClickItems();

@@ -33,7 +33,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                 img(src="../images/logo.png")
 
 
-    section(class="PricingElements")
+    section(class="PricingElements" data-id="#{code}")
         div(class="PricingElements__title")
             h2 Elige el mejor plan para ti
         div(class="PricingElements__box")
@@ -106,12 +106,12 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                     p(id="message_error" style="display: none;") Error: mensaje campos no validos
 
           div(class="PricingElements__list")
-              each item in [1,2,3,4,5,6,7,8,9]
+              each pack in packs
 
                   article
-                      p Elemento
+                      p #{pack.title}
                       strong S/25.00
-                      button Comprar
+                      button(class="btnBuy" data-pack="#{pack.title}") Comprar
 
 
     script(src='../js/jquery-1.9.1.js')
