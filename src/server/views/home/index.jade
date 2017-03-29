@@ -103,16 +103,16 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
                 div(class="item")
                     label(for="input_dias") Dias
-                    input(id="input_dias" name="dias" type="number")
+                    input(id="input_dias" name="dias" type="number" value="1" disabled)
 
             article(class="CoverForm__form--input")
                 div(class="item  input__margin")
                     label(for="input_pasajero") Pasajero (0 - 74)
-                    input(id="input_pasajero" name="pasajero" type="number")
+                    input(id="input_pasajero" name="pasajero" type="number" value="1")
 
                 div(class="item  input__margin")
                     label(for="input_adulto_mayor") Adulto Mayor (75 - 84)
-                    input(id="input_adulto_mayor" name="adulto_mayor" type="number")
+                    input(id="input_adulto_mayor" name="adulto_mayor" type="number" value="0")
 
                 div(class="item")
                     label(for="input_code_promocion") Código Promoción
@@ -125,6 +125,9 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
                 div(class="item  btnCotizar")
                     button(id="btnFormCotizar") Cotizar
+
+            article
+                p(id="message_error" style="display: none;") Error: mensaje campos no validos
 
     
     a(name="conocenos" id="a")

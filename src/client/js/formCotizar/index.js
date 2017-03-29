@@ -15,6 +15,11 @@ export function sendFormCotizar() {
 
     var $email = $('#email');
 
+    var $msg_error = $('#message_error');
+
+    $msg_error.css('display', 'none');
+    $msg_error[0].innerHTML = '';
+
     var data = {
         origen: $input_origen.val(),
         destino: $input_destino.val(),
@@ -29,10 +34,34 @@ export function sendFormCotizar() {
     }
 
     // Validando parametros
-    console.log('DATOS ENVIADOS');
+    console.log('Datos a enviar');
     console.log(data);
 
-    if(data.origen !== '') {
+    // reset inputs border
+    $input_origen.css('border', '1px solid transparent');
+    $input_destino.css('border', '1px solid transparent');
+    $input_tipo_viaje.css('border', '1px solid transparent');
+
+    $input_salida.css('border', '1px solid transparent');
+    $input_regreso.css('border', '1px solid transparent');
+    $input_dias.css('border', '1px solid transparent');
+
+    $input_pasajero.css('border', '1px solid transparent');
+    $input_adulto_mayor.css('border', '1px solid transparent');
+    $input_code_promocion.css('border', '1px solid transparent');
+
+    $email.css('border', '1px solid transparent');
+
+    if(data.origen !== '' &&
+       data.destino !== '' &&
+       data.tipo_viaje !== '' &&
+       data.salida !== '' &&
+       data.regreso !== '' &&
+       data.dias !== '' &&
+       data.pasajero !== '' &&
+       data.adulto_mayor !== '' &&
+       data.email !== '' &&
+       data.email.indexOf('@') !== -1) {
 
         $.ajax({
             url: '/plataform-pricing/validate',
@@ -42,7 +71,7 @@ export function sendFormCotizar() {
                 console.log(result);
 
                 if(result.status === 'ok') {
-                    window.open(`/plataform-pricing/${ result.code }`);
+                    window.location.href = `/plataform-pricing/${ result.code }`
 
                 } else {
                     console.log('error');
@@ -51,7 +80,58 @@ export function sendFormCotizar() {
         })
 
     } else {
-        console.log('ERROR');
+        
+        // Mensaje de error por campo
+
+        var msg = '';
+
+        if(data.origen === '') {
+            msg = 'El campo origen es obligatorio';
+            $input_origen.css('border', '1px solid #F3182B')
+
+        } else if(data.destino === '') {
+            msg = 'El campo destino es obligatorio';
+            $input_destino.css('border', '1px solid #F3182B');
+
+        } else if(data.tipo_viaje === '') {
+            msg = 'El campo tipo de viaje es obligatorio';
+            $input_tipo_viaje.css('border', '1px solid #F3182B');
+
+        } else if(data.salida === '') {
+            msg = 'El campo salida es obligatorio';
+            $input_salida.css('border', '1px solid #F3182B');
+
+        } else if(data.regreso === '') {
+            msg = 'El campo regreso es obligatorio';
+            $input_regreso.css('border', '1px solid #F3182B');
+
+        } else if(data.dias === '') {
+            msg = 'El campo dias es obligatorio';
+            $input_dias.css('border', '1px solid #F3182B');
+
+        } else if(data.pasajero === '') {
+            msg = 'El campo pasajero es obligatorio';
+            $input_pasajero.css('border', '1px solid #F3182B');
+
+        } else if(data.adulto_mayor === '') {
+            msg = 'El campo adulto_mayor es obligatorio';
+            $input_adulto_mayor.css('border', '1px solid #F3182B');
+
+        } else if(data.email === '') {
+            msg = 'El campo email es obligatorio';
+            $email.css('border', '1px solid #F3182B');
+
+        } else if(data.email.indexOf('@') === -1) {
+            msg = 'El campo email no es valido';
+            $email.css('border', '1px solid #F3182B');
+
+        } else {
+            msg = 'Los campos son obligatorios';
+        }
+
+        $msg_error.css('display', 'block');
+        $msg_error[0].innerHTML = msg;
+
     }
 
 }

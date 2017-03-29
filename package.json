@@ -79,10 +79,9 @@
   },
   "scripts": {
     "test": "mocha ./src/server/test/test.js",
-    "webpack-js": "webpack --config webpack.config.js --progress --colors --watch",
+    "build-js": "webpack --config webpack.config.js --progress --colors --watch",
     "build-css": "stylus --use nib --watch ./src/client/css/index.styl --out ./public/css/index.css",
     "compress-css": "stylus --use nib ./src/client/css/index.styl --compress --out ./public/css/index.css",
-    "build-js": "browserify -t [ babelify --presets [ es2015 ] ] ./src/client/js/index.js > ./public/js/index.js",
     "static-server": "http-server -p 5002",
     "start": "node ./src/server/index.js"
   },
