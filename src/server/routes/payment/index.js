@@ -118,8 +118,8 @@ app.post('/:user_id/:type_service', function (req, res) {
 
             } else if(type_service === material.premium) {
                 date_service = {
-                    type_service: material.premium,
-                    price: 15.00,
+                    type_service: usuario_find.pack_selected.title,
+                    price: Number(usuario_find.pack_selected.tarifa),
                     description: 'Servicio Premiun'
                 }
 
