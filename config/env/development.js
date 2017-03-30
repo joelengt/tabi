@@ -30,6 +30,12 @@ var config = {
             api_key: '532668554832195',
             api_secret: 'PLstoVjJNoBiqPhNDGriHyVWVTc'
         },
+        culqi:{
+            key_api_dev: '5jaVROAEp51mE7Br8mdQ6dfVbEfhszNXQPB3GsI2Np4=',
+            code_comercio_dev: 'vivPfq6XgLtM',
+            key_api: 'zGdhpkAMeaG+lKcvj++e2me5b0YkhprNCCQIvLKinvs=',
+            code_comercio: 'OgUFtt0jQKid'
+        }
     },
     variables: {
         status: {
@@ -48,6 +54,9 @@ var config = {
             officers: 'officers',
             viewer:    'officer-viewer',
             users_campo: 'users-campo'
+        },
+        typeUser: {
+            premium: 'premium'
         },
         card_status: {
             read: true,

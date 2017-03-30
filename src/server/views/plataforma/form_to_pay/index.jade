@@ -110,13 +110,17 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                     div
                         p(id="message_error" style="display: none;") Error: mensaje campos no validos
 
-
             div(class="FormToPay__preview")
               p section pdf preview
+
+    section(style="display: none;")
+        input(type="text", id="user_id_plataforma", value="#{code}")
 
     script(src='../../js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+    script(type="text/javascript", src='https://integ-pago.culqi.com/api/v1/culqi.js')
+    script(src="https://checkout.culqi.com/v2")
     script(src='../../js/index.min.js')
 
 

@@ -26,11 +26,14 @@ var purchase = new Schema({
         photo:         {},
         tipo_doc:      { type: String },
         doc_number:    { type: String },
-        email:         { type: String },
+        email:         { type: String, default: 'joelengt@gmail.com' },
         // username:      { type: String, unique: true},
         domicilio:     { type: String },
         password:      { type: String },
         permiso:       { type: String },
+        ciudad:      { type: String , default: 'Lima'},
+        address:     { type: String , default: 'av Lima'},
+        phone:       { type: String , default: '999999999'},
         contact_emergencia: {
             nombres:   { type: String },
             apellidos: { type: String },
@@ -40,7 +43,8 @@ var purchase = new Schema({
         token_auth:    { type: String },
         status_purchare: { type: String , default: 'nothing'},
         fecha_creada:  { type: Date, default: Date.now }
-    }
+    },
+    access:     { type: String, default: 'normal' }
 })
 
 var purchases = mongoose.model('users', purchase)

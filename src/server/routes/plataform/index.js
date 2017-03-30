@@ -2,6 +2,8 @@ var express = require('express');
 var route = express.Router();
 
 var Purchases = require('../../models/purchares/index.js');
+var config = require('../../../../config/index.js')
+var permiso = config.variables.typeUser
 
 var elements = [
         {
@@ -379,7 +381,7 @@ route.get('/:code/purchare-form', function (req, res) {
         }
 
         if(user !== null) {
-            
+
             console.log('DATOS ACTUAL DEL USUARIO');
             console.log(user);
 
@@ -399,19 +401,19 @@ route.post('/:code/purchare-buy/save', function (req, res) {
 
     var data_form = {
         user: {
-            nombres:      req.body.user.nombres,
-            apellidos:    req.body.user.apellidos,
-            tipo_doc:     req.body.user.tipo_doc,
-            doc_number:   req.body.user.doc_number,
-            fecha_nacimiento: req.body.user.fecha_nacimiento,
-            email:      req.body.user.email, 
-            domicilio:  req.body.user.domicilio,
+            nombres:      req.body.user.nombres   || 'joel',
+            apellidos:    req.body.user.apellidos || 'gonzales',
+            tipo_doc:     req.body.user.tipo_doc  || '64433402',
+            doc_number:   req.body.user.doc_number || 'DNI',
+            fecha_nacimiento: req.body.user.fecha_nacimiento || '02/21/90',
+            email:      req.body.user.email || 'someone@gmail.com', 
+            domicilio:  req.body.user.domicilio || 'av lima',
         },
         contact_emergencia: {
-            nombres:   req.body.contact_emergencia.nombres,
-            apellidos: req.body.contact_emergencia.apellidos,
-            telefono:  req.body.contact_emergencia.telefono,
-            email:     req.body.contact_emergencia.email
+            nombres:   req.body.contact_emergencia.nombres || 'juan',
+            apellidos: req.body.contact_emergencia.apellidos || 'gomez',
+            telefono:  req.body.contact_emergencia.telefono || '999999999',
+            email:     req.body.contact_emergencia.email || 'home@gmail.com'
         }
     }
 
@@ -486,17 +488,29 @@ route.get('/:code/key-pdf', function (req, res) {
 
         if(user !== null) {
             
+            var value_to_download = '';
+
+            if(user.access === permiso.premium) {
+                value_to_download = 'http://enlace_to_pdf';
+
+            } else {
+                value_to_download = 'not_access';
+
+            }
+
             console.log('DATOS ACTUAL DEL USUARIO - pdf');
             console.log(user);
 
             // devolver los campos guardados
             res.render('./plataforma/pdf/index.jade', {
                 code: code,
-                pack: user.pack_selected
+                pack: user.pack_selected,
+                pdf: value_to_download
             });
 
         }
     })
     
 });
+
 module.exports = route;
