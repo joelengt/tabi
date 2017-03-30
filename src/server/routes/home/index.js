@@ -2,9 +2,29 @@ var express = require('express');
 var route = express.Router();
 
 var handleSayHello = require('../../utils/sendEmail/index.js')
+var generatePDF = require('../../utils/generatePDF/index.js')
 
 route.get('/', function (req, res) {
-    res.render('./home/index.jade');
+
+    var id_user = '312312312';
+
+    generatePDF(id_user, (err, result) => {
+        if(err) {
+            return console.log('error', err);
+        }
+        console.log('PDF final terminado');
+        console.log(result);
+
+        
+    });
+
+    // res.render('./home/index.jade');
+
+    res.status(200).json({
+        status: 'ok',
+        message: 'value'
+    })
+
 });
 
 // form to contact
