@@ -15,7 +15,7 @@ export function pay() {
 
     function ConnectCulqi(user_send_id, type_send_service) {
         console.log('Comprando servicio: ' + type_send_service)
-        // $('#Proceso_msg')[0].innerHTML = 'PROCESANDO...'
+        $('#message_error')[0].innerHTML = 'PROCESANDO...'
 
         $.ajax({
             method: 'post',
@@ -25,7 +25,7 @@ export function pay() {
                 console.log(resultado)
                 if(resultado.status === 'venta_registrada') {
                     // Resultado cuando la venta fue 
-                    // $('#Proceso_msg')[0].innerHTML = ''
+                    $('#message_error')[0].innerHTML = ''
 
                     console.log('Resultado: ' + type_send_service)
                     console.log(resultado.status)
@@ -269,7 +269,8 @@ export function pay() {
                     checkout.abrir()
 
                 } else {
-                    // $('#Proceso_msg')[0].innerHTML = ''
+
+                    $('#message_error')[0].innerHTML = resultado.message;
 
                     // Resultado cuando la venta no fue creada
                     console.log('Resultado: ' + type_send_service)
