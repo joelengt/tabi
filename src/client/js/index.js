@@ -1,10 +1,12 @@
 
 import { sendFormCotizar } from './formCotizar/index.js';
 import { eventClickItems } from './plataform/index.js';
+import { eventFormBuy } from './formBuy/index.js';
 
 console.log('OK');
 
 $('#btnFormCotizar').on('click', sendFormCotizar);
+$('#btnFormComprar').on('click', eventFormBuy);
 
 // Event input date listener
 

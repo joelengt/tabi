@@ -24,13 +24,21 @@ var purchase = new Schema({
         last_names:    { type: String },
         full_name:     { type: String },
         photo:         {},
-        dni:           { type: String },
+        tipo_doc:      { type: String },
+        doc_number:    { type: String },
         email:         { type: String },
         // username:      { type: String, unique: true},
+        domicilio:     { type: String },
         password:      { type: String },
         permiso:       { type: String },
+        contact_emergencia: {
+            nombres:   { type: String },
+            apellidos: { type: String },
+            telefono:  { type: String },
+            email:     { type: String }
+        },
         token_auth:    { type: String },
-        status_purchare: { type: String },
+        status_purchare: { type: String , default: 'nothing'},
         fecha_creada:  { type: Date, default: Date.now }
     }
 })

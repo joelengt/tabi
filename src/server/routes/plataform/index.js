@@ -393,4 +393,110 @@ route.get('/:code/purchare-form', function (req, res) {
     
 });
 
+// Save form to buy pack selected
+route.post('/:code/purchare-buy/save', function (req, res) {
+    var code = req.params.code;
+
+    var data_form = {
+        user: {
+            nombres:      req.body.user.nombres,
+            apellidos:    req.body.user.apellidos,
+            tipo_doc:     req.body.user.tipo_doc,
+            doc_number:   req.body.user.doc_number,
+            fecha_nacimiento: req.body.user.fecha_nacimiento,
+            email:      req.body.user.email, 
+            domicilio:  req.body.user.domicilio,
+        },
+        contact_emergencia: {
+            nombres:   req.body.contact_emergencia.nombres,
+            apellidos: req.body.contact_emergencia.apellidos,
+            telefono:  req.body.contact_emergencia.telefono,
+            email:     req.body.contact_emergencia.email
+        }
+    }
+
+
+    console.log('DATOS DE LA COMPRA');
+
+    console.log(data_form);
+
+
+    // buscar al usuario en la db, por el id
+    Purchases.findOne({'_id': code}, (err, user) => {
+        if(err) {
+            return res.status(400).json({
+                status: 'bat_request',
+                message: 'error code not valid'
+            })
+        }
+
+        if(user !== null) {
+            
+            // Guardar en la db
+            user.account.names = data_form.user.nombres
+            user.account.last_names =  data_form.user.apellidos
+            user.account.tipo_doc =  data_form.user.tipo_doc
+            user.account.doc_number =   data_form.user.doc_number
+            user.account.fecha_nacimiento =   data_form.user.fecha_nacimiento
+            user.account.email = data_form.user.email
+            user.account.domicilio = data_form.user.domicilio
+            user.account.full_name = `${ data_form.user.nombres } ${ data_form.user.apellidos }`
+
+            // contact emergencia
+            user.account.contact_emergencia.nombres = data_form.contact_emergencia.nombres
+            user.account.contact_emergencia.apellidos = data_form.contact_emergencia.apellidos
+            user.account.contact_emergencia.telefono = data_form.contact_emergencia.telefono
+            user.account.contact_emergencia.email = data_form.contact_emergencia.email
+            
+            // save data
+
+            user.save((err, saved) => {
+                if(err) {
+                    return console.log(err);
+                }
+
+                console.log('USUARIO UPDATED');
+                console.log(saved);
+
+                res.status(200).json({
+                    status: 'ok',
+                    code: saved._id
+                })
+
+            })
+
+        }
+    })
+    
+});
+
+
+// Render view - pdf
+route.get('/:code/key-pdf', function (req, res) {
+    var code = req.params.code;
+
+    // buscar al usuario en la db, por el id
+    Purchases.findOne({'_id': code}, (err, user) => {
+        if(err) {
+            return res.status(400).json({
+                status: 'bat_request',
+                message: 'error code not valid'
+            })
+        }
+
+        if(user !== null) {
+            
+            console.log('DATOS ACTUAL DEL USUARIO - pdf');
+            console.log(user);
+
+            // devolver los campos guardados
+            res.render('./plataforma/pdf/index.jade', {
+                code: code,
+                pack: user.pack_selected
+            });
+
+        }
+    })
+    
+});
 module.exports = route;
