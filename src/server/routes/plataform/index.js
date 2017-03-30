@@ -8,39 +8,39 @@ var elements = [
             title: 'INTERNATIONAL',
             pack: [
                 {
-                    days: 5,
+                    days: '5',
                     tarifa: '25.00'
                 },
                 {
-                    days: 8,
+                    days: '8',
                     tarifa: '28.00'
                 },
                 {
-                    days: 10,
+                    days: '10',
                     tarifa: '30.00'
                 },
                 {
-                    days: 15,
+                    days: '15',
                     tarifa: '35.00'
                 },
                 {
-                    days: 22,
+                    days: '22',
                     tarifa: '45.00'
                 },
                 {
-                    days: 30,
+                    days: '30',
                     tarifa: '55.00'
                 },
                 {
-                    days: 45,
+                    days: '45',
                     tarifa: '90.00'
                 },
                 {
-                    days: 60,
+                    days: '60',
                     tarifa: '105.00'
                 },
                 {
-                    days: 90,
+                    days: '90',
                     tarifa: '120.00'
                 }
             ],
@@ -50,27 +50,27 @@ var elements = [
             title: 'CLASSIC',
             pack: [
                 {
-                    days: 5,
+                    days: '5',
                     tarifa: '15.00'
                 },
                 {
-                    days: 8,
+                    days: '8',
                     tarifa: '25.00'
                 },
                 {
-                    days: 15,
+                    days: '15',
                     tarifa: '30.00'
                 },
                 {
-                    days: 20,
+                    days: '20',
                     tarifa: '40.00'
                 },
                 {
-                    days: 25,
+                    days: '25',
                     tarifa: '45.00'
                 },
                 {
-                    days: 30,
+                    days: '30',
                     tarifa: '50.00'
                 }
             ],
@@ -80,39 +80,39 @@ var elements = [
             title: 'EUROPA',
             pack: [
                 {
-                    days: 5,
+                    days: '5',
                     tarifa: '32.00'
                 },
                 {
-                    days: 8,
+                    days: '8',
                     tarifa: '40.00'
                 },
                 {
-                    days: 10,
+                    days: '10',
                     tarifa: '49.00'
                 },
                 {
-                    days: 15,
+                    days: '15',
                     tarifa: '66.00'
                 },
                 {
-                    days: 22,
+                    days: '22',
                     tarifa: '73.00'
                 },
                 {
-                    days: 30,
+                    days: '30',
                     tarifa: '80.00'
                 },
                 {
-                    days: 45,
+                    days: '45',
                     tarifa: '115.00'
                 },
                 {
-                    days: 60,
+                    days: '60',
                     tarifa: '125.00'
                 },
                 {
-                    days: 90,
+                    days: '90',
                     tarifa: '135.00'
                 }
             ],
@@ -122,39 +122,39 @@ var elements = [
             title: 'STUDENT',
             pack: [
                 {
-                    days: 120,
+                    days: '120',
                     tarifa: '149.00'
                 },
                 {
-                    days: 150,
+                    days: '150',
                     tarifa: '169.00'
                 },
                 {
-                    days: 180,
+                    days: '180',
                     tarifa: '179.00'
                 },
                 {
-                    days: 210,
+                    days: '210',
                     tarifa: '239.00'
                 },
                 {
-                    days: 240,
+                    days: '240',
                     tarifa: '259.00'
                 },
                 {
-                    days: 270,
+                    days: '270',
                     tarifa: '319.00'
                 },
                 {
-                    days: 300,
+                    days: '300',
                     tarifa: '349.00'
                 },
                 {
-                    days: 330,
+                    days: '330',
                     tarifa: '399.00'
                 },
                 {
-                    days: 365,
+                    days: '365',
                     tarifa: '419.00'
                 }
             ],
@@ -225,7 +225,66 @@ route.get('/:code', function (req, res) {
         if(user !== null) {
             // filtrar Por campos de preferencia
 
-            var elements_filter = elements
+            // filtro por destino
+            var filter_by_country = [];
+
+            for(var y = 0; y <= elements.length - 1; y++) {
+                var element_pack = elements[y].countries;
+
+                for(var u = 0; u <= element_pack.length - 1; u++) {
+                    var element_pack_countri = element_pack[u];
+
+                    if(element_pack_countri === user.cotizator.destino) {
+
+                        filter_by_country.push(elements[y]);
+                        break;
+                    }
+                }
+            }
+
+            
+            console.log('Packs filtrados');
+            console.log(filter_by_country);
+
+            // filtrando paquete por dias
+            var result_filter_tarifa = [];
+
+            for (var m = 0; m <= filter_by_country.length - 1; m++) {
+                var result_filter_element = filter_by_country[m];
+
+                for (var a = 0; a <= result_filter_element.pack.length - 1 ; a++) {
+                    var element = result_filter_element.pack[a];
+
+                    var days_value = Number(user.cotizator.dias);
+
+                    if(days_value > Number(result_filter_element.pack[result_filter_element.pack.length - 1].days)) {
+                        days_value = Number(result_filter_element.pack[result_filter_element.pack.length - 1].days);
+                    }
+
+                    if(Number(element.days) >= days_value) {
+
+                        result_filter_tarifa.push(element);
+                        break;
+
+                    }
+                }
+
+            }
+
+            var elements_filter = [];
+
+            for(var r = 0; r <= filter_by_country.length - 1; r++) {
+                elements_filter.push({
+                    title: filter_by_country[r].title,
+                    pack: result_filter_tarifa[r]
+                });
+            }
+
+            console.log('TENTACLE <<<<');
+            console.log(elements_filter);
+
+            console.log('TENTACLE DAYS')
+            console.log(result_filter_tarifa);
 
             // devolver los campos guardados
             res.render('./plataforma/pricing/index.jade', {
@@ -254,12 +313,53 @@ route.post('/:code/purchare/buy-form', function (req, res) {
 
         if(user !== null) {
             // Actualizar usuario en su estatus de compra, y el producto que eligio
+            user.pack_selected.title = pack_selected;
 
-            res.status(200).json({
-                status: 'ok',
-                code: code,
-                pack_selected: pack_selected
+            // filtrando paquete por dias
+            var result_filter_element = elements.filter((element) => {
+                return element.title === pack_selected;
             })
+
+            var result_filter_tarifa = [];
+
+            for (var i = 0; i <= result_filter_element[0].pack.length -1 ; i++) {
+                var element = result_filter_element[0].pack[i];
+
+                var days_value = Number(user.cotizator.dias);
+
+                if(days_value > Number(result_filter_element[0].pack[result_filter_element[0].pack.length - 1].days)) {
+                    days_value = Number(result_filter_element[0].pack[result_filter_element[0].pack.length - 1].days);
+                }
+
+                if(Number(element.days) >= days_value) {
+
+                    result_filter_tarifa.push(element);
+                    break;
+
+                }
+            }
+
+            // Obteniendo tarifa
+            user.pack_selected.dias = result_filter_tarifa[0].days;
+            user.pack_selected.tarifa = result_filter_tarifa[0].tarifa;
+
+
+            console.log('datos del filtro');
+            console.log(result_filter_tarifa);
+
+            // Guardando datos
+            user.save((err, saved) => {
+                if(err) {
+                    return console.log(err);
+                }
+
+                res.status(200).json({
+                    status: 'ok',
+                    code: code
+                })
+
+            })
+
         }
     })
     
@@ -279,12 +379,14 @@ route.get('/:code/purchare-form', function (req, res) {
         }
 
         if(user !== null) {
-            // Actualizar usuario en su estatus de compra, y el producto que eligio
             
+            console.log('DATOS ACTUAL DEL USUARIO');
+            console.log(user);
+
             // devolver los campos guardados
             res.render('./plataforma/form_To_pay/index.jade', {
                 code: code,
-                pack: elements[0]
+                pack: user.pack_selected
             });
         }
     })

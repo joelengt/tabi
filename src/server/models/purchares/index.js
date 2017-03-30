@@ -14,6 +14,11 @@ var purchase = new Schema({
         promocion:     { type: String },
         email:         { type: String },
     },
+    pack_selected: {
+        title:  { type: String },
+        dias:   { type: String },
+        tarifa: { type: String }
+    },
     account: {
         names:         { type: String },
         last_names:    { type: String },
