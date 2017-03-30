@@ -440,7 +440,7 @@ body {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  padding-top: 8rem;
+  padding-top: 9rem;
 }
 .ContactForm__text {
   display: inline-block;

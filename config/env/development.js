@@ -24,7 +24,12 @@ var config = {
             user : 'admin',
             pass : '12345678'
         },
-        
+        mailing: {
+            user: 'joel.gonzales2110@gmail.com',
+            pass: 'neypujbvyhvugxyw',
+            receptor: 'joelengt@gmail.com'
+
+        },
         cloudinary : {
             cloud_name: 'cromlu',
             api_key: '532668554832195',

@@ -2,10 +2,13 @@
 import { sendFormCotizar } from './formCotizar/index.js';
 import { eventClickItems } from './plataform/index.js';
 import { pay } from './payment/index.js';
+import { sendFormContact } from './sendFormContact/index.js';
 
 console.log('OK');
 
 $('#btnFormCotizar').on('click', sendFormCotizar);
+
+$('#btnFormContactSend').on('click', sendFormContact);
 
 // Event input date listener
 
@@ -30,3 +33,4 @@ function calDays() {
 
 eventClickItems();
 pay();
+sendFormContact();

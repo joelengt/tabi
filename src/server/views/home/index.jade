@@ -30,7 +30,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     header(class="HeaderMain")
         div(class="HeaderMain__LogoMain")
             figure(class="HeaderMain__LogoMain__box")
-                img(src="./images/logo.png")
+                img(src="./images/logo-blanco@2x.png")
 
         div(class="HeaderMain__NavMain")
             nav(class="HeaderMain__NavMain__Container")
@@ -215,19 +215,19 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                     input(type="text" name="email" id="FormContactEmail" placeholder="Email")
 
                 div(class="ContactForm__form--input")
-                    input(type="text" name="telefono" id="FormContactTelefono" placeholder="Telefono")
-
-                div(class="ContactForm__form--input")
-                    textarea(name="", cols="10", rows="4", placeholder="Escribe tu Mensaje")
+                    textarea(name="", id="FormContactMessage" cols="10", rows="4", placeholder="Escribe tu Mensaje")
 
                 div(class="ContactForm__form--input to__right")
                     a(id="btnFormContactSend" class="btnFormContactSend") Enviar
+
+                div(class="ContactForm__form--input" style="display: none;" id="FormContactError")
+                    p Mensaje de error 
 
         footer(class="FooterMain")
             div(class="FooterMain__right")
                 article(class="FooterMain__right--logo")
                     figure
-                        img(src="./images/logo.png")
+                        img(src="./images/logo-blanco@2x.png")
 
                 article(class="FooterMain__right--redes-sociales")
                     div(class="FooterMain__right--redes-sociales--item")
