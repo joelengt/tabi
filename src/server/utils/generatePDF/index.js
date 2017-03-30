@@ -5,7 +5,7 @@ function generatePDF(id_user, callback) {
     var options = {
         "html" : "./uploads/news/index.html",
         // "css" : "Path to additional CSS file",
-        // "js" : "Path to additional JavaScript file",
+        "js" : "./uploads/news/index.js",
         // "runnings" : "Path to runnings file. Check further below for explanation.",
         "paperSize" : {format: 'A4', orientation: 'portrait', border: '1cm', delay: 2000},
         // "deleteOnAction" : true/false (Deletes the created temp file once you access it via toBuffer() or toFile()),

@@ -20,6 +20,7 @@
     "google-drive-util": "0.0.2",
     "googleapis": "^12.4.0",
     "googledrive": "^1.0.4",
+    "html2xlsx": "^0.3.0",
     "html5-to-pdf": "^2.2.1",
     "jade": "^1.11.0",
     "jquery": "^2.2.4",
