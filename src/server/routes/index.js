@@ -18,7 +18,6 @@ function routes(app) {
 
     // Viewers
     app.use('/', home);
-    app.use('/plataform-pricing', plataform);
 
 }
 

@@ -35,11 +35,18 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
     section(class="PricingElements" data-id="#{code}")
         div(class="PricingElements__title")
-            h2 Plataforma para descargar pdf
+            h2 Recuperar pdf
 
         div(class="PricingElements__box")
-            div
-                a(href="#{pdf}") #{status}
+           div
+                div
+                    label DNI
+                div
+                    input(type="number" id="dni")
+                div
+                    button(id="btnSendToGetPdf") Enviar
+
+                div(id="msgBox" style="display: none;")
 
 
     script(src='../../js/jquery-1.9.1.js')

@@ -2,14 +2,14 @@ var express = require('express');
 var route = express.Router();
 
 var handleSayHello = require('../../utils/sendEmail/index.js')
-var generatePDF = require('../../utils/generatePDF/index.js')
+// var generatePDF = require('../../utils/generatePDF/index.js')
 
 const fs = require('fs');
 const htmlTo = require('html2xlsx');
 
 route.get('/', function (req, res) {
 
-    var id_user = '312312312';
+    // var id_user = '312312312';
 
     // generatePDF(id_user, (err, result) => {
     //     if(err) {

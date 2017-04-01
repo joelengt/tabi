@@ -177,6 +177,8 @@ export function pay() {
                                         // GET a esa misma uri o refrescar la pagina - para dar experiencia de acceso al servicio
                                         // window.open(window.location.href,'_self')
 
+                                        $('.FormToPay__box')[0].innerHTML = 'Cargando PDF ...';
+
                                         window.location.href = `/plataform-pricing/${ obj.user._id }/key-pdf`
 
                                     } else if (tipo_respuesta_venta == "venta_expirada") {

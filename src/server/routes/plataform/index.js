@@ -5,6 +5,9 @@ var Purchases = require('../../models/purchares/index.js');
 var config = require('../../../../config/index.js')
 var permiso = config.variables.typeUser
 
+var generatePDF = require('../../utils/generatePDF/index.js')
+
+
 var elements = [
         {
             title: 'INTERNATIONAL',
@@ -299,6 +302,30 @@ route.get('/:code', function (req, res) {
     
 });
 
+route.get('/get-user/:code', function (req, res) {
+    var code = req.params.code;
+
+    // buscar al usuario en la db, por el id
+    Purchases.findOne({'_id': code}, (err, user) => {
+        if(err) {
+            return res.status(400).json({
+                status: 'bat_request',
+                message: 'error code not valid'
+            })
+        }
+
+        if(user !== null) {
+
+            // devolver los campos guardados
+            res.status(200).json({
+                code: code,
+                user: user.account
+            });
+        }
+    })
+    
+});
+
 // Update after user select a item to buy
 route.post('/:code/purchare/buy-form', function (req, res) {
     var code = req.params.code;
@@ -472,6 +499,39 @@ route.post('/:code/purchare-buy/save', function (req, res) {
     
 });
 
+// forget pdf access
+route.post('/forget-pdf-access', function (req, res) {
+    var dni = req.body.dni;
+
+    console.log('Forget PDF');
+    console.log(dni);
+
+    // validando existencia del usuario
+
+    Purchases.findOne({'account.doc_number': dni}, (err, user) => {
+        if(err) {
+            return res.status(400).json({
+                status: 'bat_request',
+                message: 'error code not valid'
+            })
+        }
+        console.log('user');
+        console.log(user);
+
+        if(user !== null) {
+            res.status(200).json({
+                status: 'ok',
+                dni: dni,
+                code: user._id
+            })
+        } else {
+            res.status(404).json({
+                status: 'not_found'
+            })
+        }
+    })
+
+})
 
 // Render view - pdf
 route.get('/:code/key-pdf', function (req, res) {
@@ -491,26 +551,52 @@ route.get('/:code/key-pdf', function (req, res) {
             var value_to_download = '';
 
             if(user.access === permiso.premium) {
-                value_to_download = 'http://enlace_to_pdf';
+
+                generatePDF(user, (err, result) => {
+                    if(err) {
+                        return console.log('error', err);
+                    }
+                    console.log('PDF final terminado');
+                    console.log(result);
+
+                    value_to_download = `/news/${ code }.pdf`;
+
+                    res.render('./plataforma/pdf/index.jade', {
+                        status: 'Descargar',
+                        code: code,
+                        pack: user.pack_selected,
+                        pdf: value_to_download
+                    });
+
+                });
 
             } else {
+
                 value_to_download = 'not_access';
 
+                console.log('DATOS ACTUAL DEL USUARIO - pdf');
+                console.log(user);
+
+                // devolver los campos guardados
+                res.render('./plataforma/pdf/index.jade', {
+                    status: 'No tienes permiso',
+                    code: code,
+                    pack: user.pack_selected,
+                    pdf: value_to_download
+                });
+
             }
-
-            console.log('DATOS ACTUAL DEL USUARIO - pdf');
-            console.log(user);
-
-            // devolver los campos guardados
-            res.render('./plataforma/pdf/index.jade', {
-                code: code,
-                pack: user.pack_selected,
-                pdf: value_to_download
-            });
 
         }
     })
     
+});
+
+// Render view - forgot pdf
+route.get('/get/forget-pdf', function (req, res) {
+    res.render('./plataforma/pdf/forget_pdf/index.jade', {
+        status: 'ok'
+    });
 });
 
 module.exports = route;

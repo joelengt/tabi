@@ -3,12 +3,16 @@ import { sendFormCotizar } from './formCotizar/index.js';
 import { eventClickItems } from './plataform/index.js';
 import { pay } from './payment/index.js';
 import { sendFormContact } from './sendFormContact/index.js';
+import { getPdf } from './formGetPdf/index.js';
+
 
 console.log('OK');
 
 $('#btnFormCotizar').on('click', sendFormCotizar);
 
 $('#btnFormContactSend').on('click', sendFormContact);
+
+$('#btnSendToGetPdf').on('click', getPdf);
 
 // Event input date listener
 
