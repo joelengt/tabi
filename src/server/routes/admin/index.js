@@ -7,4 +7,7 @@ var NamingListController = new namingListController();
 route.get('/list', NamingListController.list);
 route.get('/get-info', NamingListController.getInfo);
 
+
+// render view
+
 module.exports = route;

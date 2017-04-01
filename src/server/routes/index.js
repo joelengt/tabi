@@ -1,6 +1,7 @@
 
 function routes(app) {
     var admin = require('./admin/index.js');
+    var admin_plataform = require('./admin/plataform/index.js');
     var users = require('./admin/users/index.js');
     var items = require('./items/index.js');
 
@@ -10,6 +11,7 @@ function routes(app) {
     var plataform = require('./plataform/index.js');
 
     app.use('/info', admin);
+    app.use('/admin', admin_plataform);
     app.use('/users', users);
     app.use('/items', items);
 

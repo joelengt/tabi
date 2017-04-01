@@ -61,7 +61,10 @@ app.use(multer({dest: './uploads/news/'}));
 // Middlewares de passport para login
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+
+// Controllers
+// var register_user = require('./utils/login/index.js')
+// register_user(app, passport)
 
 // Routes
 var routes = require('./routes/index.js')(app);
