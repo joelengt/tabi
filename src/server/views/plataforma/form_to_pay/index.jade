@@ -101,7 +101,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                 
                 div(class="FormToPay__form--section")
                     div(class="input_check")
-                        input(type="checkbox")
+                        input(type="checkbox" id="inputCheckTerms")
                         p Acepto los #[a(href="#") terminos y condiciones]
 
                     div(class="btnCotizar")
@@ -115,6 +115,14 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
     section(style="display: none;")
         input(type="text", id="user_id_plataforma", value="#{code}")
+    
+
+    div(id="ModalBox" style="display: none;")
+        div(id="ModalBoxContent")
+          div(class="text")
+            div(id="btnClose")
+              p X
+            p(id="ContentMessage") Texto de mensaje
 
     script(src='../../js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')

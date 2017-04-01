@@ -765,3 +765,55 @@ body {
   text-align: left;
   padding: 33px;
 }
+#ModalBox {
+  height: 100vh;
+  width: 100%;
+  background: rgba(0,0,0,0.63);
+  display: block;
+  position: fixed;
+  top: 0;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+#ModalBoxContent {
+  background: #fff;
+  display: block;
+  text-align: center;
+  padding: 4rem 6rem;
+  max-width: 500px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+#btnClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+#ContentMessage {
+  text-align: left;
+}
+#ContentMessage h3 {
+  text-align: center;
+}

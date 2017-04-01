@@ -1,6 +1,6 @@
+import { modalMessage } from '../modalMessage/index.js';
+
 export function pay() {
-    
-    console.log('Hollaaa')
 
     // Tipos de servicio
     var material = {
@@ -15,7 +15,7 @@ export function pay() {
 
     function ConnectCulqi(user_send_id, type_send_service) {
         console.log('Comprando servicio: ' + type_send_service)
-        $('#message_error')[0].innerHTML = 'PROCESANDO...'
+        $('#message_error')[0].innerHTML = 'Enviando...'
 
         $.ajax({
             method: 'post',
@@ -161,96 +161,76 @@ export function pay() {
                                     var tipo_respuesta_venta = obj.process_messages.codigo_respuesta
 
                                     if (tipo_respuesta_venta == "venta_exitosa") {
-                                        console.log('codigo respuesta: ' + obj.process_messages.codigo_respuesta)
-                                        console.log('mensaje respuesta: ' + obj.process_messages.mensaje_respuesta)
-                                        console.log('mensaje respuesta usuario: ' + obj.process_messages.mensaje_respuesta_usuario)
                                         
                                         checkout.cerrar()
-
-                                        console.log('Felicidades ya tienes acceso a : ' + obj.service_access)
-                                        
-                                        console.log('Si ocurrio un error, contactanos con este numero de pedido: ' + obj.process_messages.numero_pedido + ' a ascent.peru@gmail.com')
-                                        console.log('ticket: ' + obj.process_messages.ticket)
-
-                                        console.log('Datos del usuario: ' + obj.user)
-                                        
-                                        // GET a esa misma uri o refrescar la pagina - para dar experiencia de acceso al servicio
-                                        // window.open(window.location.href,'_self')
 
                                         $('.FormToPay__box')[0].innerHTML = 'Cargando PDF ...';
 
                                         window.location.href = `/plataform-pricing/${ obj.user._id }/key-pdf`
 
                                     } else if (tipo_respuesta_venta == "venta_expirada") {
-                                        console.log('codigo respuesta: ' + obj.process_messages.codigo_respuesta)
-                                        console.log('mensaje respuesta: ' + obj.process_messages.mensaje_respuesta)
-                                        console.log('mensaje respuesta usuario: ' + obj.process_messages.mensaje_respuesta_usuario)
                                         
-                                        console.log(obj.process_messages.codigo_respuesta + ', aun puedes tener acceso a : ' + obj.service_access)
                                         
-                                        console.log('Si ocurrio un error, contactanos con este numero de pedido: ' + obj.process_messages.numero_pedido + ' a ascent.peru@gmail.com')
-                                        console.log('ticket: ' + obj.process_messages.ticket)
-                                        
-                                        console.log('Datos del usuario: ' + obj.user)
-
                                         checkout.cerrar()
+
+                                        modalMessage(`<div>
+                                                        <h3>${ obj.process_messages.codigo_respuesta }</h3>
+                                                        <p>${ obj.process_messages.mensaje_respuesta_usuario }</p>
+                                                        <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                                                        <p><strong>Numero de pedido:</strong> ${ obj.process_messages.numero_pedido }</p>
+                                                        <p><strong>Ticket:</strong> ${ obj.process_messages.ticket }</p>
+                                                    </div>`);
 
                                     } else if (tipo_respuesta_venta == "error") {
-                                        console.log('codigo respuesta: ' + obj.process_messages.codigo_respuesta)
-                                        console.log('mensaje respuesta: ' + obj.process_messages.mensaje_respuesta)
-                                        console.log('mensaje respuesta usuario: ' + obj.process_messages.mensaje_respuesta_usuario)
-                                        
-                                        console.log(obj.process_messages.codigo_respuesta + ', aun puedes tener acceso a : ' + obj.service_access)
-                                        
-                                        console.log('Si ocurrio un error, contactanos con este numero de pedido: ' + obj.process_messages.numero_pedido + ' a ascent.peru@gmail.com')
-                                        console.log('ticket: ' + obj.process_messages.ticket)
-
-                                        console.log('Datos del usuario: ' + obj.user)
+                                       
                                         
                                         checkout.cerrar()
+
+                                        modalMessage(`<div>
+                                                        <h3>${ obj.process_messages.codigo_respuesta }</h3>
+                                                        <p>${ obj.process_messages.mensaje_respuesta_usuario }</p>
+                                                        <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                                                        <p><strong>Numero de pedido:</strong>: ${ obj.process_messages.numero_pedido }</p>
+                                                        <p><strong>Ticket:</strong> ${ obj.process_messages.ticket }</p>
+                                                    </div>`);
 
                                     } else if (tipo_respuesta_venta == "parametro_invalido") {
-                                        console.log('codigo respuesta: ' + obj.process_messages.codigo_respuesta)
-                                        console.log('mensaje respuesta: ' + obj.process_messages.mensaje_respuesta)
-                                        console.log('mensaje respuesta usuario: ' + obj.process_messages.mensaje_respuesta_usuario)
                                         
-                                        console.log(obj.process_messages.codigo_respuesta + ', aun puedes tener acceso a : ' + obj.service_access)
-                                        
-                                        console.log('Si ocurrio un error, contactanos con este numero de pedido: ' + obj.process_messages.numero_pedido + ' a ascent.peru@gmail.com')
-                                        console.log('ticket: ' + obj.process_messages.ticket)
-                                        
-                                        console.log('Datos del usuario: ' + obj.user)
 
                                         checkout.cerrar()
+
+                                        modalMessage(`<div>
+                                                        <h3>${ obj.process_messages.codigo_respuesta }</h3>
+                                                        <p>${ obj.process_messages.mensaje_respuesta_usuario }</p>
+                                                        <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                                                        <p><strong>Numero de pedido:</strong>: ${ obj.process_messages.numero_pedido }</p>
+                                                        <p><strong>Ticket:</strong> ${ obj.process_messages.ticket }</p>
+                                                    </div>`);
                                         
                                     } else if (tipo_respuesta_venta == "error_procesamiento") {
-                                        console.log('codigo respuesta: ' + obj.process_messages.codigo_respuesta)
-                                        console.log('mensaje respuesta: ' + obj.process_messages.mensaje_respuesta)
-                                        console.log('mensaje respuesta usuario: ' + obj.process_messages.mensaje_respuesta_usuario)
-                                        
-                                        console.log(obj.process_messages.codigo_respuesta + ', aun puedes tener acceso a : ' + obj.service_access)
-                                        
-                                        console.log('Si ocurrio un error, contactanos con este numero de pedido: ' + obj.process_messages.numero_pedido + ' a ascent.peru@gmail.com')
-                                        console.log('ticket: ' + obj.process_messages.ticket)
-                                        
-                                        console.log('Datos del usuario: ' + obj.user)
+                                       
 
                                         checkout.cerrar()
+
+                                        modalMessage(`<div>
+                                                        <h3>${ obj.process_messages.codigo_respuesta }</h3>
+                                                        <p>${ obj.process_messages.mensaje_respuesta_usuario }</p>
+                                                        <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                                                        <p><strong>Numero de pedido:</strong>: ${ obj.process_messages.numero_pedido }</p>
+                                                        <p><strong>Ticket:</strong> ${ obj.process_messages.ticket }</p>
+                                                    </div>`);
                                         
                                     } else {
-                                        console.log('Algo exatraño paso, el proceso de pago No proceso, contactanos en ascent.peru@gmail.com')
-                                        console.log('codigo respuesta: ' + obj.process_messages.codigo_respuesta)
-                                        console.log('mensaje respuesta: ' + obj.process_messages.mensaje_respuesta)
-                                        console.log('mensaje respuesta usuario: ' + obj.process_messages.mensaje_respuesta_usuario)
-                                        
-                                        console.log(obj.process_messages.codigo_respuesta + ', aun puedes tener acceso a : ' + obj.service_access)
-
-                                        console.log('Si ocurrio un error, contactanos con este numero de pedido: ' + obj.process_messages.numero_pedido + ' a ascent.peru@gmail.com')
-                                        console.log('ticket: ' + obj.process_messages.ticket)
-
-                                        console.log('Datos del usuario: ' + obj.user)
                                         
                                         checkout.cerrar()
+
+                                        modalMessage(`<div>
+                                                        <h3>${ obj.process_messages.codigo_respuesta }</h3>
+                                                        <p>${ obj.process_messages.mensaje_respuesta_usuario }</p>
+                                                        <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                                                        <p><strong>Numero de pedido:</strong>: ${ obj.process_messages.numero_pedido }</p>
+                                                        <p><strong>Ticket:</strong> ${ obj.process_messages.ticket }</p>
+                                                    </div>`);
                                     }
 
                                 }
@@ -275,38 +255,22 @@ export function pay() {
                     $('#message_error')[0].innerHTML = resultado.message;
 
                     // Resultado cuando la venta no fue creada
-                    console.log('Resultado: ' + type_send_service)
-                    console.log(resultado.status)
-                    console.log(resultado.message)
-                    console.log(resultado.help)
-                    
-                    console.log('SI ocurrio algun problema, contactanos con este numero de pedido: ' + resultado.data.numero_pedido + ' a ascent.peru@gmail.com')
-                    console.log('ticket de proceso: ' + resultado.data.ticket)
+
+                    modalMessage(`<div>
+                                    <h3>${ resultado.status }</h3>
+                                    <p>${ resultado.message }</p>
+                                    <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                                    <p><strong>Numero de pedido:</strong>: ${ resultado.data.numero_pedido }</p>
+                                    <p><strong>Ticket:</strong> ${ resultado.data.ticket }</p>
+                                </div>`);
 
                 }
             }
         })
     }
 
-    function sendForm() {
+    function sendForm(data) {
         var code_id = $('.FormToPay').data('id');
-        var data = {
-            user: {
-                nombres:      $('#input_nombres').val(),
-                apellidos:    $('#input_apellidos').val(),
-                tipo_doc:     $('#input_tipo_doc').val(),
-                doc_number:   $('#input_doc_number').val(),
-                fecha_nacimiento: $('#input_fecha_nacimiento').val(),
-                email:      $('#input_email').val(), 
-                domicilio:  $('#input_domicilio').val(),
-            },
-            contact_emergencia: {
-                nombres:   $('#input_emergencia_nombres').val(),
-                apellidos: $('#input_emergencia_apellidos').val(),
-                telefono:  $('#input_emergencia_telefono').val(),
-                email:     $('#input_emergencia_email').val()
-            }
-        }
 
         $.ajax({
             url: `/plataform-pricing/${ code_id }/purchare-buy/save`,
@@ -332,7 +296,132 @@ export function pay() {
     if($btnFormComprar !== null) {
         $btnFormComprar.addEventListener("click", function () {
 
-            sendForm();
+            $('#input_nombres').css('border','1px solid transparent');
+            $('#input_apellidos').css('border','1px solid transparent');
+            $('#input_tipo_doc').css('border','1px solid transparent');
+            $('#input_doc_number').css('border','1px solid transparent');
+            $('#input_fecha_nacimiento').css('border','1px solid transparent');
+            $('#input_email').css('border','1px solid transparent');
+            $('#input_email').css('border','1px solid transparent');
+            $('#input_domicilio').css('border','1px solid transparent');
+            $('#input_emergencia_nombres').css('border','1px solid transparent');
+            $('#input_emergencia_apellidos').css('border','1px solid transparent');
+            $('#input_emergencia_telefono').css('border','1px solid transparent');
+            $('#input_emergencia_email').css('border','1px solid transparent');
+            $('#input_emergencia_email').css('border','1px solid transparent');
+
+            // Validar los campos
+            var data = {
+                user: {
+                    nombres:      $('#input_nombres').val(),
+                    apellidos:    $('#input_apellidos').val(),
+                    tipo_doc:     $('#input_tipo_doc').val(),
+                    doc_number:   $('#input_doc_number').val(),
+                    fecha_nacimiento: $('#input_fecha_nacimiento').val(),
+                    email:      $('#input_email').val(), 
+                    domicilio:  $('#input_domicilio').val(),
+                },
+                contact_emergencia: {
+                    nombres:   $('#input_emergencia_nombres').val(),
+                    apellidos: $('#input_emergencia_apellidos').val(),
+                    telefono:  $('#input_emergencia_telefono').val(),
+                    email:     $('#input_emergencia_email').val()
+                }
+            }
+
+            var $inputCheckTerms = $('#inputCheckTerms');
+
+            var $messageError = $('#message_error');
+
+            if(data.user.nombres !== '' &&
+               data.user.apellidos !== '' &&
+               data.user.tipo_doc !== '' &&
+               data.user.doc_number !== '' &&
+               data.user.fecha_nacimiento !== '' &&
+               data.user.email !== '' &&
+               data.user.email.indexOf('@') !== -1 &&
+               data.user.domicilio !== '' &&
+               data.contact_emergencia.nombres !== '' &&
+               data.contact_emergencia.apellidos !== '' &&
+               data.contact_emergencia.telefono !== '' &&
+               data.contact_emergencia.email !== '' &&
+               data.contact_emergencia.email.indexOf('@') !== -1
+               ) {
+
+                console.log('PASO');
+
+                if($inputCheckTerms[0].checked === true) {
+                    sendForm(data);
+
+                } else {
+                    $messageError.css('display','block');
+                    $messageError[0].innerHTML = 'Debes Aceptar los terminos y condiciones';
+                }
+
+            } else {
+
+                console.log('PASO');
+
+                var msg = '';
+                if(data.user.nombres === '') {
+                    msg = 'El campo nombre es obligatorio';
+                    $('#input_nombres').css('border','1px solid red');
+
+                } else if(data.user.apellidos === '') {
+                    msg = 'El campo apellidos es obligatorio';
+                    $('#input_apellidos').css('border','1px solid red');
+
+                } else if(data.user.tipo_doc === '') {
+                    msg = 'El campo tipo de documento es obligatorio';
+                    $('#input_tipo_doc').css('border','1px solid red');
+
+                } else if(data.user.doc_number === '') {
+                    msg = 'El campo numero de documento es obligatorio';
+                    $('#input_doc_number').css('border','1px solid red');
+
+                } else if(data.user.fecha_nacimiento === '') {
+                    msg = 'El campo fecha de nacimiento es obligatorio';
+                    $('#input_fecha_nacimiento').css('border','1px solid red');
+
+                } else if(data.user.email === '') {
+                    msg = 'El campo email es obligatorio';
+                    $('#input_email').css('border','1px solid red');
+
+                } else if(data.user.email.indexOf('@') === -1) {
+                    msg = 'El campo email no es correcto';
+                    $('#input_email').css('border','1px solid red');
+
+                } else if(data.user.domicilio === '') {
+                    msg = 'El campo domiciolio es obligatorio';
+                    $('#input_domicilio').css('border','1px solid red');
+
+                } else if(data.contact_emergencia.nombres === '') {
+                    msg = 'El nombre del contacto de emergencia es obligatorio';
+                    $('#input_emergencia_nombres').css('border','1px solid red');
+
+                } else if(data.contact_emergencia.apellidos === '') {
+                    msg = 'El apellido del contacto de emergencia es obligatorio';
+                    $('#input_emergencia_apellidos').css('border','1px solid red');
+
+                } else if(data.contact_emergencia.telefono === '') {
+                    msg = 'El telefono del contacto de emergencia obligatorio';
+                    $('#input_emergencia_telefono').css('border','1px solid red');
+
+                } else if(data.contact_emergencia.email === '') {
+                    msg = 'El email del contacto de emergencia es obligatorio';
+                    $('#input_emergencia_email').css('border','1px solid red');
+
+                } else if(data.contact_emergencia.email.indexOf('@') === -1) {
+                    msg = 'El email del contacto de emergencia no es correcto';
+                    $('#input_emergencia_email').css('border','1px solid red');
+
+                } else {
+                    msg = 'Debes llenar los campos obligatorios';
+                }
+
+                $messageError.css('display','block');
+                $messageError[0].innerHTML = msg;
+            }
 
         })
     }
