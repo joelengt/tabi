@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport')
 
 var route = express.Router();
+var Purchases = require('../../../models/purchares/index.js');
 
 var config = require('../../../../../config/index.js')
 
@@ -71,6 +72,40 @@ function ensureAuthorized(req, res, next) {
 }
 
 
+var element_title = [
+    'origen',
+    'destino',
+    'tipo_viaje',
+    'salida',
+    'regreso',
+    'dias',
+    'pasajero',
+    'adulto_mayor',
+    'promocion',
+    'email',
+    'pack_select_title',
+    'pack_select_dias',
+    'pack_select_tarifa',
+    'account_names',
+    'account_last_names',
+    'account_full_name',
+    'account_tipo_doc',
+    'account_doc_number',
+    'account_email',
+    'account_domicilio',
+    'account_permiso',
+    'account_ciudad',
+    'account_address',
+    'account_phone',
+    'account_contact_emergencia_nombres',
+    'account_contact_emergencia_apellidos',
+    'account_contact_emergencia_telefono',
+    'account_contact_emergencia_email',
+    'account_ciudad_status_purchare',
+    'account_ciudad_fecha_creada',
+    'access'
+];
+
 route.get('/login', function (req, res) {
 
     var response = {
@@ -95,119 +130,159 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
     console.log('Data : ')
     console.log(req.body)
     
-    // Generando excel
-    var template_all = `
-      <style type="text/css">
-        table td {
-          color: #666;
-          height: 20px;
-          background-color: #f1f1f1;
-          border: 1px solid #eee;
-        }
-      </style>
-      <table>
-        <tr>
-          <td>Todos Usuarios</td>
-          <td>bar</td>
-        </tr>
-        <tr>
-          <td>hello</td>
-          <td>world</td>
-        </tr>
-        <tr>
-          <td type="number">123</td>
-          <td type="number">123.456</td>
-        </tr>
-        <tr>
-          <td data-type="bool">true</td>
-          <td data-type="bool">false</td>
-        </tr>
-        <tr>
-          <td data-type="bool">1</td>
-          <td data-type="bool">0</td>
-        </tr>
-        <tr>
-          <td type="formula">SUM(A1:B1)</td>
-          <td type="formula">A1-B1</td>
-        </tr>
-        <tr>
-          <td type="date">2013-01-12T12:34:56+08:00</td>
-          <td type="datetime">2013-01-12T12:34:56+08:00</td>
-        </tr>
-      </table>
-    `;
-    var template_pay = `
-      <style type="text/css">
-        table td {
-          color: #666;
-          height: 20px;
-          background-color: #f1f1f1;
-          border: 1px solid #eee;
-        }
-      </style>
-      <table>
-        <tr>
-          <td>Usuarios pagos</td>
-          <td>bar</td>
-        </tr>
-        <tr>
-          <td>hello</td>
-          <td>world</td>
-        </tr>
-        <tr>
-          <td type="number">123</td>
-          <td type="number">123.456</td>
-        </tr>
-        <tr>
-          <td data-type="bool">true</td>
-          <td data-type="bool">false</td>
-        </tr>
-        <tr>
-          <td data-type="bool">1</td>
-          <td data-type="bool">0</td>
-        </tr>
-        <tr>
-          <td type="formula">SUM(A1:B1)</td>
-          <td type="formula">A1-B1</td>
-        </tr>
-        <tr>
-          <td type="date">2013-01-12T12:34:56+08:00</td>
-          <td type="datetime">2013-01-12T12:34:56+08:00</td>
-        </tr>
-      </table>
-    `;
+    // Consultando base de datos
 
-    htmlTo(template_all, (err, file) => {
-      if (err) return console.error(err);
-      
-      file.saveAs()
-        .pipe(fs.createWriteStream('./uploads/news/tabi_users_all.xlsx'))
-        .on('finish', () => {
-            console.log('Done tabi_users_all .');
+    Purchases.find((err, users) => {
+        if(err) {
+            return res.status(400).json({
+                status: 'bat_request',
+                message: 'error code not valid'
+            })
+        }
 
-            htmlTo(template_pay, (err, file) => {
+        if(users !== null) {
+
+            // filtrando a los usuarios pagos
+            var users_pay = users.filter((element) => {
+                return element.access === config.variables.typeUser.premium;
+            })
+
+            // Generando excel
+            var subtitle = '';
+            var list_all = '';
+            var list_pay = '';
+
+            // Generando subtitle
+            for(var u = 0; u <= element_title.length - 1; u++) {
+                subtitle += `<td>${ element_title[u] }</td>`;
+            }
+
+            // Generando lista de todos
+            for(var a = 0; a <= users.length - 1; a++) {
+                list_all += `<tr>
+                                <td>${ users[a].cotizator.origen }</td>
+                                <td>${ users[a].cotizator.destino }</td>
+                                <td>${ users[a].cotizator.tipo_viaje }</td>
+                                <td>${ users[a].cotizator.salida }</td>
+                                <td>${ users[a].cotizator.regreso }</td>
+                                <td>${ users[a].cotizator.dias }</td>
+                                <td>${ users[a].cotizator.pasajero }</td>
+                                <td>${ users[a].cotizator.adulto_mayor }</td>
+                                <td>${ users[a].cotizator.promocion }</td>
+                                <td>${ users[a].cotizator.email }</td>
+                                <td>${ users[a].pack_selected.title }</td>
+                                <td>${ users[a].pack_selected.dias }</td>
+                                <td>${ users[a].pack_selected.tarifa }</td>
+                                <td>${ users[a].account.names }</td>
+                                <td>${ users[a].account.last_names }</td>
+                                <td>${ users[a].account.full_name }</td>
+                                <td>${ users[a].account.tipo_doc }</td>
+                                <td>${ users[a].account.doc_number }</td>
+                                <td>${ users[a].account.email }</td>
+                                <td>${ users[a].account.domicilio }</td>
+                                <td>${ users[a].account.permiso }</td>
+                                <td>${ users[a].account.ciudad }</td>
+                                <td>${ users[a].account.address }</td>
+                                <td>${ users[a].account.phone }</td>
+                                <td>${ users[a].account.contact_emergencia.nombres }</td>
+                                <td>${ users[a].account.contact_emergencia.apellidos }</td>
+                                <td>${ users[a].account.contact_emergencia.telefono }</td>
+                                <td>${ users[a].account.contact_emergencia.email }</td>
+                                <td>${ users[a].account.status_purchare }</td>
+                                <td>${ users[a].account.fecha_creada }</td>
+                                <td>${ users[a].access }</td>
+                            </tr>`;
+            }
+
+            // Generando lista de pagos
+            for(var b = 0; b <= users_pay.length - 1; b++) {
+                list_pay += `<tr>
+                                <td>${ users_pay[b].cotizator.origen }</td>
+                                <td>${ users_pay[b].cotizator.destino }</td>
+                                <td>${ users_pay[b].cotizator.tipo_viaje }</td>
+                                <td>${ users_pay[b].cotizator.salida }</td>
+                                <td>${ users_pay[b].cotizator.regreso }</td>
+                                <td>${ users_pay[b].cotizator.dias }</td>
+                                <td>${ users_pay[b].cotizator.pasajero }</td>
+                                <td>${ users_pay[b].cotizator.adulto_mayor }</td>
+                                <td>${ users_pay[b].cotizator.promocion }</td>
+                                <td>${ users_pay[b].cotizator.email }</td>
+                                <td>${ users_pay[b].pack_selected.title }</td>
+                                <td>${ users_pay[b].pack_selected.dias }</td>
+                                <td>${ users_pay[b].pack_selected.tarifa }</td>
+                                <td>${ users_pay[b].account.names }</td>
+                                <td>${ users_pay[b].account.last_names }</td>
+                                <td>${ users_pay[b].account.full_name }</td>
+                                <td>${ users_pay[b].account.tipo_doc }</td>
+                                <td>${ users_pay[b].account.doc_number }</td>
+                                <td>${ users_pay[b].account.email }</td>
+                                <td>${ users_pay[b].account.domicilio }</td>
+                                <td>${ users_pay[b].account.permiso }</td>
+                                <td>${ users_pay[b].account.ciudad }</td>
+                                <td>${ users_pay[b].account.address }</td>
+                                <td>${ users_pay[b].account.phone }</td>
+                                <td>${ users_pay[b].account.contact_emergencia.nombres }</td>
+                                <td>${ users_pay[b].account.contact_emergencia.apellidos }</td>
+                                <td>${ users_pay[b].account.contact_emergencia.telefono }</td>
+                                <td>${ users_pay[b].account.contact_emergencia.email }</td>
+                                <td>${ users_pay[b].account.status_purchare }</td>
+                                <td>${ users_pay[b].account.fecha_creada }</td>
+                                <td>${ users_pay[b].access }</td>
+                            </tr>`;
+            }
+
+            var template_all = `
+              <table>
+                <tr bgColor="#f0e7e7">
+                  ${ subtitle }
+                </tr>
+                ${ list_all }
+              </table>
+            `;
+
+            var template_pay = `
+              <table>
+                <tr bgColor="#f0e7e7">
+                  ${ subtitle }
+                </tr>
+                ${ list_pay }
+              </table>
+            `;
+
+            htmlTo(template_all, (err, file) => {
               if (err) return console.error(err);
               
               file.saveAs()
-                .pipe(fs.createWriteStream('./uploads/news/tabi_users_pay.xlsx'))
+                .pipe(fs.createWriteStream('./uploads/news/tabi_users_all.xlsx'))
                 .on('finish', () => {
-                    console.log('Done tabi_users_pay');
+                    console.log('Done tabi_users_all .');
 
-                    var response = {
-                        type: false,
-                        sources: {
-                            all: '/news/tabi_users_all.xlsx',
-                            pay: '/news/tabi_users_pay.xlsx'
-                        }
-                    };
+                    htmlTo(template_pay, (err, file) => {
+                      if (err) return console.error(err);
+                      
+                      file.saveAs()
+                        .pipe(fs.createWriteStream('./uploads/news/tabi_users_pay.xlsx'))
+                        .on('finish', () => {
+                            console.log('Done tabi_users_pay');
 
-                    res.render('./admin/plataforma/index.jade', response);
+                            var response = {
+                                type: false,
+                                sources: {
+                                    all: '/news/tabi_users_all.xlsx',
+                                    pay: '/news/tabi_users_pay.xlsx'
+                                }
+                            };
+
+                            res.render('./admin/plataforma/index.jade', response);
+
+                        });
+                    });
 
                 });
             });
 
-        });
-    });
+        }
+    })
 
 })
 
