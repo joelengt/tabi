@@ -1,6 +1,36 @@
 var pdf = require('phantom-html2pdf');
 
-function generatePDF(user, callback) {
+function generatePDF(user, pack_details, venta, callback) {
+
+    // evaluando los detalles
+    var table_left = '';
+    var table_right = '';
+
+
+    // left
+    for(var u in pack_details.card.left) {
+        table_left += `<tr>
+                            <td>
+                                <p style="margin: 5px;">${ u }</p>
+                            </td>
+                            <td>
+                                <p style="margin: 5px;">${ pack_details.card.left[`${u}`] }</p>
+                            </td>
+                        </tr>`
+    }
+
+    // right
+    for(var a in pack_details.card.right) {
+        table_right += `<tr>
+                            <td>
+                                <p style="margin: 5px;">${ a }</p>
+                            </td>
+                            <td>
+                                <p style="margin: 5px;">${ pack_details.card.right[`${a}`] }</p>
+                            </td>
+                        </tr>`
+    }
+
 
     var options = {
         // "html" : "./uploads/news/index.html",
@@ -60,11 +90,11 @@ function generatePDF(user, callback) {
                                                                 </a>
                                                             </td>
                                                             <td style="text-align: left; padding-top: 30px;" width="50%">
-                                                                <p style="margin: 0;"><b style="color: #017098;">VOUCHER No AR-EU-10025156</b></p>
-                                                                <p style="margin: 0;">Código de póliza/Policy Code tusegurodeviaje.net-43000124</p>
-                                                                <p style="margin: 0;">Vigencia/Validity 15/03/2017 al/to 14/03/2018</p>
-                                                                <p style="margin: 0;">Cobertura/Service Plan Work & Travel TSV</p>
-                                                                <p style="margin: 0;">Fecha de emisión/Date of Issue 07/03/2017</p>
+                                                                <p style="margin: 0;"><b style="color: #017098;">VOUCHER ${ venta.numero_pedido }</b></p>
+                                                                <p style="margin: 0;">ticket: ${ venta.ticket }</p>
+                                                                <p style="margin: 0;">Vigencia/Validity ${ user.cotizator.salida } al/to ${ user.cotizator.regreso }</p>
+                                                                <p style="margin: 0;">Cobertura/Service ${ user.cotizator.tipo_viaje }</p>
+                                                                <p style="margin: 0;">Fecha de emisión/Date of Issue ${ user.cotizator.salida }</p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -85,16 +115,18 @@ function generatePDF(user, callback) {
                                                     <table width="100%">
                                                         <tr>
                                                             <td style="padding-top: 10px;padding-bottom: 10px;" width="50%">
-                                                                <b style="margin: 0; border-bottom: 1px solid #017098;color: #017098;">Pasajero/Passenger: 1</b>
-                                                                <p style="margin: 0; padding-top: 10px"><b>Nombre/Name:</b> Barea Johann, Florencia</p>
-                                                                <p style="margin: 0;"><b>Documento/ID Number:</b> 35008278</p>
-                                                                <p style="margin: 0;"><b>Nacimiento/Birthdate:</b> 10/04/1990</p>
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098;color: #017098;">Pasajero/Passenger: ${ Number(user.cotizator.pasajero) + Number(user.cotizator.pasajero) }</b>
+                                                                <p style="margin: 0; padding-top: 10px"><b>Nombre/Name:</b> ${ user.account.names }, ${ user.account.last_names }</p>
+                                                                <p style="margin: 0;"><b>Documento/ID Number (${ user.account.tipo_doc }) :</b> ${ user.account.doc_number }</p>
+                                                                <p style="margin: 0;"><b>Nacimiento/Birthdate:</b> ${ user.account.fecha_nacimiento }</p>
+                                                                <p style="margin: 0;"><b>Teléfono/Phone:</b> ${ user.account.phone }</p>
+                                                                <p style="margin: 0;"><b>Email:</b> ${ user.account.email }</p>
                                                             </td>
                                                             <td style="padding-top: 10px;padding-bottom: 10px;" width="50%">
                                                                 <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Contacto de emergencia/Emergency Contact</b>
-                                                                <p style="margin: 0; padding-top: 10px""><b>Nombre/Name:</b> Johann, Dora Isabel</p>
-                                                                <p style="margin: 0;"><b>Teléfono/Phone:</b> 540374315487548</p>
-                                                                <p style="margin: 0;"><b>Email:</b> clientes@tusegurodeviaje.net</p>
+                                                                <p style="margin: 0; padding-top: 10px""><b>Nombre/Name:</b> ${ user.account.contact_emergencia.nombres }, ${ user.account.contact_emergencia.apellidos }</p>
+                                                                <p style="margin: 0;"><b>Teléfono/Phone:</b> ${ user.account.contact_emergencia.telefono }</p>
+                                                                <p style="margin: 0;"><b>Email:</b> ${ user.account.contact_emergencia.email }</p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -105,100 +137,27 @@ function generatePDF(user, callback) {
                                                     <table width="100%" style="padding-top: 20px;padding-bottom: 20px;">
                                                         <tr>
                                                             <td>
-                                                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura</b>
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura: ${ pack_details.title }</b>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td width="50%">
                                                                 <table width="100%">
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
+                                                                    ${ table_left }
                                                                 </table>
                                                             </td>
                                                             <td width="50%">
                                                                 <table width="100%">
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p style="margin: 5px;">USD 50.000</p>
-                                                                        </td>
-                                                                    </tr>
+                                                                    ${ table_right }
                                                                 </table>
                                                             </td>
                                                         </tr>
                                                     </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>${ pack_details.conditions }</p>
                                                 </td>
                                             </tr>
                                             <tr>

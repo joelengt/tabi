@@ -7,7 +7,6 @@ var permiso = config.variables.typeUser
 
 var generatePDF = require('../../utils/generatePDF/index.js')
 
-
 var elements = [
         {
             title: 'INTERNATIONAL',
@@ -49,7 +48,37 @@ var elements = [
                     tarifa: '120.00'
                 }
             ],
-            countries: ['Norte America','Sur America','America Central','Caribe','Oceania','Asia','Africa']
+            countries: ['Norte America','Sur America','America Central','Caribe','Oceania','Asia','Africa'],
+            card: {
+                'left': {
+                    'Asistencia médica en caso de accidente': 'USD 15.000',
+                    'Asistencia médica en caso de enfermedad': 'USD 15.000',
+                    'Asistencia médica en caso pre-existencia': 'USD 300',
+                    'Medicamentos ambulatorios': 'USD 500',
+                    'Garantía por gastos de cancelación (*)': 'USD 600',
+                    'Días complementarios de internación': '5 días',
+                    'Hospitalizacion': 'SI',
+                    'Asistencia en caso de extravío de documentos': 'SI',
+                    'Gastos de hotel familiar acompañante': 'USD 500',
+                    'Gastos de hotel por convalecencia': 'USD 500',
+                    'Embarazo (hasta semana 24)': 'SI',
+                    'Viaje de regreso por enfermedad.': 'SI'
+                },
+                'right': {
+                    'Repatriación de restos.': 'SI',
+                    'Traslado y repatriación sanitaria.': 'SI',
+                    'Odontología de urgencia': 'USD 300',
+                    'Compensación por pérdida de equipaje': 'USD 300 (complementario)',
+                    'Traslado de un familiar en caso de internación': 'SI',
+                    'Asistencia legal en caso de accidente de tránsito': 'USD 2.000',
+                    'Adelanto de fianzas': 'USD 2.000',
+                    'Transferencia de fondos': 'USD 2.000',
+                    'Transmisión de mensajes urgentes.': 'SI',
+                    'Línea de consulta 24 hs.': 'SI',
+                    'Límite de edad (**)': '85 años'
+                }
+            },
+            conditions: '(*) para aplicar los gastos de cancelacion de viaje se aplica un deducible 25% (**) y para los pasajeros de 75 a 85 años se incrementa la tarifa en un 50% mas. Para mayor informacion consultar las condiciones generales.'
         },
         {
             title: 'CLASSIC',
@@ -79,7 +108,36 @@ var elements = [
                     tarifa: '50.00'
                 }
             ],
-            countries: ['Sur America','America Central','Caribe']
+            countries: ['Sur America','America Central','Caribe'],
+            card: {
+                'left': {
+                    'Asistencia médica en caso de accidente': 'USD 6.000',
+                    'Asistencia médica en caso de enfermedad': 'USD 6.000',
+                    'Asistencia médica en caso pre-existencia': 'USD 300',
+                    'Medicamentos ambulatorios': 'USD 300',
+                    'Días complementarios de internación': '5 días',
+                    'Hospitalizacion': 'SI',
+                    'Asistencia en caso de extravío de documentos': 'SI',
+                    'Gastos de hotel por convalecencia': 'USD 300',
+                    'Gastos de hotel familiar acompañante': 'USD 300',
+                    'Repatriación de restos.': 'SI',
+                    'Traslado y repatriación sanitaria.': 'SI'
+                },
+                'right': {
+                    'Odontología de urgencia': 'USD 200',
+                    'Compensación por pérdida de equipaje': 'USD 200 (complementario)',
+                    'Viaje de regreso por enfermedad.': 'SI',
+                    'Traslado de un familiar en caso de internación': 'SI',
+                    'Asistencia legal en caso de accidente de tránsito': 'USD 2.000',
+                    'Adelanto de fianzas': 'USD 2.000',
+                    'Transferencia de fondos': 'USD 2.000',
+                    'Transmisión de mensajes urgentes.': 'SI',
+                    'Línea de consulta 24 hs.': 'SI',
+                    'Cobertura en cruceros': 'NO',
+                    'Límite de edad (**)': '85 años'
+                }
+            },
+            conditions: 'Para mayor informacion consultar las condiciones generales.'
         },
         {
             title: 'EUROPA',
@@ -121,7 +179,37 @@ var elements = [
                     tarifa: '135.00'
                 }
             ],
-            countries: ['Europa','Oceania','Asia','Africa']
+            countries: ['Europa','Oceania','Asia','Africa'],
+            card: {
+                'left': {
+                    'Asistencia médica en caso de accidente': '30000',
+                    'Asistencia médica en caso de enfermedad': '30000',
+                    'Asistencia médica en caso pre-existencia': '300',
+                    'Medicamentos ambulatorios': '500',
+                    'Garantía por gastos de cancelación (*)': '1000',
+                    'Días complementarios de internación': '5 días',
+                    'Hospitalizacion': 'SI',
+                    'Asistencia en caso de extravío de documentos': 'SI',
+                    'Gastos de hotel familiar acompañante': '500',
+                    'Gastos de hotel por convalecencia': '500',
+                    'Embarazo (hasta semana 24)': 'SI'
+                },
+                'right': {
+                    'Viaje de regreso por enfermedad.': 'SI',
+                    'Repatriación de restos.': 'SI',
+                    'Traslado y repatriación sanitaria.': 'SI',
+                    'Odontología de urgencia': '300',
+                    'Compensación por pérdida de equipaje': '€ 500 (complementario)',
+                    'Traslado de un familiar en caso de internación': 'SI',
+                    'Asistencia legal en caso de accidente de tránsito': '2000',
+                    'Adelanto de fianzas': '2000',
+                    'Transferencia de fondos': '2000',
+                    'Transmisión de mensajes urgentes.': 'SI',
+                    'Línea de consulta 24 hs.': 'SI',
+                    'Límite de edad (**)': '85 años'
+                }
+            },
+            'conditions': '(*) para aplicar los gastos de cancelacion de viaje se aplica un deducible 25% (**) y para los pasajeros de 75 a 85 años se incrementa la tarifa en un 50% mas. Para mayor informacion consultar las condiciones generales.'
         },
         {
             title: 'STUDENT',
@@ -163,7 +251,36 @@ var elements = [
                     tarifa: '419.00'
                 }
             ],
-            countries: ['todos']
+            countries: ['todos'],
+            card: {
+                'left': {
+                    'Asistencia médica en caso de accidente': 'USD 50.000',
+                    'Asistencia médica en caso de enfermedad': 'USD 50.000',
+                    'Asistencia médica en caso pre-existencia': 'USD 300',
+                    'Medicamentos ambulatorios': 'USD 1.000',
+                    'Días complementarios de internación': '5 días',
+                    'Hospitalizacion': 'SI',
+                    'Asistencia en caso de extravío de documentos': 'SI',
+                    'Gastos de hotel familiar acompañante': 'USD 500',
+                    'Gastos de hotel por convalecencia': 'USD 300',
+                    'Embarazo (hasta semana 24)': 'SI',
+                    'Viaje de regreso por enfermedad.': 'SI'
+                },
+                'right': {
+                    'Repatriación de restos.': 'SI',
+                    'Traslado y repatriación sanitaria.': 'SI',
+                    'Odontología': 'USD 350',
+                    'Compensación por pérdida de equipaje': 'USD 500 (complementario)',
+                    'Traslado de un familiar en caso de internación': 'SI',
+                    'Asistencia legal en caso de accidente de tránsito': 'USD 1.000',
+                    'Adelanto de fianzas': 'USD 2500',
+                    'Transferencia de fondos': 'USD 2.000',
+                    'Transmisión de mensajes urgentes.': 'SI',
+                    'Línea de consulta 24 hs.': 'SI',
+                    'Límite de edad': '50 años'
+                }
+            },
+            'conditions': 'Para mayor informacion consultar las condiciones generales.'
         }
     ];
 
@@ -536,6 +653,16 @@ route.post('/forget-pdf-access', function (req, res) {
 // Render view - pdf
 route.get('/:code/key-pdf', function (req, res) {
     var code = req.params.code;
+    
+    var venta = {
+        'numero_pedido': req.query.numero_pedido,
+        'ticket': req.query.ticket
+    }
+
+    console.log('DATOS DEL QUERY');
+    console.log(venta);
+
+    console.log('Antes de generar el pdf');
 
     // buscar al usuario en la db, por el id
     Purchases.findOne({'_id': code}, (err, user) => {
@@ -546,14 +673,25 @@ route.get('/:code/key-pdf', function (req, res) {
             })
         }
 
+        console.log('resultado del usuario');
+        console.log(user);
+
         if(user !== null) {
             
+            // Filtrando detalles del paquete
+            var pack_details = elements.filter((element) => {
+                return element.title === user.pack_selected.title;
+            })
+
             var value_to_download = '';
 
             if(user.access === permiso.premium) {
 
-                generatePDF(user, (err, result) => {
+                console.log('a punto de generar pdf');
+
+                generatePDF(user, pack_details[0], venta, (err, result) => {
                     if(err) {
+                        console.log('salto error');
                         return console.log('error', err);
                     }
                     console.log('PDF final terminado');
