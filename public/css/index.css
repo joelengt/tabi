@@ -919,3 +919,113 @@ body {
   font-size: 1.8rem;
   padding-bottom: 1rem;
 }
+.content-forget {
+  width: 200px;
+  margin: 0 auto;
+}
+.content-forget label {
+  display: block;
+  text-align: center;
+}
+.content-forget input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 90%;
+}
+.content-forget .button {
+  background: #017098;
+  border: none;
+  color: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  display: block;
+  padding: 1rem;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  display: block;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.Admin_box {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+.Admin .input {
+  padding-bottom: 1rem;
+}
+.Admin label {
+  display: block;
+  text-align: left;
+}
+.Admin input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 90%;
+}
+.Admin .button {
+  background: #017098;
+  border: none;
+  color: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  display: block;
+  padding: 1rem;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  display: block;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.Admin .box__left {
+  background: #017098;
+  margin: 1rem;
+  padding: 1rem;
+  display: block;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.Admin .box__left a {
+  color: #fff;
+  text-decoration: none;
+}
+.Admin .box__right {
+  background: #017098;
+  margin: 1rem;
+  padding: 1rem;
+  display: block;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+.Admin .box__right a {
+  color: #fff;
+  text-decoration: none;
+}
+.button {
+  background: #017098;
+  border: none;
+  color: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  display: block;
+  padding: 1rem;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  display: block;
+  cursor: pointer;
+  font-size: 1.1rem;
+}

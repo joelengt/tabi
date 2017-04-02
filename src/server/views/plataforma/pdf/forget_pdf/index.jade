@@ -37,16 +37,15 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
         div(class="PricingElements__title")
             h2 Recuperar pdf
 
-        div(class="PricingElements__box")
-           div
-                div
-                    label DNI
-                div
-                    input(type="number" id="dni")
-                div
-                    button(id="btnSendToGetPdf") Enviar
+       div(class="content-forget")
+            div
+                label Ingresa tu documento de identidad
+            div
+                input(type="number" id="dni")
+            div
+                button(id="btnSendToGetPdf" class="button") Enviar
 
-                div(id="msgBox" style="display: none;")
+            div(id="msgBox" style="display: none;")
 
 
     script(src='../../js/jquery-1.9.1.js')

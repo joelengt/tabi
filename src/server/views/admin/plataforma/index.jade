@@ -37,11 +37,17 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
         div(class="PricingElements__title")
             h2 Admin Plataforma
 
-        div(class="PricingElements__box")
-            div
-                a(href="#{sources.all}") todos los usuarios
-            div
-                a(href="#{sources.pay}") Usuarios pagos
+        div(class="Admin_box Admin")
+            div(class="actions")
+                p Descargar
+
+                div(class="Admin__box__left")
+                    form(action="#{sources.all}")
+                        button(class="button") Todos los usuarios
+
+                div(class="Admin__box__right")
+                    form(action="#{sources.pay}")
+                        button(class="button") Usuarios pagos
 
 
     script(src='../../js/jquery-1.9.1.js')

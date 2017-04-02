@@ -37,20 +37,20 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
         div(class="PricingElements__title")
             h2 Admin Login
 
-        div(class="PricingElements__box")
+        div(class="PricingElements__box Admin")
             form(action='/admin/auth/plataforma', method="post")
-                div
+                div(class="input")
                     div
                         label email
                     div
                         input(type="text" name="username")
-                div
+                div(class="input")
                     div
                         label password
                     div
                         input(type="password" name="password")
-                div
-                    button Enviar
+                div(class="input")
+                    button(class="button") Enviar
 
                 div
                     p #{status}

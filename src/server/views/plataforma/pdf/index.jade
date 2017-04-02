@@ -39,7 +39,8 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
         div(class="PricingElements__box")
             div
-                a(href="#{pdf}") #{status}
+                form(action="#{pdf}")
+                    button(class="button") #{status}
 
 
     script(src='../../js/jquery-1.9.1.js')
