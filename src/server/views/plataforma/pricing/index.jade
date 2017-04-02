@@ -38,7 +38,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
             h2 Elige el mejor plan para ti
         div(class="PricingElements__box")
           div(class="PricingElements__form")
-              div(class="CoverForm__form  content-form")
+              div(class="CoverForm__form  content-form  color")
                   article(class="CoverForm__form--input")
                       div(class="item  input__margin")
                           label(for="input_origen") Origen
@@ -108,11 +108,23 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
           div(class="PricingElements__list")
               each pack in packs
 
-                  article
-                      h2 #{pack.title}
-                      p Dias: #{pack.pack.days}
-                      p Tarifa: $#{pack.pack.tarifa}
-                      button(class="btnBuy" data-pack="#{pack.title}") Comprar
+                  article(class="box__content")
+                      div(class="box__left")
+                        div(class="content")
+                          h2 #{pack.title}
+                          button(id="btnSeeBeneficios") Benefícios y Coberturas
+                          
+                      div(class="box__right")
+                        div(class="box__right--price")
+                          span(class="price-top")
+                            p Días: #{pack.pack.days}
+                            p Pasajeros: 1
+                          span
+                            p Total: #[span $#{pack.pack.tarifa}]
+
+                        
+                        div(class="box__right--button")
+                          button(class="btnBuy" data-pack="#{pack.title}") COMPRAR
 
 
     script(src='../js/jquery-1.9.1.js')
