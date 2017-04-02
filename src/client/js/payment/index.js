@@ -19,7 +19,7 @@ export function pay() {
 
         $.ajax({
             method: 'post',
-            url: `http://localhost:5000/payment/${user_send_id}/${type_send_service}`,
+            url: `/payment/${user_send_id}/${type_send_service}`,
             success: function (resultado) {
                 console.log('RESULTADO DE LA CREACION DE VENTAS')
                 console.log(resultado)
@@ -142,7 +142,7 @@ export function pay() {
                         // Mandar el resultado al servidor 
                         $.ajax({
                             method: 'post',
-                            url: `http://localhost:5000/payment/check/${user_send_id}/${type_send_service}?_method=put`, // URI del server
+                            url: `/payment/check/${user_send_id}/${type_send_service}?_method=put`, // URI del server
                             contentType: 'application/json',
                             data: JSON.stringify({
                                 'respuesta' : checkout.respuesta
