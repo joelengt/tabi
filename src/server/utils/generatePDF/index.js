@@ -14,13 +14,13 @@ function generatePDF(user, callback) {
 
                             <meta name="robots" content="noodp,noydir" /> 
                             <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1"/>
-                            <meta name="description" content="Plan imparable Sura. El programa que te permite diseñar la solución a tu medida para darle el mejor uso a tu fondo de pensiones."/>
+                            <meta name="description" content="Assist Tabi - Viaja, Disfruta, Explora Disfruta de tu viaje"/>
 
-                            <title>Plan imparable Sura</title>
+                            <title>Tabi</title>
                             <style>
                                 .text-content{
                                     font-family: Arial !important;
-                                    color: #01349f !important;
+                                    color: black !important;
                                 }
                                 .small-text{
                                     font-family: Arial !important;
@@ -90,7 +90,7 @@ function generatePDF(user, callback) {
 
                         </head>
                         <body style="margin: 0;">
-                            <table bgcolor="f5f5f5" border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; margin: 0 auto; background: #f5f5f5; color: #01349f">
+                            <table bgcolor="f5f5f5" border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; margin: 0 auto; background: #f5f5f5; color: black">
                                 <tr>
                                     <td align="center" valign="top">
                                         <table class="home" align="center" cellpadding="0" cellspacing="0" width="100%" bgcolor="white" align="center" style="padding: 0px 40px">
@@ -98,56 +98,169 @@ function generatePDF(user, callback) {
                                                 <td align="center">
                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                         <tr>
-                                                            <td align="right" width="200">
-                                                                <span></span>
-                                                            </td>
-                                                            <td align="right" width="200">
-                                                                <span></span>
-                                                            </td>
-                                                            <td align="right" style="text-align: right; padding-top: 30px;" width="200">
+                                                            <td style="text-align: left; padding-top: 30px;" width="50%">
                                                                 <a href="http://www.integra.com.pe/" target="_blank" style="display: inline-block;">
-                                                                    <img class="afp" src="https://image.ibb.co/fKUTMF/logo.png" alt="AFP Integra" width="200"/>
+                                                                    <img class="afp" src="http://assistabi.com/images/logo.png" alt="AFP Integra" width="400"/>
                                                                 </a>
+                                                            </td>
+                                                            <td style="text-align: left; padding-top: 30px;" width="50%">
+                                                                <p style="margin: 0;"><b style="color: #017098;">VOUCHER No AR-EU-10025156</b></p>
+                                                                <p style="margin: 0;">Código de póliza/Policy Code tusegurodeviaje.net-43000124</p>
+                                                                <p style="margin: 0;">Vigencia/Validity 15/03/2017 al/to 14/03/2018</p>
+                                                                <p style="margin: 0;">Cobertura/Service Plan Work & Travel TSV</p>
+                                                                <p style="margin: 0;">Fecha de emisión/Date of Issue 07/03/2017</p>
                                                             </td>
                                                         </tr>
                                                     </table>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="padding-top: 10px;padding-bottom: 10px;">
-                                                    <h2 id="name" class="text-content" style="font-size: 25px;">Hola, ${ user._id }</h2>
+                                              <td align="center">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px;padding-bottom: 20px;">
+                                                  <tr>
+                                                    <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                            <tr>
+                                                <td>
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td style="padding-top: 10px;padding-bottom: 10px;" width="50%">
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098;color: #017098;">Pasajero/Passenger: 1</b>
+                                                                <p style="margin: 0; padding-top: 10px"><b>Nombre/Name:</b> Barea Johann, Florencia</p>
+                                                                <p style="margin: 0;"><b>Documento/ID Number:</b> 35008278</p>
+                                                                <p style="margin: 0;"><b>Nacimiento/Birthdate:</b> 10/04/1990</p>
+                                                            </td>
+                                                            <td style="padding-top: 10px;padding-bottom: 10px;" width="50%">
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Contacto de emergencia/Emergency Contact</b>
+                                                                <p style="margin: 0; padding-top: 10px""><b>Nombre/Name:</b> Johann, Dora Isabel</p>
+                                                                <p style="margin: 0;"><b>Teléfono/Phone:</b> 540374315487548</p>
+                                                                <p style="margin: 0;"><b>Email:</b> clientes@tusegurodeviaje.net</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table width="100%" align="left">
+                                                    <table width="100%" style="padding-top: 20px;padding-bottom: 20px;">
                                                         <tr>
-                                                            <td align="left">
-                                                                <img src="https://image.ibb.co/cX3f1F/ICONO_1.png" width="65" />
-                                                            </td>
                                                             <td>
-                                                                <b class="text-content" style="font-size: 19px;">Al 20 de febrero del 2017 tienes ahorrado para tu pensión</b>
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura</b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="50%">
+                                                                <table width="100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td width="50%">
+                                                                <table width="100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">Asistencia médica en caso de accidente</p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p style="margin: 5px;">USD 50.000</p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
                                                             </td>
                                                         </tr>
                                                     </table>
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                              <td align="center">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 40px;">
+                                                  <tr>
+                                                    <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
+                                                  </tr>
+                                                </table>
+                                              </td>
                                             </tr>
                                             <tr>
                                               <td align="center">
                                                 <table border="0" cellpadding="0" cellspacing="0">
                                                   <tr>
                                                     <td align="center" style="font-weight:bold; font-family: Arial;">
-                                                        <h2 class="monto" style="text-align: center; color: #00aac5; font-size: 40px; margin: 0; margin-bottom: 22px;">S/ 13, 380.46</h2>
+                                                        <h2 class="monto" style="text-align: center; color: #017098; font-size: 20px; margin: 0; margin-bottom: 22px;">RECOMENDACIONES DE USO DE ASISTENCIA AL VIAJERO</h2>
                                                     </td>
-                                                  </tr>
-                                                </table>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td align="center">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                  <tr>
-                                                    <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
                                                   </tr>
                                                 </table>
                                               </td>
@@ -156,243 +269,77 @@ function generatePDF(user, callback) {
                                                 <td>
                                                     <table width="100%" align="left">
                                                         <tr>
-                                                            <td><img src="https://image.ibb.co/jDHF1F/ICONO_2.png" width="65" alt="Aportes" /></td>
-                                                            <td><b class="text-content" style="font-size: 19px;">Aportes realizados en los últimos 12 meses</b></td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center" valign="top" bgcolor="FFFFFF">
-                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                                                        <tr>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Dic 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Nov 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Oct 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                            <td>
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">ANTES DEL VIAJE</b>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Set 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Ago 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Jul 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                            <td>
+                                                                <p style="margin-bottom: 3px;margin-top: 25px;">VERIFICACION</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="center" valign="top" style="padding-bottom: 10px; padding-top: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Jun 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td align="center" valign="top" style="padding-bottom: 10px; padding-top: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">May 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td align="center" valign="top" style="padding-bottom: 10px; padding-top: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px;">Abr 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/eQTDMF/CHECK_RED.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                            <td>
+                                                                <p style="margin: 0;">Verifique que todos los datos consignados en su voucher Assistravel sean correctos. Controle especialmente los teléfonos indicados como contacto de emergencia, las fechas de vigencia y el tipo de cobertura adquirido. SI hay errores en los datos, comuníquese con la central de asistencia de Assistravel (teléfonos en página 1)</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Mar 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                            <td>
+                                                                <p style="margin-bottom: 3px;margin-top: 25px;">CANCELACIÓN</p>
                                                             </td>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Feb 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                        </tr>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="margin: 0;">Si el producto adquirido por Ud. incluye Seguro de Cancelación y debe cancelar su viaje (ver condiciones generales para limitaciones y exclusiones) comuníquese dentro de las 24hs con nuestra central de asistencia.</p>
                                                             </td>
-                                                            <td align="center" valign="top" style="padding-top: 10px; padding-bottom: 10px;">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td class="text-meses" align="center" valign="top" style="font-family: Arial; font-weight: bold !important; color: #989898 !important;padding-bottom: 10px !important;">Ene 16</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td align="center" valign="top">
-                                                                            <img src="https://image.ibb.co/e9G01F/CHECK_GREEN.png" alt="check" class="icon-check" width="65">
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">DURANTE EL VIAJE</b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="margin: 5px auto; margin-top: 25px;">COMUNICARSE CON LA CENTRAL DE ASISTENCIA</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="margin: 0;">En la página 1 del presente voucher encontrará un listado completo de los números de acceso de la central de asistencia Assistravel.. Consulte en el listado el número de la central más próxima. SI no hubiese un número de acceso en el país en que Ud. se encuentra, comuníquese por el sistema COBRO REVERTIDO (COLLECT CALL en inglés). Si el país en donde Ud. se encuentra no admite el sistema de comunicación COBRO REVERTIDO, efectúe la llamada a su cargo y a su regreso presente el comprobante a Assistravel para su reembolso. Las centrales de asistencia atienden las 24hs. Antes de llamar para solicitar nuestros servicios, tenga a mano la siguiente información:. Su voucher, tarjeta o credencial. Número de teléfono de donde se encuentra (incluyendo código de país y código de ciudad). Los datos del lugar en que se encuentra (domicilio, hotel, etc.)</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="margin: 5px auto;">SI LA NATURALEZA DE SU INCONVENIENTE LE PERMITE COMUNICARSE CON ASSISTRAVEL Comuníquese con la central de asistencia y siga las instrucciones del operador</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="margin: 5px auto;">SI EL PROBLEMA DE SALUD ES GRAVE O LA NECESIDAD DE ASISTENCIA ES MUY URGENTE Y NO ESTA EN CONDICIONES DE COMUNICARSE CON ASSISTRAVEL. Es fundamental que Ud. reciba asistencia médica inmediata en el lugar en que se encuentre.. Luego, indefectiblemente dentro de las 24hs siguientes, Ud. o cualquier persona que lo acompañe deberá comunicarse con Assistravel y proporcionar toda la información referida al evento sufrido y la asistencia recibida.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Assistravel se pondrá en contacto con el centro asistencial para controlar todas las fases de la prestación del servicio.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="margin-bottom: 3px;">EN CASO DE DEMORA O EXTRAVIO DE EQUIPAJE</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p style="margin: 0;">Apenas constate la falta de su equipaje, diríjase al mostrador de la compañía aérea. Obtenga y complete el formulario PIR (Property Irregularity Report) provisto por la línea aérea.Antes de abandonar el aeropuerto, comuníquese con la central de asistencia.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Condiciones Generales de Contratacion disponibles en <a style="color: #017098;" href="https://assistabi.com/terminos_condiciones.pdf">https://assistabi.com/terminos_condiciones.pdf</a></p>
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center" valign="top" style="padding-top: 8px; padding-bottom: 8px;">
-                                                  <table width="100%">
-                                                    <tr>
-                                                        <td align="left" class="section" valign="middle" style="color: #989898 !important;"><span class="small-text">*Historial de los aportes en los últimos 12 meses.</span></td>
-                                                        <td align="center" class="section" valign="top">
-                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                                <tr>
-                                                                    <td align="left" valign="middle" style="padding-right: 5px;">
-                                                                        <img src="https://image.ibb.co/j42hgF/PUNTO_GREEN.png" alt="point" class="icon-point" width="15">
-                                                                    </td>
-                                                                    <td align="left" valign="middle" class="small-text" style="color: #989898 !important;">Mes donde has aportado</td>
-                                                                    <td align="left" valign="middle" style="padding-right: 5px;">
-                                                                        <img src="https://image.ibb.co/ne7F1F/PUNTO_RED.png" alt="point" class="icon-point" width="15">
-                                                                    </td>
-                                                                    <td align="left" valign="middle" class="small-text" style="color: #989898 !important;">Mes donde no has aportado</td>
-                                                                </tr>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                  </table>  
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center" valign="middle">
-                                                    <img src="https://image.ibb.co/mh1KTv/LINEA_VER_MAS.jpg" width="100%" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center" valign="top">
-                                                  <table width="100%" align="left">
-                                                      <tr>
-                                                          <td>
-                                                              <img src="https://image.ibb.co/g19TMF/ICONO_3.png" width="65" />
-                                                          </td>
-                                                          <td style="font-family: Arial;">
-                                                              <p><b class="text-content" style="font-size: 19px;">Tus aportes están invertidos en:</b> <b style="color: #00aac5; font-size: 18px; padding-left: 10px;"> Fondo</b><b style="font-size: 28px; padding-left: 5px;color: #01349f;"> 2*</b></p>
-                                                          </td>
-                                                      </tr>
-                                                  </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="center" valign="middle" style="padding-bottom: 3px;">
-                                                    <img src="https://image.ibb.co/dPWpva/CUADRO_DE_FONDO.jpg" width="100%"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                              <td align="center" valign="top" style="padding-top: 6px; padding-bottom: 5px;">
-                                                <table width="100%">
-                                                  <tr>
-                                                    <td align="center" valign="top">
-                                                        <p class="small-text" style="text-align: center; color: #989898; font-size: 12px;">La descripción del tipo de fondo es referencial y no constituye una recomendación.</p>
-                                                    </td>
-                                                    
-                                                  </tr>
-                                                </table>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                              <td align="center">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                  <tr>
-                                                    <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
-                                                  </tr>
-                                                </table>
-                                              </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left" valign="middle" style=" padding-top: 15px; padding-bottom: 25px;">
-                                                    <p class="docs" style="color: #989898; font-weight: bold; font-size: 18px;font-family: Arial;">
-                                                        Recuerda que la contraseña para abrir tu Estado de Cuenta adjunto es el número de tu documento de identidad (DNI, Carnet Extranjería o Pasaporte).
-                                                    </p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -400,23 +347,23 @@ function generatePDF(user, callback) {
                                                     <table width="100%" align="left" style="padding-bottom: 10px;">
                                                         <tr>
                                                             <td class="cell-enlace" width="30%" style="font-family: Arial;">
-                                                                <a style="color: #01349f; text-decoration: none; font-size: 20px;" href="http://www.integra.com.pe/" target="_blank">integra.com.pe</a>
+                                                                <a style="color: #017098; text-decoration: none; font-size: 20px;" href="http://www.assistabi.com/" target="_blank">www.assistabi.com</a>
                                                             </td>
                                                             <td class="cell-icons" width="70%">
                                                                 <table>
                                                                     <tr>
                                                                         <td width="20%">
-                                                                            <a href="https://twitter.com/suraperu?lang=es" target="_blank">
+                                                                            <a href="https://twitter.com/assistabi" target="_blank">
                                                                                 <img class="logo-social" src="https://image.ibb.co/mSmWaa/ICONO_TWITTER.png"/>
                                                                             </a>
                                                                         </td>
                                                                         <td width="20%">
-                                                                            <a href="https://www.facebook.com/suraperu" target="_blank">
+                                                                            <a href="https://www.facebook.com/assistabi" target="_blank">
                                                                                 <img class="logo-social" src="https://image.ibb.co/b9iBaa/ICONO_FACE.png"/>
                                                                             </a>
                                                                         </td>
                                                                         <td width="20%">
-                                                                            <a href="https://www.youtube.com/user/SURAPeru" target="_blank">
+                                                                            <a href="https://www.youtube.com/user/assistabi" target="_blank">
                                                                                 <img class="logo-social" src="https://image.ibb.co/g3TNgF/ICONO_YOUTUBE.png"/>
                                                                             </a>
                                                                         </td>
