@@ -635,6 +635,9 @@ body {
   display: block;
   margin: 0 auto;
 }
+.FormToPay {
+  padding-top: 3rem;
+}
 .FormToPay__title {
   display: block;
   width: 100%;
@@ -669,17 +672,18 @@ body {
   -webkit-align-items: center;
   align-items: center;
   padding-top: 3rem;
+  margin: 0 auto;
+  width: 90%;
 }
 .FormToPay__form {
   display: inline-block;
   width: 50%;
   height: 500px;
   vertical-align: top;
-  margin-left: 100px;
   overflow: scroll;
 }
 .FormToPay__form--section {
-  background: #808080;
+  background: #eaeaea;
   margin: 4rem auto;
   padding: 2rem;
   border-bottom-left-radius: 10px;
@@ -687,7 +691,8 @@ body {
   position: relative;
 }
 .FormToPay__form--section .section--title {
-  background: #fa8072;
+  background: #017098;
+  color: #fff;
   position: absolute;
   top: -45px;
   left: 0;
@@ -740,30 +745,43 @@ body {
 .FormToPay__form--input .btnCotizar {
   width: 28%;
 }
-.FormToPay__form--input .btnCotizar button {
-  padding: 1rem 0.5rem;
-  width: 100%;
-  border: 0;
-  color: #fff;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background: #2bafea;
-  font-size: 1rem;
-  text-transform: uppercase;
-  text-align: center;
+.FormToPay__form .input_check #inputCheckTerms {
+  display: inline-block;
+}
+.FormToPay__form .input_check p {
+  display: inline-block;
+}
+.FormToPay__form #btnFormComprar {
   cursor: pointer;
+  display: block;
+  border: 0;
+  background: #017098;
+  color: #fff;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.FormToPay__form .content-box-action {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 .FormToPay__preview {
   display: inline-block;
   vertical-align: middle;
-  background: #fa8072;
+  background: #eaeaea;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   width: 40%;
   text-align: left;
   padding: 33px;
+  margin-left: 3rem;
 }
 #ModalBox {
   height: 100vh;
@@ -816,4 +834,6 @@ body {
 }
 #ContentMessage h3 {
   text-align: center;
+  font-size: 1.8rem;
+  padding-bottom: 1rem;
 }

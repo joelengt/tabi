@@ -34,8 +34,8 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
 
     section(class="FormToPay" data-id="#{code}")
-        div(class="FormToPay__title")
-            h2 #{pack.title}
+        //- div(class="FormToPay__title")
+        //-     //- h2 #{pack.title}
 
         div(class="FormToPay__box")
             div(class="FormToPay__form")
@@ -99,7 +99,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                           label(for="input_emergencia_email") Email
                           input(id="input_emergencia_email" name="dias" type="email")
                 
-                div(class="FormToPay__form--section")
+                div(class="FormToPay__form--section  content-box-action")
                     div(class="input_check")
                         input(type="checkbox" id="inputCheckTerms")
                         p Acepto los #[a(href="#") terminos y condiciones]
@@ -108,10 +108,10 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                         button(id="btnFormComprar") Comprar
 
                     div
-                        p(id="message_error" style="display: none;") Error: mensaje campos no validos
+                        p(id="message_error" style="display: none; color: red;") Error: mensaje campos no validos
 
             div(class="FormToPay__preview")
-              p section pdf preview
+              p Destino:  #{pack.title}
 
     section(style="display: none;")
         input(type="text", id="user_id_plataforma", value="#{code}")

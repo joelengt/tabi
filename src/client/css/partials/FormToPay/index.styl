@@ -1,4 +1,5 @@
 .FormToPay
+    padding-top: 3rem;
     
     &__title
         display block
@@ -19,6 +20,8 @@
         -ms-flex-align: center;
         align-items: center;
         padding-top: 3rem;
+        margin: 0 auto;
+        width: 90%;
         
     &__form
         display: inline-block
@@ -26,11 +29,11 @@
         width 50%
         height 500px
         vertical-align top
-        margin-left 100px
+        // margin-left 100px
         overflow scroll
         
         &--section
-            background gray;
+            background #eaeaea;
             margin 4rem auto;
             padding 2rem
             border-bottom-left-radius 10px
@@ -38,7 +41,8 @@
             position relative
             
             .section--title
-                background salmon
+                background #017098
+                color white
                 position absolute
                 top -45px
                 left 0
@@ -93,26 +97,46 @@
             .btnCotizar
                 width 28%
                 
-                button
-                    padding 1rem 0.5rem
-                    width 100%
-                    border 0
-                    color white
-                    border-radius 5px
-                    background #2bafea
-                    font-size 1rem
-                    text-transform uppercase
-                    text-align center
-                    cursor pointer
-
+                // button
+                //     padding 1rem 0.5rem
+                //     width 100%
+                //     border 0
+                //     color white
+                //     border-radius 5px
+                //     background #2bafea
+                //     font-size 1rem
+                //     text-transform uppercase
+                //     text-align center
+        .input_check
+            #inputCheckTerms
+                display inline-block
+            p
+                display inline-block
                 
-                    
+        #btnFormComprar
+            cursor pointer
+            display: block;
+            border: 0;
+            background: #017098;
+            color: white;
+            padding: 1rem;
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 10px;
+            margin-top 1rem;
+            margin-bottom 1rem;
+            
+        
+        .content-box-action
+            border-radius: 10px;
+
     
     &__preview
         display inline-block
         vertical-align middle
-        background salmon
+        background #eaeaea
         border-radius 5px
         width 40%
         text-align left
         padding 33px
+        margin-left: 3rem;
