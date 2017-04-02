@@ -36,55 +36,11 @@ function generatePDF(user, callback) {
                                 }
                             </style>
                             <style>
-                                @media only screen and (max-width: 900px) {
-                                    table {
-                                        width: 100%;
-                                    }
-                                    .icon-check{
-                                        max-width: 65px !important;
-                                    }
-                                    .icon-point{
-                                        width: 18px !important;
-                                    }
-                                    .small-text{
-                                        font-size: 9px !important;
-                                        color: #989898 !important;
-                                    }
-                                    .main-logo {
-                                        width: 180px;
-                                    }
-                                    .logo-social {
-                                        width: 30px !important;
-                                    }
+                                b {
+                                    font-size: 10px;
                                 }
-                                @media only screen and (max-width: 600px) {
-                                    b{
-                                        font-size: 16px !important;
-                                    }
-                                    .monto{
-                                        font-size: 32px !important;
-                                    }
-                                    .section{
-                                        display: block !important;
-                                        width: 100% !important;
-                                        max-width: 100% !important;
-                                        direction: ltr !important;
-                                    }
-                                    .icon-check{
-                                        max-width: 50px !important;
-                                    }
-                                    .home{
-                                      padding: 0px 20px !important;
-                                    }
-                                    .docs{
-                                      font-size: 16px !important;
-                                    }
-                                    .cell-enlace{
-                                        width: 70%;
-                                    }
-                                    .cell-icons{
-                                        width: 30%;
-                                    }
+                                p {
+                                    font-size: 10px;
                                 }
                             </style>
 
@@ -259,7 +215,7 @@ function generatePDF(user, callback) {
                                                 <table border="0" cellpadding="0" cellspacing="0">
                                                   <tr>
                                                     <td align="center" style="font-weight:bold; font-family: Arial;">
-                                                        <h2 class="monto" style="text-align: center; color: #017098; font-size: 20px; margin: 0; margin-bottom: 22px;">RECOMENDACIONES DE USO DE ASISTENCIA AL VIAJERO</h2>
+                                                        <p class="monto" style="text-align: center; color: #017098; font-size: 12px; margin: 0; margin-bottom: 22px;">RECOMENDACIONES DE USO DE ASISTENCIA AL VIAJERO</p>
                                                     </td>
                                                   </tr>
                                                 </table>
@@ -275,7 +231,7 @@ function generatePDF(user, callback) {
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin-bottom: 3px;margin-top: 25px;">VERIFICACION</p>
+                                                                <p style="margin-bottom: 3px;margin-top: 5px;">VERIFICACION</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -291,7 +247,7 @@ function generatePDF(user, callback) {
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin: 0;">Si el producto adquirido por Ud. incluye Seguro de Cancelación y debe cancelar su viaje (ver condiciones generales para limitaciones y exclusiones) comuníquese dentro de las 24hs con nuestra central de asistencia.</p>
+                                                                <p style="margin: 0; margin-bottom: 140px;">Si el producto adquirido por Ud. incluye Seguro de Cancelación y debe cancelar su viaje (ver condiciones generales para limitaciones y exclusiones) comuníquese dentro de las 24hs con nuestra central de asistencia.</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -301,7 +257,7 @@ function generatePDF(user, callback) {
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin: 5px auto; margin-top: 25px;">COMUNICARSE CON LA CENTRAL DE ASISTENCIA</p>
+                                                                <p style="margin: 5px auto; margin-top: 5px;">COMUNICARSE CON LA CENTRAL DE ASISTENCIA</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -347,24 +303,24 @@ function generatePDF(user, callback) {
                                                     <table width="100%" align="left" style="padding-bottom: 10px;">
                                                         <tr>
                                                             <td class="cell-enlace" width="30%" style="font-family: Arial;">
-                                                                <a style="color: #017098; text-decoration: none; font-size: 20px;" href="http://www.assistabi.com/" target="_blank">www.assistabi.com</a>
+                                                                <a style="color: #017098; text-decoration: none; font-size: 10px;" href="http://www.assistabi.com/" target="_blank">www.assistabi.com</a>
                                                             </td>
                                                             <td class="cell-icons" width="70%">
                                                                 <table>
                                                                     <tr>
                                                                         <td width="20%">
                                                                             <a href="https://twitter.com/assistabi" target="_blank">
-                                                                                <img class="logo-social" src="https://image.ibb.co/mSmWaa/ICONO_TWITTER.png"/>
+                                                                                <img width="10" class="logo-social" src="https://image.ibb.co/mSmWaa/ICONO_TWITTER.png"/>
                                                                             </a>
                                                                         </td>
                                                                         <td width="20%">
                                                                             <a href="https://www.facebook.com/assistabi" target="_blank">
-                                                                                <img class="logo-social" src="https://image.ibb.co/b9iBaa/ICONO_FACE.png"/>
+                                                                                <img width="10" class="logo-social" src="https://image.ibb.co/b9iBaa/ICONO_FACE.png"/>
                                                                             </a>
                                                                         </td>
                                                                         <td width="20%">
                                                                             <a href="https://www.youtube.com/user/assistabi" target="_blank">
-                                                                                <img class="logo-social" src="https://image.ibb.co/g3TNgF/ICONO_YOUTUBE.png"/>
+                                                                                <img width="10" class="logo-social" src="https://image.ibb.co/g3TNgF/ICONO_YOUTUBE.png"/>
                                                                             </a>
                                                                         </td>
                                                                     </tr>
@@ -384,7 +340,7 @@ function generatePDF(user, callback) {
         // "css" : "Path to additional CSS file",
         "js" : "./uploads/news/index.js",
         // "runnings" : "Path to runnings file. Check further below for explanation.",
-        "paperSize" : {format: 'A4', orientation: 'portrait', border: '1cm', delay: 2000},
+        "paperSize" : {format: 'A4', orientation: 'portrait', border: '0.1cm', delay: 2000},
         // "deleteOnAction" : true/false (Deletes the created temp file once you access it via toBuffer() or toFile()),
       // "runningsArgs": Object (You can pass an object to the runnings file when you have wrapped it with a function)
     }
