@@ -364,6 +364,8 @@ route.get('/:code', function (req, res) {
                 }
             }
 
+            // agregando e plan student
+            filter_by_country.push(elements[3]);
             
             console.log('Packs filtrados');
             console.log(filter_by_country);
