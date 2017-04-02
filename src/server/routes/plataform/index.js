@@ -449,6 +449,74 @@ route.get('/get-user/:code', function (req, res) {
     
 });
 
+route.post('/:code/pack-beneficios', function (req, res) {
+    var code = req.params.code;
+    var pack_selected = req.body.pack_title;
+
+    var pack_filter = elements.filter((element) => {
+        return element.title === pack_selected
+
+    });
+
+    // evaluando los detalles
+    var table_left = '';
+    var table_right = '';
+
+    var pack_details = pack_filter[0];
+
+    // left
+    for(var u in pack_details.card.left) {
+        table_left += `<tr>
+                            <td>
+                                <p style="margin: 5px;">${ u }</p>
+                            </td>
+                            <td>
+                                <p style="margin: 5px;">${ pack_details.card.left[`${u}`] }</p>
+                            </td>
+                        </tr>`
+    }
+
+    // right
+    for(var a in pack_details.card.right) {
+        table_right += `<tr>
+                            <td>
+                                <p style="margin: 5px;">${ a }</p>
+                            </td>
+                            <td>
+                                <p style="margin: 5px;">${ pack_details.card.right[`${a}`] }</p>
+                            </td>
+                        </tr>`
+    }
+
+    var template_pack = `<table width="100%" style="padding-top: 20px;padding-bottom: 20px;">
+                        <tr>
+                            <td>
+                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura: ${ pack_details.title }</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" width="50%">
+                                <table width="100%">
+                                    ${ table_left }
+                                </table>
+                            </td>
+                            <td valign="top" width="50%">
+                                <table width="100%">
+                                    ${ table_right }
+                                </table>
+                            </td>
+                        </tr>
+                    </table>`
+
+
+    res.status(200).json({
+        status: 'ok',
+        code: code,
+        template_pack: template_pack
+    })
+
+});
+
 // Update after user select a item to buy
 route.post('/:code/purchare/buy-form', function (req, res) {
     var code = req.params.code;
