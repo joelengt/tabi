@@ -6,6 +6,13 @@ function generatePDF(user, pack_details, venta, callback) {
     var table_left = '';
     var table_right = '';
 
+    var today = new Date()
+
+    var today_day = today.getDate()
+    var today_month = today.getMonth() + 1
+    var today_year = today.getFullYear() 
+
+    today_pretty = `${today_year}-${today_month}-${today_day}`;
 
     // left
     for(var u in pack_details.card.left) {
@@ -94,7 +101,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                                                 <p style="margin: 0;">ticket: ${ venta.ticket }</p>
                                                                 <p style="margin: 0;">Vigencia/Validity ${ user.cotizator.salida } al/to ${ user.cotizator.regreso }</p>
                                                                 <p style="margin: 0;">Cobertura/Service ${ user.cotizator.tipo_viaje }</p>
-                                                                <p style="margin: 0;">Fecha de emisión/Date of Issue ${ user.cotizator.salida }</p>
+                                                                <p style="margin: 0;">Fecha de emisión/Date of Issue ${ today_pretty }</p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -114,15 +121,15 @@ function generatePDF(user, pack_details, venta, callback) {
                                                 <td>
                                                     <table width="100%">
                                                         <tr>
-                                                            <td style="padding-top: 10px;padding-bottom: 10px;" width="50%">
-                                                                <b style="margin: 0; border-bottom: 1px solid #017098;color: #017098;">Pasajero/Passenger: ${ Number(user.cotizator.pasajero) + Number(user.cotizator.pasajero) }</b>
+                                                            <td valign="top" style="vertical-align="top"; padding-top: 10px" width="50%">
+                                                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Pasajero/Passenger: ${ Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor) }</b>
                                                                 <p style="margin: 0; padding-top: 10px"><b>Nombre/Name:</b> ${ user.account.names }, ${ user.account.last_names }</p>
                                                                 <p style="margin: 0;"><b>Documento/ID Number (${ user.account.tipo_doc }) :</b> ${ user.account.doc_number }</p>
                                                                 <p style="margin: 0;"><b>Nacimiento/Birthdate:</b> ${ user.account.fecha_nacimiento }</p>
                                                                 <p style="margin: 0;"><b>Teléfono/Phone:</b> ${ user.account.phone }</p>
                                                                 <p style="margin: 0;"><b>Email:</b> ${ user.account.email }</p>
                                                             </td>
-                                                            <td style="padding-top: 10px;padding-bottom: 10px;" width="50%">
+                                                            <td valign="top" style="vertical-align="top"; padding-top: 10px;" width="50%">
                                                                 <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Contacto de emergencia/Emergency Contact</b>
                                                                 <p style="margin: 0; padding-top: 10px""><b>Nombre/Name:</b> ${ user.account.contact_emergencia.nombres }, ${ user.account.contact_emergencia.apellidos }</p>
                                                                 <p style="margin: 0;"><b>Teléfono/Phone:</b> ${ user.account.contact_emergencia.telefono }</p>
@@ -141,12 +148,12 @@ function generatePDF(user, pack_details, venta, callback) {
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="50%">
+                                                            <td valign="top" width="50%">
                                                                 <table width="100%">
                                                                     ${ table_left }
                                                                 </table>
                                                             </td>
-                                                            <td width="50%">
+                                                            <td valign="top" width="50%">
                                                                 <table width="100%">
                                                                     ${ table_right }
                                                                 </table>
@@ -162,7 +169,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                             </tr>
                                             <tr>
                                               <td align="center">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 40px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 180px;">
                                                   <tr>
                                                     <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
                                                   </tr>
@@ -195,7 +202,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin: 0;">Verifique que todos los datos consignados en su voucher Assistravel sean correctos. Controle especialmente los teléfonos indicados como contacto de emergencia, las fechas de vigencia y el tipo de cobertura adquirido. SI hay errores en los datos, comuníquese con la central de asistencia de Assistravel (teléfonos en página 1)</p>
+                                                                <p style="margin: 0;">Verifique que todos los datos consignados en su voucher Assistabi sean correctos. Controle especialmente los teléfonos indicados como contacto de emergencia, las fechas de vigencia y el tipo de cobertura adquirido. SI hay errores en los datos, comuníquese con la central de asistencia de Assistabi (teléfonos en página 1)</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -206,7 +213,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin: 0; margin-bottom: 140px;">Si el producto adquirido por Ud. incluye Seguro de Cancelación y debe cancelar su viaje (ver condiciones generales para limitaciones y exclusiones) comuníquese dentro de las 24hs con nuestra central de asistencia.</p>
+                                                                <p style="margin: 0; margin-bottom: 10px;">Si el producto adquirido por Ud. incluye Seguro de Cancelación y debe cancelar su viaje (ver condiciones generales para limitaciones y exclusiones) comuníquese dentro de las 24hs con nuestra central de asistencia.</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -221,22 +228,22 @@ function generatePDF(user, pack_details, venta, callback) {
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin: 0;">En la página 1 del presente voucher encontrará un listado completo de los números de acceso de la central de asistencia Assistravel.. Consulte en el listado el número de la central más próxima. SI no hubiese un número de acceso en el país en que Ud. se encuentra, comuníquese por el sistema COBRO REVERTIDO (COLLECT CALL en inglés). Si el país en donde Ud. se encuentra no admite el sistema de comunicación COBRO REVERTIDO, efectúe la llamada a su cargo y a su regreso presente el comprobante a Assistravel para su reembolso. Las centrales de asistencia atienden las 24hs. Antes de llamar para solicitar nuestros servicios, tenga a mano la siguiente información:. Su voucher, tarjeta o credencial. Número de teléfono de donde se encuentra (incluyendo código de país y código de ciudad). Los datos del lugar en que se encuentra (domicilio, hotel, etc.)</p>
+                                                                <p style="margin: 0;">En la página 1 del presente voucher encontrará un listado completo de los números de acceso de la central de asistencia Assistabi.. Consulte en el listado el número de la central más próxima. SI no hubiese un número de acceso en el país en que Ud. se encuentra, comuníquese por el sistema COBRO REVERTIDO (COLLECT CALL en inglés). Si el país en donde Ud. se encuentra no admite el sistema de comunicación COBRO REVERTIDO, efectúe la llamada a su cargo y a su regreso presente el comprobante a Assistabi para su reembolso. Las centrales de asistencia atienden las 24hs. Antes de llamar para solicitar nuestros servicios, tenga a mano la siguiente información:. Su voucher, tarjeta o credencial. Número de teléfono de donde se encuentra (incluyendo código de país y código de ciudad). Los datos del lugar en que se encuentra (domicilio, hotel, etc.)</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin: 5px auto;">SI LA NATURALEZA DE SU INCONVENIENTE LE PERMITE COMUNICARSE CON ASSISTRAVEL Comuníquese con la central de asistencia y siga las instrucciones del operador</p>
+                                                                <p style="margin: 5px auto;">SI LA NATURALEZA DE SU INCONVENIENTE LE PERMITE COMUNICARSE CON ASSISTabi Comuníquese con la central de asistencia y siga las instrucciones del operador</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p style="margin: 5px auto;">SI EL PROBLEMA DE SALUD ES GRAVE O LA NECESIDAD DE ASISTENCIA ES MUY URGENTE Y NO ESTA EN CONDICIONES DE COMUNICARSE CON ASSISTRAVEL. Es fundamental que Ud. reciba asistencia médica inmediata en el lugar en que se encuentre.. Luego, indefectiblemente dentro de las 24hs siguientes, Ud. o cualquier persona que lo acompañe deberá comunicarse con Assistravel y proporcionar toda la información referida al evento sufrido y la asistencia recibida.</p>
+                                                                <p style="margin: 5px auto;">SI EL PROBLEMA DE SALUD ES GRAVE O LA NECESIDAD DE ASISTENCIA ES MUY URGENTE Y NO ESTA EN CONDICIONES DE COMUNICARSE CON ASSISTabi. Es fundamental que Ud. reciba asistencia médica inmediata en el lugar en que se encuentre.. Luego, indefectiblemente dentro de las 24hs siguientes, Ud. o cualquier persona que lo acompañe deberá comunicarse con Assistabi y proporcionar toda la información referida al evento sufrido y la asistencia recibida.</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <p>Assistravel se pondrá en contacto con el centro asistencial para controlar todas las fases de la prestación del servicio.</p>
+                                                                <p>Assistabi se pondrá en contacto con el centro asistencial para controlar todas las fases de la prestación del servicio.</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
