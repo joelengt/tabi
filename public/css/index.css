@@ -833,6 +833,9 @@ body {
 .FormToPay__form .input_check p {
   display: inline-block;
 }
+.FormToPay__form .input_check .termsConditions {
+  color: #017098;
+}
 .FormToPay__form #btnFormComprar {
   cursor: pointer;
   display: block;
@@ -856,7 +859,7 @@ body {
 .FormToPay__preview {
   display: inline-block;
   vertical-align: middle;
-  background: #eaeaea;
+  background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -864,6 +867,7 @@ body {
   text-align: left;
   padding: 33px;
   margin-left: 3rem;
+  border: 1px solid #e2e2e2;
 }
 #ModalBox {
   height: 100vh;

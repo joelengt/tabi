@@ -410,11 +410,15 @@ route.get('/:code', function (req, res) {
             console.log('TENTACLE DAYS')
             console.log(result_filter_tarifa);
 
+            // Calculando cantidad de pasajeros
+            var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
+
             // devolver los campos guardados
             res.render('./plataforma/pricing/index.jade', {
                 code: code,
                 purchase: user.cotizator,
-                packs: elements_filter
+                packs: elements_filter,
+                cant_pasajeros: cant_pasajeros
             });
         }
     })
@@ -531,10 +535,16 @@ route.get('/:code/purchare-form', function (req, res) {
             console.log('DATOS ACTUAL DEL USUARIO');
             console.log(user);
 
+            // Calculando cantidad de pasajeros
+            var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
+
             // devolver los campos guardados
             res.render('./plataforma/form_to_pay/index.jade', {
                 code: code,
-                pack: user.pack_selected
+                pack: user.pack_selected,
+                user_cotizador: user.cotizator,
+                user_details: user.pack_selected,
+                cant_pasajeros: cant_pasajeros
             });
         }
     })

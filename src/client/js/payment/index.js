@@ -428,4 +428,73 @@ export function pay() {
         })
     }
 
+    // Evento de tipeo
+    $('#input_nombres').on('input', function() {
+        
+        $('#lector_name')[0].innerHTML = `${ $('#input_nombres').val() }, ${ $('#input_apellidos').val() }`
+
+    })
+
+    $('#input_apellidos').on('input', function() {
+    
+        $('#lector_name')[0].innerHTML = `${ $('#input_nombres').val() }, ${ $('#input_apellidos').val() }`
+
+    })
+
+    $('#input_tipo_doc').on('input', function() {
+    
+        $('#lector_tip_doc')[0].innerHTML = `${ $('#input_tipo_doc').val() }`
+
+    })
+
+    $('#input_doc_number').on('input', function() {
+    
+        $('#lector_doc')[0].innerHTML = `${ $('#input_doc_number').val() }`
+
+    })
+
+    $('#input_fecha_nacimiento').on('input', function() {
+
+        $('#lector_nacimiento')[0].innerHTML = `${ $('#input_fecha_nacimiento').val() }`
+
+    })
+
+    $('#input_email').on('input', function() {
+        
+        $('#lector_email')[0].innerHTML = `${ $('#input_email').val() }`
+
+    })
+
+    $('#input_domicilio').on('input', function() {
+    
+        $('#lector_domicilio')[0].innerHTML = `${ $('#input_domicilio').val() }`
+
+    })
+
+    $('#input_emergencia_nombres').on('input', function() {
+        
+        $('#lector_contact_name')[0].innerHTML = `${ $('#input_emergencia_nombres').val() }, ${ $('#input_emergencia_apellidos').val() }`
+
+
+    })
+
+    $('#input_emergencia_apellidos').on('input', function() {
+        
+        $('#lector_contact_name')[0].innerHTML = `${ $('#input_emergencia_nombres').val() }, ${ $('#input_emergencia_apellidos').val() }`
+
+
+    })
+
+    $('#input_emergencia_telefono').on('input', function() {
+    
+        $('#lector_contact_phone')[0].innerHTML = `${ $('#input_emergencia_telefono').val() }`
+
+    })
+
+    $('#input_emergencia_email').on('input', function() {
+        
+        $('#lector_contact_email')[0].innerHTML = `${ $('#input_emergencia_email').val() }`
+
+    })
+
 }
