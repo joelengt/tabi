@@ -13,13 +13,15 @@ export function pay() {
 
     var $btnFormComprar = document.querySelector('#btnFormComprar')
 
+    var URI = `${ window.location.protocol }//${ window.location.host }`;
+
     function ConnectCulqi(user_send_id, type_send_service) {
         console.log('Comprando servicio: ' + type_send_service)
         $('#message_error')[0].innerHTML = 'Enviando...'
 
         $.ajax({
             method: 'post',
-            url: `/payment/${user_send_id}/${type_send_service}`,
+            url: `${ URI }/payment/${user_send_id}/${type_send_service}`,
             success: function (resultado) {
                 console.log('RESULTADO DE LA CREACION DE VENTAS')
                 console.log(resultado)
@@ -142,7 +144,7 @@ export function pay() {
                         // Mandar el resultado al servidor 
                         $.ajax({
                             method: 'post',
-                            url: `/payment/check/${user_send_id}/${type_send_service}?_method=put`, // URI del server
+                            url: `${ URI }/payment/check/${user_send_id}/${type_send_service}?_method=put`, // URI del server
                             contentType: 'application/json',
                             data: JSON.stringify({
                                 'respuesta' : checkout.respuesta
@@ -273,7 +275,7 @@ export function pay() {
         var code_id = $('.FormToPay').data('id');
 
         $.ajax({
-            url: `/plataform-pricing/${ code_id }/purchare-buy/save`,
+            url: `${ URI }/plataform-pricing/${ code_id }/purchare-buy/save`,
             method: 'POST',
             data: data,
             success: function (result) {
