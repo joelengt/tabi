@@ -413,7 +413,7 @@ route.get('/:code/purchare-form', function (req, res) {
             console.log(user);
 
             // devolver los campos guardados
-            res.render('./plataforma/form_To_pay/index.jade', {
+            res.render('./plataforma/form_to_pay/index.jade', {
                 code: code,
                 pack: user.pack_selected
             });
