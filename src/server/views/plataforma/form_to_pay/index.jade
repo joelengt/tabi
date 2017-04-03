@@ -84,7 +84,10 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                     article(class="FormToPay__form--input")
                       div(class="item  input__margin")
                           label(for="input_fecha_nacimiento") Fecha de Nacimiento
-                          input(id="input_fecha_nacimiento" name="regreso" type="date")
+                          //- input(id="input_fecha_nacimiento" name="regreso" type="date")
+                          input(id="input_fecha_nacimiento" name="input_fecha_nacimiento" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
+                          div(class="iconToDate")
+                              img(src="../../images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
 
                       div(class="item")
                           label(for="input_email") Email
