@@ -43,10 +43,10 @@ $('#right_counter_minus').on('click', function() {
 function cicleSlider() {
 
     var slider_fotos = [
-        "url('../images/cover-slider/3.jpg')",
         "url('../images/cover-slider/4.jpg')",
         "url('../images/cover-slider/5.jpg')",
-        "url('../images/cover-slider/7.jpg')"
+        "url('../images/cover-slider/7.jpg')",
+        "url('../images/cover-slider/3.jpg')"
     ];
 
     // Obtener background dom
@@ -64,7 +64,7 @@ function cicleSlider() {
 
         i++;
 
-    }, 2000);
+    }, 3000);
 
 }
 
