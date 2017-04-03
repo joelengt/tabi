@@ -58,26 +58,41 @@ export function sendFormCotizar() {
        data.salida !== '' &&
        data.regreso !== '' &&
        data.dias !== '' &&
+       Number(data.dias) > 0 &&
        data.pasajero !== '' &&
+       Number(data.pasajero) >= 0 &&
        data.adulto_mayor !== '' &&
+       Number(data.adulto_mayor) >= 0 &&
        data.email !== '' &&
        data.email.indexOf('@') !== -1) {
 
-        $.ajax({
-            url: '/plataform-pricing/validate',
-            method: 'POST',
-            data: data,
-            success: function (result) {
-                console.log(result);
+       if(Number(data.pasajero) === 0 &&
+       Number(data.adulto_mayor) === 0) {
 
-                if(result.status === 'ok') {
-                    window.location.href = `/plataform-pricing/${ result.code }`
+            msg = 'Debe seleccionar algun viajero';
+            $input_pasajero.css('border', '1px solid #F3182B');
+            $input_adulto_mayor.css('border', '1px solid #F3182B');
 
-                } else {
-                    console.log('error');
+            $msg_error.css('display', 'block');
+            $msg_error[0].innerHTML = msg;
+
+       } else {
+            $.ajax({
+                url: '/plataform-pricing/validate',
+                method: 'POST',
+                data: data,
+                success: function (result) {
+                    console.log(result);
+
+                    if(result.status === 'ok') {
+                        window.location.href = `/plataform-pricing/${ result.code }`
+
+                    } else {
+                        console.log('error');
+                    }
                 }
-            }
-        })
+            })
+       }
 
     } else {
         
@@ -109,12 +124,24 @@ export function sendFormCotizar() {
             msg = 'El campo dias es obligatorio';
             $input_dias.css('border', '1px solid #F3182B');
 
+        } else if(Number(data.dias) < 1) {
+            msg = 'Escoge una fecha valida';
+            $input_dias.css('border', '1px solid #F3182B');
+
         } else if(data.pasajero === '') {
             msg = 'El campo pasajero es obligatorio';
             $input_pasajero.css('border', '1px solid #F3182B');
 
+        } else if(Number(data.pasajero) < 0) {
+            msg = 'El campo pasajero no es valido';
+            $input_pasajero.css('border', '1px solid #F3182B');
+
         } else if(data.adulto_mayor === '') {
-            msg = 'El campo adulto_mayor es obligatorio';
+            msg = 'El campo adulto mayor es obligatorio';
+            $input_adulto_mayor.css('border', '1px solid #F3182B');
+
+        } else if(Number(data.adulto_mayor) < 0) {
+            msg = 'El campo adulto mayor no es valido';
             $input_adulto_mayor.css('border', '1px solid #F3182B');
 
         } else if(data.email === '') {
