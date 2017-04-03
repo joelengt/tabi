@@ -770,10 +770,14 @@ route.get('/:code/key-pdf', function (req, res) {
                 console.log('a punto de generar pdf');
 
                 var pack_filter = pack_details[0];
-                generatePDF(user, pack_filter, venta, (err, result) => {
+
+                generatePDF(user, pack_filter, venta, function (err, result) {
                     if(err) {
-                        console.log('salto error');
-                        return console.log('error', err);
+                        return res.status(500).json({
+                            status: 'error_server',
+                            error: err,
+                            message: 'Error al enviar el email'
+                        })
                     }
                     
                     console.log('PDF final terminado');
