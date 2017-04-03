@@ -72,11 +72,17 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                   article(class="CoverForm__form--input")
                       div(class="item  input__margin")
                           label(for="input_salida") Salida
-                          input(id="input_salida" name="salida" type="date" value="#{purchase.salida}")
+                          //- input(id="input_salida" name="salida" type="date" value="#{purchase.salida}")
+                          input(id="input_salida" name="salida" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="#{purchase.salida}")
+                          div(class="iconToDate")
+                              img(src="../images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
 
                       div(class="item  input__margin")
                           label(for="input_regreso") Regreso
-                          input(id="input_regreso" name="regreso" type="date" value="#{purchase.regreso}")
+                          //- input(id="input_regreso" name="regreso" type="date" value="#{purchase.regreso}")
+                          input(id="input_regreso" name="regreso" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="#{purchase.regreso}")
+                          div(class="iconToDate")
+                              img(src="../images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
 
                       div(class="item")
                           label(for="input_dias") Dias
@@ -85,11 +91,23 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                   article(class="CoverForm__form--input")
                       div(class="item  input__margin")
                           label(for="input_pasajero") Pasajero (0 - 74)
-                          input(id="input_pasajero" name="pasajero" type="number" value="#{purchase.pasajero}")
+                          //- input(id="input_pasajero" name="pasajero" type="number" value="#{purchase.pasajero}")
+                          div(class="counter")
+                              aside(class="counter__left" id="left_counter_minus") 
+                                  p(style="color: white;") -
+                              input(id="input_pasajero" name="pasajero" type="number" value="#{purchase.pasajero}" style="text-align: center;")
+                              aside(class="counter__right" id="left_counter_plus") 
+                                  p(style="color: white;") +
 
                       div(class="item  input__margin")
                           label(for="input_adulto_mayor") Adulto Mayor (75 - 84)
-                          input(id="input_adulto_mayor" name="adulto_mayor" type="number" value="#{purchase.adulto_mayor}")
+                          //- input(id="input_adulto_mayor" name="adulto_mayor" type="number" value="#{purchase.adulto_mayor}")
+                          div(class="counter")
+                              aside(class="counter__left" id="right_counter_minus") 
+                                  p(style="color: white;") -
+                              input(id="input_adulto_mayor" name="adulto_mayor" type="number" value="#{purchase.adulto_mayor}" style="text-align: center;")
+                              aside(class="counter__right" id="right_counter_plus") 
+                                  p(style="color: white;") +
 
                       div(class="item")
                           label(for="input_code_promocion") Código Promoción
