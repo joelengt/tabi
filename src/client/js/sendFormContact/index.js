@@ -29,6 +29,9 @@ export function sendFormContact() {
        data.email !== '' &&
        data.email.indexOf('@') !== -1) {
 
+        $FormContactError.css('display', 'block');
+        $FormContactError[0].innerHTML = 'Enviando...';
+
         $.ajax({
             url: '/contact',
             method: 'POST',

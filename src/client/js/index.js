@@ -4,7 +4,8 @@ import { eventClickItems } from './plataform/index.js';
 import { pay } from './payment/index.js';
 import { sendFormContact } from './sendFormContact/index.js';
 import { getPdf } from './formGetPdf/index.js';
-
+import { EventScrollSections } from './eventSections/index.js';
+import { polyfillInputs } from './eventOpenLink/index.js';
 
 console.log('OK');
 
@@ -13,6 +14,13 @@ $('#btnFormCotizar').on('click', sendFormCotizar);
 $('#btnFormContactSend').on('click', sendFormContact);
 
 $('#btnSendToGetPdf').on('click', getPdf);
+
+// $('#input_salida').on('click', polyfillInputs);
+// $('#input_regreso').on('click', polyfillInputs);
+
+
+EventScrollSections();
+polyfillInputs();
 
 // Event input date listener
 

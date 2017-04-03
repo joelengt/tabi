@@ -4,7 +4,7 @@
     color white
     // height 50vh
     padding-top 13%
-    background-image url('../images/cover-slider/4.jpg')
+    background-image url('../images/cover-slider/3.jpg')
     background-size cover
     background-repeat no-repeat
     height 75vh
@@ -22,6 +22,7 @@
         
         p 
             font-size 1.2rem
+            padding-top: .5rem;
             
     &__form
         display inline-block
@@ -36,11 +37,12 @@
             display block
             padding-bottom 1.1rem
             width 100%
-            overflow hidden
+            // overflow hidden
             
             .item
                 display inline-block
                 width 33%
+                position: relative
                 
                 label
                     display block
@@ -53,6 +55,7 @@
                     width 70%
                     border 0
                     border-radius 5px
+                    
                 
                 select
                     width 85%
@@ -60,7 +63,17 @@
                     font-size .8rem
                     height 33px
                     border 5px
-            
+                
+                .iconToDate 
+                    position: absolute;
+                    top: 30px;
+                    right: 33px;
+                    width: 14%;
+                    
+                    img 
+                        max-width: 100%;
+                        width: 100%;
+                        
             // .input__margin
             //     margin-right 2rem
                 

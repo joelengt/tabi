@@ -112,11 +112,12 @@ body {
 }
 .HeaderMain {
   overflow: hidden;
-  padding: 30px 25px;
+  padding: 15px 25px;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
 }
 .HeaderMain__LogoMain {
   display: inline-block;
@@ -132,7 +133,6 @@ body {
   display: inline-block;
   vertical-align: middle;
   float: right;
-  padding-top: 20px;
 }
 .HeaderMain__NavMain__Container--item {
   display: inline-block;
@@ -151,17 +151,20 @@ body {
   display: inline-block;
   margin-left: 2rem;
 }
+.HeaderMain__NavMain__Container ul li span,
 .HeaderMain__NavMain__Container ul li a {
   font-size: 1.2rem;
   color: #fff;
   text-decoration: none;
-  padding: 1rem;
-  width: 90%;
+  padding: 1rem 0;
+  width: 100%;
   display: block;
   margin: 0 auto;
   text-align: center;
   border-bottom: 5px solid transparent;
+  cursor: pointer;
 }
+.HeaderMain__NavMain__Container ul li span:hover,
 .HeaderMain__NavMain__Container ul li a:hover {
   border-bottom: 5px solid #fff;
 }
@@ -169,7 +172,7 @@ body {
   text-align: center;
   color: #fff;
   padding-top: 13%;
-  background-image: url("../images/cover-slider/4.jpg");
+  background-image: url("../images/cover-slider/3.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -188,6 +191,7 @@ body {
 }
 .CoverForm__title p {
   font-size: 1.2rem;
+  padding-top: 0.5rem;
 }
 .CoverForm__form {
   display: inline-block;
@@ -204,11 +208,11 @@ body {
   display: block;
   padding-bottom: 1.1rem;
   width: 100%;
-  overflow: hidden;
 }
 .CoverForm__form--input .item {
   display: inline-block;
   width: 33%;
+  position: relative;
 }
 .CoverForm__form--input .item label {
   display: block;
@@ -231,6 +235,16 @@ body {
   height: 33px;
   border: 5px;
 }
+.CoverForm__form--input .item .iconToDate {
+  position: absolute;
+  top: 30px;
+  right: 33px;
+  width: 14%;
+}
+.CoverForm__form--input .item .iconToDate img {
+  max-width: 100%;
+  width: 100%;
+}
 .CoverForm__form--input .input__email {
   width: 66%;
 }
@@ -248,7 +262,7 @@ body {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  background: #017098;
+  background: #006e96;
   font-size: 1rem;
   text-transform: uppercase;
   text-align: center;
@@ -301,6 +315,7 @@ body {
 }
 .AboutUs__bottom--text p {
   font-size: 1.3rem;
+  padding-top: 0.5rem;
 }
 .AboutUs__bottom--icon {
   display: inline-block;
@@ -335,12 +350,13 @@ body {
 }
 .AboutUs__bottom--icon .item .text p {
   font-size: 1.1rem;
+  padding-top: 0.5rem;
 }
 .AboutUs__bottom--icon .item-left {
   float: left;
 }
 .Benefits {
-  height: 100vh;
+  height: 110vh;
   display: -ms-flexbox;
   display: -webkit-box;
   display: -moz-box;
@@ -373,6 +389,7 @@ body {
 .Benefits__title {
   text-align: center;
   padding-bottom: 2rem;
+  padding-top: 3rem;
 }
 .Benefits__box h2,
 .Benefits__title h2 {
@@ -405,9 +422,9 @@ body {
 }
 .Benefits__Content--item .text p {
   font-size: 1rem;
+  padding-top: 0.5rem;
 }
 .ContactForm {
-  background: #fa8072;
   color: #fff;
   text-align: center;
   height: 100vh;
@@ -447,12 +464,17 @@ body {
   width: 40%;
   text-align: left;
   vertical-align: middle;
+  height: 250px;
 }
 .ContactForm__text h2 {
   font-size: 3.5rem;
 }
 .ContactForm__text p {
   font-size: 1.5rem;
+  padding-top: 0.5rem;
+}
+.ContactForm__text .email {
+  padding-right: 1rem;
 }
 .ContactForm__form {
   display: inline-block;
@@ -478,7 +500,7 @@ body {
 .ContactForm__form--input .btnFormContactSend {
   display: block;
   width: 70%;
-  background: #017098;
+  background: #006e96;
   color: #fff;
   padding: 1rem;
   -webkit-border-radius: 10px;
@@ -487,7 +509,7 @@ body {
   cursor: pointer;
 }
 .ContactForm__form--input .btnFormContactSend:hover {
-  background: #528bc1;
+  background: #006e96;
 }
 .ContactForm__form .to__right {
   float: right;
@@ -497,7 +519,7 @@ body {
   overflow: hidden;
   color: #fff;
   padding: 0 50px;
-  padding-top: 30px;
+  padding-top: 60px;
 }
 .FooterMain p,
 .FooterMain a {
@@ -562,6 +584,9 @@ body {
   width: 70%;
   display: inline-block;
   margin-left: 10px;
+}
+.FooterMain__left--email .text .email {
+  padding-right: 1.3rem;
 }
 .FooterMain__left--text span {
   display: block;
@@ -648,7 +673,7 @@ body {
 }
 .PricingElements__list article .box__left .content button {
   display: block;
-  color: #017098;
+  color: #006e96;
   border: none;
   background: #fff;
   -webkit-border-radius: 10px;
@@ -705,7 +730,7 @@ body {
 }
 .PricingElements__list article .box__right button {
   width: 100%;
-  background: #017098;
+  background: #006e96;
   border: none;
   color: #fff;
   display: block;
@@ -773,7 +798,7 @@ body {
   position: relative;
 }
 .FormToPay__form--section .section--title {
-  background: #017098;
+  background: #006e96;
   color: #fff;
   position: absolute;
   top: -45px;
@@ -834,13 +859,13 @@ body {
   display: inline-block;
 }
 .FormToPay__form .input_check .termsConditions {
-  color: #017098;
+  color: #006e96;
 }
 .FormToPay__form #btnFormComprar {
   cursor: pointer;
   display: block;
   border: 0;
-  background: #017098;
+  background: #006e96;
   color: #fff;
   padding: 1rem;
   width: 100%;
@@ -938,7 +963,7 @@ body {
   width: 90%;
 }
 .content-forget .button {
-  background: #017098;
+  background: #006e96;
   border: none;
   color: #fff;
   -webkit-border-radius: 10px;
@@ -973,7 +998,7 @@ body {
   width: 90%;
 }
 .Admin .button {
-  background: #017098;
+  background: #006e96;
   border: none;
   color: #fff;
   -webkit-border-radius: 10px;
@@ -990,7 +1015,7 @@ body {
   font-size: 1.1rem;
 }
 .Admin .box__left {
-  background: #017098;
+  background: #006e96;
   margin: 1rem;
   padding: 1rem;
   display: block;
@@ -1003,7 +1028,7 @@ body {
   text-decoration: none;
 }
 .Admin .box__right {
-  background: #017098;
+  background: #006e96;
   margin: 1rem;
   padding: 1rem;
   display: block;
@@ -1017,7 +1042,7 @@ body {
   text-decoration: none;
 }
 .button {
-  background: #017098;
+  background: #006e96;
   border: none;
   color: #fff;
   -webkit-border-radius: 10px;
