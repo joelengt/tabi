@@ -15,9 +15,30 @@ $('#btnFormContactSend').on('click', sendFormContact);
 
 $('#btnSendToGetPdf').on('click', getPdf);
 
-// $('#input_salida').on('click', polyfillInputs);
-// $('#input_regreso').on('click', polyfillInputs);
 
+$('#left_counter_plus').on('click', function() {
+    if(Number($('#input_pasajero').val()) >= 0) {
+        $('#input_pasajero').val( Number($('#input_pasajero').val()) + 1)
+    }
+})
+
+$('#left_counter_minus').on('click', function() {
+    if(Number($('#input_pasajero').val()) > 0) {
+        $('#input_pasajero').val( Number($('#input_pasajero').val()) - 1)
+    }
+})
+
+$('#right_counter_plus').on('click', function() {
+    if(Number($('#input_adulto_mayor').val()) >= 0) {
+        $('#input_adulto_mayor').val( Number($('#input_adulto_mayor').val()) + 1)
+    }
+})
+
+$('#right_counter_minus').on('click', function() {
+    if(Number($('#input_adulto_mayor').val()) > 0) {
+        $('#input_adulto_mayor').val( Number($('#input_adulto_mayor').val()) - 1)
+    }
+})
 
 EventScrollSections();
 polyfillInputs();
