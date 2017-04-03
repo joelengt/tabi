@@ -791,7 +791,6 @@ route.get('/:code/key-pdf', function (req, res) {
                         pack: user.pack_selected,
                         pdf: value_to_download
                     });
-
                 });
 
             } else {

@@ -357,3 +357,4 @@ function generatePDF(user, pack_details, venta, callback) {
 }
 
 module.exports = generatePDF
+
