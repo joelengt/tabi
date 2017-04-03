@@ -2,6 +2,19 @@ var pdf = require('phantom-html2pdf');
 
 function generatePDF(user, pack_details, venta, callback) {
 
+    console.log('Dentro del callback');
+
+    console.log('datos obtenidos');
+
+    console.log('>user');
+    console.log(user);
+
+    console.log('>pack_details');
+    console.log(pack_details);
+
+    console.log('>venta');
+    console.log(venta);
+
     // evaluando los detalles
     var table_left = '';
     var table_right = '';
@@ -12,7 +25,7 @@ function generatePDF(user, pack_details, venta, callback) {
     var today_month = today.getMonth() + 1
     var today_year = today.getFullYear() 
 
-    today_pretty = `${today_year}-${today_month}-${today_day}`;
+    var today_pretty = `${today_year}-${today_month}-${today_day}`;
 
     // left
     for(var u in pack_details.card.left) {
@@ -306,25 +319,34 @@ function generatePDF(user, pack_details, venta, callback) {
         // "css" : "Path to additional CSS file",
         "js" : "./uploads/news/index.js",
         // "runnings" : "Path to runnings file. Check further below for explanation.",
-        "paperSize" : {format: 'A4', orientation: 'portrait', border: '0.1cm', delay: 2000},
+        "paperSize" : {format: 'A4', orientation: 'portrait', border: '0.1cm', delay: 2000}
         // "deleteOnAction" : true/false (Deletes the created temp file once you access it via toBuffer() or toFile()),
       // "runningsArgs": Object (You can pass an object to the runnings file when you have wrapped it with a function)
     }
+
+    console.log('Antes de convertir los datos y template a pdf');
 
     pdf.convert(options, function(err, result) {
         if(err) {
             return callback(err);
         }
 
+        console.log('Entro al pdorceos');
+
         /* Using a buffer and callback */
         result.toBuffer(function(returnedBuffer) {});
-     
+        
+        console.log('listo para stremin');
+
         /* Using a readable stream */
         var stream = result.toStream();
-     
+        
+        console.log('Convertirn en cade');
+
         /* Using the temp file path */
         var tmpPath = result.getTmpPath();
-     
+        
+        console.log('Antes de toFile');
         /* Using the file writer and callback */
         result.toFile(`./uploads/news/${ user._id }.pdf`, function() {
             console.log('pdf generado');

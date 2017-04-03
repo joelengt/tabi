@@ -769,11 +769,13 @@ route.get('/:code/key-pdf', function (req, res) {
 
                 console.log('a punto de generar pdf');
 
-                generatePDF(user, pack_details[0], venta, (err, result) => {
+                var pack_filter = pack_details[0];
+                generatePDF(user, pack_filter, venta, (err, result) => {
                     if(err) {
                         console.log('salto error');
                         return console.log('error', err);
                     }
+                    
                     console.log('PDF final terminado');
                     console.log(result);
 

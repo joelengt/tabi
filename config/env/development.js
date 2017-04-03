@@ -1,7 +1,7 @@
 var config = {
     server: {
         env: 'development',
-        port: 5000,
+        port: 4000,
         path_system: {
             ubuntu: '/home/baudelaire/Desktop/astrumApp',
             server: '/root/astrum',
