@@ -749,6 +749,7 @@ route.get('/:code/key-pdf', function (req, res) {
         if(err) {
             return res.status(400).json({
                 status: 'bat_request',
+                error: err,
                 message: 'error code not valid'
             })
         }
