@@ -1,4 +1,5 @@
 var pdf = require('phantom-html2pdf');
+var config = require('../../../../config/index.js')
 
 function generatePDF(user, pack_details, venta, callback) {
 
@@ -317,7 +318,7 @@ function generatePDF(user, pack_details, venta, callback) {
                         </body>
                     </html>`,
         // "css" : "Path to additional CSS file",
-        "js" : "./uploads/news/index.js",
+        // "js" : "./uploads/news/index.js",
         // "runnings" : "Path to runnings file. Check further below for explanation.",
         "paperSize" : {format: 'A4', orientation: 'portrait', border: '0.1cm', delay: 2000}
         // "deleteOnAction" : true/false (Deletes the created temp file once you access it via toBuffer() or toFile()),
@@ -348,7 +349,7 @@ function generatePDF(user, pack_details, venta, callback) {
         
         console.log('Antes de toFile');
         /* Using the file writer and callback */
-        result.toFile(`./uploads/news/${ user._id }.pdf`, function() {
+        result.toFile(`${ config.server.path_system.server }/uploads/news/${ user._id }.pdf`, function() {
             console.log('pdf generado');
             callback(err, result);
         });

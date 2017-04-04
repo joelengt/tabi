@@ -3,9 +3,8 @@ var config = {
         env: 'development',
         port: 4000,
         path_system: {
-            ubuntu: '/home/baudelaire/Desktop/astrumApp',
-            server: '/root/astrum',
-            mac:    '/Users/joelengt/Desktop/coder/astrum'
+            // server: '/root/tabi'
+            server:    '.'
         },
         db: {
             mongodb: {

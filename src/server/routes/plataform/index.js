@@ -810,6 +810,12 @@ route.get('/:code/key-pdf', function (req, res) {
 
             }
 
+        } else {
+            console.log('Usuario no encontrado');
+
+            res.status(404).json({
+                status: 'not_found'
+            })
         }
     })
     
