@@ -88,7 +88,7 @@ var elements = [
                     tarifa: '15.00'
                 },
                 {
-                    days: '8',
+                    days: '10',
                     tarifa: '25.00'
                 },
                 {
@@ -365,7 +365,9 @@ route.get('/:code', function (req, res) {
             }
 
             // agregando e plan student
-            filter_by_country.push(elements[3]);
+           if( Number(user.cotizator.dias) >= Number(elements[3].pack[0].days) ) {
+               filter_by_country.push(elements[3]);
+           }
             
             console.log('Packs filtrados');
             console.log(filter_by_country);
@@ -381,7 +383,7 @@ route.get('/:code', function (req, res) {
 
                     var days_value = Number(user.cotizator.dias);
 
-                    if(days_value > Number(result_filter_element.pack[result_filter_element.pack.length - 1].days)) {
+                    if(days_value >= Number(result_filter_element.pack[result_filter_element.pack.length - 1].days)) {
                         days_value = Number(result_filter_element.pack[result_filter_element.pack.length - 1].days);
                     }
 
