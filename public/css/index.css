@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'GothamRounded-Book';
+  src: url("../fonts/GothamRounded-Book.otf");
+}
+@font-face {
+  font-family: 'GothamRounded-Medium';
+  src: url("../fonts/GothamRounded-Medium.otf");
+}
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url("../fonts/Montserrat-Bold.otf");
+}
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url("../fonts/Montserrat-Light.otf");
+}
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url("../fonts/Montserrat-SemiBold.otf");
+}
+@font-face {
+  font-family: 'MyriadPro-Regular';
+  src: url("../fonts/MyriadPro-Regular.otf");
+}
 html,
 body,
 div,
@@ -106,8 +130,7 @@ table {
 body {
   font-size: 1rem;
   color: #000;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
+  font-family: 'Montserrat-Light', 'Arial', sans-serif;
   position: relative;
 }
 .HeaderMain {
@@ -188,6 +211,7 @@ body {
 .CoverForm__title h2 {
   font-size: 2.5rem;
   text-shadow: 2px 2px rgba(0,0,0,0.11);
+  font-family: 'Montserrat-SemiBold', 'Arial', sans-serif;
 }
 .CoverForm__title p {
   font-size: 1.2rem;
