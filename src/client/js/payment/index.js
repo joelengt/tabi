@@ -306,12 +306,14 @@ export function pay() {
             $('#input_email').css('border','1px solid transparent');
             $('#input_email').css('border','1px solid transparent');
             $('#input_domicilio').css('border','1px solid transparent');
+            $('#input_telefono').css('border','1px solid transparent');
             $('#input_emergencia_nombres').css('border','1px solid transparent');
             $('#input_emergencia_apellidos').css('border','1px solid transparent');
             $('#input_emergencia_telefono').css('border','1px solid transparent');
             $('#input_emergencia_email').css('border','1px solid transparent');
             $('#input_emergencia_email').css('border','1px solid transparent');
 
+            
             // Validar los campos
             var data = {
                 user: {
@@ -322,6 +324,7 @@ export function pay() {
                     fecha_nacimiento: $('#input_fecha_nacimiento').val(),
                     email:      $('#input_email').val(), 
                     domicilio:  $('#input_domicilio').val(),
+                    telefono:   $('#input_telefono').val()
                 },
                 contact_emergencia: {
                     nombres:   $('#input_emergencia_nombres').val(),
@@ -343,6 +346,7 @@ export function pay() {
                data.user.email !== '' &&
                data.user.email.indexOf('@') !== -1 &&
                data.user.domicilio !== '' &&
+               data.user.telefono !== '' &&
                data.contact_emergencia.nombres !== '' &&
                data.contact_emergencia.apellidos !== '' &&
                data.contact_emergencia.telefono !== '' &&
@@ -396,6 +400,10 @@ export function pay() {
                 } else if(data.user.domicilio === '') {
                     msg = 'El campo domiciolio es obligatorio';
                     $('#input_domicilio').css('border','1px solid red');
+
+                } else if(data.user.telefono === '') {
+                    msg = 'El campo telefono es obligatorio';
+                    $('#input_telefono').css('border','1px solid red');
 
                 } else if(data.contact_emergencia.nombres === '') {
                     msg = 'El nombre del contacto de emergencia es obligatorio';
@@ -468,6 +476,12 @@ export function pay() {
     $('#input_domicilio').on('input', function() {
     
         $('#lector_domicilio')[0].innerHTML = `${ $('#input_domicilio').val() }`
+
+    })
+
+    $('#input_telefono').on('input', function() {
+    
+        $('#lector_telefono')[0].innerHTML = `${ $('#input_telefono').val() }`
 
     })
 

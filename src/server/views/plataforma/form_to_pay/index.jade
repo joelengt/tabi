@@ -96,7 +96,10 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                     article(class="FormToPay__form--input")
                       div(class="item  input__margin")
                           label(for="input_domicilio") Domicilio
-                          input(id="input_domicilio" name="pasajero" type="text")
+                          input(id="input_domicilio" name="domicilio" type="text")
+                      div(class="item  input__margin")
+                          label(for="input_telefono") Teléfono
+                          input(id="input_telefono" name="telefono" type="tel")
 
                 div(class="FormToPay__form--section")
                     article(class="FormToPay__form--input  section--title")
@@ -113,7 +116,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                     article(class="FormToPay__form--input")
                       div(class="item")
                            label(for="input_emergencia_telefono") Teléfono
-                           input(id="input_emergencia_telefono" name="salida" type="number")
+                           input(id="input_emergencia_telefono" name="salida" type="tel")
 
                       div(class="item  input__margin")
                           label(for="input_emergencia_email") Email
@@ -174,6 +177,9 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                                 p(style='margin: 0;')
                                   b Domicilio:
                                   p(style="padding-bottom: 10px;" id="lector_domicilio")
+                                p(style='margin: 0;')
+                                  b Telefono:
+                                  p(style="padding-bottom: 10px;" id="lector_telefono")
                                 
                               td(valign='top', style='padding-top: 10px;padding-bottom: 10px;', width='50%', height='100')
                                 b(style='margin: 0; border-bottom: 1px solid #017098; color: #017098;') Contacto de emergencia

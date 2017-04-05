@@ -34,13 +34,14 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
 
     section(class="PricingElements" data-id="#{code}")
-        div(class="PricingElements__title")
-            h2 Plataforma para descargar pdf
 
         div(class="PricingElements__box")
             div
-                form(action="#{pdf}")
-                    button(class="button") #{status}
+                h2(style="font-size: 35px;padding-bottom: .5rem;") #{message}
+                p #{help}
+                div(style="max-width:200px; margin: 0 auto;")
+                    form(action="#{pdf}")
+                        button(class="button") #{status}
 
 
     script(src='../../js/jquery-1.9.1.js')

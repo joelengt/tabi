@@ -634,6 +634,7 @@ route.post('/:code/purchare-buy/save', function (req, res) {
             fecha_nacimiento: req.body.user.fecha_nacimiento || '02/21/90',
             email:      req.body.user.email || 'someone@gmail.com', 
             domicilio:  req.body.user.domicilio || 'av lima',
+            telefono:  req.body.user.telefono || '999999999',
         },
         contact_emergencia: {
             nombres:   req.body.contact_emergencia.nombres || 'juan',
@@ -668,6 +669,7 @@ route.post('/:code/purchare-buy/save', function (req, res) {
             user.account.fecha_nacimiento =   data_form.user.fecha_nacimiento
             user.account.email = data_form.user.email
             user.account.domicilio = data_form.user.domicilio
+            user.account.phone = data_form.user.telefono
             user.account.full_name = `${ data_form.user.nombres } ${ data_form.user.apellidos }`
 
             // contact emergencia
@@ -749,11 +751,14 @@ route.get('/:code/key-pdf', function (req, res) {
     // buscar al usuario en la db, por el id
     Purchases.findOne({'_id': code}, (err, user) => {
         if(err) {
-            return res.status(400).json({
-                status: 'bat_request',
-                error: err,
-                message: 'error code not valid'
-            })
+            res.render('./plataforma/pdf/index.jade', {
+                status: 'Obtener Poliza',
+                message: 'No tienes una poliza registrada',
+                help:  'puedes cotizar tu destino y tendras tu poliza al instante',
+                code: code,
+                pack: 'not_register',
+                pdf: '/'
+            });
         }
 
         console.log('resultado del usuario');
@@ -789,7 +794,9 @@ route.get('/:code/key-pdf', function (req, res) {
                     value_to_download = `/news/${ code }.pdf`;
 
                     res.render('./plataforma/pdf/index.jade', {
-                        status: 'Descargar',
+                        status: 'Abre tu poliza',
+                        message: '!Gracias, tu compra fue exitosa¡',
+                        help:  'Una copia se ha enviado a tu correo',
                         code: code,
                         pack: user.pack_selected,
                         pdf: value_to_download
@@ -805,10 +812,12 @@ route.get('/:code/key-pdf', function (req, res) {
 
                 // devolver los campos guardados
                 res.render('./plataforma/pdf/index.jade', {
-                    status: 'No tienes permiso',
+                    status: 'Obtener Poliza',
+                    message: 'No tienes una poliza registrada',
+                    help:  'puedes cotizar tu destino y tendras tu poliza al instante',
                     code: code,
-                    pack: user.pack_selected,
-                    pdf: value_to_download
+                    pack: 'not_access',
+                    pdf: '/'
                 });
 
             }
@@ -816,9 +825,14 @@ route.get('/:code/key-pdf', function (req, res) {
         } else {
             console.log('Usuario no encontrado');
 
-            res.status(404).json({
-                status: 'not_found'
-            })
+            res.render('./plataforma/pdf/index.jade', {
+                status: 'Obtener Poliza',
+                message: 'No tienes una poliza registrada',
+                help:  'puedes cotizar tu destino y tendras tu poliza al instante',
+                code: code,
+                pack: 'not_register',
+                pdf: '/'
+            });
         }
     })
     
