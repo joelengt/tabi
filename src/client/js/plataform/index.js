@@ -49,12 +49,6 @@ export function eventClickItems() {
                 $('#ModalBoxContent').css('max-width','900px');
                 modalMessage(`<div class="ContentBoxTable" style="height: 300px;overflow: scroll;">${ result.template_pack }</div>`);
 
-                // if(result.status === 'ok') {
-                //     window.location.href = `/plataform-pricing/${ result.code }/purchare-form`
-
-                // } else {
-                //     console.log('error');
-                // }
             }
         })
     })

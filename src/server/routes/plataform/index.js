@@ -491,24 +491,33 @@ route.post('/:code/pack-beneficios', function (req, res) {
     }
 
     var template_pack = `<table width="100%" style="padding-top: 20px;padding-bottom: 20px;">
-                        <tr>
-                            <td>
-                                <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura: ${ pack_details.title }</b>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="top" width="50%">
+                            <tr>
+                                <td>
+                                    <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura: ${ pack_details.title }</b>
+                                </td>
+                            </tr>
+                            <tr>
                                 <table width="100%">
-                                    ${ table_left }
+                                    <th>
+                                        <td valign="top" width="50%">
+                                            <table width="100%">
+                                                ${ table_left }
+                                            </table>
+                                        </td>
+                                        <td valign="top" width="50%">
+                                            <table width="100%">
+                                                ${ table_right }
+                                            </table>
+                                        </td>
+                                    </th>
                                 </table>
-                            </td>
-                            <td valign="top" width="50%">
-                                <table width="100%">
-                                    ${ table_right }
-                                </table>
-                            </td>
-                        </tr>
-                    </table>`
+                            </tr>
+                            <tr>
+                                <td width="100%"">
+                                    <p style="padding-top:1.5rem;">${ pack_details.conditions }</p>
+                                </td>
+                            </tr>
+                        </table>`
 
 
     res.status(200).json({
