@@ -144,7 +144,7 @@ app.post('/:user_id/:type_service', function (req, res) {
             // LLamamos los metodos (.crear, .anular o .consultar) con los parámetros indicados en la documentación de culqi.
             culqi.crear({
                 numero_pedido: String('NRAS000' + Date.now()), // *** Debe ser unico por cada venta, generar una por venta
-                moneda:        'PEN',   // venta para peru, queda como tal
+                moneda:        'USD',   // venta para peru, queda como tal
                 monto:         date_service.price,      // ** con punto, la libreria lo convierte a como culqi lo require
                 descripcion:   date_service.type_service,         // ** description del tipo de producto
                 correo_electronico: usuario_find.account.email, // email del cliente
