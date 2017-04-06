@@ -366,9 +366,12 @@ route.get('/:code', function (req, res) {
             }
 
             // agregando e plan student
-           if( Number(user.cotizator.dias) >= Number(elements[3].pack[0].days) ) {
-               filter_by_country.push(elements[3]);
+           if(Number(user.cotizator.pasajero) > 0) {
+                if( Number(user.cotizator.dias) >= Number(elements[3].pack[0].days) ) {
+                    filter_by_country.push(elements[3]);
+                }
            }
+           
             
             console.log('Packs filtrados');
             console.log(filter_by_country);
@@ -407,11 +410,57 @@ route.get('/:code', function (req, res) {
                 });
             }
 
-            console.log('TENTACLE <<<<');
+            var filter_do = [];
+            
+
+            // adulto mayor incremento del 50%
+            if(Number(user.cotizator.adulto_mayor) > 0) {
+
+                for(var r = 0; r <= elements_filter.length - 1; r++) {
+
+                    var element = elements_filter[r];
+
+                    var value_50_porcent = 0;
+                    var value_tarifa_new = 0;
+
+                    if(element.title === 'INTERNATIONAL' ||
+                       element.title === 'CLASSIC' ||
+                       element.title === 'EUROPA') {
+                        
+                        element = elements_filter[r];
+
+                        console.log('values');
+                        console.log(value_tarifa_new);
+                        console.log(value_50_porcent);
+                        console.log(value_tarifa_new);
+
+                        value_tarifa_new = Number(element.pack.tarifa);
+
+                        value_50_porcent = (value_tarifa_new / 2);
+                        value_tarifa_new = Number(element.pack.tarifa) + Number(value_50_porcent);
+
+                        filter_do.push({
+                            title: element.title,
+                            pack: {
+                                days: element.pack.days,
+                                tarifa: String(value_tarifa_new)
+                            }
+                        });
+                        
+                    }
+                    
+                }
+
+            } else {
+                filter_do = elements_filter;
+
+            }
+
+            console.log('ORIGINAL');
             console.log(elements_filter);
 
-            console.log('TENTACLE DAYS')
-            console.log(result_filter_tarifa);
+            console.log('RESULTADO');
+            console.log(filter_do);
 
             // Calculando cantidad de pasajeros
             var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
@@ -420,7 +469,7 @@ route.get('/:code', function (req, res) {
             res.render('./plataforma/pricing/index.jade', {
                 code: code,
                 purchase: user.cotizator,
-                packs: elements_filter,
+                packs: filter_do,
                 cant_pasajeros: cant_pasajeros
             });
         }
