@@ -43,7 +43,9 @@ var purchase = new Schema({
         },
         token_auth:    { type: String, default: '' },
         status_purchare: { type: String , default: 'nothing'},
-        fecha_creada:  { type: Date, default: Date.now }
+        fecha_creada:  { type: Date, default: Date.now },
+        numero_pedido: { type: String, default: '' },
+        ticket:        { type: String, default: '' }
     },
     access:     { type: String, default: 'normal' }
 })

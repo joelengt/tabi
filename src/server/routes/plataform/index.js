@@ -5,6 +5,7 @@ var Purchases = require('../../models/purchares/index.js');
 var config = require('../../../../config/index.js')
 var permiso = config.variables.typeUser
 
+var handleSayHello = require('../../utils/sendEmail/index.js')
 var generatePDF = require('../../utils/generatePDF/index.js')
 
 var elements = [
@@ -802,14 +803,64 @@ route.get('/:code/key-pdf', function (req, res) {
 
                     value_to_download = `/news/${ code }.pdf`;
 
-                    res.render('./plataforma/pdf/index.jade', {
-                        status: 'Abre tu poliza',
-                        message: '!Gracias, tu compra fue exitosa¡',
-                        help:  'Una copia se ha enviado a tu correo',
-                        code: code,
-                        pack: user.pack_selected,
-                        pdf: value_to_download
-                    });
+                    // Enviando email con link de descarga
+                    var datos_form = {
+                        nombre:   user.account.names,
+                        email:    user.account.email,
+                        message:  ''
+                    }
+
+                    // Guardar en la db
+                    console.log('to send email');
+                    console.log(datos_form);
+
+                    // template content
+
+                    var template_content = {
+                        title: datos_form.nombre + ', !Tu poliza de viaje esta lista¡',
+                        receptores: [datos_form.email],
+                        template: `<table width="100%">
+                                        <tr>
+                                           <td>
+                                                <div>
+                                                    <p>Hola ${ datos_form.nombre }, tu poliza de viaje esta lista, puedes descargarla cuando quieres, desde este enlace</p>
+                                                </div>
+                                           </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                 <div>
+                                                     <p>http://assistabi.com/plataform-pricing/${ user._id }/key-pdf?numero_pedido=${ user.account.numero_pedido }&ticket=${ user.account.ticket }</p>
+                                                 </div>
+                                            </td>
+                                        </tr>
+                                    </table>`
+                    };
+
+                    // enviar a un email
+                    handleSayHello(template_content, function (err, result) {
+                        if(err) {
+                            return res.status(500).json({
+                                status: 'error_server',
+                                error: err,
+                                message: 'Error al enviar email. Intente más tarde. Si el problema continua, contactar con soporte'
+                            })
+                        }
+
+                        console.log('RESULTADO DEL ENVIO EMAIL')
+                        console.log(result)
+                        
+                        res.render('./plataforma/pdf/index.jade', {
+                            status: 'Abre tu poliza',
+                            message: '!Gracias, tu compra fue exitosa¡',
+                            help:  'Una copia se ha enviado a tu correo',
+                            code: code,
+                            pack: user.pack_selected,
+                            pdf: value_to_download
+                        });
+
+                    })
+
                 });
 
             } else {

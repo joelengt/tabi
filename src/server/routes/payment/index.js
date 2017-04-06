@@ -186,76 +186,89 @@ app.post('/:user_id/:type_service', function (req, res) {
 
                 var resultado_now = {}
 
-                // Si el resultado fue venta_registrada
-                if(resultado.codigo_respuesta === 'venta_registrada') {
-                    resultado_now = {
-                        ticket: resultado.ticket,
-                        numero_pedido: resultado.numero_pedido,
-                        codigo_comercio: resultado.codigo_comercio,
-                        informacion_venta: resultado.informacion_venta
+                // registrando numero de pedido y tikect
+                usuario_find.account.numero_pedido = resultado.numero_pedido;
+                usuario_find.account.ticket = resultado.ticket;
+
+                usuario_find.save((err, saved) => {
+                    if(err) {
+                        return res.status(500).json({
+                            status: 'venta no guardada'
+                        })
                     }
 
-                    // Enviar resultados to client
-                    res.status(200).json({
-                        status: resultado.codigo_respuesta,
-                        message: resultado.mensaje_respuesta,
-                        data: resultado_now,
-                        help: 'venta registrada exitosamente, porfavor llene los campo de su tarjeta credito o debito para acceder al servicio'
-                    })
-                
-                // Si el resultado fue comercio_invalido
-                } else if (resultado.codigo_respuesta === 'comercio_invalido') {
-                    resultado_now = {
-                        ticket: resultado.ticket,
-                        numero_pedido: resultado.numero_pedido
+                    // Si el resultado fue venta_registrada
+                    if(resultado.codigo_respuesta === 'venta_registrada') {
+                        resultado_now = {
+                            ticket: resultado.ticket,
+                            numero_pedido: resultado.numero_pedido,
+                            codigo_comercio: resultado.codigo_comercio,
+                            informacion_venta: resultado.informacion_venta
+                        }
+
+                        // Enviar resultados to client
+                        res.status(200).json({
+                            status: resultado.codigo_respuesta,
+                            message: resultado.mensaje_respuesta,
+                            data: resultado_now,
+                            help: 'venta registrada exitosamente, porfavor llene los campo de su tarjeta credito o debito para acceder al servicio'
+                        })
+                    
+                    // Si el resultado fue comercio_invalido
+                    } else if (resultado.codigo_respuesta === 'comercio_invalido') {
+                        resultado_now = {
+                            ticket: resultado.ticket,
+                            numero_pedido: resultado.numero_pedido
+                        }
+
+                        // Enviar resultados to client
+                        res.status(200).json({
+                            status: resultado.codigo_respuesta,
+                            message: resultado.mensaje_respuesta,
+                            data: resultado_now,
+                            help: 'el codigo de comercio, es invalido para esta venta, intente recargar el navegador o contactanos para ayudarte'
+                        })
+
+                    // Si el resultado fue parametro_invalido
+                    } else if (resultado.codigo_respuesta === 'parametro_invalido') {
+                        resultado_now = {
+                            ticket: resultado.ticket,
+                            numero_pedido: resultado.numero_pedido
+                        }
+
+                        // Enviar resultados to client
+                        res.status(200).json({
+                            status: resultado.codigo_respuesta,
+                            message: resultado.mensaje_respuesta,
+                            data: resultado_now,
+                            help: 'Por tu seguridad, necesitas llenar los campos de información en tu perfil: ciudad, telefono, email, dirección.'
+                        })
+
+                    // Si el resultado fue error_procesamiento
+                    } else if (resultado.codigo_respuesta === 'error_procesamiento') {
+                        resultado_now = {
+                            ticket: resultado.ticket,
+                            numero_pedido: resultado.numero_pedido
+                        }
+
+                        // Enviar resultados to client
+                        res.status(200).json({
+                            status: resultado.codigo_respuesta,
+                            message: resultado.mensaje_respuesta,
+                            data: resultado_now,
+                            help: 'error de procesamiento, algo no esta bien, contactanos para ayudarte'
+                        })
+
+                    // Si el resultado fue venta_registrada
+                    } else {
+                        // Enviar resultados to client
+                        res.status(200).json({
+                            status: 'fail server, venta no registrada',
+                            message: 'Error del servidor, mensaje desconocido, sin respuesta'
+                        })
                     }
-
-                    // Enviar resultados to client
-                    res.status(200).json({
-                        status: resultado.codigo_respuesta,
-                        message: resultado.mensaje_respuesta,
-                        data: resultado_now,
-                        help: 'el codigo de comercio, es invalido para esta venta, intente recargar el navegador o contactanos para ayudarte'
-                    })
-
-                // Si el resultado fue parametro_invalido
-                } else if (resultado.codigo_respuesta === 'parametro_invalido') {
-                    resultado_now = {
-                        ticket: resultado.ticket,
-                        numero_pedido: resultado.numero_pedido
-                    }
-
-                    // Enviar resultados to client
-                    res.status(200).json({
-                        status: resultado.codigo_respuesta,
-                        message: resultado.mensaje_respuesta,
-                        data: resultado_now,
-                        help: 'Por tu seguridad, necesitas llenar los campos de información en tu perfil: ciudad, telefono, email, dirección.'
-                    })
-
-                // Si el resultado fue error_procesamiento
-                } else if (resultado.codigo_respuesta === 'error_procesamiento') {
-                    resultado_now = {
-                        ticket: resultado.ticket,
-                        numero_pedido: resultado.numero_pedido
-                    }
-
-                    // Enviar resultados to client
-                    res.status(200).json({
-                        status: resultado.codigo_respuesta,
-                        message: resultado.mensaje_respuesta,
-                        data: resultado_now,
-                        help: 'error de procesamiento, algo no esta bien, contactanos para ayudarte'
-                    })
-
-                // Si el resultado fue venta_registrada
-                } else {
-                    // Enviar resultados to client
-                    res.status(200).json({
-                        status: 'fail server, venta no registrada',
-                        message: 'Error del servidor, mensaje desconocido, sin respuesta'
-                    })
-                }
+                    
+                })
 
             })
 

@@ -3,6 +3,8 @@ var route = express.Router();
 
 var handleSayHello = require('../../utils/sendEmail/index.js')
 
+var config = require('../../../../config/index.js');
+
 route.get('/', function (req, res) {
     
     res.render('./home/index.jade');
@@ -22,9 +24,30 @@ route.post('/contact', function (req, res) {
     console.log('to send email');
     console.log(datos_form);
 
+    // template content
+
+    var template_content = {
+        title: 'Tabi: Nuevo usuario quiere contactarte',
+        receptores: [config.auth.mailing.receptor, 'joelengt@gmail.com'],
+        template: `<table width="100%">
+                                        <tr>
+                                           <td>
+                                                <div>
+                                                    <p>nombre: ${datos_form.nombre}</p>
+                                                </div>
+                                                <div>
+                                                    <p>email: ${datos_form.email}</p>
+                                                </div>
+                                                <div>
+                                                    <p>mensaje: ${datos_form.message}</p>
+                                                </div> 
+                                           </td>
+                                        </tr>
+                                    </table>`
+    };
 
     // enviar a un email
-    handleSayHello(datos_form, function (err, result) {
+    handleSayHello(template_content, function (err, result) {
         if(err) {
             return res.status(500).json({
                 status: 'error_server',
