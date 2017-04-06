@@ -411,9 +411,12 @@ route.get('/:code', function (req, res) {
             }
 
             var filter_do = [];
-            
+            var respaldo_filter = elements_filter;
 
             // adulto mayor incremento del 50%
+            console.log('adulto mayor');
+            console.log(user.cotizator.adulto_mayor);
+
             if(Number(user.cotizator.adulto_mayor) > 0) {
 
                 for(var r = 0; r <= elements_filter.length - 1; r++) {
@@ -437,7 +440,7 @@ route.get('/:code', function (req, res) {
                         value_tarifa_new = Number(element.pack.tarifa);
 
                         value_50_porcent = (value_tarifa_new / 2);
-                        value_tarifa_new = Number(element.pack.tarifa) + Number(value_50_porcent);
+                        value_tarifa_new = (Number(element.pack.tarifa) + Number(value_50_porcent)) * Number(user.cotizator.adulto_mayor);
 
                         filter_do.push({
                             title: element.title,
@@ -451,8 +454,28 @@ route.get('/:code', function (req, res) {
                     
                 }
 
-            } else {
-                filter_do = elements_filter;
+            }
+
+            var new_final_price = [];
+
+            for(var t = 0; t <= respaldo_filter.length - 1; t++) {
+                var element_respaldo = respaldo_filter[t];
+
+                var tarifa_cant_pasajero = '';
+                tarifa_cant_pasajero = Number(element_respaldo.pack.tarifa) * Number(user.cotizator.pasajero);
+
+                var value_viejos = 0;
+                if(filter_do[t] !== undefined) {
+                    value_viejos = Number(filter_do[t].pack.tarifa);
+                }
+
+                new_final_price.push({
+                    title: element_respaldo.title,
+                    pack: {
+                        days: element_respaldo.pack.days,
+                        tarifa: String(value_viejos + Number(tarifa_cant_pasajero))
+                    }
+                });
 
             }
 
@@ -469,7 +492,7 @@ route.get('/:code', function (req, res) {
             res.render('./plataforma/pricing/index.jade', {
                 code: code,
                 purchase: user.cotizator,
-                packs: filter_do,
+                packs: new_final_price,
                 cant_pasajeros: cant_pasajeros
             });
         }
