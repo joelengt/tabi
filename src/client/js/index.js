@@ -1,4 +1,3 @@
-
 import { sendFormCotizar } from './formCotizar/index.js';
 import { eventClickItems } from './plataform/index.js';
 import { pay } from './payment/index.js';
@@ -6,6 +5,7 @@ import { sendFormContact } from './sendFormContact/index.js';
 import { getPdf } from './formGetPdf/index.js';
 import { EventScrollSections } from './eventSections/index.js';
 import { polyfillInputs } from './eventOpenLink/index.js';
+
 
 console.log('OK');
 
@@ -96,3 +96,7 @@ function calDays() {
 eventClickItems();
 pay();
 sendFormContact();
+
+
+
+

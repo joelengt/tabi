@@ -3,9 +3,12 @@ var app = express.Router()
 
 var config = require('../../../../config/index.js')
 var permiso = config.variables.typeUser
+
+var request = require('request')
 var crypto  = require('crypto')
 
-var Culqi = require('../../utils/payment/index.js')
+var baseUrl = 'https://api.culqi.com/v2';
+
 var Users = require('../../models/purchares')
 var Culqi_sales = require('../../models/culqi_users')
 var Culqi_user_paid = require('../../models/culqi_user_pay')
@@ -63,226 +66,61 @@ function Upgrade(user_id, res, type_service, cb) {
 
 }
 
-// ---Util ---
-
-function base64URLSafetoBytes (base64) {
-    base64 += Array(5 - base64.length % 4).join('=');
-    base64 = base64.replace(/\-/g, '+').replace(/\_/g, '/');
-    return new Buffer(base64, 'base64');
-}
-
-function descifrar_now (str, llave_comercio_now) {
-    var buf1, buf2, cipher, iv
-    str = base64URLSafetoBytes(str)
-    var iv = str.slice(0, 16)
-    str = str.slice(16)
-    cipher = crypto.createDecipheriv('aes-256-cbc', base64URLSafetoBytes(llave_comercio_now), iv)
-    cipher.setAutoPadding(true)
-    buf1 = cipher.update(str)
-    buf2 = cipher.final()
-    return Buffer.concat([buf1, buf2])
-}
-
 // API POST: crear venta , agregar a intencion de compra, agregar al carrito
 app.post('/:user_id/:type_service', function (req, res) {
     var user_id = req.params.user_id
     var type_service = req.params.type_service
+    var token = req.body.token;
 
-    // Validando el tipo de servicio
-    if(type_service === material.audiolibros ||
-       type_service === material.simuladores ||
-       type_service === material.premium) {
+    console.log('datos del usuario');
+    console.log('token');
+    console.log(token);
 
-            // Obteniendo datos de usuario
-        Users.findById({"_id": user_id}, function (err, usuario_find) {
-            if(err) {
-                return console.log('Error al encontrar al usuario en la base de datos: ' + err)
-            }
+    console.log('user_id');
+    console.log(user_id);
 
-            var date_service = {}
+    console.log('tipo de servicio');
+    console.log(type_service);
 
-            // Agregando data al tipo de servicio la creación de la venta
-            if(type_service === material.audiolibros) {
-                date_service = {
-                    type_service: material.audiolibros,
-                    price: 10.00,
-                    description: 'Servicio de Audiolibros'
-                }
+    // Convierto el monto al valor correcto: 
+    // amount = Number(amount);
+    // amount = +(amount.toFixed(2).replace('.', ''));
 
-            } else if(type_service === material.simuladores) {
-                date_service = {
-                    type_service: material.simuladores,
-                    price: 10.00,
-                    description: 'Servicio de Simuladores'
-                }
+    var obj = {
+      "amount": 4500,
+      "currency_code": "USD",
+      "capture": true,
+      "email": "richard@piedpiper.com",
+      "source_id": token,
+      "description": 'poliza'
 
-            } else if(type_service === material.premium) {
-                date_service = {
-                    type_service: usuario_find.pack_selected.title,
-                    price: Number(usuario_find.pack_selected.tarifa),
-                    description: 'Servicio Premiun'
-                }
+    }
 
-            } else {
-                console.log('Error el tipo de servicio enviado No coincide')
-            }
+    request({
+        url: baseUrl + '/charges',
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer sk_test_mCpkD0ccXRLLp87W' 
+        },
+        json: true,
+        body: obj
+    }, function (err, response, result) {
+        if (err) callback (err);
+        else {
+            console.log(result);
+            
+            console.log(response.statusCode);
 
-            // Intregrando culqi
-            //Culqi.INTEGRACION = 'https://integ-pago.culqi.com'
-            //Culqi.PRODUCCION  = 'https://pago.culqi.com'
-
-            console.log('CULQI');
-            console.log(config.auth.culqi);
-
-            //  Creando el objeto reutilizable,
-            //  Los parámetros son (codigo_comercio, llave_comercio, ambiente (Culqi.PRODUCCION o Culqi.INTEGRACION))
-            var culqi = new Culqi(config.auth.culqi.code_comercio_dev, config.auth.culqi.key_api_dev, Culqi.INTEGRACION)
-
-            console.log('USER');
-            console.log(usuario_find);
-
-            // LLamamos los metodos (.crear, .anular o .consultar) con los parámetros indicados en la documentación de culqi.
-            culqi.crear({
-                numero_pedido: String('NRAS000' + Date.now()), // *** Debe ser unico por cada venta, generar una por venta
-                moneda:        'USD',   // venta para peru, queda como tal
-                monto:         date_service.price,      // ** con punto, la libreria lo convierte a como culqi lo require
-                descripcion:   date_service.type_service,         // ** description del tipo de producto
-                correo_electronico: usuario_find.account.email, // email del cliente
-                cod_pais: 'PE',   // codigo de pais del cliente
-                ciudad:     usuario_find.account.ciudad,      // ciudad del cliente
-                direccion:  usuario_find.account.domicilio,    // direccion del cliente
-                num_tel:    usuario_find.account.phone,      // numero de telefono del cliente
-                id_usuario_comercio: user_id,       // id del usuario en mi plataforma
-                nombres:   usuario_find.account.names, // nombre del usuario
-                apellidos: usuario_find.account.last_names   // apellidos del usuario
-
-            }, function (err, resultado) {
-                if(err) {
-                    return console.log('Error al crear venta: ' + err)
-                }
-
-                console.log('Venta CREADA')
-                console.log(resultado)
-
-                // Guardar datos de venta por el usuario en DB
-                var new_culqi_sales = new Culqi_sales({
-                    user_data: {
-                        id: usuario_find._id,
-                        service: date_service.type_service
-                    },
-                    culqi_response: resultado
-                })
-
-                // Almacenando usuario con intencion de compra en la base de datos
-                new_culqi_sales.save(function (err) {
-                    if(err) {
-                        console.log('Error al guardar al usuario con intencion de compra: ' + err)
-                    }
-                })
-
-                console.log('Datos del usuario comprador y el servicio')
-
-                console.log(new_culqi_sales.user_data)
-
-                var resultado_now = {}
-
-                // registrando numero de pedido y tikect
-                usuario_find.account.numero_pedido = resultado.numero_pedido;
-                usuario_find.account.ticket = resultado.ticket;
-
-                usuario_find.save((err, saved) => {
-                    if(err) {
-                        return res.status(500).json({
-                            status: 'venta no guardada'
-                        })
-                    }
-
-                    // Si el resultado fue venta_registrada
-                    if(resultado.codigo_respuesta === 'venta_registrada') {
-                        resultado_now = {
-                            ticket: resultado.ticket,
-                            numero_pedido: resultado.numero_pedido,
-                            codigo_comercio: resultado.codigo_comercio,
-                            informacion_venta: resultado.informacion_venta
-                        }
-
-                        // Enviar resultados to client
-                        res.status(200).json({
-                            status: resultado.codigo_respuesta,
-                            message: resultado.mensaje_respuesta,
-                            data: resultado_now,
-                            help: 'venta registrada exitosamente, porfavor llene los campo de su tarjeta credito o debito para acceder al servicio'
-                        })
-                    
-                    // Si el resultado fue comercio_invalido
-                    } else if (resultado.codigo_respuesta === 'comercio_invalido') {
-                        resultado_now = {
-                            ticket: resultado.ticket,
-                            numero_pedido: resultado.numero_pedido
-                        }
-
-                        // Enviar resultados to client
-                        res.status(200).json({
-                            status: resultado.codigo_respuesta,
-                            message: resultado.mensaje_respuesta,
-                            data: resultado_now,
-                            help: 'el codigo de comercio, es invalido para esta venta, intente recargar el navegador o contactanos para ayudarte'
-                        })
-
-                    // Si el resultado fue parametro_invalido
-                    } else if (resultado.codigo_respuesta === 'parametro_invalido') {
-                        resultado_now = {
-                            ticket: resultado.ticket,
-                            numero_pedido: resultado.numero_pedido
-                        }
-
-                        // Enviar resultados to client
-                        res.status(200).json({
-                            status: resultado.codigo_respuesta,
-                            message: resultado.mensaje_respuesta,
-                            data: resultado_now,
-                            help: 'Por tu seguridad, necesitas llenar los campos de información en tu perfil: ciudad, telefono, email, dirección.'
-                        })
-
-                    // Si el resultado fue error_procesamiento
-                    } else if (resultado.codigo_respuesta === 'error_procesamiento') {
-                        resultado_now = {
-                            ticket: resultado.ticket,
-                            numero_pedido: resultado.numero_pedido
-                        }
-
-                        // Enviar resultados to client
-                        res.status(200).json({
-                            status: resultado.codigo_respuesta,
-                            message: resultado.mensaje_respuesta,
-                            data: resultado_now,
-                            help: 'error de procesamiento, algo no esta bien, contactanos para ayudarte'
-                        })
-
-                    // Si el resultado fue venta_registrada
-                    } else {
-                        // Enviar resultados to client
-                        res.status(200).json({
-                            status: 'fail server, venta no registrada',
-                            message: 'Error del servidor, mensaje desconocido, sin respuesta'
-                        })
-                    }
-                    
-                })
-
+            res.status(200).json({
+              status: 'terminado'
             })
 
+            // body
 
-        })
+        }
+    });
 
-    } else {
-        console.log('Error el tipo de servicio enviado No se encuentra registrado: ' + type_service)
-
-        res.status(200).json({
-            status: 'Error: el tipo de servicio enviado No se encuentra registrado: ' + type_service
-        })
-    
-    }
 })
 
 // API update Access: UPGRADE - Textos 

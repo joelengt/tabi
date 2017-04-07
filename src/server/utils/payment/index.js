@@ -60,6 +60,10 @@ Culqi.prototype.crear = function (informacion_venta, callback) {
             }
         }
     });
+
+
+
+    
 };
 
 // anular venta

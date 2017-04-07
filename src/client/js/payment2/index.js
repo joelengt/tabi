@@ -1,9 +1,15 @@
-export function pay2() {
-    Culqi.publicKey = '<Aquí inserta tu llave pública>';
+export function pay2(title, amount) {
+	amount = Number(amount);
+	amount = +(amount.toFixed(2).replace('.', ''));
+
+    Culqi.publicKey = 'pk_test_FwE0vKV3KZwevsrA';
     Culqi.settings({
-        title: 'Culqi Store',
-        currency: 'PEN',
-        description: 'Polo Culqi lover',
-        amount: 3500
+        title: title,
+        currency: 'USD',
+        description: 'Poliza',
+        amount: amount
     });
+
+    Culqi.open();
+
 }

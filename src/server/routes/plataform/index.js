@@ -657,6 +657,8 @@ route.post('/:code/purchare/buy-form', function (req, res) {
                     return console.log(err);
                 }
 
+                console.log(saved);
+
                 res.status(200).json({
                     status: 'ok',
                     code: code
@@ -772,7 +774,8 @@ route.post('/:code/purchare-buy/save', function (req, res) {
 
                 res.status(200).json({
                     status: 'ok',
-                    code: saved._id
+                    code: saved._id,
+                    pack: saved.pack_selected
                 })
 
             })
