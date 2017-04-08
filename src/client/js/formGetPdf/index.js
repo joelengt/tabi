@@ -16,10 +16,9 @@ export function getPdf() {
             console.log(result);
 
             if(result.status === 'ok') {
-                // window.location.href = `/plataform-pricing/${ result.code }`
                 $('#msgBox')[0].innerHTML = `<p>Cargando...</p>`;
 
-                window.location.href = `/plataform-pricing/${ result.code }/key-pdf`
+                window.location.href = `/plataform-pricing/${ result.code }/key-pdf?numero_pedido=${ result.data.numero_pedido }&ticket=${ result.data.charge_id }`
 
             } else {
                 $('#msgBox')[0].innerHTML = `<p>Numero de Documento no valido</p>`;

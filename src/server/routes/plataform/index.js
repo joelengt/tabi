@@ -794,21 +794,30 @@ route.post('/forget-pdf-access', function (req, res) {
 
     // validando existencia del usuario
 
-    Purchases.findOne({'account.doc_number': dni}, (err, user) => {
+    Purchases.find((err, users) => {
         if(err) {
             return res.status(400).json({
                 status: 'bat_request',
                 message: 'error code not valid'
             })
         }
-        console.log('user');
-        console.log(user);
+
+        // Filtrando 
+        var polizas = users.filter((element) => {
+            return element.account.doc_number === dni;
+        })
+
+        var user = polizas[polizas.length - 1];
 
         if(user !== null) {
             res.status(200).json({
                 status: 'ok',
                 dni: dni,
-                code: user._id
+                code: user._id,
+                data: {
+                    numero_pedido: user.account.numero_pedido,
+                    charge_id: user.account.ticket
+                }
             })
         } else {
             res.status(404).json({
