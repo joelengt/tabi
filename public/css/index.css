@@ -243,7 +243,6 @@ body {
   padding-bottom: 0.5rem;
 }
 .CoverForm__form--input .item input {
-  display: block;
   padding: 0.7rem 0.8rem;
   font-size: 0.8rem;
   width: 70%;
@@ -290,7 +289,7 @@ body {
   width: 85%;
   padding: 0.7rem 0.8rem;
   font-size: 0.8rem;
-  height: 33px;
+  height: 38px;
   border: 5px;
 }
 .CoverForm__form--input .item .iconToDate {
