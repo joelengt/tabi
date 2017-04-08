@@ -884,7 +884,6 @@ body {
   padding-bottom: 0.5rem;
 }
 .FormToPay__form--input .item input {
-  display: block;
   padding: 0.7rem 0.8rem;
   font-size: 0.8rem;
   width: 80%;
@@ -897,7 +896,7 @@ body {
   width: 90%;
   padding: 0.7rem 0.8rem;
   font-size: 0.8rem;
-  height: 33px;
+  height: 38px;
   border: 5px;
 }
 .FormToPay__form--input .item .iconToDate {
