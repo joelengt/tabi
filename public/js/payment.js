@@ -31,6 +31,10 @@ function ConnectCulqi(user_send_id, type_send_service, token) {
     console.log('Comprando servicio: ' + type_send_service)
     $('#message_error')[0].innerHTML = 'Enviando...'
 
+    modalMessage(`<div>
+                    <h3>Enviando...</h3>
+                </div>`);
+
     $.ajax({
         method: 'post',
         data: {
@@ -40,6 +44,8 @@ function ConnectCulqi(user_send_id, type_send_service, token) {
         success: function (resultado) {
             console.log('RESULTADO DE LA CREACION DE VENTAS')
             console.log(resultado)
+            
+            $('#ModalBox').css('display', 'none');
 
             // Mandar el resultado al servidor 
 

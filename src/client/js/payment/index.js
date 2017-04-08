@@ -9,12 +9,16 @@ export function pay() {
     function sendForm(data) {
         var code_id = $('.FormToPay').data('id');
 
+        $('#btnFormComprar')[0].innerHTML ='Enviando...';
+
         $.ajax({
             url: `${ URI }/plataform-pricing/${ code_id }/purchare-buy/save`,
             method: 'POST',
             data: data,
             success: function (result) {
                 console.log(result);
+
+            $('#btnFormComprar')[0].innerHTML ='Comprar';
 
                 if(result.status === 'ok') {
                     
@@ -24,7 +28,12 @@ export function pay() {
                     pay2(result.pack.title, result.pack.tarifa);
 
                 } else {
-                    console.log('error');
+
+                    modalMessage(`<div>
+                                    <h3>Ocurrio un error</h3>
+                                    <p>No pudimos guardar tus datos, porfavor intenta de nuevo</p>
+                                    <p>Si el error continua contactanos a hola@assistabi.com</p>
+                                </div>`);
                 }
             }
         })
