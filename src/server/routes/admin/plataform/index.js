@@ -101,8 +101,11 @@ var element_title = [
     'account_contact_emergencia_apellidos',
     'account_contact_emergencia_telefono',
     'account_contact_emergencia_email',
-    'account_ciudad_status_purchare',
-    'account_ciudad_fecha_creada',
+    'account_status_purchare',
+    'account_fecha_creada',
+    'account_numero_pedido',
+    'account_id_venta',
+    'venta_date',
     'access'
 ];
 
@@ -159,6 +162,13 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
 
             // Generando lista de todos
             for(var a = 0; a <= users.length - 1; a++) {
+
+                // Evaluando pretty date creation purchare
+                var date_numero_pedido = users[a].account.numero_pedido;
+                var date_purchare = new Date(Number(date_numero_pedido.replace('NRAS000','')));
+
+                var date_purchare_pretty = `${ date_purchare.getDate() }-${ date_purchare.getMonth() + 1 }-${ date_purchare.getFullYear() }`;
+
                 list_all += `<tr>
                                 <td>${ users[a].cotizator.origen }</td>
                                 <td>${ users[a].cotizator.destino }</td>
@@ -190,12 +200,22 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
                                 <td>${ users[a].account.contact_emergencia.email }</td>
                                 <td>${ users[a].account.status_purchare }</td>
                                 <td>${ users[a].account.fecha_creada }</td>
+                                <td>${ users[a].account.numero_pedido}</td>
+                                <td>${ users[a].account.ticket }</td>
+                                <td>${ date_purchare_pretty }</td>
                                 <td>${ users[a].access }</td>
                             </tr>`;
             }
 
             // Generando lista de pagos
             for(var b = 0; b <= users_pay.length - 1; b++) {
+
+                // Evaluando pretty date creation purchare
+                var date_numero_pedido = users_pay[b].account.numero_pedido;
+                var date_purchare = new Date(Number(date_numero_pedido.replace('NRAS000','')));
+
+                var date_purchare_pretty = `${ date_purchare.getDate() }-${ date_purchare.getMonth() + 1 }-${ date_purchare.getFullYear() }`;
+
                 list_pay += `<tr>
                                 <td>${ users_pay[b].cotizator.origen }</td>
                                 <td>${ users_pay[b].cotizator.destino }</td>
@@ -227,6 +247,9 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
                                 <td>${ users_pay[b].account.contact_emergencia.email }</td>
                                 <td>${ users_pay[b].account.status_purchare }</td>
                                 <td>${ users_pay[b].account.fecha_creada }</td>
+                                <td>${ users_pay[b].account.numero_pedido}</td>
+                                <td>${ users_pay[b].account.ticket }</td>
+                                <td>${ date_purchare_pretty }</td>
                                 <td>${ users_pay[b].access }</td>
                             </tr>`;
             }

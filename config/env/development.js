@@ -8,7 +8,7 @@ var config = {
         },
         db: {
             mongodb: {
-                local: 'mongodb://localhost/tabi1',
+                local: 'mongodb://localhost/tabi2',
             },
             postgresql: {
                 local: 'postgres://root:postgres@localhost:4002/app_db',
