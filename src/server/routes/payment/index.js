@@ -130,7 +130,7 @@ app.post('/:user_id/:type_service', function (req, res) {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': 'Bearer sk_test_mCpkD0ccXRLLp87W' 
+                'Authorization': 'Bearer ' + config.auth.culqi.private_key
             },
             json: true,
             body: obj
@@ -142,16 +142,6 @@ app.post('/:user_id/:type_service', function (req, res) {
                 console.log(response.statusCode);
 
                 if(response.statusCode === 201) {
-
-                    // // Creando nuevo usuario, con info de tarjeta
-                    // var new_Culqi_user_paid = new Culqi_user_paid(sale_descifrado)
-                    
-                    // // Almacenando nuevo usuario en proceso de pago - para hacer consultar por ticket de usuario y ver su proceso en culqi y en la base de datos
-                    // new_Culqi_user_paid.save(function (err) {
-                    //     if(err) {
-                    //         console.log('Error en almacenar datos de proceso de venta del usuario en la DB : ' + err)
-                    //     }
-                    // })
 
                     // Upgrade user to premium access have other service
                     Upgrade(user_id, permiso.premium, result, function (err, usuario_access) {

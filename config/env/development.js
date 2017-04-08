@@ -35,12 +35,8 @@ var config = {
             api_secret: 'PLstoVjJNoBiqPhNDGriHyVWVTc'
         },
         culqi:{
-            key_api_dev: '5jaVROAEp51mE7Br8mdQ6dfVbEfhszNXQPB3GsI2Np4=',
-            code_comercio_dev: 'vivPfq6XgLtM',
             public_key: 'pk_test_FwE0vKV3KZwevsrA',
-            private_key: 'sk_test_mCpkD0ccXRLLp87W',
-            key_api: 'zGdhpkAMeaG+lKcvj++e2me5b0YkhprNCCQIvLKinvs=',
-            code_comercio: 'OgUFtt0jQKid'
+            private_key: 'sk_test_mCpkD0ccXRLLp87W'
         }
     },
     variables: {
