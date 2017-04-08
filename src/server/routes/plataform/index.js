@@ -769,7 +769,7 @@ route.post('/:code/purchare-buy/save', function (req, res) {
                     return console.log(err);
                 }
 
-                console.log('USUARIO UPDATED');
+                console.log('USUARIO UPDATED <----');
                 console.log(saved);
 
                 res.status(200).json({
