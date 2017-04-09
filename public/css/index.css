@@ -207,6 +207,7 @@ body {
   vertical-align: middle;
   width: 46%;
   text-align: left;
+  height: 36%;
 }
 .CoverForm__title h2 {
   font-size: 2.5rem;
@@ -216,6 +217,33 @@ body {
 .CoverForm__title p {
   font-size: 1.2rem;
   padding-top: 0.5rem;
+}
+.CoverForm__title--circles {
+  padding-top: 8rem;
+}
+.CoverForm__title--circles span {
+  color: #fff;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: transparent;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  margin-right: 0.5rem;
+}
+.CoverForm__title--circles span article {
+  background: transparent;
+  display: block;
+  height: 10px;
+  width: 10px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 1.2px;
 }
 .CoverForm__form {
   display: inline-block;

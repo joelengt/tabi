@@ -5,7 +5,9 @@ import { sendFormContact } from './sendFormContact/index.js';
 import { getPdf } from './formGetPdf/index.js';
 import { EventScrollSections } from './eventSections/index.js';
 import { polyfillInputs } from './eventOpenLink/index.js';
+import { cicleSlider } from './homeSlider/index.js';
 
+cicleSlider();
 
 console.log('OK');
 
@@ -40,35 +42,6 @@ $('#right_counter_minus').on('click', function() {
     }
 })
 
-function cicleSlider() {
-
-    var slider_fotos = [
-        "url('../images/cover-slider/4.jpg')",
-        "url('../images/cover-slider/5.jpg')",
-        "url('../images/cover-slider/7.jpg')",
-        "url('../images/cover-slider/3.jpg')"
-    ];
-
-    // Obtener background dom
-    var $background_image_template = $('.CoverForm'); 
-
-    var i = 0;
-
-    setInterval(function() {
-
-        if(i > slider_fotos.length - 1) {
-            i = 0;
-        }
-
-        $background_image_template.css("background-image", slider_fotos[i]);
-
-        i++;
-
-    }, 3000);
-
-}
-
-cicleSlider();
 EventScrollSections();
 polyfillInputs();
 
