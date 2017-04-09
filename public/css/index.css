@@ -196,6 +196,7 @@ body {
   color: #fff;
   padding-top: 13%;
   background-image: url("../images/cover-slider/2--.jpg");
+  background: #006e96;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
