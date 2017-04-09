@@ -27,29 +27,61 @@ export function cicleSlider() {
     var $content_text_template = $('.CoverForm__title--Content');
     var $circles = $('.CoverForm__title--circles');
 
-    var i = 1;
+    var cicleEventSlider = null;
 
-    var timer = 3500;
+    function eventCiclicle(positionInitial, time) {
+        var i = positionInitial;
 
-    setInterval(function() {
+        var timer = time;
 
+        cicleEventSlider = setInterval(function() {
 
-        if(i > slider_fotos.length - 1) {
-            i = 0;
-        }
+            if(i > slider_fotos.length - 1) {
+                i = 0;
+            }
+            
+            $background_image_template.css("background-image", slider_fotos[i]);
+            $content_text_template[0].innerHTML = slider_text[i];
+
+            // pintar a todos de blanco
+            for(var u = 0; u <=  $circles.children().length - 1; u++) {
+                $circles.children()[u].childNodes[0].style.background = 'transparent';
+            }
+
+            $circles.children()[i].childNodes[0].style.background = 'white';
+
+            i++;
+
+        }, timer);
+
+        $('.CoverForm__title--circlesItem').click(function() {
+            
+            var $background_image_template = $('.CoverForm');
+            var $content_text_template = $('.CoverForm__title--Content');
+            var $circles = $('.CoverForm__title--circles');
+
+            clearInterval(cicleEventSlider);
+
+            var number_position = Number($(this)[0].dataset.position)
+
+            $background_image_template.css("background-image", slider_fotos[number_position]);
+            $content_text_template[0].innerHTML = slider_text[number_position];
+
+            // pintar a todos de blanco
+            for(var u = 0; u <=  $circles.children().length - 1; u++) {
+                $circles.children()[u].childNodes[0].style.background = 'transparent';
+            }
+
+            $circles.children()[number_position].childNodes[0].style.background = 'white';
+
+            cicleEventSlider = null;
+
+            eventCiclicle(number_position, 3500);
+
+        })
         
-        $background_image_template.css("background-image", slider_fotos[i]);
-        $content_text_template[0].innerHTML = slider_text[i];
+    }
 
-        // pintar a todos de blanco
-        for(var u = 0; u <=  $circles.children().length - 1; u++) {
-            $circles.children()[u].childNodes[0].style.background = 'transparent';
-        }
-
-        $circles.children()[i].childNodes[0].style.background = 'white';
-
-        i++;
-
-    }, timer);
+    eventCiclicle(1, 3500);
 
 }

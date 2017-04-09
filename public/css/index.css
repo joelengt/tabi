@@ -233,6 +233,7 @@ body {
   border-radius: 50%;
   border: 1.5px solid #fff;
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 .CoverForm__title--circles span article {
   background: transparent;
