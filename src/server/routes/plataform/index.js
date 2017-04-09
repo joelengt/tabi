@@ -541,43 +541,48 @@ route.post('/:code/pack-beneficios', function (req, res) {
 
     // left
     for(var u in pack_details.card.left) {
-        table_left += `<tr>
-                            <td>
-                                <p style="margin: 5px;">${ u }</p>
+        table_left += `<tr align="left">
+                            <td align="left" width="75%;">
+                                <p style="margin-bottom: 10px;">${ u }</p>
                             </td>
-                            <td>
-                                <p style="margin: 5px;">${ pack_details.card.left[`${u}`] }</p>
+                            <td align="left" width="25%;">
+                                <p style="margin-bottom: 10px;">${ pack_details.card.left[`${u}`] }</p>
                             </td>
                         </tr>`
     }
 
     // right
     for(var a in pack_details.card.right) {
-        table_right += `<tr>
-                            <td>
-                                <p style="margin: 5px;">${ a }</p>
+        table_right += `<tr align="left">
+                            <td align="left" width="75%;">
+                                <p style="margin-bottom: 10px;">${ a }</p>
                             </td>
-                            <td>
-                                <p style="margin: 5px;">${ pack_details.card.right[`${a}`] }</p>
+                            <td align="left" width="25%;">
+                                <p style="margin-bottom: 10px;">${ pack_details.card.right[`${a}`] }</p>
                             </td>
                         </tr>`
     }
 
     var template_pack = `<table width="100%" style="padding-top: 20px;padding-bottom: 20px;">
                             <tr>
-                                <td>
-                                    <b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura: ${ pack_details.title }</b>
+                                <td align="center">
+                                    <h2 style="font-size: 1.8rem; padding-bottom:.5rem; margin: 0; color: #017098;">${ pack_details.title }</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <b style="display: block; padding-bottom:1rem; margin: 0; color: #017098;">Tarjeta de asistencia</b>
                                 </td>
                             </tr>
                             <tr>
                                 <table width="100%">
                                     <th>
-                                        <td valign="top" width="50%">
+                                        <td align="left" valign="top" width="50%">
                                             <table width="100%">
                                                 ${ table_left }
                                             </table>
                                         </td>
-                                        <td valign="top" width="50%">
+                                        <td align="left" valign="top" width="50%">
                                             <table width="100%">
                                                 ${ table_right }
                                             </table>

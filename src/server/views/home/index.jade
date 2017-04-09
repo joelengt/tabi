@@ -61,106 +61,107 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     
     a(name="home" id="home")
     section(class="CoverForm")
-        div(class="CoverForm__title")
-            div(class="CoverForm__title--Content")
-                h2 Viaja, Disfruta, Explora 
-                h2 Disfruta de tu viaje
-                p Hacemos que tu seguridad este 100% Cubierta
+        div(class="CoverForm__box")
+            div(class="CoverForm__title")
+                div(class="CoverForm__title--Content")
+                    h2 Viaja, Disfruta, Explora 
+                    h2 Disfruta de tu viaje
+                    p Hacemos que tu seguridad este 100% Cubierta
 
-            div(class="CoverForm__title--circles")
-                span(class="CoverForm__title--circlesItem" data-position="0")
-                    article(style="background: white;")
-                span(class="CoverForm__title--circlesItem" data-position="1")
-                    article
-                span(class="CoverForm__title--circlesItem" data-position="2")
-                    article
-                span(class="CoverForm__title--circlesItem" data-position="3")
-                    article
+                div(class="CoverForm__title--circles")
+                    span(class="CoverForm__title--circlesItem" data-position="0")
+                        article(style="background: white;")
+                    span(class="CoverForm__title--circlesItem" data-position="1")
+                        article
+                    span(class="CoverForm__title--circlesItem" data-position="2")
+                        article
+                    span(class="CoverForm__title--circlesItem" data-position="3")
+                        article
 
-        
-        div(class="CoverForm__form")
-            article(class="CoverForm__form--input")
-                div(class="item  input__margin")
-                    label(for="input_origen") Origen
-                    select(id="input_origen")
-                      option(value="Perú") Perú
-                      option(value="Argentina") Argentina
-                      option(value="Mexico") Mexico
-                      option(value="España") España
+            
+            div(class="CoverForm__form")
+                article(class="CoverForm__form--input")
+                    div(class="item  input__margin")
+                        label(for="input_origen") Origen
+                        select(id="input_origen")
+                          option(value="Perú") Perú
+                          option(value="Argentina") Argentina
+                          option(value="Mexico") Mexico
+                          option(value="España") España
 
-                div(class="item  input__margin")
-                    label(for="input_destino") Destino
-                    select(id="input_destino")
-                      option(value="Europa") Europa
-                      option(value="Norte America") Norte America
-                      option(value="Sur America") Sur America
-                      option(value="America Central") America Central
-                      option(value="Caribe") Caribe
-                      option(value="Asia") Asia
-                      option(value="Africa") Africa
-                      option(value="Oceania") Oceania
+                    div(class="item  input__margin")
+                        label(for="input_destino") Destino
+                        select(id="input_destino")
+                          option(value="Europa") Europa
+                          option(value="Norte America") Norte America
+                          option(value="Sur America") Sur America
+                          option(value="America Central") America Central
+                          option(value="Caribe") Caribe
+                          option(value="Asia") Asia
+                          option(value="Africa") Africa
+                          option(value="Oceania") Oceania
 
 
-                div(class="item")
-                    label(for="input_tipo_viaje") Tipo de Viaje
-                    select(id="input_tipo_viaje")
-                      option(value="Turismo, Negocio") Turismo, Negocio
-                      option(value="Estudio") Estudio
-                      option(value="Work and Travel") Work and Travel
-                      option(value="Multiviaje") Multiviaje
+                    div(class="item")
+                        label(for="input_tipo_viaje") Tipo de Viaje
+                        select(id="input_tipo_viaje")
+                          option(value="Turismo, Negocio") Turismo, Negocio
+                          option(value="Estudio") Estudio
+                          option(value="Work and Travel") Work and Travel
+                          option(value="Multiviaje") Multiviaje
 
-            article(class="CoverForm__form--input")
-                div(class="item  input__margin")
-                    label(for="input_salida") Salida
-                    //- input(id="input_salida" name="salida" type="date")
-                    input(id="input_salida" name="salida" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
-                    div(class="iconToDate")
-                        img(src="./images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
+                article(class="CoverForm__form--input")
+                    div(class="item  input__margin")
+                        label(for="input_salida") Salida
+                        //- input(id="input_salida" name="salida" type="date")
+                        input(id="input_salida" name="salida" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
+                        div(class="iconToDate")
+                            img(src="./images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
 
-                div(class="item  input__margin")
-                    label(for="input_regreso") Regreso
-                    //- input(id="input_regreso" name="regreso" type="date")
-                    input(id="input_regreso" name="regreso" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
-                    div(class="iconToDate")
-                        img(src="./images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
+                    div(class="item  input__margin")
+                        label(for="input_regreso") Regreso
+                        //- input(id="input_regreso" name="regreso" type="date")
+                        input(id="input_regreso" name="regreso" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
+                        div(class="iconToDate")
+                            img(src="./images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
 
-                div(class="item")
-                    label(for="input_dias") Dias
-                    input(id="input_dias" name="dias" type="text" value="1" disabled)
+                    div(class="item")
+                        label(for="input_dias") Dias
+                        input(id="input_dias" name="dias" type="text" value="1" disabled)
 
-            article(class="CoverForm__form--input")
-                div(class="item  input__margin")
-                    label(for="input_pasajero") Pasajero (0 - 74)
-                    div(class="counter")
-                        aside(class="counter__left" id="left_counter_minus") 
-                            p -
-                        input(id="input_pasajero" name="pasajero" type="number" value="1" style="text-align: center;")
-                        aside(class="counter__right" id="left_counter_plus") 
-                            p +
+                article(class="CoverForm__form--input")
+                    div(class="item  input__margin")
+                        label(for="input_pasajero") Pasajero (0 - 74)
+                        div(class="counter")
+                            aside(class="counter__left" id="left_counter_minus") 
+                                p -
+                            input(id="input_pasajero" name="pasajero" type="number" value="1" style="text-align: center;")
+                            aside(class="counter__right" id="left_counter_plus") 
+                                p +
 
-                div(class="item  input__margin")
-                    label(for="input_adulto_mayor") Adulto Mayor (75 - 84)
-                    div(class="counter")
-                        aside(class="counter__left" id="right_counter_minus") 
-                            p -
-                        input(id="input_adulto_mayor" name="adulto_mayor" type="number" value="0" style="text-align: center;")
-                        aside(class="counter__right" id="right_counter_plus") 
-                            p +
+                    div(class="item  input__margin")
+                        label(for="input_adulto_mayor") Adulto Mayor (75 - 84)
+                        div(class="counter")
+                            aside(class="counter__left" id="right_counter_minus") 
+                                p -
+                            input(id="input_adulto_mayor" name="adulto_mayor" type="number" value="0" style="text-align: center;")
+                            aside(class="counter__right" id="right_counter_plus") 
+                                p +
 
-                div(class="item")
-                    label(for="input_code_promocion") Código Promoción
-                    input(id="input_code_promocion" name="code_promocion" type="text")
+                    div(class="item")
+                        label(for="input_code_promocion") Código Promoción
+                        input(id="input_code_promocion" name="code_promocion" type="text")
 
-            article(class="CoverForm__form--input")
-                div(class="item  input__email")
-                    label(for="email") Correo
-                    input(id="email" name="email" type="email")
+                article(class="CoverForm__form--input")
+                    div(class="item  input__email")
+                        label(for="email") Correo
+                        input(id="email" name="email" type="email")
 
-                div(class="item  btnCotizar")
-                    button(id="btnFormCotizar") Cotizar
+                    div(class="item  btnCotizar")
+                        button(id="btnFormCotizar") Cotizar
 
-            article
-                p(id="message_error" style="display: none;") Error: mensaje campos no validos
+                article
+                    p(id="message_error" style="display: none;") Error: mensaje campos no validos
 
     
     a(name="conocenos" id="conocenos")

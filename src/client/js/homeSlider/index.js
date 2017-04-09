@@ -23,7 +23,7 @@ export function cicleSlider() {
     ];
 
     // Obtener background dom
-    var $background_image_template = $('.CoverForm');
+    var $background_image_template = $('.CoverForm__box');
     var $content_text_template = $('.CoverForm__title--Content');
     var $circles = $('.CoverForm__title--circles');
 
@@ -56,7 +56,7 @@ export function cicleSlider() {
 
         $('.CoverForm__title--circlesItem').click(function() {
             
-            var $background_image_template = $('.CoverForm');
+            var $background_image_template = $('.CoverForm__box');
             var $content_text_template = $('.CoverForm__title--Content');
             var $circles = $('.CoverForm__title--circles');
 

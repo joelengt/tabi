@@ -122,8 +122,15 @@ function generatePDF(user, pack_details, venta, callback) {
                                       <td>
                                         <table width="100%" style="padding-top: 20px;padding-bottom: 20px;">
                                           <tr>
-                                            <td><b style="margin: 0; border-bottom: 1px solid #017098; color: #017098;">Detalle de Cobertura: ${ pack_details.title }</b></td>
+                                            <td align="left">
+                                                <h2 style="font-size: 12px; padding-bottom:.2rem; margin: 0; color: #017098;">${ pack_details.title }</h2>
+                                            </td>
                                           </tr>
+                                          <tr>
+                                            <td align="left">
+                                                <b style="display: block; padding-bottom:.2rem; margin: 0; color: #017098;">Tarjeta de asistencia</b>
+                                            </td>
+                                          </t r>
                                           <tr>
                                             <td valign="top" width="50%">
                                               <table width="100%"> ${ table_left } </table>
@@ -141,8 +148,14 @@ function generatePDF(user, pack_details, venta, callback) {
                                       </td>
                                     </tr>
                                     <tr>
+                                      <td>
+                                        <p style="font-size: 8px">Las llamadas deben efectuarse desde teléfonos fijos. En caso de que le facturen la llamada, solicite y guarde un comprobante, le reembolsaremos el costo de la misma. También puede comunicarse con nosotros vía email:
+                                        <b style="font-size: 8px">autorizaciones@assistabi.com</b> o a través del <b style="font-size: 8px">Whatsapp : +5491135869793</b></p>
+                                      </td>
+                                    </tr>
+                                    <tr>
                                       <td align="center">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 350px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 280px;">
                                           <tr>
                                             <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
                                           </tr>
