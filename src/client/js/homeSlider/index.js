@@ -1,10 +1,10 @@
 export function cicleSlider() {
 
     var slider_fotos = [
-        "url('../images/cover-slider/3.jpg')",
-        "url('../images/cover-slider/4.jpg')",
-        "url('../images/cover-slider/5.jpg')",
-        "url('../images/cover-slider/7.jpg')"
+        "url('../images/cover-slider/2--.jpg')",
+        "url('../images/cover-slider/1--.jpg')",
+        "url('../images/cover-slider/3--.jpg')",
+        "url('../images/cover-slider/4--.jpg')"
     ];
 
     var slider_text = [

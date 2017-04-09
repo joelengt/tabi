@@ -68,7 +68,7 @@ function calDays() {
 
 eventClickItems();
 pay();
-sendFormContact();
+// sendFormContact();
 
 
 
