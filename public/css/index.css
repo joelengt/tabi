@@ -271,6 +271,7 @@ body {
   display: inline-block;
   width: 33%;
   position: relative;
+/* Select arrow styling */
 }
 .CoverForm__form--input .item label {
   display: block;
@@ -325,6 +326,31 @@ body {
   font-size: 0.8rem;
   height: 38px;
   border: 5px;
+  outline: none;
+/* remove focus ring from Webkit */
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.CoverForm__form--input .item select::after {
+  content: "▼";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 60%;
+  line-height: 30px;
+  padding: 0 7px;
+  background: #bbb;
+  color: #f00;
+  pointer-events: none;
+  -webkit-border-radius: 0 6px 6px 0;
+  -moz-border-radius: 0 6px 6px 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 .CoverForm__form--input .item .iconToDate {
   position: absolute;
