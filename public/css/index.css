@@ -398,6 +398,7 @@ body {
 }
 .AboutUs__bottom--text h2 {
   font-size: 3.5rem;
+  font-family: 'Montserrat-SemiBold', 'Arial', sans-serif;
 }
 .AboutUs__bottom--text p {
   font-size: 1.3rem;
@@ -433,6 +434,7 @@ body {
 }
 .AboutUs__bottom--icon .item .text h3 {
   font-size: 1.5rem;
+  font-family: 'Montserrat-Bold', 'Arial', sans-serif;
 }
 .AboutUs__bottom--icon .item .text p {
   font-size: 1.1rem;
@@ -480,6 +482,7 @@ body {
 .Benefits__box h2,
 .Benefits__title h2 {
   font-size: 3rem;
+  font-family: 'Montserrat-SemiBold', 'Arial', sans-serif;
 }
 .Benefits__Content--item {
   width: 30%;
@@ -554,6 +557,7 @@ body {
 }
 .ContactForm__text h2 {
   font-size: 3.5rem;
+  font-family: 'Montserrat-SemiBold', 'Arial', sans-serif;
 }
 .ContactForm__text p {
   font-size: 1.5rem;
