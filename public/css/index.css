@@ -384,6 +384,8 @@ body {
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
+  -webkit-box-shadow: rgba(255,255,255,0.21) 1px 1px 1px;
+  box-shadow: rgba(255,255,255,0.21) 1px 1px 1px;
 }
 .AboutUs {
   height: 100vh;
