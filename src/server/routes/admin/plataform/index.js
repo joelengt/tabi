@@ -6,6 +6,9 @@ var Purchases = require('../../../models/purchares/index.js');
 
 var config = require('../../../../../config/index.js')
 
+var generadorDescuentoController = require('../../../controllers/GeneradorDescuento/index.js');
+var GeneradorDescuento = new generadorDescuentoController();
+
 const fs = require('fs');
 const htmlTo = require('html2xlsx');
 
@@ -306,7 +309,49 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
 
         }
     })
+    
+})
 
+
+
+// Routes generator descuento - list
+route.get('/generator/list', function (req, res) {
+    // do something with req.user
+
+    res.status(200).json({
+        status: 'list'
+    })
+    
+})
+
+// Routes generator descuento - create
+route.post('/generator/create', function (req, res) {
+    // do something with req.user
+
+    res.status(200).json({
+        status: 'create'
+    })
+    
+})
+
+// Routes generator descuento - id
+route.get('/generator/:id', function (req, res) {
+    // do something with req.user
+
+    res.status(200).json({
+        status: 'id'
+    })
+    
+})
+
+// Routes generator descuento - delete
+route.delete('/generator/:id/delete', function (req, res) {
+    // do something with req.user
+
+    res.status(200).json({
+        status: 'delete'
+    })
+    
 })
 
 module.exports = route;
