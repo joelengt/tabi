@@ -7,7 +7,8 @@ export function eventClickItems() {
         var id = $('.PricingElements').data('id');
 
         var data2 = {
-            pack_title: this.dataset.pack
+            pack_title: this.dataset.pack,
+            pack_selected_price: this.dataset.price
         }
 
         // event ajax

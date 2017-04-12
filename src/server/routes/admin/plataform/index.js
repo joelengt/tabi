@@ -3,6 +3,7 @@ var passport = require('passport')
 
 var route = express.Router();
 var Purchases = require('../../../models/purchares/index.js');
+var Cupones = require('../../../models/cupones/index.js');
 
 var config = require('../../../../../config/index.js')
 
@@ -316,21 +317,78 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
 
 // Routes generator descuento - list
 route.get('/generator/list', function (req, res) {
-    // do something with req.user
 
-    res.status(200).json({
-        status: 'list'
+    Cupones.find((err, cupones) => {
+        if(err) {
+            return res.status(500).json({
+                status: 'error',
+                error: err
+            })
+        }
+
+        res.status(200).json({
+            status: 'ok',
+            cupones: cupones
+        })
+
     })
     
 })
 
 // Routes generator descuento - create
 route.post('/generator/create', function (req, res) {
-    // do something with req.user
 
-    res.status(200).json({
-        status: 'create'
-    })
+    var data = {
+        title:            req.body.cupon_title,
+        numero_descuento: req.body.cupon_numero_descuento
+    }
+
+    data.title = data.title.toUpperCase();
+
+    if (data.title !== '' &&
+        data.numero_descuento !== '') {
+
+        var cupon = new Cupones(data);
+
+        cupon.save((err, saved) => {
+            if(err) {
+                return res.status(500).json({
+                    status: 'error',
+                    message: 'Error al guardar el cupoon',
+                    err: err
+                })
+            }
+
+            Cupones.find((err, cupones) => {
+                if(err) {
+                    return res.status(500).json({
+                        status: 'error',
+                        error: err
+                    })
+                }
+
+                console.log('CUPONES');
+                console.log(cupones);
+
+                res.render('./admin/plataforma/descuento/index.jade', {
+                    status: 'ok',
+                    cupones: cupones,
+                    message: 'El cupon fue creado'
+                })
+
+            })
+
+        })
+
+    } else {
+
+        res.render('./admin/plataforma/descuento/index.jade', {
+            status: 'bad request',
+            message: 'Los campos deben tener contenido válido'
+        })
+
+    }
+    
     
 })
 
@@ -338,8 +396,21 @@ route.post('/generator/create', function (req, res) {
 route.get('/generator/:id', function (req, res) {
     // do something with req.user
 
-    res.status(200).json({
-        status: 'id'
+    var cupon_id = req.params.id;
+
+    Cupones.findById({'_id': cupon_id}, (err, cupon) => {
+        if(err) {
+            return res.status(500).json({
+                status: 'error',
+                error: err
+            })
+        }
+
+        res.status(200).json({
+            status: 'ok',
+            cupon: cupon
+        })
+
     })
     
 })
@@ -348,8 +419,60 @@ route.get('/generator/:id', function (req, res) {
 route.delete('/generator/:id/delete', function (req, res) {
     // do something with req.user
 
-    res.status(200).json({
-        status: 'delete'
+    var cupon_id = req.params.id;
+
+    Cupones.remove({'_id': cupon_id}, (err, cupon) => {
+        if(err) {
+            return res.status(500).json({
+                status: 'error',
+                error: err
+            })
+        }
+
+        Cupones.find((err, cupones) => {
+            if(err) {
+                return res.status(500).json({
+                    status: 'error',
+                    error: err
+                })
+            }
+
+            console.log('CUPONES');
+            console.log(cupones);
+
+            res.render('./admin/plataforma/descuento/index.jade', {
+                status: 'ok',
+                cupones: cupones,
+                message: `El cupon fue eliminado`
+            })
+
+        })
+
+    })
+})
+
+// render view cupones
+route.get('/generator/template/view', function (req, res) {
+    // do something with req.user
+    console.log('render vire');
+
+    Cupones.find((err, cupones) => {
+        if(err) {
+            return res.status(500).json({
+                status: 'error',
+                error: err
+            })
+        }
+
+        console.log('CUPONES');
+        console.log(cupones);
+
+        res.render('./admin/plataforma/descuento/index.jade', {
+            status: 'ok',
+            cupones: cupones
+        })
+
+
     })
     
 })

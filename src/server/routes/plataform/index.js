@@ -2,6 +2,8 @@ var express = require('express');
 var route = express.Router();
 
 var Purchases = require('../../models/purchares/index.js');
+var Cupones = require('../../models/cupones/index.js');
+
 var config = require('../../../../config/index.js')
 var permiso = config.variables.typeUser
 
@@ -294,34 +296,78 @@ route.post('/validate', function (req, res) {
     if(data !== null) {
         console.log('hay datos');
 
-        // guardar los campos en la db
-        var purchare = new Purchases({
-            cotizator: {
-                origen:        data.origen,
-                destino:       data.destino,
-                tipo_viaje:    data.tipo_viaje,
-                salida:        data.salida,
-                regreso:       data.regreso,
-                dias:          data.dias,
-                pasajero:      data.pasajero,
-                adulto_mayor:  data.adulto_mayor,
-                promocion:     data.promocion,
-                email:         data.email
-            }
-        });
+        // validando cupon
+        if(data.promocion !== '') {
+            Cupones.findOne({'title': data.promocion}, (err, cupon) => {
+                if(err) {
+                    
+                    console.log('NO SE ENCONTRO EL CUPON');
 
-        purchare.save((err, saved) => {
-            if(err) {
-                return console.log(err);
-            }
+                }
+                console.log('CUPOON encontrado')
+                console.log(cupon);
+                // guardar los campos en la db
+                var purchare = new Purchases({
+                    cotizator: {
+                        origen:        data.origen,
+                        destino:       data.destino,
+                        tipo_viaje:    data.tipo_viaje,
+                        salida:        data.salida,
+                        regreso:       data.regreso,
+                        dias:          data.dias,
+                        pasajero:      data.pasajero,
+                        adulto_mayor:  data.adulto_mayor,
+                        promocion:     data.promocion,
+                        email:         data.email
+                    }
+                });
 
-            // retornar el id de creacion
-            return res.status(200).json({
-                status: 'ok',
-                code: saved._id
+                purchare.save((err, saved) => {
+                    if(err) {
+                        return console.log(err);
+                    }
+
+                    // retornar el id de creacion
+                    return res.status(200).json({
+                        status: 'ok',
+                        code: saved._id
+                    });
+
+                })
+
+            })
+
+        } else {
+
+            // guardar los campos en la db
+            var purchare = new Purchases({
+                cotizator: {
+                    origen:        data.origen,
+                    destino:       data.destino,
+                    tipo_viaje:    data.tipo_viaje,
+                    salida:        data.salida,
+                    regreso:       data.regreso,
+                    dias:          data.dias,
+                    pasajero:      data.pasajero,
+                    adulto_mayor:  data.adulto_mayor,
+                    promocion:     data.promocion,
+                    email:         data.email
+                }
             });
 
-        })
+            purchare.save((err, saved) => {
+                if(err) {
+                    return console.log(err);
+                }
+
+                // retornar el id de creacion
+                return res.status(200).json({
+                    status: 'ok',
+                    code: saved._id
+                });
+
+            })
+        }
 
     } else {
         console.log('NO hay datos');
@@ -488,6 +534,12 @@ route.get('/:code', function (req, res) {
             // Calculando cantidad de pasajeros
             var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
 
+            // Validando descuento
+
+
+            // Almacenando en la db
+
+
             // devolver los campos guardados
             res.render('./plataforma/pricing/index.jade', {
                 code: code,
@@ -610,6 +662,7 @@ route.post('/:code/pack-beneficios', function (req, res) {
 route.post('/:code/purchare/buy-form', function (req, res) {
     var code = req.params.code;
     var pack_selected = req.body.pack_title;
+    var pack_selected_price = req.body.pack_selected_price;
 
     // buscar al usuario en la db, por el id
     Purchases.findOne({'_id': code}, (err, user) => {
@@ -650,7 +703,9 @@ route.post('/:code/purchare/buy-form', function (req, res) {
 
             // Obteniendo tarifa
             user.pack_selected.dias = result_filter_tarifa[0].days;
-            user.pack_selected.tarifa = result_filter_tarifa[0].tarifa;
+
+            // Actualizando tarifa seleccionada 
+            user.pack_selected.tarifa = pack_selected_price + '.00'
 
 
             console.log('datos del filtro');

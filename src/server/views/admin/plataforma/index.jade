@@ -48,6 +48,13 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                 div(class="Admin__box__right")
                     form(action="#{sources.pay}")
                         button(class="button") Usuarios pagos
+                
+                div(class="Admin__box__right")
+                    br
+                    p Cupones de Descuento
+
+                    form(action="/admin/generator/template/view")
+                        button(class="button") Cupones
 
 
     script(src='../../js/jquery-1.9.1.js')
