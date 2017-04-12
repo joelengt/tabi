@@ -90,6 +90,9 @@ export function sendFormCotizar() {
                     } else {
                         console.log('error');
                     }
+                },
+                error: function (err) {
+                    console.log('error', err);
                 }
             })
        }

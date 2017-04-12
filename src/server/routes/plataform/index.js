@@ -299,13 +299,10 @@ route.post('/validate', function (req, res) {
         // validando cupon
         if(data.promocion !== '') {
             Cupones.findOne({'title': data.promocion}, (err, cupon) => {
-                if(err) {
                     
-                    console.log('NO SE ENCONTRO EL CUPON');
-
-                }
                 console.log('CUPOON encontrado')
                 console.log(cupon);
+
                 // guardar los campos en la db
                 var purchare = new Purchases({
                     cotizator: {
@@ -504,49 +501,108 @@ route.get('/:code', function (req, res) {
 
             var new_final_price = [];
 
-            for(var t = 0; t <= respaldo_filter.length - 1; t++) {
-                var element_respaldo = respaldo_filter[t];
+            if(user.cotizator.promocion !== '' &&
+               user.cotizator.promocion !== undefined &&
+               user.cotizator.promocion !== null) {
 
-                var tarifa_cant_pasajero = '';
-                tarifa_cant_pasajero = Number(element_respaldo.pack.tarifa) * Number(user.cotizator.pasajero);
+                Cupones.findOne({'title': user.cotizator.promocion}, (err, cupon) => {
+                        
+                    console.log('CUPOON encontrado')
+                    console.log(cupon);
+                    
+                    var descuento = 0;
 
-                var value_viejos = 0;
-                if(filter_do[t] !== undefined) {
-                    value_viejos = Number(filter_do[t].pack.tarifa);
+                    for(var t = 0; t <= respaldo_filter.length - 1; t++) {
+                        var element_respaldo = respaldo_filter[t];
+
+                        var tarifa_cant_pasajero = '';
+                        tarifa_cant_pasajero = Number(element_respaldo.pack.tarifa) * Number(user.cotizator.pasajero);
+
+                        var value_viejos = 0;
+                        if(filter_do[t] !== undefined) {
+                            value_viejos = Number(filter_do[t].pack.tarifa);
+                        }
+
+                        var value_price = Number(value_viejos + Number(tarifa_cant_pasajero));
+
+                        descuento = 0;
+
+                        if(cupon !== null && cupon !== undefined) {
+                            descuento = Number(value_price) * (Number(cupon.numero_descuento)/100)
+                            
+                        }
+
+                        new_final_price.push({
+                            title: element_respaldo.title,
+                            pack: {
+                                days: element_respaldo.pack.days,
+                                tarifa: String(value_price - descuento)
+                            }
+                        });
+
+                    }
+
+                    console.log('ORIGINAL');
+                    console.log(elements_filter);
+
+                    console.log('RESULTADO');
+                    console.log(filter_do);
+
+                    // Calculando cantidad de pasajeros
+                    var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
+
+                    // devolver los campos guardados
+                    res.render('./plataforma/pricing/index.jade', {
+                        code: code,
+                        purchase: user.cotizator,
+                        packs: new_final_price,
+                        cant_pasajeros: cant_pasajeros
+                    });
+
+                })
+
+            } else {
+
+                for(var t = 0; t <= respaldo_filter.length - 1; t++) {
+                    var element_respaldo = respaldo_filter[t];
+
+                    var tarifa_cant_pasajero = '';
+                    tarifa_cant_pasajero = Number(element_respaldo.pack.tarifa) * Number(user.cotizator.pasajero);
+
+                    var value_viejos = 0;
+                    if(filter_do[t] !== undefined) {
+                        value_viejos = Number(filter_do[t].pack.tarifa);
+                    }
+
+                    new_final_price.push({
+                        title: element_respaldo.title,
+                        pack: {
+                            days: element_respaldo.pack.days,
+                            tarifa: String(value_viejos + Number(tarifa_cant_pasajero))
+                        }
+                    });
+
                 }
 
-                new_final_price.push({
-                    title: element_respaldo.title,
-                    pack: {
-                        days: element_respaldo.pack.days,
-                        tarifa: String(value_viejos + Number(tarifa_cant_pasajero))
-                    }
+                console.log('ORIGINAL');
+                console.log(elements_filter);
+
+                console.log('RESULTADO');
+                console.log(filter_do);
+
+                // Calculando cantidad de pasajeros
+                var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
+
+                // devolver los campos guardados
+                res.render('./plataforma/pricing/index.jade', {
+                    code: code,
+                    purchase: user.cotizator,
+                    packs: new_final_price,
+                    cant_pasajeros: cant_pasajeros
                 });
 
             }
 
-            console.log('ORIGINAL');
-            console.log(elements_filter);
-
-            console.log('RESULTADO');
-            console.log(filter_do);
-
-            // Calculando cantidad de pasajeros
-            var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
-
-            // Validando descuento
-
-
-            // Almacenando en la db
-
-
-            // devolver los campos guardados
-            res.render('./plataforma/pricing/index.jade', {
-                code: code,
-                purchase: user.cotizator,
-                packs: new_final_price,
-                cant_pasajeros: cant_pasajeros
-            });
         }
     })
     
@@ -705,8 +761,7 @@ route.post('/:code/purchare/buy-form', function (req, res) {
             user.pack_selected.dias = result_filter_tarifa[0].days;
 
             // Actualizando tarifa seleccionada 
-            user.pack_selected.tarifa = pack_selected_price + '.00'
-
+            user.pack_selected.tarifa = pack_selected_price;
 
             console.log('datos del filtro');
             console.log(result_filter_tarifa);
