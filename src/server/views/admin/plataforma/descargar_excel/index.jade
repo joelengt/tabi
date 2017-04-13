@@ -39,33 +39,16 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
         div(class="Admin_box Admin")
             div(class="actions")
-                p Descargar
+                p Descargar: #{ filter }
+
+                div(class="Admin__box__left")
+                    form(action="#{sources.all}")
+                        button(class="button") Todos los usuarios
                 
                 div(class="Admin__box__right")
+                    form(action="#{sources.pay}")
+                        button(class="button") Usuarios pagos
 
-                    form(action="/admin/plataforma/usuarios" method="get")
-                        select(id="input_select_mes" name="mes")
-                            option(value="todos") todos
-                            option(value="enero") enero
-                            option(value="febrero") febrero
-                            option(value="marzo") marzo
-                            option(value="abril") abril
-                            option(value="mayo") mayo
-                            option(value="junio") junio
-                            option(value="julio") julio
-                            option(value="agosto") agosto
-                            option(value="septiembre") septiembre
-                            option(value="octubre") octubre
-                            option(value="noviembre") noviembre
-                            option(value="diciembre") diciembre
-                        button(class="button") Usuarios
-
-                div(class="Admin__box__right")
-                    br
-                    p Cupones de Descuento
-
-                    form(action="/admin/generator/template/view")
-                        button(class="button") Cupones
 
 
     script(src='../../js/jquery-1.9.1.js')
