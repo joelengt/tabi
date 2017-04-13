@@ -76,7 +76,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                       <td align="center">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                           <tr>
-                                            <td style="text-align: left; padding-top: 30px;" width="50%"><a href="http://www.integra.com.pe/" target="_blank" style="display: inline-block;"><img src="http://assistabi.com/images/logo.png" alt="AFP Integra" width="400" class="afp"/></a></td>
+                                            <td style="text-align: left; padding-top: 30px;" width="50%"><a href="http://www.integra.com.pe/" target="_blank" style="display: inline-block;"><img src="https://assistabi.com/images/logo.png" alt="AFP Integra" width="400" class="afp"/></a></td>
                                             <td style="text-align: left; padding-top: 30px;" width="50%">
                                               <p style="margin: 0;"><b style="color: #017098;">VOUCHER ${ venta.numero_pedido }</b></p>
                                               <p style="margin: 0;">ticket: ${ venta.ticket }</p>
@@ -212,7 +212,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                     </tr>
                                     <tr>
                                       <td>
-                                        <p style="margin: 0;">En la página 1 del presente voucher encontrará un listado completo de los números de acceso de la central de asistencia Assistabi.. Consulte en el listado el número de la central más próxima. SI no hubiese un número de acceso en el país en que Ud. se encuentra, comuníquese por el sistema COBRO REVERTIDO (COLLECT CALL en inglés). Si el país en donde Ud. se encuentra no admite el sistema de comunicación COBRO REVERTIDO, efectúe la llamada a su cargo y a su regreso presente el comprobante a Assistabi para su reembolso. Las centrales de asistencia atienden las 24hs. Antes de llamar para solicitar nuestros servicios, tenga a mano la siguiente información:. Su voucher, tarjeta o credencial. Número de teléfono de donde se encuentra (incluyendo código de país y código de ciudad). Los datos del lugar en que se encuentra (domicilio, hotel, etc.)</p>
+                                        <p style="margin: 0;">En la página 1 del presente voucher encontrará un listado completo de los números de acceso de la central de asistencia Assistabi. Consulte en el listado el número de la central más próxima. SI no hubiese un número de acceso en el país en que Ud. se encuentra, comuníquese por el sistema COBRO REVERTIDO (COLLECT CALL en inglés). Si el país en donde Ud. se encuentra no admite el sistema de comunicación COBRO REVERTIDO, efectúe la llamada a su cargo y a su regreso presente el comprobante a Assistabi para su reembolso. Las centrales de asistencia atienden las 24hs. Antes de llamar para solicitar nuestros servicios, tenga a mano la siguiente información:. Su voucher, tarjeta o credencial. Número de teléfono de donde se encuentra (incluyendo código de país y código de ciudad). Los datos del lugar en que se encuentra (domicilio, hotel, etc.)</p>
                                       </td>
                                     </tr>
                                     <tr>
@@ -242,7 +242,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                     </tr>
                                     <tr>
                                       <td>
-                                        <p>Condiciones Generales de Contratacion disponibles en <a style="color: #017098;" href="https://assistabi.com/terminos_condiciones.pdf">https://assistabi.com/terminos_condiciones.pdf</a></p>
+                                        <p>Condiciones Generales de Contratacion disponibles en <a style="color: #017098;" href="https://assistabi.com/CondicionesGeneralesTabiAssist.pdf">https://assistabi.com/CondicionesGeneralesTabiAssist.pdf</a></p>
                                       </td>
                                     </tr>
                                   </table>
@@ -252,7 +252,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                 <td>
                                   <table width="100%" align="left" style="padding-bottom: 10px;">
                                     <tr>
-                                      <td width="30%" style="font-family: Arial;" class="cell-enlace"><a style="color: #017098; text-decoration: none; font-size: 10px;" href="http://www.assistabi.com/" target="_blank">www.assistabi.com</a></td>
+                                      <td width="30%" style="font-family: Arial;" class="cell-enlace"><a style="color: #017098; text-decoration: none; font-size: 10px;" href="https://www.assistabi.com/" target="_blank">assistabi.com</a></td>
                                       <td width="70%" class="cell-icons">
                                         <table>
                                           <tr>

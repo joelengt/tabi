@@ -169,6 +169,7 @@ body {
 }
 .HeaderMain__NavMain__Container ul {
   display: inline-block;
+  padding-right: 1rem;
 }
 .HeaderMain__NavMain__Container ul li {
   display: inline-block;
@@ -642,7 +643,7 @@ body {
   overflow: hidden;
   color: #fff;
   padding: 0 50px;
-  padding-top: 60px;
+  padding-top: 40px;
 }
 .FooterMain p,
 .FooterMain a {

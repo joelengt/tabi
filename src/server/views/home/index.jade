@@ -34,6 +34,18 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
         div(class="HeaderMain__NavMain")
             nav(class="HeaderMain__NavMain__Container")
+                ul
+                    li
+                        span(href="#home" data-ancla="what") Home
+                    li
+                        span(href="#conocenos" data-ancla="conocenos") Conócenos
+                    li
+                        span(href="#beneficios" data-ancla="beneficios") Beneficios
+                    li
+                        a(href="/plataform-pricing/get/forget-pdf" id="btnNavPDF") Recuperar Póliza
+                    li
+                        span(href="#contactanos" data-ancla="contactanos") Escríbenos
+
                 div(class="HeaderMain__NavMain__Container--item")
                     figure
                         a(href="#")
@@ -47,17 +59,6 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                         a(href="#")
                             img(src="./images/redes-sociales/instragam.png")
 
-                ul
-                    li
-                        a(href="/plataform-pricing/get/forget-pdf" id="btnNavPDF") Recuperar Poliza
-                    li
-                        span(href="#home" data-ancla="what") Home
-                    li
-                        span(href="#conocenos" data-ancla="conocenos") Conócenos
-                    li
-                        span(href="#beneficios" data-ancla="beneficios") Beneficios
-                    li
-                        span(href="#contactanos" data-ancla="contactanos") Escribenos
     
     a(name="home" id="home")
     section(class="CoverForm")
@@ -294,9 +295,11 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
                 article(class="FooterMain__left--text")
                     span
-                        a(href="#terminos-condiciones") Terminos y Condiciones
+                        a(href="/preguntas_frecuentes_TabiAssist.pdf" target="_blank") Preguntas Frecuentes
                     span
-                        a(href="#terminos-condiciones") Politicas de Privacidad
+                        a(href="/CondicionesGeneralesTabiAssist.pdf" target="_blank") Terminos y Condiciones
+                    span
+                        a(href="/PoliticaPrivacidadTabi.pdf" target="_blank") Politicas de Privacidad
 
 
     script(src='./js/jquery-1.9.1.js')
