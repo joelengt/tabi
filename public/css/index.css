@@ -654,7 +654,7 @@ body {
   text-align: left;
 }
 .FooterMain__right--logo {
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 }
 .FooterMain__right--logo figure {
   width: 130px;
@@ -670,7 +670,7 @@ body {
 }
 .FooterMain__right--redes-sociales--item figure {
   width: 20px;
-  margin-right: 0.5rem;
+  margin-right: 0.7rem;
 }
 .FooterMain__right--redes-sociales--item figure img {
   max-width: 100%;
