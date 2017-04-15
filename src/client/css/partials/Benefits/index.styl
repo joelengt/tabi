@@ -1,0 +1,70 @@
+
+.Benefits
+    // background red
+    height 110vh
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-image url('../images/Benefits/4.png')
+    background-size cover
+    background-repeat no-repeat
+    color blue_brand
+    
+    &__box
+    
+    &__title
+        text-align center
+        padding-bottom 2rem
+        padding-top: 3rem;
+        
+        h2
+            font-size 3rem
+            font-family 'Montserrat-SemiBold', 'Arial', sans-serif
+    
+    &__Content
+        
+        &--item
+            // background salmon
+            width 30%
+            display inline-block
+            margin 10px
+            padding 1rem 0
+            margin-bottom 2rem
+            
+            figure
+                width 20%
+                display inline-block
+                vertical-align top
+                
+                img
+                    max-width 100%
+            
+            .text
+                width 60%
+                display inline-block
+                vertical-align top
+                text-align left
+                
+                h3
+                    font-size 1.3rem
+                    text-transform uppercase
+
+                p 
+                    font-size 1rem
+                    padding-top: .5rem;
+                    
+@media screen and (max-width 767px)
+    .Benefits
+        height auto
+        &__title
+            padding 0
+        &__Content
+            &--item
+                display block
+                width 90%
+                margin 0 auto
+                .image
+                    margin-right 2%

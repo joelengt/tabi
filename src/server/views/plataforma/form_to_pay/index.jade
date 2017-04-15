@@ -1,0 +1,304 @@
+doctype strict
+html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
+  head
+    meta(charset='utf-8')
+    //- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='robots', content='noodp,noydir')
+    meta(name='viewport', content='width=device-width, minimum-scale=1, maximum-scale=1')
+    meta(name='description', content='Tabi Assist - Viaja, Disfruta, Explora')
+    title Tabi Assist
+    link(rel='icon', type='image/png', href='../../favicon.png')
+
+    //- Facebook
+    meta(property='og:title', content='Tabi Assist')
+    meta(property='og:description', content='Viaja, Disfruta, Explora')
+    meta(property='og:image', content='/og_image.jpg')
+    meta(property='og:type', content='website')
+    meta(property='og:url', content='/')
+    //- Styles
+    link(rel='stylesheet', href='../../css/index.css')
+    
+    style.
+      .text-content{
+      font-family: Arial !important;
+      color: black !important;
+      }
+      .small-text{
+      font-family: Arial !important;
+      font-size: 9px !important;
+      color: #989898 !important;
+      }
+      .text-meses{
+      font-weight: bold !important;
+      color: #989898 !important;
+      }
+      .afp{
+      max-width: 200px;
+      }
+    //- if lt IE 9
+      script(src='./js/html5shiv.js')
+    //- if lt IE 9
+      script(src='./js/respond.src.js')
+    //- if lt IE 9
+      link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+  body
+    header(class="HeaderMain")
+        div(class="HeaderMain__LogoMain")
+            figure(class="HeaderMain__LogoMain__box")
+                img(src="../../images/logo.png")
+
+
+    section(class="FormToPay" data-id="#{code}")
+        //- div(class="FormToPay__title")
+        //-     //- h2 #{pack.title}
+
+        div(class="FormToPay__box")
+            div(class="FormToPay__form")
+
+                div(class="FormToPay__form--section")
+                    article(class="FormToPay__form--input section--title")
+                        p Datos del pasajero
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_nombres") Nombres
+                          input(id="input_nombres" name="salida" type="text")
+
+                      div(class="item  input__margin")
+                          label(for="input_apellidos") Apellidos
+                          input(id="input_apellidos" name="regreso" type="text")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item")
+                            label(for="input_tipo_doc") Tipo de Documento
+                            select(id="input_tipo_doc")
+                              option(value="DNI") DNI
+                              option(value="Pasaporte") Pasaporte
+                              option(value="Carnet de Extranjeria") Carnet de Extranjeria
+
+                      div(class="item  input__margin")
+                          label(for="input_doc_number") Numero de Documento
+                          input(id="input_doc_number" name="salida" type="text")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_fecha_nacimiento") Fecha de Nacimiento
+                          //- input(id="input_fecha_nacimiento" name="regreso" type="date")
+                          input(id="input_fecha_nacimiento" name="input_fecha_nacimiento" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
+                          div(class="iconToDate")
+                              img(src="../../images/ic_calendar@2x.png" alt="Date Picker" id="datepickericon")
+
+                      div(class="item")
+                          label(for="input_email") Email
+                          input(id="input_email" name="dias" type="email")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_domicilio") Domicilio
+                          input(id="input_domicilio" name="domicilio" type="text")
+                      div(class="item  input__margin")
+                          label(for="input_telefono") Teléfono
+                          input(id="input_telefono" name="telefono" type="tel")
+
+                div(class="FormToPay__form--section")
+                    article(class="FormToPay__form--input  section--title")
+                        p Contactos de Emergencia
+                    article(class="FormToPay__form--input")
+                      div(class="item  input__margin")
+                          label(for="input_emergencia_nombres") Nombres
+                          input(id="input_emergencia_nombres" name="salida" type="text")
+
+                      div(class="item  input__margin")
+                          label(for="input_emergencia_apellidos") Apellidos
+                          input(id="input_emergencia_apellidos" name="regreso" type="text")
+
+                    article(class="FormToPay__form--input")
+                      div(class="item")
+                           label(for="input_emergencia_telefono") Teléfono
+                           input(id="input_emergencia_telefono" name="salida" type="tel")
+
+                      div(class="item  input__margin")
+                          label(for="input_emergencia_email") Email
+                          input(id="input_emergencia_email" name="dias" type="email")
+                
+                div(class="FormToPay__form--section  content-box-action")
+                    div(class="input_check")
+                        input(type="checkbox" id="inputCheckTerms")
+                        p Acepto los #[a(class="termsConditions" href="#") terminos y condiciones]
+
+                    div(class="btnCotizar")
+                        button(id="btnFormComprar") Comprar
+
+                    div
+                        p(id="message_error" style="display: none; color: red;") Error: mensaje campos no validos
+
+            div(class="FormToPay__preview")
+                  
+              table(bgcolor='f5f5f5', border='0', cellpadding='0', cellspacing='0', width='100%', style='font-family: Arial, sans-serif; margin: 0 auto; color: black')
+                tr
+                  td(align='center', valign='top')
+                    table.home(align='center', cellpadding='0', cellspacing='0', width='100%', bgcolor='white', style='padding: 0px 40px')
+                      tr
+                        td(align='center')
+                          table(border='0', cellpadding='0', cellspacing='0', width='100%')
+                            tr
+                              td(valign="top" width="50%")
+                                p(style='margin: 0;')
+                                  img(src="../../images/logo.png" width="100")
+                              td(valign="top" width="50%")
+                                p(style='margin: 0;')
+                                  b(style='color: #017098;') Destino:  #{pack.title}
+   
+                      tr
+                        td(align='center')
+                          table(border='0', cellpadding='0', cellspacing='0', width='100%', style='margin-top: 10px; margin-bottom: 20px;')
+                            tr
+                              td(style='border-bottom: 1px solid #D6D6D6;')
+                                span
+                      tr
+                        td
+                          table(width='100%', cellpadding='0', cellspacing='0')
+                            tr
+                              td(valign='top', style='padding-top: 10px;padding-bottom: 10px;', width='50%', height='100')
+                                b(style='margin: 0; border-bottom: 1px solid #017098;color: #017098;') Pasajero  #{ cant_pasajeros }
+                                p(style='margin: 0; padding-top: 10px;')
+                                  b Nombre:
+                                  p(style="padding-bottom: 10px;" id="lector_name") 
+                                p(style='margin: 0;')
+                                  b Documento #[span(id="lector_tip_doc") (DNI)]:
+                                  p(style="padding-bottom: 10px;" id="lector_doc")
+                                p(style='margin: 0;')
+                                  b Fecha de nacimiento:
+                                  p(style="padding-bottom: 10px;" id="lector_nacimiento")
+                                p(style='margin: 0;')
+                                  b Email:
+                                  p(style="padding-bottom: 10px;" id="lector_email")
+                                p(style='margin: 0;')
+                                  b Domicilio:
+                                  p(style="padding-bottom: 10px;" id="lector_domicilio")
+                                p(style='margin: 0;')
+                                  b Telefono:
+                                  p(style="padding-bottom: 10px;" id="lector_telefono")
+                                
+                              td(valign='top', style='padding-top: 10px;padding-bottom: 10px;', width='50%', height='100')
+                                b(style='margin: 0; border-bottom: 1px solid #017098; color: #017098;') Contacto de emergencia
+                                p(style='margin: 0; padding-top: 10px')
+                                  b Nombre/Name:
+                                  p(style="padding-bottom: 10px;" id="lector_contact_name")
+                                p(style='margin: 0;')
+                                  b Teléfono/Phone:
+                                  p(style="padding-bottom: 10px;" id="lector_contact_phone")
+                                p(style='margin: 0;')
+                                  b Email:
+                                  p(style="padding-bottom: 10px;" id="lector_contact_email")
+
+                    tr
+                      td(align='center')
+                        table(border='0', cellpadding='0', cellspacing='0', width='100%', style='margin-top: 10px; margin-bottom: 20px;')
+                          tr
+                            td(style='border-bottom: 1px solid #D6D6D6;')
+                              span
+
+                      tr
+                        td(align='center', valign='top')
+                          table.home(align='center', cellpadding='0', cellspacing='0', width='100%', bgcolor='white', style='padding: 0px 40px')
+                            tr
+                              td(align='center')
+                                table(border='0', cellpadding='0', cellspacing='0', width='100%')
+                                  tr
+                                    td
+                                      p(style='margin: 0;')
+                                        b(style='color: #017098; border-bottom: 1px solid #017098;') Detalles
+                                  tr
+                                    td(style='text-align: left; padding-top: 10px;', width='50%')
+                                      p(style='margin: 0; padding-bottom: 2px;') #[b Cobertura:] #{ user_cotizador.tipo_viaje }
+                                      p(style='margin: 0; padding-bottom: 2px;') #[b Días:] #{ user_details.dias }
+                                      p(style='margin: 0; padding-bottom: 2px;') #[b Vigencia:] #{ user_cotizador.salida } al #{ user_cotizador.regreso }
+                                      p(style='margin: 0; padding-bottom: 2px;') #[b Total:] $#{ user_details.tarifa }
+
+                      //- tr
+                      //-   td
+                      //-     table(width='100%', style='padding-top: 20px;padding-bottom: 20px;')
+                      //-       tr
+                      //-         td
+                      //-           b(style='margin: 0; border-bottom: 1px solid #017098; color: #017098;') Detalle de Cobertura
+                      //-       tr
+                      //-         td(width='50%')
+                      //-           table(width='100%')
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-         td(width='50%')
+                      //-           table(width='100%')
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+                      //-             tr
+                      //-               td
+                      //-                 p(style='margin: 5px;') Asistencia médica en caso de accidente
+                      //-               td
+                      //-                 p(style='margin: 5px;') USD 50.000
+ 
+
+    section(style="display: none;")
+        input(type="text", id="user_id_plataforma", value="#{code}")
+    
+
+    div(id="ModalBox" style="display: none;")
+        div(id="ModalBoxContent")
+          div(class="text")
+            div(id="btnClose")
+              p X
+            p(id="ContentMessage") Texto de mensaje
+
+    script(src='../../js/jquery-1.9.1.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
+    script(src='http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+    script(type="text/javascript", src='https://integ-pago.culqi.com/api/v1/culqi.js')
+    script(src="https://checkout.culqi.com/v2")
+    script(src='../../js/index.min.js')
+    script(src="../../js/payment.js")
+        
+
+
+

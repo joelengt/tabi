@@ -1,0 +1,114 @@
+
+
+.HeaderMain
+    // background black
+    overflow hidden
+    padding 15px 25px
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    
+    &__LogoMain
+        // background blue
+        display inline-block
+        vertical-align middle
+        
+        &__box
+            width 170px
+            
+            img
+                max-width 100%   
+        
+    &__NavMain
+        // background red
+        display inline-block
+        vertical-align middle
+        float right
+        
+        &__Container
+            
+            &__icons
+                display none
+            
+                &--item
+                    margin-left 10px
+                    display inline-block
+                    
+                    figure
+                        width 20px
+                        
+                        img
+                            max-width 100%
+                &--menu_button
+                    display none
+            
+            &__desktop
+                display inline-block
+                
+                li
+                    display inline-block
+                    margin-left 2rem
+                    
+                    span,a
+                        font-size 1.2rem
+                        color white
+                        text-decoration none
+                        padding 1rem 0
+                        width 100%
+                        display block
+                        margin 0 auto
+                        text-align center
+                        border-bottom 5px solid transparent
+                        cursor pointer
+                        
+                        &:hover
+                            border-bottom 5px solid white
+            &__mobile
+                display none
+
+
+@media screen and (max-width 767px)
+    .HeaderMain
+        
+        &__LogoMain
+            &__box
+                width 100px
+        &__NavMain
+            &__Container
+                &__icons
+                    display inline-block
+                    margin-right 40px
+                    margin-top 4px
+                    &--menu_button
+                        position fixed
+                        right 15px
+                        display inline-block            
+                    
+                &__mobile
+                    display block
+                    left -100%
+                    transition .3s
+                    right 0
+                    width 100%
+                    background-color #006e96 !important
+                    position fixed
+                    top 61px
+                    z-index 99
+                    
+                    li
+                        width 100%
+                        text-align center
+                        border-top 1px solid #005e80 !important
+                        transition .2s
+                        a, span
+                            padding 15px
+                            color white
+                            text-decoration none
+                            cursor pointer
+                            display block
+                        &:hover
+                            background-color #005e80
+                &__desktop
+                    display none

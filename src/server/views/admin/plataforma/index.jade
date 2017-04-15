@@ -1,0 +1,59 @@
+doctype strict
+html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
+  head
+    meta(charset='utf-8')
+    //- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='robots', content='noodp,noydir')
+    meta(name='viewport', content='width=device-width, minimum-scale=1, maximum-scale=1')
+    meta(name='description', content='Tabi Assist - Viaja, Disfruta, Explora')
+    title Tabi Assist
+    link(rel='icon', type='image/png', href='../../favicon.png')
+
+    //- Facebook
+    meta(property='og:title', content='Tabi Assist')
+    meta(property='og:description', content='Viaja, Disfruta, Explora')
+    meta(property='og:image', content='/og_image.jpg')
+    meta(property='og:type', content='website')
+    meta(property='og:url', content='/')
+    //- Styles
+    link(rel='stylesheet', href='../../css/index.css')
+
+    //- if lt IE 9
+      script(src='./js/html5shiv.js')
+    //- if lt IE 9
+      script(src='./js/respond.src.js')
+    //- if lt IE 9
+      link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+  body
+    header(class="HeaderMain")
+        div(class="HeaderMain__LogoMain")
+            figure(class="HeaderMain__LogoMain__box")
+                img(src="../../images/logo.png")
+
+
+    section(class="PricingElements" data-id="#{code}")
+        div(class="PricingElements__title")
+            h2 Admin Plataforma
+
+        div(class="Admin_box Admin")
+            div(class="actions")
+                p Descargar
+
+                div(class="Admin__box__left")
+                    form(action="#{sources.all}")
+                        button(class="button") Todos los usuarios
+
+                div(class="Admin__box__right")
+                    form(action="#{sources.pay}")
+                        button(class="button") Usuarios pagos
+
+
+    script(src='../../js/jquery-1.9.1.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
+    script(src='http://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+    script(src='../../js/index.min.js')
+
+
+

@@ -1,0 +1,127 @@
+// ****** Colors *******
+blue_brand= #2f70ae
+
+gray_background = #D9DCDB
+black_item_title = #333333
+black_item_sub_title = #606060
+
+blue_logo = rgb(0, 110, 150)
+
+// Fonts 
+font_open_sans_size_light = 300
+font_open_sans_size_regular = 400
+font_open_sans_size_semi_bold = 600
+font_open_sans_size_bold = 700
+    // font-style: italic;
+      
+// Module for compatibility browser
+@import 'nib'
+
+// Fundamentals
+
+// ****** Fonts *******
+
+@font-face
+    font-family 'GothamRounded-Book'
+    src url('../fonts/GothamRounded-Book.otf')
+
+@font-face
+    font-family 'GothamRounded-Medium'
+    src url('../fonts/GothamRounded-Medium.otf')
+
+@font-face
+    font-family 'Montserrat-Bold'
+    src url('../fonts/Montserrat-Bold.otf')
+
+@font-face
+    font-family 'Montserrat-Light'
+    src url('../fonts/Montserrat-Light.otf')
+
+@font-face
+    font-family 'Montserrat-SemiBold'
+    src url('../fonts/Montserrat-SemiBold.otf')
+
+@font-face
+    font-family 'MyriadPro-Regular'
+    src url('../fonts/MyriadPro-Regular.otf')
+
+// Mixins
+border-radius(n) {
+  -webkit-border-radius n;
+  -moz-border-radius n;
+  border-radius n;
+}
+
+//  Reset CSS
+@import './reset_css/index.styl';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1rem;
+    color: black;
+    font-family: 'Montserrat-Light', 'Arial', sans-serif;
+    // font-weight: font_open_sans_size_regular;
+    position relative
+}
+
+// ****** Modulos *******
+
+// HeaderMain
+@import './partials/HeaderMain/index.styl';
+
+// CoverForm
+@import './partials/CoverForm/index.styl';
+
+// AboutUs
+@import './partials/AboutUs/index.styl';
+
+// Benefits
+@import './partials/Benefits/index.styl';
+
+// Contactanos
+@import './partials/ContactForm/index.styl';
+
+// FooterMain
+@import './partials/FooterMain/index.styl';
+
+
+
+// Princing - list
+@import './partials/Pricing/index.styl';
+
+
+// Form to pay - list
+@import './partials/FormToPay/index.styl';
+
+// modal message
+@import './partials/ModalBox/index.styl';
+
+
+
+// forget pdf
+@import './partials/ForgetPDF/index.styl';
+
+
+// Admin
+@import './partials/admin/index.styl';
+
+
+.button
+  background blue_logo
+  border none
+  color white
+  border-radius 10px
+  display block
+  padding 1rem
+  margin 0 auto
+  text-align center
+  width 100%
+  margin-top 1rem
+  display block
+  cursor pointer
+  font-size 1.1rem
+
