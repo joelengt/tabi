@@ -1,0 +1,86 @@
+doctype strict
+html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
+  head
+    meta(charset='utf-8')
+    //- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='robots', content='noodp,noydir')
+    meta(name='viewport', content='width=device-width, minimum-scale=1, maximum-scale=1')
+    meta(name='description', content='Tabi Assist - Viaja, Disfruta, Explora')
+    title Tabi Assist
+    link(rel='icon', type='image/png', href='../../../favicon.png')
+
+    //- Facebook
+    meta(property='og:title', content='Tabi Assist')
+    meta(property='og:description', content='Viaja, Disfruta, Explora')
+    meta(property='og:image', content='/og_image.jpg')
+    meta(property='og:type', content='website')
+    meta(property='og:url', content='/')
+    //- Styles
+    link(rel='stylesheet', href='../../../css/index.css')
+
+    //- if lt IE 9
+      script(src='./js/html5shiv.js')
+    //- if lt IE 9
+      script(src='./js/respond.src.js')
+    //- if lt IE 9
+      link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+  body
+    header(class="HeaderMain")
+        div(class="HeaderMain__LogoMain")
+            figure(class="HeaderMain__LogoMain__box")
+                img(src="../../../images/logo.png")
+
+
+    section(class="PricingElements" data-id="#{code}")
+        div(class="PricingElements__title")
+            h2 Admin Plataforma - cupones de descuento
+        if message
+            p #{ message }
+
+        div(class="Admin_box Admin")
+            div(class="actions")
+                p Crear cupón
+
+                div(class="Admin__box__left")
+                    form(action="/admin/generator/create" method="post")
+                        div
+                            label Nombre del cupón
+                        div
+                            input(type="text" name="cupon_title")
+                        div
+                            label Descuento %
+                        div
+                            input(type="text" name="cupon_numero_descuento")
+                        div
+                            button(class="button" id="btnCreateCupon") Crear cupon
+                
+                br
+                div(class="Admin__box__right")
+                    h2 Todos los cupones
+                    
+                    div
+                        each cupon in cupones
+                            article(style="padding: 1rem 0; border-bottom: 1px solid lightgray;")
+                                div(style="display: inline-block; vertical-align: middle; text-align: left; width: 60%;")
+                                    div
+                                        b cupon: 
+                                        span #{ cupon.title }
+                                    div
+                                        b descuento: 
+                                        span #{ cupon.numero_descuento }%
+                                    p(style="font-size: 10px;") id: #{ cupon._id }
+                                div(style="display: inline-block; vertical-align: middle; text-align: right; width: 30%;")
+                                    form(action="/admin/generator/#{ cupon._id }/delete?_method=delete" method="post")
+                                        button Eliminar
+
+
+
+    script(src='../../../js/jquery-1.9.1.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
+    script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+    script(src='../../../js/index.min.js')
+
+
+

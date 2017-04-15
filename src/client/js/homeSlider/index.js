@@ -1,25 +1,28 @@
 export function cicleSlider() {
 
     var slider_fotos = [
-        "url('../images/cover-slider/2--.jpg')",
-        "url('../images/cover-slider/1--.jpg')",
-        "url('../images/cover-slider/3--.jpg')",
-        "url('../images/cover-slider/4--.jpg')"
+        "url('../images/cover-slider/Slider--1.jpg')",
+        "url('../images/cover-slider/Slider--2.jpg')",
+        "url('../images/cover-slider/Slider--3.jpg')",
+        "url('../images/cover-slider/Slider--4.jpg')"
     ];
 
     var slider_text = [
-        `<h2>Viaja, Disfruta, Explora</h2>
+        `<h2>Más que un Seguro de Viaje,</h2>
+        <h2>Una Tarjeta de Asistencia</h2>
+        <p>Una asistencia médica a tu alcance</p>`,
+
+        `<h2>Viaja, vive, explora</h2>
         <h2>Disfruta de tu viaje</h2>
-        <p>Hacemos que tu seguridad este 100% Cubierta</p>`,
-        `<h2>Los mejores descuentos</h2>
-        <h2>Por que tu te lo mereces</h2>
-        <p>Ingresa un cupón de descuento y viaje</p>`,
-        `<h2>Tu viaje de aventura</h2>
-        <h2>Tu solo Disfruta de tu viaje</h2>
-        <p>Nosotros te cubrimos</p>`,
-        `<h2>Plan para estudiantes</h2>
-        <h2>Para que logres tus metas</h2>
-        <p>Te damos la mejor oferta para ti</p>`
+        <p>Tu seguridad, nuestra responsabilidad</p>`,
+
+        `<h2>No pagues más</h2>
+        <h2>Cómprala en minutos</h2>
+        <p>A cualquier hora y en cualquier lugar</p>`,
+
+        `<h2>¿Viajes de Estudios?</h2>
+        <h2>Work and Travel</h2>
+        <p>Te damos el mejor precio para ti</p>`
     ];
 
     // Obtener background dom
@@ -75,13 +78,11 @@ export function cicleSlider() {
             $circles.children()[number_position].childNodes[0].style.background = 'white';
 
             cicleEventSlider = null;
-
-            eventCiclicle(number_position, 3500);
+            eventCiclicle(number_position, 5000);
 
         })
         
     }
-
-    eventCiclicle(1, 3500);
+    eventCiclicle(1, 5000);
 
 }

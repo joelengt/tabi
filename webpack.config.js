@@ -23,7 +23,7 @@ module.exports = {
   },
   output: {
     path: __dirname,
-    filename: PROD ? '/public/js/index.min.js' : '/public/js/index.js'
+    filename: PROD ? './public/js/index.min.js' : '/public/js/index.js'
   },
   plugins: PROD ? [
     new webpack.DefinePlugin({

@@ -20,13 +20,13 @@ var config = {
     },
     auth: {
         admin:{
-            user : 'admin',
-            pass : '12345678'
+            user : 'enrique_admin',
+            pass : 'Enrique.123'
         },
         mailing: {
             user: 'joel.gonzales2110@gmail.com',
             pass: 'neypujbvyhvugxyw',
-            receptor: 'joelengt@gmail.com'
+            receptor: 'enrique.6782@gmail.com'
 
         },
         cloudinary : {

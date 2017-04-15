@@ -1,4 +1,4 @@
-import { mainMobile } from './mainMobile/index.js';
+
 import { sendFormCotizar } from './formCotizar/index.js';
 import { eventClickItems } from './plataform/index.js';
 import { pay } from './payment/index.js';

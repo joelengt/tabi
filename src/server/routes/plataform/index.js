@@ -2,6 +2,8 @@ var express = require('express');
 var route = express.Router();
 
 var Purchases = require('../../models/purchares/index.js');
+var Cupones = require('../../models/cupones/index.js');
+
 var config = require('../../../../config/index.js')
 var permiso = config.variables.typeUser
 
@@ -293,35 +295,75 @@ route.post('/validate', function (req, res) {
 
     if(data !== null) {
         console.log('hay datos');
+        // validando cupon
+        if(data.promocion !== '') {
+            Cupones.findOne({'title': data.promocion}, (err, cupon) => {
+                    
+                console.log('CUPOON encontrado')
+                console.log(cupon);
 
-        // guardar los campos en la db
-        var purchare = new Purchases({
-            cotizator: {
-                origen:        data.origen,
-                destino:       data.destino,
-                tipo_viaje:    data.tipo_viaje,
-                salida:        data.salida,
-                regreso:       data.regreso,
-                dias:          data.dias,
-                pasajero:      data.pasajero,
-                adulto_mayor:  data.adulto_mayor,
-                promocion:     data.promocion,
-                email:         data.email
-            }
-        });
+                // guardar los campos en la db
+                var purchare = new Purchases({
+                    cotizator: {
+                        origen:        data.origen,
+                        destino:       data.destino,
+                        tipo_viaje:    data.tipo_viaje,
+                        salida:        data.salida,
+                        regreso:       data.regreso,
+                        dias:          data.dias,
+                        pasajero:      data.pasajero,
+                        adulto_mayor:  data.adulto_mayor,
+                        promocion:     data.promocion,
+                        email:         data.email
+                    }
+                });
 
-        purchare.save((err, saved) => {
-            if(err) {
-                return console.log(err);
-            }
+                purchare.save((err, saved) => {
+                    if(err) {
+                        return console.log(err);
+                    }
 
-            // retornar el id de creacion
-            return res.status(200).json({
-                status: 'ok',
-                code: saved._id
+                    // retornar el id de creacion
+                    return res.status(200).json({
+                        status: 'ok',
+                        code: saved._id
+                    });
+
+                })
+
+            })
+
+        } else {
+
+            // guardar los campos en la db
+            var purchare = new Purchases({
+                cotizator: {
+                    origen:        data.origen,
+                    destino:       data.destino,
+                    tipo_viaje:    data.tipo_viaje,
+                    salida:        data.salida,
+                    regreso:       data.regreso,
+                    dias:          data.dias,
+                    pasajero:      data.pasajero,
+                    adulto_mayor:  data.adulto_mayor,
+                    promocion:     data.promocion,
+                    email:         data.email
+                }
             });
 
-        })
+            purchare.save((err, saved) => {
+                if(err) {
+                    return console.log(err);
+                }
+
+                // retornar el id de creacion
+                return res.status(200).json({
+                    status: 'ok',
+                    code: saved._id
+                });
+
+            })
+        }
 
     } else {
         console.log('NO hay datos');
@@ -457,44 +499,107 @@ route.get('/:code', function (req, res) {
             }
 
             var new_final_price = [];
+            if(user.cotizator.promocion !== '' &&
+               user.cotizator.promocion !== undefined &&
+               user.cotizator.promocion !== null) {
 
-            for(var t = 0; t <= respaldo_filter.length - 1; t++) {
-                var element_respaldo = respaldo_filter[t];
+                Cupones.findOne({'title': user.cotizator.promocion}, (err, cupon) => {
+                        
+                    console.log('CUPOON encontrado')
+                    console.log(cupon);
+                    
+                    var descuento = 0;
 
-                var tarifa_cant_pasajero = '';
-                tarifa_cant_pasajero = Number(element_respaldo.pack.tarifa) * Number(user.cotizator.pasajero);
+                    for(var t = 0; t <= respaldo_filter.length - 1; t++) {
+                        var element_respaldo = respaldo_filter[t];
 
-                var value_viejos = 0;
-                if(filter_do[t] !== undefined) {
-                    value_viejos = Number(filter_do[t].pack.tarifa);
+                        var tarifa_cant_pasajero = '';
+                        tarifa_cant_pasajero = Number(element_respaldo.pack.tarifa) * Number(user.cotizator.pasajero);
+
+                        var value_viejos = 0;
+                        if(filter_do[t] !== undefined) {
+                            value_viejos = Number(filter_do[t].pack.tarifa);
+                        }
+
+                        var value_price = Number(value_viejos + Number(tarifa_cant_pasajero));
+
+                        descuento = 0;
+
+                        if(cupon !== null && cupon !== undefined) {
+                            descuento = Number(value_price) * (Number(cupon.numero_descuento)/100)
+                            
+                        }
+
+                        new_final_price.push({
+                            title: element_respaldo.title,
+                            pack: {
+                                days: element_respaldo.pack.days,
+                                tarifa: String(value_price - descuento)
+                            }
+                        });
+
+                    }
+
+                    console.log('ORIGINAL');
+                    console.log(elements_filter);
+
+                    console.log('RESULTADO');
+                    console.log(filter_do);
+
+                    // Calculando cantidad de pasajeros
+                    var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
+
+                    // devolver los campos guardados
+                    res.render('./plataforma/pricing/index.jade', {
+                        code: code,
+                        purchase: user.cotizator,
+                        packs: new_final_price,
+                        cant_pasajeros: cant_pasajeros
+                    });
+
+                })
+
+            } else {
+
+                for(var t = 0; t <= respaldo_filter.length - 1; t++) {
+                    var element_respaldo = respaldo_filter[t];
+
+                    var tarifa_cant_pasajero = '';
+                    tarifa_cant_pasajero = Number(element_respaldo.pack.tarifa) * Number(user.cotizator.pasajero);
+
+                    var value_viejos = 0;
+                    if(filter_do[t] !== undefined) {
+                        value_viejos = Number(filter_do[t].pack.tarifa);
+                    }
+
+                    new_final_price.push({
+                        title: element_respaldo.title,
+                        pack: {
+                            days: element_respaldo.pack.days,
+                            tarifa: String(value_viejos + Number(tarifa_cant_pasajero))
+                        }
+                    });
+
                 }
 
-                new_final_price.push({
-                    title: element_respaldo.title,
-                    pack: {
-                        days: element_respaldo.pack.days,
-                        tarifa: String(value_viejos + Number(tarifa_cant_pasajero))
-                    }
+                console.log('ORIGINAL');
+                console.log(elements_filter);
+
+                console.log('RESULTADO');
+                console.log(filter_do);
+
+                // Calculando cantidad de pasajeros
+                var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
+
+                // devolver los campos guardados
+                res.render('./plataforma/pricing/index.jade', {
+                    code: code,
+                    purchase: user.cotizator,
+                    packs: new_final_price,
+                    cant_pasajeros: cant_pasajeros
                 });
 
             }
-
-            console.log('ORIGINAL');
-            console.log(elements_filter);
-
-            console.log('RESULTADO');
-            console.log(filter_do);
-
-            // Calculando cantidad de pasajeros
-            var cant_pasajeros = Number(user.cotizator.pasajero) + Number(user.cotizator.adulto_mayor);
-
-            // devolver los campos guardados
-            res.render('./plataforma/pricing/index.jade', {
-                code: code,
-                purchase: user.cotizator,
-                packs: new_final_price,
-                cant_pasajeros: cant_pasajeros
-            });
         }
     })
     
@@ -610,6 +715,7 @@ route.post('/:code/pack-beneficios', function (req, res) {
 route.post('/:code/purchare/buy-form', function (req, res) {
     var code = req.params.code;
     var pack_selected = req.body.pack_title;
+    var pack_selected_price = req.body.pack_selected_price;
 
     // buscar al usuario en la db, por el id
     Purchases.findOne({'_id': code}, (err, user) => {
@@ -650,8 +756,9 @@ route.post('/:code/purchare/buy-form', function (req, res) {
 
             // Obteniendo tarifa
             user.pack_selected.dias = result_filter_tarifa[0].days;
-            user.pack_selected.tarifa = result_filter_tarifa[0].tarifa;
 
+            // Actualizando tarifa seleccionada 
+            user.pack_selected.tarifa = pack_selected_price;
 
             console.log('datos del filtro');
             console.log(result_filter_tarifa);
