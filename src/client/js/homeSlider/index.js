@@ -1,10 +1,10 @@
 export function cicleSlider() {
 
     var slider_fotos = [
-        "url('../images/cover-slider/2--.jpg')",
-        "url('../images/cover-slider/1--.jpg')",
-        "url('../images/cover-slider/3--.jpg')",
-        "url('../images/cover-slider/4--.jpg')"
+        "url('../images/cover-slider/Slider--1.jpg')",
+        "url('../images/cover-slider/Slider--2.jpg')",
+        "url('../images/cover-slider/Slider--3.jpg')",
+        "url('../images/cover-slider/Slider--4.jpg')"
     ];
 
     var slider_text = [
@@ -79,12 +79,12 @@ export function cicleSlider() {
 
             cicleEventSlider = null;
 
-            eventCiclicle(number_position, 3500);
+            eventCiclicle(number_position, 3700);
 
         })
         
     }
 
-    eventCiclicle(1, 3500);
+    eventCiclicle(1, 3700);
 
 }
