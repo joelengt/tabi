@@ -416,6 +416,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
+  border-bottom: 3px solid #d9bc29;
 }
 .AboutUs__bottom {
   display: block;
@@ -505,6 +506,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: #2f70ae;
+  border-bottom: 3px solid #d9bc29;
 }
 .Benefits__box,
 .Benefits__title {

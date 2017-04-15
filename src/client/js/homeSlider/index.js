@@ -79,12 +79,12 @@ export function cicleSlider() {
 
             cicleEventSlider = null;
 
-            eventCiclicle(number_position, 3700);
+            eventCiclicle(number_position, 5000);
 
         })
         
     }
 
-    eventCiclicle(1, 3700);
+    eventCiclicle(1, 5000);
 
 }
