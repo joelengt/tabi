@@ -78,13 +78,11 @@ export function cicleSlider() {
             $circles.children()[number_position].childNodes[0].style.background = 'white';
 
             cicleEventSlider = null;
-
             eventCiclicle(number_position, 5000);
 
         })
         
     }
-
     eventCiclicle(1, 5000);
 
 }

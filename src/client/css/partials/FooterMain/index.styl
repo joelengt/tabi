@@ -4,7 +4,7 @@
     overflow hidden
     color white
     padding 0 50px
-    padding-top: 40px;
+    padding-top 40px
     // border-top 1px solid white
     
     p, a
@@ -79,3 +79,13 @@
             a 
                 color white
                 
+@media screen and (max-width 767px)
+    .FooterMain
+        padding-top 30px
+        &__right, &__left
+            margin-bottom 1em
+            float inherit
+            text-align center
+        &__right--logo
+            figure
+                margin 0 auto

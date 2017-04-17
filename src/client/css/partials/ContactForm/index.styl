@@ -68,3 +68,28 @@
         .to__right
             float right
             width 40%
+
+@media screen and (max-width 767px)
+    .ContactForm
+        height auto
+        &__box
+            padding 50px 0
+            display inherit
+        &__text
+            display block
+            width 90%
+            margin 0 auto
+            h2
+                font-size 2rem
+            p
+                font-size 1.3rem
+        &__form
+            display block 
+            width 90%
+            margin 0 auto
+            &--input
+                float inherit
+                input, textarea
+                    box-sizing border-box
+            .to__right
+                float inherit

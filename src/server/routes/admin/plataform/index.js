@@ -9,7 +9,6 @@ var config = require('../../../../../config/index.js')
 
 var generadorDescuentoController = require('../../../controllers/GeneradorDescuento/index.js');
 var GeneradorDescuento = new generadorDescuentoController();
-
 const fs = require('fs');
 const htmlTo = require('html2xlsx');
 
@@ -416,7 +415,6 @@ route.get('/plataforma/usuarios', function (req, res) {
                                     </tr>`;
                     }
                 }
-
             }
 
             var template_all = `
@@ -635,7 +633,6 @@ route.get('/generator/template/view', function (req, res) {
 
 
     })
-    
 })
 
 module.exports = route;

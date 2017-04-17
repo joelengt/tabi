@@ -295,7 +295,6 @@ route.post('/validate', function (req, res) {
 
     if(data !== null) {
         console.log('hay datos');
-
         // validando cupon
         if(data.promocion !== '') {
             Cupones.findOne({'title': data.promocion}, (err, cupon) => {
@@ -500,7 +499,6 @@ route.get('/:code', function (req, res) {
             }
 
             var new_final_price = [];
-
             if(user.cotizator.promocion !== '' &&
                user.cotizator.promocion !== undefined &&
                user.cotizator.promocion !== null) {
@@ -602,7 +600,6 @@ route.get('/:code', function (req, res) {
                 });
 
             }
-
         }
     })
     
