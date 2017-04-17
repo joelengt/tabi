@@ -119,24 +119,98 @@ function generatePDF(user, pack_details, venta, callback) {
                                       </td>
                                     </tr>
                                     <tr>
-                                      <td>
-                                        <table width="100%" style="padding-top: 20px;padding-bottom: 20px;">
+                                      <td align="center">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px;padding-bottom: 20px;">
                                           <tr>
-                                            <td align="left">
-                                                <h2 style="font-size: 12px; padding-bottom:.2rem; margin: 0; color: #017098;">${ pack_details.title }</h2>
+                                            <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p style="margin: 0; font-size: 8px;">Tabi Assist cuenta con los siguientes números de acceso para comunicarse con su central de asistencia. Para obtener asistencia es requisito indispensable llamarnos previamente (en caso de estar imposibilitado/a debe hacerlo dentro de las 24hs de ocurrido el evento)</p>
+                                      <td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <table width="100%" style="padding-top: 5px;padding-bottom: 5px;">
+                                          <tr>
+                                           <td valign="top" width="50%">
+                                              <p style="margin:1px; font-size: 8px;">Argentina Nacional 0800 444 2774</p>
+                                              <p style="margin:1px; font-size: 8px;">Argentina (+54) 11 21503000</p>
+                                              <p style="margin:1px; font-size: 8px;">Australia (+61) 29 1882134</p>
+                                              <p style="margin:1px; font-size: 8px;">Brasil (+55) 800 5911025</p>
+                                              <p style="margin:1px; font-size: 8px;">Chile (+56) 22 9381224</p>
+                                              <p style="margin:1px; font-size: 8px;">Colombia (+57) 1 3819062</p>
+                                              <p style="margin:1px; font-size: 8px;">España (+34) 800 080022</p>
+                                              <p style="margin:1px; font-size: 8px;">Estados Unidos (+1) 855 8596448</p>
+                                              <p style="margin:1px; font-size: 8px;">Francia (+33) 805 321022</p>
+                                              <p style="margin:1px; font-size: 8px;">Holanda (+31) 20 2170259</p>
+                                              <p style="margin:1px; font-size: 8px;">Israel (+972) 1809 494502</p>
+                                           </td>
+                                           <td valign="top" width="50%">
+                                              <p style="margin:1px; font-size: 8px;">Italia (+39) 800 142822</p>
+                                              <p style="margin:1px; font-size: 8px;">México (+52) 800 2691349</p>
+                                              <p style="margin:1px; font-size: 8px;">Perú (+51) 1 6419109</p>
+                                              <p style="margin:1px; font-size: 8px;">Portugal (+35) 800 502305</p>
+                                              <p style="margin:1px; font-size: 8px;">Reino Unido (+44) 800 9496900</p>
+                                              <p style="margin:1px; font-size: 8px;">Rep. Dominicana (+1) 829 9465940</p>
+                                              <p style="margin:1px; font-size: 8px;">Sudáfrica (+27) 87 5501907</p>
+                                              <p style="margin:1px; font-size: 8px;">Tailandia (+66) 60 0035058</p>
+                                              <p style="margin:1px; font-size: 8px;">Uruguay (+598) 25182441</p>
+                                              <p style="margin:1px; font-size: 8px;">Resto del mundo (+598) 25182441</p>
+                                              <p style="margin:1px; font-size: 8px;">Fax (+54) 11 3220 2199</p>
+                                           </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <table width="100%">
+                                          <tr>
+                                            <td align="center">
+                                                <h2 style="font-size: 10px; margin: 0; color: #017098;">${ pack_details.title }</h2>
                                             </td>
                                           </tr>
                                           <tr>
-                                            <td align="left">
-                                                <b style="display: block; padding-bottom:.2rem; margin: 0; color: #017098;">Tarjeta de asistencia</b>
+                                            <td align="center">
+                                                <b style="display: block; margin: 0;">Tarjeta de asistencia</b>
                                             </td>
-                                          </t r>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <table width="100%" style="padding-top: 5px;padding-bottom: 5px;">
                                           <tr>
                                             <td valign="top" width="50%">
-                                              <table width="100%"> ${ table_left } </table>
+                                              <table width="100%"> 
+                                                <tr style="background: #017098;">
+                                                    <td>
+                                                        <p style="color: white; padding: .1rem; background: #017098;font-size:10px; margin: 1px;">Beneficios</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="color: white; padding: .1rem; background: #017098;font-size:10px; margin: 1px;">Cobertura</p>
+                                                    </td>
+                                                </tr>
+                                                ${ table_left }
+                                              </table>
                                             </td>
                                             <td valign="top" width="50%">
-                                              <table width="100%"> ${ table_right } </table>
+                                              <table width="100%"> 
+                                                <tr style="background: #017098;">
+                                                    <td>
+                                                        <p style="color: white; padding: .1rem; background: #017098;font-size:10px; margin: 1px;">Beneficios</p>
+                                                    </td>
+                                                    <td>
+                                                        <p style="color: white; padding: .1rem; background: #017098;font-size:10px; margin: 1px;">Cobertura</p>
+                                                    </td>
+                                                </tr>
+                                                ${ table_right }
+                                              </table>
                                             </td>
                                           </tr>
                                         </table>
@@ -155,7 +229,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                     </tr>
                                     <tr>
                                       <td align="center">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 280px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom: 100px;">
                                           <tr>
                                             <td style="border-bottom: 1px solid #D6D6D6;"><span></span></td>
                                           </tr>
@@ -186,7 +260,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                           </tr>
                                           <tr>
                                             <td>
-                                              <p style="margin: 0;">Verifique que todos los datos consignados en su voucher Assistabi sean correctos. Controle especialmente los teléfonos indicados como contacto de emergencia, las fechas de vigencia y el tipo de cobertura adquirido. SI hay errores en los datos, comuníquese con la central de asistencia de Assistabi (teléfonos en página 1)</p>
+                                              <p style="margin: 0;">Verifique que todos los datos consignados en su voucher Tabi Assist sean correctos. Controle especialmente los teléfonos indicados como contacto de emergencia, las fechas de vigencia y el tipo de cobertura adquirido. SI hay errores en los datos, comuníquese con la central de asistencia de Tabi Assist (teléfonos en página 1)</p>
                                             </td>
                                           </tr>
                                           <tr>
@@ -212,22 +286,22 @@ function generatePDF(user, pack_details, venta, callback) {
                                     </tr>
                                     <tr>
                                       <td>
-                                        <p style="margin: 0;">En la página 1 del presente voucher encontrará un listado completo de los números de acceso de la central de asistencia Assistabi. Consulte en el listado el número de la central más próxima. SI no hubiese un número de acceso en el país en que Ud. se encuentra, comuníquese por el sistema COBRO REVERTIDO (COLLECT CALL en inglés). Si el país en donde Ud. se encuentra no admite el sistema de comunicación COBRO REVERTIDO, efectúe la llamada a su cargo y a su regreso presente el comprobante a Assistabi para su reembolso. Las centrales de asistencia atienden las 24hs. Antes de llamar para solicitar nuestros servicios, tenga a mano la siguiente información:. Su voucher, tarjeta o credencial. Número de teléfono de donde se encuentra (incluyendo código de país y código de ciudad). Los datos del lugar en que se encuentra (domicilio, hotel, etc.)</p>
+                                        <p style="margin: 0;">En la página 1 del presente voucher encontrará un listado completo de los números de acceso de la central de asistencia Tabi Assist. Consulte en el listado el número de la central más próxima. SI no hubiese un número de acceso en el país en que Ud. se encuentra, comuníquese por el sistema COBRO REVERTIDO (COLLECT CALL en inglés). Si el país en donde Ud. se encuentra no admite el sistema de comunicación COBRO REVERTIDO, efectúe la llamada a su cargo y a su regreso presente el comprobante a Tabi Assist para su reembolso. Las centrales de asistencia atienden las 24hs. Antes de llamar para solicitar nuestros servicios, tenga a mano la siguiente información:. Su voucher, tarjeta o credencial. Número de teléfono de donde se encuentra (incluyendo código de país y código de ciudad). Los datos del lugar en que se encuentra (domicilio, hotel, etc.)</p>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td>
-                                        <p style="margin: 5px auto;">SI LA NATURALEZA DE SU INCONVENIENTE LE PERMITE COMUNICARSE CON ASSISTabi Comuníquese con la central de asistencia y siga las instrucciones del operador</p>
+                                        <p style="margin: 5px auto;">SI LA NATURALEZA DE SU INCONVENIENTE LE PERMITE COMUNICARSE CON Tabi Assist Comuníquese con la central de asistencia y siga las instrucciones del operador</p>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td>
-                                        <p style="margin: 5px auto;">SI EL PROBLEMA DE SALUD ES GRAVE O LA NECESIDAD DE ASISTENCIA ES MUY URGENTE Y NO ESTA EN CONDICIONES DE COMUNICARSE CON ASSISTabi. Es fundamental que Ud. reciba asistencia médica inmediata en el lugar en que se encuentre.. Luego, indefectiblemente dentro de las 24hs siguientes, Ud. o cualquier persona que lo acompañe deberá comunicarse con Assistabi y proporcionar toda la información referida al evento sufrido y la asistencia recibida.</p>
+                                        <p style="margin: 5px auto;">SI EL PROBLEMA DE SALUD ES GRAVE O LA NECESIDAD DE ASISTENCIA ES MUY URGENTE Y NO ESTA EN CONDICIONES DE COMUNICARSE CON Tabi Assist. Es fundamental que Ud. reciba asistencia médica inmediata en el lugar en que se encuentre.. Luego, indefectiblemente dentro de las 24hs siguientes, Ud. o cualquier persona que lo acompañe deberá comunicarse con Tabi Assist y proporcionar toda la información referida al evento sufrido y la asistencia recibida.</p>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td>
-                                        <p>Assistabi se pondrá en contacto con el centro asistencial para controlar todas las fases de la prestación del servicio.</p>
+                                        <p>Tabi Assist se pondrá en contacto con el centro asistencial para controlar todas las fases de la prestación del servicio.</p>
                                       </td>
                                     </tr>
                                     <tr>
@@ -256,9 +330,9 @@ function generatePDF(user, pack_details, venta, callback) {
                                       <td width="70%" class="cell-icons">
                                         <table>
                                           <tr>
-                                            <td width="20%"><a href="https://twitter.com/assistabi" target="_blank"><img width="10" src="https://image.ibb.co/mSmWaa/ICONO_TWITTER.png" class="logo-social"/></a></td>
+                                            <td width="20%"><a href="https://twitter.com/TabiAssist" target="_blank"><img width="10" src="https://image.ibb.co/mSmWaa/ICONO_TWITTER.png" class="logo-social"/></a></td>
                                             <td width="20%"><a href="https://www.facebook.com/assistabi" target="_blank"><img width="10" src="https://image.ibb.co/b9iBaa/ICONO_FACE.png" class="logo-social"/></a></td>
-                                            <td width="20%"><a href="https://www.youtube.com/user/assistabi" target="_blank"><img width="10" src="https://image.ibb.co/g3TNgF/ICONO_YOUTUBE.png" class="logo-social"/></a></td>
+                                            <td width="20%"><a href="https://www.instagram.com/tabiassist/" target="_blank"><img width="10" src="https://image.ibb.co/g3TNgF/ICONO_YOUTUBE.png" class="logo-social"/></a></td>
                                           </tr>
                                         </table>
                                       </td>
