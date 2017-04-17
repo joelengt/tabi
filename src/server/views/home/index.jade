@@ -34,6 +34,19 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
         div(class="HeaderMain__NavMain")
             nav(class="HeaderMain__NavMain__Container")
+                
+                ul(class="HeaderMain__NavMain__Container__desktop")
+                    li
+                        span(href="#home" data-ancla="home") Home
+                    li
+                        span(href="#conocenos" data-ancla="conocenos") Conócenos
+                    li
+                        span(href="#beneficios" data-ancla="beneficios") Beneficios
+                    li
+                        a(href="/plataform-pricing/get/forget-pdf" id="btnNavPDF") Recuperar Poliza
+                    li
+                        span(href="#contactanos" data-ancla="contactanos") Escribenos
+                
                 div(class="HeaderMain__NavMain__Container__icons")
                     div(class="HeaderMain__NavMain__Container__icons--item")
                         figure
@@ -41,34 +54,26 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                                 img(src="./images/redes-sociales/facebook_white.png")
                     div(class="HeaderMain__NavMain__Container__icons--item")
                         figure
-                            a(href="#")
+                            a(href="https://twitter.com/TabiAssist" target="_blank")
                                 img(src="./images/redes-sociales/twitter_white.png")
                     div(class="HeaderMain__NavMain__Container__icons--item")
                         figure
-                            a(href="#")
+                            a(href="https://www.instagram.com/tabiassist/" target="_blank")
                                 img(src="./images/redes-sociales/instragam.png")
                     div(class="HeaderMain__NavMain__Container__icons--item HeaderMain__NavMain__Container__icons--menu_button")
                         figure
                             a(href="", id="menu-button")
                                 img(src="./images/redes-sociales/menu-button.png")
-
-                ul(class="HeaderMain__NavMain__Container__desktop")
-                    li
-                        a(href="/plataform-pricing/get/forget-pdf" id="btnNavPDF") Recuperar Poliza
-                    li
-                        span(href="#conocenos" data-ancla="conocenos") Conócenos
-                    li
-                        span(href="#beneficios" data-ancla="beneficios") Beneficios
-                    li
-                        span(href="#contactanos" data-ancla="contactanos") Escribenos
-
+                                    
                 ul(class="HeaderMain__NavMain__Container__mobile", id="menu-mobile")
                     li(class="menuMobile-options")
-                        a(href="/plataform-pricing/get/forget-pdf" id="btnNavPDF") Recuperar Poliza
+                        span(href="#home" data-ancla="home") Home
                     li(class="menuMobile-options")
                         span(href="#conocenos" data-ancla="conocenos") Conócenos
                     li(class="menuMobile-options")
                         span(href="#beneficios" data-ancla="beneficios") Beneficios
+                    li(class="menuMobile-options")
+                        a(href="/plataform-pricing/get/forget-pdf" id="btnNavPDF") Recuperar Poliza
                     li(class="menuMobile-options")
                         span(href="#contactanos" data-ancla="contactanos") Escribenos
     
