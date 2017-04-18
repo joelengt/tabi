@@ -331,7 +331,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                         <table>
                                           <tr>
                                             <td width="20%"><a href="https://twitter.com/TabiAssist" target="_blank"><img width="10" src="https://image.ibb.co/mSmWaa/ICONO_TWITTER.png" class="logo-social"/></a></td>
-                                            <td width="20%"><a href="https://www.facebook.com/assistabi" target="_blank"><img width="10" src="https://image.ibb.co/b9iBaa/ICONO_FACE.png" class="logo-social"/></a></td>
+                                            <td width="20%"><a href="https://www.facebook.com/TabiAssist/" target="_blank"><img width="10" src="https://image.ibb.co/b9iBaa/ICONO_FACE.png" class="logo-social"/></a></td>
                                             <td width="20%"><a href="https://www.instagram.com/tabiassist/" target="_blank"><img width="10" src="https://image.ibb.co/g3TNgF/ICONO_YOUTUBE.png" class="logo-social"/></a></td>
                                           </tr>
                                         </table>
