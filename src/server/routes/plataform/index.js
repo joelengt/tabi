@@ -915,9 +915,13 @@ route.post('/forget-pdf-access', function (req, res) {
         }
 
         // Filtrando 
-        var polizas = users.filter((element) => {
-            return element.account.doc_number === dni;
-        })
+        var polizas = users
+                .filter((element) => {
+                    return element.access === permiso.premium;
+                })
+                .filter((element) => {
+                    return element.account.doc_number === dni;
+                })
 
         var user = polizas[polizas.length - 1];
 
