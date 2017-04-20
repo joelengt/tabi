@@ -168,6 +168,9 @@ app.post('/:user_id/:type_service', function (req, res) {
 
                 } else {
 
+                    console.log('RESPUESTA DE CULQI');
+                    console.log(result);
+
                     user.account.numero_pedido = obj.metadata['Numero Orden']
                     user.account.ticket = result.charge_id
 
