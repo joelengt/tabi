@@ -60,9 +60,9 @@ function calDays() {
    if($('#input_salida').val() !== '' && $('#input_regreso').val() !== '') {
         var value_salida = moment($('#input_salida').val());
         var value_regreso = moment($('#input_regreso').val());
-        console.log(value_regreso.diff(value_salida, 'days'), ' dias de diferencia');
+        console.log(String(Number(value_regreso.diff(value_salida, 'days')) + 1), ' dias de diferencia');
 
-        $('#input_dias').val(value_regreso.diff(value_salida, 'days'));
+        $('#input_dias').val(String(Number(value_regreso.diff(value_salida, 'days')) + 1));
    }
  
  }
