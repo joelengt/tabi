@@ -1054,6 +1054,30 @@ body {
   font-size: 1rem;
   font-weight: bold;
 }
+@media (max-width: 900px) {
+  .PricingElements {
+    padding-top: 5rem;
+    text-align: center;
+  }
+  .PricingElements__box {
+    display: block;
+    padding: 20px;
+  }
+  .PricingElements__form {
+    display: block;
+    width: 100%;
+  }
+  .PricingElements__list {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    overflow: none;
+  }
+  #ModalBoxContent {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+}
 .FormToPay {
   padding-top: 3rem;
 }
@@ -1214,6 +1238,28 @@ body {
   padding: 33px;
   margin-left: 3rem;
   border: 1px solid #e2e2e2;
+}
+@media (max-width: 900px) {
+  .FormToPay__box {
+    display: block;
+    padding: 20px;
+  }
+  .FormToPay__form {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: none;
+  }
+  .FormToPay__preview {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    overflow: none;
+    padding: 0px;
+    margin-right: 7px;
+    padding-top: 2rem;
+    padding-left: 0.5rem;
+  }
 }
 #ModalBox {
   height: 100vh;
