@@ -132,14 +132,14 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                     div(class="item  input__margin")
                         label(for="input_salida") Salida
                         //- input(id="input_salida" name="salida" type="date")
-                        input(id="input_salida" name="salida" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
+                        input(id="input_salida" name="salida" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa")
                         div(class="iconToDate")
                             img(src="./images/ic_calendar@2x 2.png" alt="Date Picker" id="datepickericon")
 
                     div(class="item  input__margin")
                         label(for="input_regreso") Regreso
                         //- input(id="input_regreso" name="regreso" type="date")
-                        input(id="input_regreso" name="regreso" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" placeholder="dd/mm/aaaa")
+                        input(id="input_regreso" name="regreso" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa")
                         div(class="iconToDate")
                             img(src="./images/ic_calendar@2x 2.png" alt="Date Picker" id="datepickericon")
 
@@ -320,6 +320,21 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
 
     script(src='./js/jquery-1.9.1.js')
+    script.
+        var today = new Date()
+
+        var today_day = today.getDate()
+        var today_month = today.getMonth() + 1
+        var today_year = today.getFullYear() 
+
+        if(String(today_month).length < 2) {
+            today_month = '0' + today_month;
+        }
+
+        $('#input_salida')[0].min = `${today_year}-${today_month}-${today_day}`;
+
+        $('#input_regreso')[0].min = `${today_year}-${today_month}-${today_day}`;
+
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
     script(src='./js/mainMobile/index.js')
