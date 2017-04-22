@@ -163,6 +163,10 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
             today_month = '0' + today_month;
         }
 
+        if(String(today_day).length < 2) {
+            today_day = '0' + today_day;
+        }
+
         $('#input_salida')[0].min = `${today_year}-${today_month}-${today_day}`;
 
         $('#input_regreso')[0].min = `${today_year}-${today_month}-${today_day}`;
