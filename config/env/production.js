@@ -1,6 +1,6 @@
 var config = {
     server: {
-        env: 'development',
+        env: 'production',
         port: 4000,
         path_system: {
             // server: '/root/tabi'
