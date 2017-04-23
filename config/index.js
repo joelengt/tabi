@@ -3,4 +3,4 @@ var config = {
     'development': require('./env/development.js')
 };
 
-module.exports = config['development'];
+module.exports = config['production'];

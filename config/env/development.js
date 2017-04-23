@@ -8,7 +8,7 @@ var config = {
         },
         db: {
             mongodb: {
-                local: 'mongodb://localhost/tabi2',
+                local: 'mongodb://root:root@ds115411.mlab.com:15411/tabi',
             },
             postgresql: {
                 local: 'postgres://root:postgres@localhost:4002/app_db',
@@ -35,10 +35,8 @@ var config = {
             api_secret: 'PLstoVjJNoBiqPhNDGriHyVWVTc'
         },
         culqi:{
-            // public_key: 'pk_test_FwE0vKV3KZwevsrA',
-            // private_key: 'sk_test_mCpkD0ccXRLLp87W'
-            public_key: 'pk_live_dVxLucL29Kytrtx1',
-            private_key: 'sk_live_WdQ8c1XH8y1jG8L4'
+            public_key: 'pk_test_FwE0vKV3KZwevsrA',
+            private_key: 'sk_test_mCpkD0ccXRLLp87W'
         }
     },
     variables: {

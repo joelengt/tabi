@@ -1,33 +1,43 @@
 var config = {
     server: {
-        env: 'production',
-        port: 5002,
+        env: 'development',
+        port: 4000,
         path_system: {
-            server: '/root/app'
+            // server: '/root/tabi'
+            server:    '.'
         },
         db: {
-            mongodb:{
-                local: 'mongodb://root:mongodb@ds163758.mlab.com:63758/app_db'
+            mongodb: {
+                local: 'mongodb://localhost/tabi2',
             },
             postgresql: {
-                local: 'postgres://root:postgresql@localhost:5432/app_db',
+                local: 'postgres://root:postgres@localhost:4002/app_db',
             },
             mysql: {
-                local: 'mysql://root:mysql@localhost:3306/app_db',
+                local: 'mysql://root:mysql@localhost:33060/app_db',
             }
         }
     },
     auth: {
         admin:{
-            user : 'admin',
-            pass : '12345678'
+            user : 'enrique_admin',
+            pass : 'Enrique.123'
         },
-        
+        mailing: {
+            user: 'joel.gonzales2110@gmail.com',
+            pass: 'neypujbvyhvugxyw',
+            receptor: 'enrique.6782@gmail.com'
+
+        },
         cloudinary : {
             cloud_name: 'cromlu',
             api_key: '532668554832195',
             api_secret: 'PLstoVjJNoBiqPhNDGriHyVWVTc'
         },
+        culqi:{
+            public_key: 'pk_live_dVxLucL29Kytrtx1',
+            private_key: 'sk_live_WdQ8c1XH8y1jG8L4'
+        }
     },
     variables: {
         status: {
@@ -46,6 +56,9 @@ var config = {
             officers: 'officers',
             viewer:    'officer-viewer',
             users_campo: 'users-campo'
+        },
+        typeUser: {
+            premium: 'premium'
         },
         card_status: {
             read: true,
