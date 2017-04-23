@@ -38,7 +38,7 @@ function middleware (req, res, next) {
 }
 
 // Configuración del servidor
-app.set('port', config.server.port || process.env.PORT);
+app.set('port', process.env.PORT || config.server.port);
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, './views'));
 
