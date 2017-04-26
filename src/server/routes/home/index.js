@@ -28,7 +28,7 @@ route.post('/contact', function (req, res) {
 
     var template_content = {
         title: 'Tabi: Nuevo usuario quiere contactarte',
-        receptores: [config.auth.mailing.receptor, 'joelengt@gmail.com'],
+        receptores: [config.auth.mailing.receptor],
         template: `<table width="100%">
                                         <tr>
                                            <td>

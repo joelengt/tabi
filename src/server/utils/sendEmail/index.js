@@ -8,7 +8,10 @@ var fs = require('fs')
 function handleSayHello(template_content, callback) {
 
     var transporter = nodemailer.createTransport(smtpTransport({
-        service : 'Gmail', // Gmail 
+        host: 'srv07.infranetdns.com',
+        port: 465,
+        secure: true, // upgrade later with STARTTLS
+        //service : 'Gmail', // Gmail 
         auth: {
                 user: config.auth.mailing.user,   //https://www.google.com/settings/security/lesssecureapps
                 pass: config.auth.mailing.pass
@@ -36,7 +39,7 @@ function handleSayHello(template_content, callback) {
 
 
     var mailOptions = {
-        from: 'Assistabi  <joelengt@gmail.com>', // sender address
+        from: `Assistabi <${ config.auth.mailing.user }>`, // sender address
         to: receptopres, // list of receivers
         subject: template_content.title, // Subject line
         text: template_content.title,

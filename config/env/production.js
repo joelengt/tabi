@@ -24,9 +24,9 @@ var config = {
             pass : 'Enrique.123'
         },
         mailing: {
-            user: 'joel.gonzales2110@gmail.com',
-            pass: 'neypujbvyhvugxyw',
-            receptor: 'enrique.6782@gmail.com'
+            user: 'tuvoucher@assistabi.com',
+            pass: '16ry4BrT8e',
+            receptor: 'hola@assistabi.com'
 
         },
         cloudinary : {
