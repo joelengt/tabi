@@ -298,7 +298,7 @@ route.post('/validate', function (req, res) {
         // validando cupon
         if(data.promocion !== '') {
             Cupones.findOne({'title': data.promocion}, (err, cupon) => {
-                    
+
                 console.log('CUPOON encontrado')
                 console.log(cupon);
 
@@ -390,16 +390,18 @@ route.get('/:code', function (req, res) {
         if(user !== null) {
             // filtrar Por campos de preferencia
 
-            // filtro por destino
+            // filtro per plan, pick out each plan that have country destiny
             var filter_by_country = [];
 
             for(var y = 0; y <= elements.length - 1; y++) {
                 var element_pack = elements[y].countries;
 
+                // Iteration all country names in this plan
                 for(var u = 0; u <= element_pack.length - 1; u++) {
-                    var element_pack_countri = element_pack[u];
+                    var element_pack_country = element_pack[u];
 
-                    if(element_pack_countri === user.cotizator.destino) {
+                    // If contry name, exists in this plan, save to array
+                    if(element_pack_country === user.cotizator.destino) {
 
                         filter_by_country.push(elements[y]);
                         break;
@@ -407,14 +409,14 @@ route.get('/:code', function (req, res) {
                 }
             }
 
-            // agregando e plan student
+            // Add plan student
            if(Number(user.cotizator.pasajero) > 0) {
                 if( Number(user.cotizator.dias) >= Number(elements[3].pack[0].days) ) {
                     filter_by_country.push(elements[3]);
                 }
            }
-           
-            
+
+
             console.log('Packs filtrados');
             console.log(filter_by_country);
 
@@ -429,15 +431,27 @@ route.get('/:code', function (req, res) {
 
                     var days_value = Number(user.cotizator.dias);
 
-                    if(days_value >= Number(result_filter_element.pack[result_filter_element.pack.length - 1].days)) {
-                        days_value = Number(result_filter_element.pack[result_filter_element.pack.length - 1].days);
-                    }
+                    // Validate limit if days wish to travel is over the limit -- example 92 > limit 90 ticket plan
+                    var last_element = result_filter_element.pack[result_filter_element.pack.length - 1]
 
-                    if(Number(element.days) >= days_value) {
+                    if(days_value > Number(last_element.days)) {
+                      let days_plus = Number(days_value - Number(last_element.days))
+                      let price_plus = Number(days_plus * 5)
 
-                        result_filter_tarifa.push(element);
-                        break;
+                      let custom_element_pack = {
+                          days: String(days_value),
+                          tarifa: String(Number(last_element.tarifa) + price_plus) + '.00'
+                      }
 
+                      result_filter_tarifa.push(custom_element_pack)
+                      break;
+
+                    } else {
+                      // Find pricing by day selected
+                      if(Number(element.days) >= days_value) {
+                          result_filter_tarifa.push(element)
+                          break;
+                      }
                     }
                 }
 
@@ -471,7 +485,7 @@ route.get('/:code', function (req, res) {
                     if(element.title === 'INTERNATIONAL' ||
                        element.title === 'CLASSIC' ||
                        element.title === 'EUROPA') {
-                        
+
                         element = elements_filter[r];
 
                         console.log('values');
@@ -491,9 +505,9 @@ route.get('/:code', function (req, res) {
                                 tarifa: String(value_tarifa_new)
                             }
                         });
-                        
+
                     }
-                    
+
                 }
 
             }
@@ -504,10 +518,10 @@ route.get('/:code', function (req, res) {
                user.cotizator.promocion !== null) {
 
                 Cupones.findOne({'title': user.cotizator.promocion}, (err, cupon) => {
-                        
+
                     console.log('CUPOON encontrado')
                     console.log(cupon);
-                    
+
                     var descuento = 0;
 
                     for(var t = 0; t <= respaldo_filter.length - 1; t++) {
@@ -527,7 +541,7 @@ route.get('/:code', function (req, res) {
 
                         if(cupon !== null && cupon !== undefined) {
                             descuento = Number(value_price) * (Number(cupon.numero_descuento)/100)
-                            
+
                         }
 
                         new_final_price.push({
@@ -602,7 +616,7 @@ route.get('/:code', function (req, res) {
             }
         }
     })
-    
+
 });
 
 route.get('/get-user/:code', function (req, res) {
@@ -626,7 +640,7 @@ route.get('/get-user/:code', function (req, res) {
             });
         }
     })
-    
+
 });
 
 route.post('/:code/pack-beneficios', function (req, res) {
@@ -742,22 +756,34 @@ route.post('/:code/purchare/buy-form', function (req, res) {
 
                 var days_value = Number(user.cotizator.dias);
 
-                if(days_value > Number(result_filter_element[0].pack[result_filter_element[0].pack.length - 1].days)) {
-                    days_value = Number(result_filter_element[0].pack[result_filter_element[0].pack.length - 1].days);
-                }
+                // Validate limit if days wish to travel is over the limit -- example 92 > limit 90 ticket plan
+                var last_element = result_filter_element[0].pack[result_filter_element[0].pack.length - 1]
 
-                if(Number(element.days) >= days_value) {
+                if(days_value > Number(last_element.days)) {
+                  let days_plus = Number(days_value - Number(last_element.days))
+                  let price_plus = Number(days_plus * 5)
 
-                    result_filter_tarifa.push(element);
-                    break;
+                  let custom_element_pack = {
+                      days: String(days_value),
+                      tarifa: String(Number(last_element.tarifa) + price_plus) + '.00'
+                  }
 
+                  result_filter_tarifa.push(custom_element_pack)
+                  break;
+
+                } else {
+                  // Find pricing by day selected
+                  if(Number(element.days) >= days_value) {
+                      result_filter_tarifa.push(element)
+                      break;
+                  }
                 }
             }
 
             // Obteniendo tarifa
             user.pack_selected.dias = result_filter_tarifa[0].days;
 
-            // Actualizando tarifa seleccionada 
+            // Actualizando tarifa seleccionada
             user.pack_selected.tarifa = pack_selected_price;
 
             console.log('datos del filtro');
@@ -780,7 +806,7 @@ route.post('/:code/purchare/buy-form', function (req, res) {
 
         }
     })
-    
+
 });
 
 // Render view - finally form to buy
@@ -814,7 +840,7 @@ route.get('/:code/purchare-form', function (req, res) {
             });
         }
     })
-    
+
 });
 
 // Save form to buy pack selected
@@ -828,7 +854,7 @@ route.post('/:code/purchare-buy/save', function (req, res) {
             tipo_doc:     req.body.user.tipo_doc  || 'DNI',
             doc_number:   req.body.user.doc_number || '13213123',
             fecha_nacimiento: req.body.user.fecha_nacimiento || '02/21/90',
-            email:      req.body.user.email || 'someone@gmail.com', 
+            email:      req.body.user.email || 'someone@gmail.com',
             domicilio:  req.body.user.domicilio || 'av lima',
             telefono:  req.body.user.telefono || '999999999',
         },
@@ -856,7 +882,7 @@ route.post('/:code/purchare-buy/save', function (req, res) {
         }
 
         if(user !== null) {
-            
+
             // Guardar en la db
             user.account.names = data_form.user.nombres
             user.account.last_names =  data_form.user.apellidos
@@ -873,7 +899,7 @@ route.post('/:code/purchare-buy/save', function (req, res) {
             user.account.contact_emergencia.apellidos = data_form.contact_emergencia.apellidos
             user.account.contact_emergencia.telefono = data_form.contact_emergencia.telefono
             user.account.contact_emergencia.email = data_form.contact_emergencia.email
-            
+
             // save data
 
             user.save((err, saved) => {
@@ -894,7 +920,7 @@ route.post('/:code/purchare-buy/save', function (req, res) {
 
         }
     })
-    
+
 });
 
 // forget pdf access
@@ -914,7 +940,7 @@ route.post('/forget-pdf-access', function (req, res) {
             })
         }
 
-        // Filtrando 
+        // Filtrando
         var polizas = users
                 .filter((element) => {
                     return element.access === permiso.premium;
@@ -947,7 +973,7 @@ route.post('/forget-pdf-access', function (req, res) {
 // Render view - pdf
 route.get('/:code/key-pdf', function (req, res) {
     var code = req.params.code;
-    
+
     var venta = {
         'numero_pedido': req.query.numero_pedido,
         'ticket': req.query.ticket
@@ -975,7 +1001,7 @@ route.get('/:code/key-pdf', function (req, res) {
         console.log(user);
 
         if(user !== null) {
-            
+
             // Filtrando detalles del paquete
             var pack_details = elements.filter((element) => {
                 return element.title === user.pack_selected.title;
@@ -997,7 +1023,7 @@ route.get('/:code/key-pdf', function (req, res) {
                             message: 'Error al enviar el email'
                         })
                     }
-                    
+
                     console.log('PDF final terminado');
                     console.log(result);
 
@@ -1049,7 +1075,7 @@ route.get('/:code/key-pdf', function (req, res) {
 
                         console.log('RESULTADO DEL ENVIO EMAIL')
                         console.log(result)
-                        
+
                         res.render('./plataforma/pdf/index.jade', {
                             status: 'Abre tu poliza',
                             message: '!Gracias, tu compra fue exitosa¡',
@@ -1095,7 +1121,7 @@ route.get('/:code/key-pdf', function (req, res) {
             });
         }
     })
-    
+
 });
 
 // Render view - forgot pdf
