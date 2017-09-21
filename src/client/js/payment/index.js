@@ -5,7 +5,7 @@ export function pay() {
     var $btnFormComprar = document.querySelector('#btnFormComprar')
 
     var URI = `${ window.location.protocol }//${ window.location.host }`;
-    
+
     function sendForm(data) {
         var code_id = $('.FormToPay').data('id');
 
@@ -21,10 +21,10 @@ export function pay() {
             $('#btnFormComprar')[0].innerHTML ='Comprar';
 
                 if(result.status === 'ok') {
-                    
+
                     type_service = ''
                     type_service = material.premium
-                    
+
                     pay2(result.pack.title, result.pack.tarifa);
 
                 } else {
@@ -58,7 +58,7 @@ export function pay() {
             $('#input_emergencia_email').css('border','1px solid transparent');
             $('#input_emergencia_email').css('border','1px solid transparent');
 
-            
+
             // Validar los campos
             var data = {
                 user: {
@@ -67,7 +67,7 @@ export function pay() {
                     tipo_doc:     $('#input_tipo_doc').val(),
                     doc_number:   $('#input_doc_number').val(),
                     fecha_nacimiento: $('#input_fecha_nacimiento').val(),
-                    email:      $('#input_email').val(), 
+                    email:      $('#input_email').val(),
                     domicilio:  $('#input_domicilio').val(),
                     telefono:   $('#input_telefono').val()
                 },
@@ -102,6 +102,8 @@ export function pay() {
                 console.log('PASO');
 
                 if($inputCheckTerms[0].checked === true) {
+
+                    fbq('track', 'AddPaymentInfo');
                     sendForm(data);
 
                 } else {
@@ -183,25 +185,25 @@ export function pay() {
 
     // Evento de tipeo
     $('#input_nombres').on('input', function() {
-        
+
         $('#lector_name')[0].innerHTML = `${ $('#input_nombres').val() }, ${ $('#input_apellidos').val() }`
 
     })
 
     $('#input_apellidos').on('input', function() {
-    
+
         $('#lector_name')[0].innerHTML = `${ $('#input_nombres').val() }, ${ $('#input_apellidos').val() }`
 
     })
 
     $('#input_tipo_doc').on('input', function() {
-    
+
         $('#lector_tip_doc')[0].innerHTML = `${ $('#input_tipo_doc').val() }`
 
     })
 
     $('#input_doc_number').on('input', function() {
-    
+
         $('#lector_doc')[0].innerHTML = `${ $('#input_doc_number').val() }`
 
     })
@@ -213,45 +215,45 @@ export function pay() {
     })
 
     $('#input_email').on('input', function() {
-        
+
         $('#lector_email')[0].innerHTML = `${ $('#input_email').val() }`
 
     })
 
     $('#input_domicilio').on('input', function() {
-    
+
         $('#lector_domicilio')[0].innerHTML = `${ $('#input_domicilio').val() }`
 
     })
 
     $('#input_telefono').on('input', function() {
-    
+
         $('#lector_telefono')[0].innerHTML = `${ $('#input_telefono').val() }`
 
     })
 
     $('#input_emergencia_nombres').on('input', function() {
-        
+
         $('#lector_contact_name')[0].innerHTML = `${ $('#input_emergencia_nombres').val() }, ${ $('#input_emergencia_apellidos').val() }`
 
 
     })
 
     $('#input_emergencia_apellidos').on('input', function() {
-        
+
         $('#lector_contact_name')[0].innerHTML = `${ $('#input_emergencia_nombres').val() }, ${ $('#input_emergencia_apellidos').val() }`
 
 
     })
 
     $('#input_emergencia_telefono').on('input', function() {
-    
+
         $('#lector_contact_phone')[0].innerHTML = `${ $('#input_emergencia_telefono').val() }`
 
     })
 
     $('#input_emergencia_email').on('input', function() {
-        
+
         $('#lector_contact_email')[0].innerHTML = `${ $('#input_emergencia_email').val() }`
 
     })

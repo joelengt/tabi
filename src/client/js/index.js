@@ -10,8 +10,6 @@ import { cicleSlider } from './homeSlider/index.js';
 
 cicleSlider();
 
-console.log('OK');
-
 $('#btnFormCotizar').on('click', sendFormCotizar);
 
 $('#btnFormContactSend').on('click', sendFormContact);
@@ -64,13 +62,9 @@ function calDays() {
 
         $('#input_dias').val(String(Number(value_regreso.diff(value_salida, 'days')) + 1));
    }
- 
+
  }
 
 eventClickItems();
 pay();
 // sendFormContact();
-
-
-
-

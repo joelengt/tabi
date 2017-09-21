@@ -44,12 +44,20 @@ function ConnectCulqi(user_send_id, type_send_service, token) {
         success: function (resultado) {
             console.log('RESULTADO DE LA CREACION DE VENTAS')
             console.log(resultado)
-            
+
             $('#ModalBox').css('display', 'none');
 
-            // Mandar el resultado al servidor 
+            // Mandar el resultado al servidor
 
             if(resultado.status === 'Success') {
+
+              // Pixel Facebook Purchase
+              fbq('track', 'Purchase', {
+                content_name: `PEDIDO: ${resultado.data.numero_pedido} - Ticket ${resultado.data.charge_id}`,
+                content_category: 'Pack Travel Card',
+                content_ids: [`${ resultado.user_id }`],
+                content_type: 'product'
+              });
 
                $('.FormToPay__box')[0].innerHTML = 'Cargando PDF ...';
 
