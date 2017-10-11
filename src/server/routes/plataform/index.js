@@ -69,8 +69,8 @@ var elements = [
               'Viaje de regreso por enfermedad.': 'NO'
           },
           'right': {
-              'Repatriación de restos': 'USD 15,000',
-              'Traslado y repatriación sanitaria': 'USD 15,000',
+              'Repatriación de restos': 'USD 20,000',
+              'Traslado y repatriación sanitaria': 'USD 20,000',
               'Odontología de urgencia': 'USD 230',
               'Compensación por pérdida de equipaje': 'USD 1,200',
               'Gastos por demora de equipaje': 'USD 100',
@@ -108,6 +108,7 @@ var elements = [
           'USA / Caribe': '(+1) 302 300 1734'
         }
       },
+      whatsapp: '(+1) 954 2744 943 - (+1) 904 8885508',
       conditions: '(*) para aplicar los gastos de cancelacion de viaje se aplica un deducible 25% (**) y para los pasajeros de 75 a 85 años se incrementa la tarifa en un 50% mas. Para mayor informacion consultar las condiciones generales.'
   },
   {
@@ -153,8 +154,8 @@ var elements = [
       countries: ['Europa'],
       card: {
           'left': {
-              'Asistencia médica en caso de accidente': 'EUR 40,000',
-              'Asistencia médica en caso de enfermedad': 'EUR 40,000',
+              'Asistencia médica en caso de accidente': 'EUR 75,000',
+              'Asistencia médica en caso de enfermedad': 'EUR 75,000',
               'Compensacion por muerte en transporte publico': 'EUR 10,000',
               'Asistencia médica en caso pre-existencia': 'EUR 1,000',
               'Medicamentos ambulatorios': 'EUR 350',
@@ -207,6 +208,7 @@ var elements = [
           'USA / Caribe': '(+1) 302 300 1734'
         }
       },
+      whatsapp: '(+1) 954 2744 943 - (+1) 904 8885508',
       'conditions': '(*) para aplicar los gastos de cancelacion de viaje se aplica un deducible 25% (**) y para los pasajeros de 75 a 85 años se incrementa la tarifa en un 50% mas. Para mayor informacion consultar las condiciones generales.'
   },
   {
@@ -307,6 +309,7 @@ var elements = [
           'Fax': '(+54) 11 3220 2199'
         }
       },
+      whatsapp: '(+54) 911 35869793',
       'conditions': 'Para mayor informacion consultar las condiciones generales.'
   }
 ];

@@ -211,7 +211,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                     <tr>
                                       <td>
                                         <p style="font-size: 10px">Las llamadas deben efectuarse desde teléfonos fijos. En caso de que le facturen la llamada, solicite y guarde un comprobante, le reembolsaremos el costo de la misma. También puede comunicarse con nosotros vía email:
-                                        <b style="font-size: 10px"><a href="#">hola@assistabi.com</a></b> o a través del <b style="font-size: 10px">Whatsapp: (+1) 954 2744 943</b></p>
+                                        <b style="font-size: 10px"><a href="#">hola@assistabi.com</a></b> o a través del <b style="font-size: 10px">Whatsapp: ${ pack_details.whatsapp }</b></p>
                                       </td>
                                     </tr>
                                     <tr>
