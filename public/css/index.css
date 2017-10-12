@@ -198,6 +198,27 @@ body {
 .HeaderMain__NavMain__Container__desktop li a:hover {
   border-bottom: 5px solid #fff;
 }
+.HeaderMain__NavMain__Container__desktop li .telefono-number {
+  background: #d9bc29;
+  padding: 0.5rem;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.HeaderMain__NavMain__Container__desktop li .telefono-number:hover {
+  border-bottom: 5px solid transparent;
+}
+.HeaderMain__NavMain__Container__desktop li .telefono-number__icons--item figure {
+  width: 30px;
+}
+.HeaderMain__NavMain__Container__desktop li .telefono-number__icons--item figure img {
+  max-width: 100%;
+  position: relative;
+  top: 10px;
+}
+.HeaderMain__NavMain__Container__desktop li .telefono-number__icons--item:hover {
+  border-bottom: 5px solid transparent;
+}
 .HeaderMain__NavMain__Container__mobile {
   display: none;
 }
@@ -866,6 +887,17 @@ body {
 }
 .FooterMain__right--logo figure img {
   max-width: 100%;
+}
+.FooterMain__right--logo .text {
+  padding-top: 1rem;
+}
+.FooterMain__right--logo .text h3 {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+.FooterMain__right--logo .text p {
+  font-size: 1rem;
+  padding-bottom: 0.2rem;
 }
 .FooterMain__right--redes-sociales {
   padding-bottom: 0.5rem;
