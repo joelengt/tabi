@@ -438,8 +438,8 @@ route.get('/:code', function (req, res) {
 
             // Add plan student
            if(Number(user.cotizator.pasajero) > 0) {
-                if( Number(user.cotizator.dias) >= Number(elements[3].pack[0].days) ) {
-                    filter_by_country.push(elements[3]);
+                if( Number(user.cotizator.dias) >= Number(elements[2].pack[0].days) ) {
+                    filter_by_country.push(elements[2]);
                 }
            }
 
