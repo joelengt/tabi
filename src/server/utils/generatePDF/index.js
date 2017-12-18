@@ -65,6 +65,22 @@ function generatePDF(user, pack_details, venta, callback) {
       telephones_right += `<p style="margin:1px; font-size: 10px;">${ tel } ${ pack_details.telephones.right[`${tel}`] }</p>`
     }
 
+    /* Evaluate term and conditions */
+    function kindTermsConditions(title) {
+      let template
+      switch(title) {
+        case 'STUDENT':
+          template = `<p style="text-align: left;">Condiciones Generales de Contratacion disponibles en <a href="https://assistabi.com/CondicionesPlanStudentTabiAssist.pdf">https://assistabi.com/CondicionesPlanStudentTabiAssist.pdf</a></p>`
+          break;
+
+        default:
+          template = `<p style="text-align: left;">Condiciones Generales de Contratacion disponibles en <a href="https://assistabi.com/CondicionesGeneralesTabiAssist.pdf">https://assistabi.com/CondicionesGeneralesTabiAssist.pdf</a></p>`
+
+      }
+
+      return template
+    }
+
     var template =  `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
                         <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
                           <head>
@@ -292,7 +308,7 @@ function generatePDF(user, pack_details, venta, callback) {
                                     </tr>
                                     <tr>
                                       <td>
-                                        <p style="text-align: left;">Condiciones Generales de Contratacion disponibles en <a href="https://assistabi.com/CondicionesGeneralesTabiAssist.pdf">https://assistabi.com/CondicionesGeneralesTabiAssist.pdf</a></p>
+                                        ${ kindTermsConditions(pack_details.title) }
                                       </td>
                                     </tr>
                                     <tr>
