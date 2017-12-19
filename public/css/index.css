@@ -171,6 +171,17 @@ body {
 .HeaderMain__NavMain__Container__icons--item figure img {
   max-width: 100%;
 }
+.HeaderMain__NavMain__Container__icons--item .telefono-number {
+  background: #d9bc29;
+  padding: 0.5rem;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #fff;
+}
+.HeaderMain__NavMain__Container__icons--item .telefono-number:hover {
+  border-bottom: 5px solid transparent;
+}
 .HeaderMain__NavMain__Container__icons--menu_button {
   display: none;
 }
@@ -271,6 +282,14 @@ body {
   }
   .HeaderMain__NavMain__Container__mobile li:hover {
     background-color: #005e80;
+  }
+  .HeaderMain__NavMain__Container__mobile li .telefono-number {
+    background: #d9bc29;
+    padding: 0.5rem;
+    color: #fff;
+  }
+  .HeaderMain__NavMain__Container__mobile li .telefono-number:hover {
+    border-bottom: 5px solid transparent;
   }
   .HeaderMain__NavMain__Container__desktop {
     display: none;
