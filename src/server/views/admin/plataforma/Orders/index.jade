@@ -19,6 +19,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     meta(property='og:url', content='/')
     //- Styles
     link(rel='stylesheet', href='../../css/index.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
 
     //- if lt IE 9
       script(src='./js/html5shiv.js')
@@ -33,50 +34,43 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                 img(src="../../images/logo.png")
 
 
-    section(class="PricingElements" data-id="#{code}")
+    section(class="PricingElements")
         div(class="PricingElements__title")
             h2 Admin Plataforma
 
         div(class="Admin_box Admin")
             div(class="actions")
-                p Descargar
+                p Ordernes
+            
+            div(class="actions")
+                form(action="/admin/plataforma/orders/create" method="post")
+                    button(class="btn btn-success" id="btnCreateNewOrder") Crear Order
+
+            div(class="orders")
+                each order in orders
+                    article(style="padding: 1rem 0; border-bottom: 1px solid lightgray;")
+                        div(style="display: inline-block; vertical-align: middle; text-align: left; width: 60%;")
+                            div
+                                b ORDER N#{ order.account.numero_pedido }
+                                p(style="font-size: 10px;") id: #{ order._id }
+
+                            div(style="padding-top: 10px;")
+                                p Cliente: #{ order.account.full_name }
+                                p Telefono: #{ order.account.phone }
+                                p(style="font-size: 10px;") Fecha Emitida: #{ order.account.fecha_creada }
+
+
+
+                        div(style="display: inline-block; vertical-align: middle; text-align: right; width: 30%;")
+                            form(action="/admin/plataforma/orders/#{ order._id }" method="get")
+                                button(class="btn btn-outline-primary") Ver
+
                 
-                div(class="Admin__box__right")
-
-                    form(action="/admin/plataforma/usuarios" method="get")
-                        select(id="input_select_mes" name="mes")
-                            option(value="todos") todos
-                            option(value="enero") enero
-                            option(value="febrero") febrero
-                            option(value="marzo") marzo
-                            option(value="abril") abril
-                            option(value="mayo") mayo
-                            option(value="junio") junio
-                            option(value="julio") julio
-                            option(value="agosto") agosto
-                            option(value="septiembre") septiembre
-                            option(value="octubre") octubre
-                            option(value="noviembre") noviembre
-                            option(value="diciembre") diciembre
-                        button(class="button") Usuarios
-
-                div(class="Admin__box__right")
-                    br
-                    p Cupones de Descuento
-
-                    form(action="/admin/generator/template/view")
-                        button(class="button") Cupones
-
-
-                div(class="Admin__box__right")
-                    br
-                    p Administrar Vouchers
-
-                    form(action="/admin/plataforma/orders" method="get")
-                        button(class="button") Vouchers
 
 
     script(src='../../js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
     script(src='../../js/index.min.js')
+    
+

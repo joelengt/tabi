@@ -1,4 +1,4 @@
-export function sendFormCotizar() {
+export function sendFormCotizar(currentView) {
 
     // Obtener datos del formulario
     var $input_origen = $('#input_origen');
@@ -84,8 +84,17 @@ export function sendFormCotizar() {
                 success: function (result) {
                     console.log(result);
 
+                    console.log('Current value', currentView)
+
                     if(result.status === 'ok') {
-                        window.location.href = `/plataform-pricing/${ result.code }`
+                        switch(currentView) {
+                            case 'admin':
+                                window.location.href = `/admin/plataforma/orders/create/${ result.code }`
+                                break;
+
+                            default:
+                                window.location.href = `/plataform-pricing/${ result.code }`
+                        }
 
                     } else {
                         console.log('error');

@@ -8,14 +8,20 @@ import { EventScrollSections } from './eventSections/index.js';
 import { polyfillInputs } from './eventOpenLink/index.js';
 import { cicleSlider } from './homeSlider/index.js';
 
+/* Admin */
+var currentView = 'customer'
+
 cicleSlider();
 
 $('#btnFormCotizar').on('click', sendFormCotizar);
-
 $('#btnFormContactSend').on('click', sendFormContact);
-
 $('#btnSendToGetPdf').on('click', getPdf);
 
+/* Admin */
+$('#btnAdminFormCotizar').on('click', () => {
+    currentView = 'admin'
+    sendFormCotizar(currentView)
+});
 
 $('#left_counter_plus').on('click', function() {
     if(Number($('#input_pasajero').val()) >= 0) {
@@ -68,3 +74,11 @@ function calDays() {
 eventClickItems();
 pay();
 // sendFormContact();
+
+
+/* button create */
+$('#btnCreateNewOrder').click(() => {
+    /* Create store state */
+    localStorage.setItem('currentView', 'admin')
+})
+

@@ -1,0 +1,96 @@
+doctype strict
+html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
+  head
+    meta(charset='utf-8')
+    //- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='robots', content='noodp,noydir')
+    meta(name='viewport', content='width=device-width, minimum-scale=1, maximum-scale=1')
+    meta(name='description', content='Tabi Assist - Viaje Seguro con una Tarjeta de Asistencia')
+    title Tabi Assist
+    link(rel='icon', type='image/png', href='../../../favicon.png')
+
+    //- Facebook
+    meta(property='og:title', content='Tabi Assist')
+    meta(property='og:description', content='Viaje Seguro con una Tarjeta de Asistencia')
+    meta(property='og:image', content='/og_image.jpg')
+    meta(property='og:type', content='website')
+    meta(property='og:url', content='/')
+    //- Styles
+    link(rel='stylesheet', href='../../../css/index.css')
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
+
+
+    //- if lt IE 9
+      script(src='./js/html5shiv.js')
+    //- if lt IE 9
+      script(src='./js/respond.src.js')
+    //- if lt IE 9
+      link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+  body
+    header(class="HeaderMain")
+        div(class="HeaderMain__LogoMain")
+            figure(class="HeaderMain__LogoMain__box")
+                img(src="../../../images/logo.png")
+
+
+    section(class="PricingElements")
+        div(class="PricingElements__title")
+            h2 Admin Plataforma
+
+        div(class="Admin_box Admin")
+            div(class="actions")
+                p Ordernes
+                
+            div(class="orders")
+                article(style="padding: 1rem 0; border-bottom: 1px solid lightgray;")
+                    div(style="display: inline-block; vertical-align: middle; text-align: left; width: 100%;")
+                        div
+                            b ORDER N#{ order.account.numero_pedido }
+                            p(style="font-size: 10px;") id: #{ order._id }
+                            p ticket: #{ order.account.ticket }
+                            p(style="font-size: 12px;") Fecha Emitida: #{ order.account.fecha_creada }
+
+                        div
+                            p Tarifa: #{ order.pack_selected.tarifa }
+                            p dias: #{ order.pack_selected.dias }
+                            p plan: #{ order.pack_selected.title }
+
+                        div(style="padding-top: 10px;")
+                            strong Datos del cliente
+                            p Nombres: #{ order.account.names }
+                            p Apellidos: #{ order.account.last_names }
+
+                            p Documento: #{ order.account.tipo_doc } - #{ order.account.doc_number }
+                            p Telefono: #{ order.account.phone }
+                            p Dirección: #{ order.account.address }
+                            p ciudad: #{ order.account.ciudad }
+                            p domicilio: #{ order.account.domicilio }
+                            p fecha_nacimiento: #{ order.account.fecha_nacimiento }
+                            p email: #{ order.account.email }
+
+                        div(style="padding-top: 10px;")
+                            strong Contacto de Emergencia
+                            p Nombres: #{ order.account.contact_emergencia.nombres }
+                            p Apellidos: #{ order.account.contact_emergencia.apellidos }
+                            p email: #{ order.account.contact_emergencia.email }
+                            p telefono: #{ order.account.contact_emergencia.telefono }
+
+
+
+
+                div
+                    form(action="/admin/plataforma/orders/#{ order._id }/edit" method="get")
+                        button(class="btn btn btn-success") Editar
+
+                    form(action="/admin/plataforma/orders/#{ order._id }?_method=delete" method="post")
+                        button(class="btn btn-danger") Eliminar
+
+                
+
+
+    script(src='../../../js/jquery-1.9.1.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
+    script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+

@@ -1,6 +1,55 @@
 import { pay2, culqi2 } from '../payment2/index.js';
 
+function UpdateOrder(user_send_id, type_send_service) {
+    var URI = `${ window.location.protocol }//${ window.location.host }`;
+    
+    $.ajax({
+        method: 'post',
+        url: `${ URI }/payment/admin/${user_send_id}/${type_send_service}`,
+        success: function (resultado) {
+            console.log('RESULTADO DE LA CREACION DE VENTAS')
+            console.log(resultado)
+
+            $('#ModalBox').css('display', 'none');
+
+            // Mandar el resultado al servidor
+
+            if(resultado.status === 'Success') {
+
+               $('.FormToPay__box')[0].innerHTML = 'Cargando PDF ...';
+
+               window.location.href = `/plataform-pricing/${ resultado.user_id }/key-pdf?numero_pedido=${ resultado.data.numero_pedido }&ticket=${ resultado.data.charge_id }`
+
+            } else {
+
+                // Resultado cuando la venta no fue creada
+                modalMessage(`<div>
+                                <h3>${ resultado.status }</h3>
+                                <p>${ resultado.message }</p>
+                                <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                                <p><strong>Numero de pedido:</strong>: ${ resultado.data.numero_pedido }</p>
+                                <p><strong>Ticket:</strong> ${ resultado.data.charge_id }</p>
+                            </div>`);
+
+            }
+
+        },
+        error: function(err) {
+            modalMessage(`<div>
+                            <h3>Upss Algo paso!</h3>
+                            <p>${ err }</p>
+                            <p>Si el error continua, conctanos a hola@assistabi.com, con estos datos</p>
+                            <p><strong>Numero de pedido:</strong>: ${ resultado.data.numero_pedido }</p>
+                            <p><strong>Ticket:</strong> ${ resultado.data.charge_id }</p>
+                        </div>`);
+        }
+    })
+}
+
 export function pay() {
+
+    // Get localStore
+    let currentView = localStorage.getItem('currentView')
 
     var $btnFormComprar = document.querySelector('#btnFormComprar')
 
@@ -18,14 +67,36 @@ export function pay() {
             success: function (result) {
                 console.log(result);
 
-            $('#btnFormComprar')[0].innerHTML ='Comprar';
+                $('#btnFormComprar')[0].innerHTML ='Comprar';
 
                 if(result.status === 'ok') {
 
                     type_service = ''
                     type_service = material.premium
 
-                    pay2(result.pack.title, result.pack.tarifa);
+                    switch(currentView) {
+                        case 'admin':
+                            
+                            modalMessage(`<div>
+                                            <h3>Cargando...</h3>
+                                        </div>`);
+
+
+                            localStorage.setItem('currentView', 'customer')
+
+                            // setTimeout(function(){
+                                // window.location.href = `/admin/plataforma/orders`
+                            // }, 5000);
+
+                            /* Update Order */
+                            var current_user_id = $('#user_id_plataforma').val()
+                            UpdateOrder(current_user_id, 'premium')
+
+                            break;
+
+                        default:
+                            pay2(result.pack.title, result.pack.tarifa);
+                    }
 
                 } else {
 

@@ -208,4 +208,74 @@ app.post('/:user_id/:type_service', function (req, res) {
 
 })
 
+// API PORT: Creat form admin
+app.post('/admin/:user_id/:type_service', function (req, res) {
+    var user_id = req.params.user_id
+    var type_service = req.params.type_service
+
+    console.log('user_id');
+    console.log(user_id);
+
+    console.log('tipo de servicio');
+    console.log(type_service);
+
+
+    Users.findById({'_id': user_id}, (err, user) => {
+        if(err) {
+            return res.status(404).json({
+                status: 'Error',
+                error: err
+            })
+        }
+
+        // Convierto el monto al valor correcto: 
+        var amount = Number(user.pack_selected.tarifa);
+        amount = +(amount.toFixed(2).replace('.', ''));
+
+        console.log('DATOS DEL USUARIO');
+        console.log(user);
+
+
+        if(user) {
+            let result = {
+                id: String('ticket' + Date.now()),
+                metadata: {
+                    'Numero Orden': String(Date.now())
+                },
+            }
+
+            // Upgrade user to premium access have other service
+            Upgrade(user_id, permiso.premium, result, function (err, usuario_access) {
+                if(err) {
+                    return console.log('Error al actualizar usuario: ' + err)
+                }
+
+                console.log('DATOS DEL USUARIO <---');
+                console.log(usuario_access);
+
+                // success
+                return res.status(200).json({
+                  status: 'Success',
+                  responseCode: 200,
+                  message: 'Charge Success',
+                  user_id: usuario_access._id,
+                  data: {
+                    numero_pedido:  usuario_access.account.numero_pedido,
+                    charge_id: usuario_access.account.ticket
+                  }
+                })
+
+            })
+
+        } else {
+            return res.status(404).json({
+                status: 'Not Found',
+                error: 'user not found'
+            })
+        }
+
+    })
+
+})
+
 module.exports = app

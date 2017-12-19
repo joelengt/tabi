@@ -58,7 +58,8 @@ var config = {
             users_campo: 'users-campo'
         },
         typeUser: {
-            premium: 'premium'
+            premium: 'premium',
+            normal: 'normal'
         },
         card_status: {
             read: true,
