@@ -152,16 +152,21 @@ app.post('/:user_id/:type_service', function (req, res) {
                         console.log('DATOS DEL USUARIO <---');
                         console.log(usuario_access);
 
-                        // success
-                        res.status(200).json({
-                          status: 'Success',
-                          responseCode: 200,
-                          message: 'Charge Success',
-                          user_id: usuario_access._id,
-                          data: {
-                            numero_pedido:  usuario_access.account.numero_pedido,
-                            charge_id: usuario_access.account.ticket
-                          }
+                        user.account.status_purchare = 'web'
+
+                        user.save((err, user_saved) => {
+                            // success
+                            res.status(200).json({
+                              status: 'Success',
+                              responseCode: 200,
+                              message: 'Charge Success',
+                              user_id: usuario_access._id,
+                              data: {
+                                numero_pedido:  usuario_access.account.numero_pedido,
+                                charge_id: usuario_access.account.ticket
+                              }
+                            })
+                            
                         })
 
                     })
@@ -173,6 +178,8 @@ app.post('/:user_id/:type_service', function (req, res) {
 
                     user.account.numero_pedido = obj.metadata['Numero Orden']
                     user.account.ticket = result.charge_id
+
+                    user.account.status_purchare = 'culqi-error'
 
                     user.save((err, user_saved) => {
                         if(err) {
@@ -254,15 +261,21 @@ app.post('/admin/:user_id/:type_service', function (req, res) {
                 console.log(usuario_access);
 
                 // success
-                return res.status(200).json({
-                  status: 'Success',
-                  responseCode: 200,
-                  message: 'Charge Success',
-                  user_id: usuario_access._id,
-                  data: {
-                    numero_pedido:  usuario_access.account.numero_pedido,
-                    charge_id: usuario_access.account.ticket
-                  }
+                user.account.status_purchare = 'admin'
+
+                user.save((err, user_saved) => {
+                    // success
+                    res.status(200).json({
+                      status: 'Success',
+                      responseCode: 200,
+                      message: 'Charge Success',
+                      user_id: usuario_access._id,
+                      data: {
+                        numero_pedido:  usuario_access.account.numero_pedido,
+                        charge_id: usuario_access.account.ticket
+                      }
+                    })
+                    
                 })
 
             })

@@ -55,6 +55,7 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                                 p(style="font-size: 10px;") id: #{ order._id }
 
                             div(style="padding-top: 10px;")
+                                div(class="badge badge-info") #{ order.account.status_purchare }
                                 p Cliente: #{ order.account.full_name }
                                 p Telefono: #{ order.account.phone }
                                 p(style="font-size: 10px;") Fecha Emitida: #{ order.account.fecha_creada }

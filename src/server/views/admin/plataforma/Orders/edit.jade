@@ -20,7 +20,12 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     //- Styles
     link(rel='stylesheet', href='../../../../css/index.css')
     link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
-
+    
+    style.
+        .input-data input {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
 
     //- if lt IE 9
       script(src='./js/html5shiv.js')
@@ -43,82 +48,96 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
             div(class="actions")
                 p Editar Orden N#{ order.account.numero_pedido }
                 
-            div(class="orders")
-                article(style="padding: 1rem 0; border-bottom: 1px solid lightgray;")
+            div(class="orders" style="margin-bottom: 5rem;")
+                article(style="padding: 1rem 0;")
                     div(style="display: inline-block; vertical-align: middle; text-align: left; width: 100%;")
-                        div
+                        div(style="padding-top: 10px; padding-bottom: 20px; border-bottom: 1px solid gray; border-top: 1px solid gray;")
                             b ORDER N#{ order.account.numero_pedido }
                             p(style="font-size: 10px;") id: #{ order._id }
                             p ticket: #{ order.account.ticket }
                             p(style="font-size: 12px;") Fecha Emitida: #{ order.account.fecha_creada }
 
-                        div
+                        div(style="padding-top: 10px; padding-bottom: 20px; border-bottom: 1px solid gray; border-top: 1px solid gray;")
+                            h3 Paquete Seleccionado
+                            p Plan: #{ order.pack_selected.title }
                             p Tarifa: #{ order.pack_selected.tarifa }
                             p dias: #{ order.pack_selected.dias }
-                            p plan: #{ order.pack_selected.title }
+
+                        div(style="padding-top: 10px; padding-bottom: 20px; border-bottom: 1px solid gray; border-top: 1px solid gray;")
+                            h3 Detalles Cotizador
+                            p origen: #{ order.cotizator.origen }
+                            p destino: #{ order.cotizator.destino }
+                            p tipo_viaje: #{ order.cotizator.tipo_viaje }
+                            p salida: #{ order.cotizator.salida }
+                            p regreso: #{ order.cotizator.regreso }
+                            p pasajero: #{ order.cotizator.pasajero }
+                            p adulto_mayor: #{ order.cotizator.adulto_mayor }
+                            p promocion: #{ order.cotizator.promocion }
+                            p email: #{ order.cotizator.email }
+
 
                         form(action="/admin/plataforma/orders/#{ order._id }?_method=put" method="post")
-                            div(style="padding-top: 10px;")
-                                strong Datos del cliente
-                                div
+                            div(style="padding-top: 10px; padding-bottom: 20px; border-bottom: 1px solid gray; border-top: 1px solid gray;")
+                                h3 Datos del cliente
+                                div(class="input-data")
                                     label Nombres:
                                     input(type="text", name="names", value="#{order.account.names}")
 
-                                div
+                                div(class="input-data")
                                     label Apellidos:
                                     input(type="text", name="last_names", value="#{order.account.last_names}")
 
-
-                                div
+                                div(class="input-data")
                                     label Tipo Documento:
-                                    select(id="input_tipo_doc" value="#{order.account.tipo_doc}" name="tipo_doc")
+                                    input(type="hidden", id="input_tipo_doc", name="last_names", value="#{order.account.tipo_doc}")
+                                    select(class="input_tipo_doc_selector" value="#{order.account.tipo_doc}" name="tipo_doc")
                                       option(value="DNI") DNI
                                       option(value="Pasaporte") Pasaporte
                                       option(value="Carnet de Extranjeria") Carnet de Extranjeria
 
-                                div
+                                div(class="input-data")
                                     label Numero Documento:
                                     input(type="text", name="doc_number", value="#{order.account.doc_number}")
 
-                                div
+                                div(class="input-data")
                                     label Telefono:
                                     input(type="text", name="phone", value="#{order.account.phone}")
 
-                                div
+                                div(class="input-data")
                                     label Dirección:
                                     input(type="text", name="address", value="#{order.account.address}")
 
-                                div
+                                div(class="input-data")
                                     label ciudad:
                                     input(type="text", name="ciudad", value="#{order.account.ciudad}")
 
-                                div
+                                div(class="input-data")
                                     label domicilio:
                                     input(type="text", name="domicilio", value="#{order.account.domicilio}")
 
-                                div
+                                div(class="input-data")
                                     label fecha_nacimiento:
                                     input(type="text", name="fecha_nacimiento", value="#{order.account.fecha_nacimiento}")
 
-                                div
+                                div(class="input-data")
                                     label email:
                                     input(type="text", name="email", value="#{order.account.email}")
         
-                            div(style="padding-top: 10px;")
-                                strong Contacto de Emergencia
-                                div
+                            div(style="padding-top: 10px; padding-bottom: 20px; border-bottom: 1px solid gray;")
+                                h3 Contacto de Emergencia
+                                div(class="input-data")
                                     label Nombres:
                                     input(type="text", name="contact_emergencia_nombres", value="#{order.account.contact_emergencia.nombres}")
 
-                                div
+                                div(class="input-data")
                                     label Apellidos:
                                     input(type="text", name="contact_emergencia_apellidos", value="#{order.account.contact_emergencia.apellidos}")
 
-                                div
+                                div(class="input-data")
                                     label email:
                                     input(type="text", name="contact_emergencia_email", value="#{order.account.contact_emergencia.email}")
 
-                                div
+                                div(class="input-data")
                                     label telefono:
                                     input(type="text", name="contact_emergencia_telefono", value="#{order.account.contact_emergencia.telefono}")
                             
@@ -129,4 +148,9 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     script(src='../../../../js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
+    script.
+        $( window ).on( "load", function() {
+            var currentDocType = $('#input_tipo_doc').val()
+            $('.input_tipo_doc_selector').val(currentDocType)
+        })
 
