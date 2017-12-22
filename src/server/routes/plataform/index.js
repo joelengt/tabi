@@ -51,7 +51,7 @@ var elements = [
               tarifa: '120.00'
           }
       ],
-      countries: ['Mundial - No Europa', 'USA'],
+      countries: ['Mundial', 'Caribe, Asia', 'USA'],
       card: {
           'left': {
               'Asistencia médica en caso de accidente': 'USD 20,000',
@@ -151,7 +151,7 @@ var elements = [
               tarifa: '135.00'
           }
       ],
-      countries: ['Europa'],
+      countries: ['Mundial', 'Europa'],
       card: {
           'left': {
               'Asistencia médica en caso de accidente': 'EUR 75,000',
@@ -429,18 +429,20 @@ route.get('/:code', function (req, res) {
 
                     // If contry name, exists in this plan, save to array
                     if(element_pack_country === user.cotizator.destino) {
-
-                        filter_by_country.push(elements[y]);
+                      // if the value is - student
+                      if (elements[y].title !== 'STUDENT') {
+                        filter_by_country.push(elements[y])
                         break;
+                      }
                     }
                 }
             }
 
             // Add plan student
            if(Number(user.cotizator.pasajero) > 0) {
-                if( Number(user.cotizator.dias) >= Number(elements[2].pack[0].days) ) {
-                    filter_by_country.push(elements[2]);
-                }
+              if( Number(user.cotizator.dias) >= Number(elements[2].pack[0].days) ) {
+                filter_by_country.push(elements[2]);
+              }
            }
 
 
