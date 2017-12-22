@@ -109,7 +109,7 @@ var elements = [
         }
       },
       whatsapp: '(+1) 954 2744 943 - (+1) 904 8885508',
-      conditions: '(*) para aplicar los gastos de cancelacion de viaje se aplica un deducible 25% (**) y para los pasajeros de 75 a 85 años se incrementa la tarifa en un 50% mas. Para mayor informacion consultar las condiciones generales.'
+      conditions: ''
   },
   {
       title: 'EUROPA',
@@ -210,7 +210,7 @@ var elements = [
         }
       },
       whatsapp: '(+1) 954 2744 943 - (+1) 904 8885508',
-      'conditions': '(*) para aplicar los gastos de cancelacion de viaje se aplica un deducible 25% (**) y para los pasajeros de 75 a 85 años se incrementa la tarifa en un 50% mas. Para mayor informacion consultar las condiciones generales.'
+      'conditions': ''
   },
   {
       title: 'STUDENT',
@@ -311,7 +311,7 @@ var elements = [
         }
       },
       whatsapp: '(+54) 911 35869793',
-      'conditions': 'Para mayor informacion consultar las condiciones generales.'
+      'conditions': ''
   }
 ];
 
