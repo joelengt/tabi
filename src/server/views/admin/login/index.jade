@@ -35,22 +35,22 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
     section(class="PricingElements" data-id="#{code}")
         div(class="PricingElements__title")
-            h2 Admin Login
+            h2 Ingresa al Administrador
 
         div(class="PricingElements__box Admin")
             form(action='/admin/auth/plataforma', method="post")
                 div(class="input")
                     div
-                        label email
+                        label Usuario
                     div
-                        input(type="text" name="username")
+                        input(type="text" name="username" placeholder="Ingresa tu usuario")
                 div(class="input")
                     div
-                        label password
+                        label Contraseña
                     div
-                        input(type="password" name="password")
+                        input(type="password" name="password" placeholder="Ingresa tu contraseña")
                 div(class="input")
-                    button(class="button") Enviar
+                    button(class="button") Ingresar
 
                 div
                     p #{status}

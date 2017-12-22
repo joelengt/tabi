@@ -30,21 +30,25 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
   body
     header(class="HeaderMain")
         div(class="HeaderMain__LogoMain")
-            figure(class="HeaderMain__LogoMain__box")
-                img(src="../../images/logo.png")
+            a(href="/admin/login")
+                figure(class="HeaderMain__LogoMain__box")
+                    img(src="../../images/logo.png")
 
 
     section(class="PricingElements")
         div(class="PricingElements__title")
-            h2 Admin Plataforma
+            h2 Admin Plataforma - Ordernes / Vouchers
 
         div(class="Admin_box Admin")
             div(class="actions")
-                p Ordernes
-            
-            div(class="actions")
                 form(action="/admin/plataforma/orders/create" method="post")
-                    button(class="btn btn-success" id="btnCreateNewOrder") Crear Order
+                    button(class="btn btn-success" id="btnCreateNewOrder") Crear/Registrar Nueva Order
+            
+            br
+            br
+
+            div(class="orders")
+                h4 Lista de Ordenes / Vouchers ( Registros: #{ orders.length } )
 
             div(class="orders")
                 each order in orders
@@ -54,17 +58,17 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
                                 b ORDER N#{ order.account.numero_pedido }
                                 p(style="font-size: 10px;") id: #{ order._id }
 
-                            div(style="padding-top: 10px;")
+                            div
                                 div(class="badge badge-info") #{ order.account.status_purchare }
-                                p Cliente: #{ order.account.full_name }
-                                p Telefono: #{ order.account.phone }
+                                p(style="margin: 0;") Cliente: #{ order.account.full_name }
+                                p(style="margin: 0;") Telefono: #{ order.account.phone }
                                 p(style="font-size: 10px;") Fecha Emitida: #{ order.account.fecha_creada }
 
 
 
                         div(style="display: inline-block; vertical-align: middle; text-align: right; width: 30%;")
                             form(action="/admin/plataforma/orders/#{ order._id }" method="get")
-                                button(class="btn btn-outline-primary") Ver
+                                button(class="btn btn-outline-primary") Ver Detalles
 
                 
 
@@ -72,6 +76,5 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     script(src='../../js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
-    script(src='../../js/index.min.js')
     
 

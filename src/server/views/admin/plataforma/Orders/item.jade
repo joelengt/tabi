@@ -31,24 +31,22 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
   body
     header(class="HeaderMain")
         div(class="HeaderMain__LogoMain")
-            figure(class="HeaderMain__LogoMain__box")
-                img(src="../../../images/logo.png")
+            a(href="/admin/login")
+                figure(class="HeaderMain__LogoMain__box")
+                    img(src="../../../images/logo.png")
 
 
     section(class="PricingElements")
         div(class="PricingElements__title")
-            h2 Admin Plataforma
+            h2 Admin Plataforma - Orden / Voucher - Detalle
 
         div(class="Admin_box Admin")
-            div(class="actions")
-                p Ordernes
-                
             div(class="orders" style="margin-bottom: 5rem;")
                 article(style="padding: 1rem 0;")
                     div(style="display: inline-block; vertical-align: middle; text-align: left; width: 100%;")
                         div(style="padding-top: 10px; padding-bottom: 20px; border-bottom: 1px solid gray; border-top: 1px solid gray;")
-                            b ORDER N#{ order.account.numero_pedido }
-                            p(style="font-size: 10px;") id: #{ order._id }
+                            h2 ORDER N#{ order.account.numero_pedido }
+                            strong(style="font-size: 12px;") #[p(style="font-weight: normal;") id: #{ order._id }]
                             p ticket: #{ order.account.ticket }
                             p(style="font-size: 12px;") Fecha Emitida: #{ order.account.fecha_creada }
 

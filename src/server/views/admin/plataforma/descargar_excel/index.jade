@@ -19,6 +19,8 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     meta(property='og:url', content='/')
     //- Styles
     link(rel='stylesheet', href='../../css/index.css')
+    
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
 
     //- if lt IE 9
       script(src='./js/html5shiv.js')
@@ -29,25 +31,48 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
   body
     header(class="HeaderMain")
         div(class="HeaderMain__LogoMain")
-            figure(class="HeaderMain__LogoMain__box")
-                img(src="../../images/logo.png")
+            a(href="/admin/login")
+                figure(class="HeaderMain__LogoMain__box")
+                    img(src="../../images/logo.png")
 
 
     section(class="PricingElements" data-id="#{code}")
         div(class="PricingElements__title")
-            h2 Admin Plataforma
+            h2 Admin Plataforma - Usuarios
 
         div(class="Admin_box Admin")
             div(class="actions")
-                p Descargar: #{ filter }
+                p Filtrando Usuarios de : #{ filter }
+
+                form(action="/admin/plataforma/usuarios" method="get")
+                    input(type="hidden" id="DayValueSelected" value="#{ filter }")
+                    select(id="input_select_mes" name="mes")
+                        option(value="todos") todos
+                        option(value="enero") enero
+                        option(value="febrero") febrero
+                        option(value="marzo") marzo
+                        option(value="abril") abril
+                        option(value="mayo") mayo
+                        option(value="junio") junio
+                        option(value="julio") julio
+                        option(value="agosto") agosto
+                        option(value="septiembre") septiembre
+                        option(value="octubre") octubre
+                        option(value="noviembre") noviembre
+                        option(value="diciembre") diciembre
+                    button(class="btn btn-info") Buscar
+                br
+                br
+
+                p Descargar Reporte de Usuarios en Excel:
 
                 div(class="Admin__box__left")
                     form(action="#{sources.all}")
-                        button(class="button") Todos los usuarios
+                        button(class="button") Descargar reporte de (#{ filter })
                 
                 div(class="Admin__box__right")
                     form(action="#{sources.pay}")
-                        button(class="button") Usuarios pagos
+                        button(class="button") Descargar solo Usuarios pagos (#{ filter })
 
 
 
@@ -55,3 +80,9 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
     script(src='../../js/index.min.js')
+
+    script.
+        $( window ).on( "load", function() {
+            var currentFilterSelected = $('#DayValueSelected').val()
+            $('#input_select_mes').val(currentFilterSelected)
+        })

@@ -26,6 +26,12 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
       script(src='./js/respond.src.js')
     //- if lt IE 9
       link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+
+    style.
+        .button:hover {
+            background: #4598b6;
+        }
+
   body
     header(class="HeaderMain")
         div(class="HeaderMain__LogoMain")
@@ -35,48 +41,32 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
     section(class="PricingElements" data-id="#{code}")
         div(class="PricingElements__title")
-            h2 Admin Plataforma
+            h2 Administrar Plataforma
+            br
+            p ¿Qué hacemos hoy?
 
         div(class="Admin_box Admin")
             div(class="actions")
-                p Descargar
-                
-                div(class="Admin__box__right")
-
-                    form(action="/admin/plataforma/usuarios" method="get")
-                        select(id="input_select_mes" name="mes")
-                            option(value="todos") todos
-                            option(value="enero") enero
-                            option(value="febrero") febrero
-                            option(value="marzo") marzo
-                            option(value="abril") abril
-                            option(value="mayo") mayo
-                            option(value="junio") junio
-                            option(value="julio") julio
-                            option(value="agosto") agosto
-                            option(value="septiembre") septiembre
-                            option(value="octubre") octubre
-                            option(value="noviembre") noviembre
-                            option(value="diciembre") diciembre
-                        button(class="button") Usuarios
 
                 div(class="Admin__box__right")
-                    br
-                    p Cupones de Descuento
+                    form(action="/admin/plataforma/usuarios?mes=todos" method="get")
+                        button(class="button") Administrar Usuarios / Clientes
 
+                div(class="Admin__box__right")
                     form(action="/admin/generator/template/view")
-                        button(class="button") Cupones
+                        button(class="button") Administrar Cupones / Descuento
 
 
                 div(class="Admin__box__right")
-                    br
-                    p Administrar Vouchers
-
                     form(action="/admin/plataforma/orders" method="get")
-                        button(class="button") Vouchers
+                        button(class="button") Administrar Pedidos / Vouchers
+
+
+                div(class="Admin__box__right")
+                    form(action="/admin/login" method="get")
+                        button(class="button" style="background: #d9d9d9") Salir
 
 
     script(src='../../js/jquery-1.9.1.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
-    script(src='../../js/index.min.js')
