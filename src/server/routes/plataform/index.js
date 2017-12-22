@@ -438,16 +438,25 @@ route.get('/:code', function (req, res) {
                 }
             }
 
-            // Add plan student
+            // Evaluate to Add Studen plan to the list ot pick out
            if(Number(user.cotizator.pasajero) > 0) {
-              if( Number(user.cotizator.dias) >= Number(elements[2].pack[0].days) ) {
-                filter_by_country.push(elements[2]);
-              }
+
+             /* Validate place to travel scope */
+             var studentCountryScoupe = elements[2].countries
+
+             /* iteration over country scoupe to studen plan */
+             studentCountryScoupe.map(function (studenCountryOption) {
+
+              /* Evaluate if user.cotizador.destino is on the scope */
+               if (user.cotizator.destino === studenCountryOption) {
+                  if( Number(user.cotizator.dias) >= Number(elements[2].pack[0].days) ) {
+                    filter_by_country.push(elements[2]);
+                  }
+               }
+              
+             })
+
            }
-
-
-            console.log('Packs filtrados');
-            console.log(filter_by_country);
 
             // filtrando paquete por dias
             var result_filter_tarifa = [];
