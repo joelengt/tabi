@@ -176,31 +176,31 @@ route.get('/plataforma/usuarios', function (req, res) {
                 break;
 
             case 'junio':
-                month_select = 5;
+                month_select = 6;
                 break;
 
             case 'julio':
-                month_select = 5;
+                month_select = 7;
                 break;
 
             case 'agosto':
-                month_select = 5;
+                month_select = 8;
                 break;
 
             case 'septiembre':
-                month_select = 5;
+                month_select = 9;
                 break;
 
             case 'octubre':
-                month_select = 5;
+                month_select = 10;
                 break;
 
             case 'noviembre':
-                month_select = 5;
+                month_select = 11;
                 break;
 
             case 'diciembre':
-                month_select = 5;
+                month_select = 12;
                 break;
         }
 
