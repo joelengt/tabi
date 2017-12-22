@@ -95,9 +95,52 @@
                         
                         &:hover
                             border-bottom 5px solid transparent
+            
   
             &__mobile
                 display none
+                
+                &__whatsapp
+                    display none
+                    
+                    li
+                        display inline-block
+                        margin-left 2rem
+                        
+                        span,a
+                            font-size 1.2rem
+                            color white
+                            text-decoration none
+                            padding 1rem 0
+                            width 100%
+                            display block
+                            margin 0 auto
+                            text-align center
+                            border-bottom 5px solid transparent
+                            cursor pointer
+                            
+                            &:hover
+                                border-bottom 5px solid white
+                        
+                        .telefono-number
+                            background gold_yellow
+                            padding .5rem
+                            border-radius 10px
+                            
+                            &:hover
+                                border-bottom 5px solid transparent
+
+                        .telefono-number__icons--item
+                            figure
+                                width 30px
+                                
+                                img
+                                    max-width 100%
+                                    position relative
+                                    top 10px
+                            
+                            &:hover
+                                border-bottom 5px solid transparent
 
 
 @media screen and (max-width 767px)
@@ -149,6 +192,16 @@
                             
                             &:hover
                                 border-bottom 5px solid transparent
-                                
+                    
+                    &__whatsapp
+                        display inline-block
+                        position relative
+                        top -5px
+                        
+                        li
+                            margin-left 0
+                            
+                            span, a 
+                                padding 0
                 &__desktop
                     display none
