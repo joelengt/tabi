@@ -44,22 +44,18 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
             div(class="actions")
                 p Filtrando Usuarios de : #{ filter }
 
-                form(action="/admin/plataforma/usuarios" method="get")
-                    input(type="hidden" id="DayValueSelected" value="#{ filter }")
-                    select(id="input_select_mes" name="mes")
-                        option(value="todos") todos
-                        option(value="enero") enero
-                        option(value="febrero") febrero
-                        option(value="marzo") marzo
-                        option(value="abril") abril
-                        option(value="mayo") mayo
-                        option(value="junio") junio
-                        option(value="julio") julio
-                        option(value="agosto") agosto
-                        option(value="septiembre") septiembre
-                        option(value="octubre") octubre
-                        option(value="noviembre") noviembre
-                        option(value="diciembre") diciembre
+                form(action="/admin/plataforma/usuarios" method="post")
+                    div
+                        input(type="hidden" id="DayValueSelected" value="#{ filter }")
+                        label(for="input_salida") Inicio
+                        //- input(id="input_salida" name="salida" type="date")
+                        input(id="input_salida" name="inicio" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa")
+
+                    div
+                        label(for="input_salida") Final
+                        //- input(id="input_salida" name="salida" type="date")
+                        input(id="input_salida" name="final" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa")
+
                     button(class="btn btn-info") Buscar
                 br
                 br

@@ -74,6 +74,15 @@ function ensureAuthorized(req, res, next) {
     }
 }
 
+function filterByRangeDate(productData, dateToStart, dateToEnd) {
+  return productData.filter(function (elementData) {
+      var hitDates = elementData.account.fecha_creada || {}
+
+      // extract all date strings
+      var date = new Date(hitDates)
+      return date >= dateToStart && date <= dateToEnd
+  });
+}
 
 var element_title = [
     'origen',
@@ -142,7 +151,7 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
 /*
 * Users API
 */
-route.get('/plataforma/usuarios', function (req, res) {
+route.get('/plataforma/usuarios/dasd/dfdsfds', function (req, res) {
     // do something with req.user
 
     var filter_month = req.query.mes;
@@ -218,264 +227,212 @@ route.get('/plataforma/usuarios', function (req, res) {
             })
         }
 
-        if(users !== null) {
 
-            // filtrando a los usuarios pagos
-            var users_pay = users.filter((element) => {
-                return element.access === config.variables.typeUser.premium;
-            })
-
-            // Generando excel
-            var subtitle = '';
-            var list_all = '';
-            var list_pay = '';
-
-            // Generando subtitle
-            for(var u = 0; u <= element_title.length - 1; u++) {
-                subtitle += `<td>${ element_title[u] }</td>`;
-            }
-
-            // Generando lista de todos
-            for(var a = 0; a <= users.length - 1; a++) {
-
-                // Evaluando pretty date creation purchare
-                var date_numero_pedido = users[a].account.numero_pedido;
-                var date_purchare = new Date(Number(date_numero_pedido.replace('NRAS000','')));
-
-                var date_purchare_pretty = `${ date_purchare.getDate() }-${ date_purchare.getMonth() + 1 }-${ date_purchare.getFullYear() }`;
-
-                // Evaluando mes
-                if(month_select === 'todos') {
-
-                    list_all += `<tr>
-                                    <td>${ users[a].cotizator.origen }</td>
-                                    <td>${ users[a].cotizator.destino }</td>
-                                    <td>${ users[a].cotizator.tipo_viaje }</td>
-                                    <td>${ users[a].cotizator.salida }</td>
-                                    <td>${ users[a].cotizator.regreso }</td>
-                                    <td>${ users[a].cotizator.dias }</td>
-                                    <td>${ users[a].cotizator.pasajero }</td>
-                                    <td>${ users[a].cotizator.adulto_mayor }</td>
-                                    <td>${ users[a].cotizator.promocion }</td>
-                                    <td>${ users[a].cotizator.email }</td>
-                                    <td>${ users[a].pack_selected.title }</td>
-                                    <td>${ users[a].pack_selected.dias }</td>
-                                    <td>${ users[a].pack_selected.tarifa }</td>
-                                    <td>${ users[a].account.names }</td>
-                                    <td>${ users[a].account.last_names }</td>
-                                    <td>${ users[a].account.full_name }</td>
-                                    <td>${ users[a].account.tipo_doc }</td>
-                                    <td>${ users[a].account.doc_number }</td>
-                                    <td>${ users[a].account.email }</td>
-                                    <td>${ users[a].account.domicilio }</td>
-                                    <td>${ users[a].account.permiso }</td>
-                                    <td>${ users[a].account.ciudad }</td>
-                                    <td>${ users[a].account.address }</td>
-                                    <td>${ users[a].account.phone }</td>
-                                    <td>${ users[a].account.contact_emergencia.nombres }</td>
-                                    <td>${ users[a].account.contact_emergencia.apellidos }</td>
-                                    <td>${ users[a].account.contact_emergencia.telefono }</td>
-                                    <td>${ users[a].account.contact_emergencia.email }</td>
-                                    <td>${ users[a].account.status_purchare }</td>
-                                    <td>${ users[a].account.fecha_creada }</td>
-                                    <td>${ users[a].account.numero_pedido}</td>
-                                    <td>${ users[a].account.ticket }</td>
-                                    <td>${ date_purchare_pretty }</td>
-                                    <td>${ users[a].access }</td>
-                                </tr>`;
-
-                } else {
-
-                    if(month_select === date_purchare.getMonth() + 1 &&
-                      data_actual.getFullYear() === date_purchare.getFullYear()) {
-
-                        list_all += `<tr>
-                                        <td>${ users[a].cotizator.origen }</td>
-                                        <td>${ users[a].cotizator.destino }</td>
-                                        <td>${ users[a].cotizator.tipo_viaje }</td>
-                                        <td>${ users[a].cotizator.salida }</td>
-                                        <td>${ users[a].cotizator.regreso }</td>
-                                        <td>${ users[a].cotizator.dias }</td>
-                                        <td>${ users[a].cotizator.pasajero }</td>
-                                        <td>${ users[a].cotizator.adulto_mayor }</td>
-                                        <td>${ users[a].cotizator.promocion }</td>
-                                        <td>${ users[a].cotizator.email }</td>
-                                        <td>${ users[a].pack_selected.title }</td>
-                                        <td>${ users[a].pack_selected.dias }</td>
-                                        <td>${ users[a].pack_selected.tarifa }</td>
-                                        <td>${ users[a].account.names }</td>
-                                        <td>${ users[a].account.last_names }</td>
-                                        <td>${ users[a].account.full_name }</td>
-                                        <td>${ users[a].account.tipo_doc }</td>
-                                        <td>${ users[a].account.doc_number }</td>
-                                        <td>${ users[a].account.email }</td>
-                                        <td>${ users[a].account.domicilio }</td>
-                                        <td>${ users[a].account.permiso }</td>
-                                        <td>${ users[a].account.ciudad }</td>
-                                        <td>${ users[a].account.address }</td>
-                                        <td>${ users[a].account.phone }</td>
-                                        <td>${ users[a].account.contact_emergencia.nombres }</td>
-                                        <td>${ users[a].account.contact_emergencia.apellidos }</td>
-                                        <td>${ users[a].account.contact_emergencia.telefono }</td>
-                                        <td>${ users[a].account.contact_emergencia.email }</td>
-                                        <td>${ users[a].account.status_purchare }</td>
-                                        <td>${ users[a].account.fecha_creada }</td>
-                                        <td>${ users[a].account.numero_pedido}</td>
-                                        <td>${ users[a].account.ticket }</td>
-                                        <td>${ date_purchare_pretty }</td>
-                                        <td>${ users[a].access }</td>
-                                    </tr>`;
-                    }
-                }
-            }
-
-            // Generando lista de pagos
-            for(var b = 0; b <= users_pay.length - 1; b++) {
-
-                // Evaluando pretty date creation purchare
-                var date_numero_pedido = users_pay[b].account.numero_pedido;
-                var date_purchare = new Date(Number(date_numero_pedido.replace('NRAS000','')));
-
-                var date_purchare_pretty = `${ date_purchare.getDate() }-${ date_purchare.getMonth() + 1 }-${ date_purchare.getFullYear() }`;
-
-                if(month_select === 'todos') {
-
-                    list_pay += `<tr>
-                                    <td>${ users_pay[b].cotizator.origen }</td>
-                                    <td>${ users_pay[b].cotizator.destino }</td>
-                                    <td>${ users_pay[b].cotizator.tipo_viaje }</td>
-                                    <td>${ users_pay[b].cotizator.salida }</td>
-                                    <td>${ users_pay[b].cotizator.regreso }</td>
-                                    <td>${ users_pay[b].cotizator.dias }</td>
-                                    <td>${ users_pay[b].cotizator.pasajero }</td>
-                                    <td>${ users_pay[b].cotizator.adulto_mayor }</td>
-                                    <td>${ users_pay[b].cotizator.promocion }</td>
-                                    <td>${ users_pay[b].cotizator.email }</td>
-                                    <td>${ users_pay[b].pack_selected.title }</td>
-                                    <td>${ users_pay[b].pack_selected.dias }</td>
-                                    <td>${ users_pay[b].pack_selected.tarifa }</td>
-                                    <td>${ users_pay[b].account.names }</td>
-                                    <td>${ users_pay[b].account.last_names }</td>
-                                    <td>${ users_pay[b].account.full_name }</td>
-                                    <td>${ users_pay[b].account.tipo_doc }</td>
-                                    <td>${ users_pay[b].account.doc_number }</td>
-                                    <td>${ users_pay[b].account.email }</td>
-                                    <td>${ users_pay[b].account.domicilio }</td>
-                                    <td>${ users_pay[b].account.permiso }</td>
-                                    <td>${ users_pay[b].account.ciudad }</td>
-                                    <td>${ users_pay[b].account.address }</td>
-                                    <td>${ users_pay[b].account.phone }</td>
-                                    <td>${ users_pay[b].account.contact_emergencia.nombres }</td>
-                                    <td>${ users_pay[b].account.contact_emergencia.apellidos }</td>
-                                    <td>${ users_pay[b].account.contact_emergencia.telefono }</td>
-                                    <td>${ users_pay[b].account.contact_emergencia.email }</td>
-                                    <td>${ users_pay[b].account.status_purchare }</td>
-                                    <td>${ users_pay[b].account.fecha_creada }</td>
-                                    <td>${ users_pay[b].account.numero_pedido}</td>
-                                    <td>${ users_pay[b].account.ticket }</td>
-                                    <td>${ date_purchare_pretty }</td>
-                                    <td>${ users_pay[b].access }</td>
-                                </tr>`;
-
-                } else {
-
-                    if(month_select === date_purchare.getMonth() + 1  &&
-                       data_actual.getFullYear() === date_purchare.getFullYear()) {
-
-                        list_pay += `<tr>
-                                        <td>${ users_pay[b].cotizator.origen }</td>
-                                        <td>${ users_pay[b].cotizator.destino }</td>
-                                        <td>${ users_pay[b].cotizator.tipo_viaje }</td>
-                                        <td>${ users_pay[b].cotizator.salida }</td>
-                                        <td>${ users_pay[b].cotizator.regreso }</td>
-                                        <td>${ users_pay[b].cotizator.dias }</td>
-                                        <td>${ users_pay[b].cotizator.pasajero }</td>
-                                        <td>${ users_pay[b].cotizator.adulto_mayor }</td>
-                                        <td>${ users_pay[b].cotizator.promocion }</td>
-                                        <td>${ users_pay[b].cotizator.email }</td>
-                                        <td>${ users_pay[b].pack_selected.title }</td>
-                                        <td>${ users_pay[b].pack_selected.dias }</td>
-                                        <td>${ users_pay[b].pack_selected.tarifa }</td>
-                                        <td>${ users_pay[b].account.names }</td>
-                                        <td>${ users_pay[b].account.last_names }</td>
-                                        <td>${ users_pay[b].account.full_name }</td>
-                                        <td>${ users_pay[b].account.tipo_doc }</td>
-                                        <td>${ users_pay[b].account.doc_number }</td>
-                                        <td>${ users_pay[b].account.email }</td>
-                                        <td>${ users_pay[b].account.domicilio }</td>
-                                        <td>${ users_pay[b].account.permiso }</td>
-                                        <td>${ users_pay[b].account.ciudad }</td>
-                                        <td>${ users_pay[b].account.address }</td>
-                                        <td>${ users_pay[b].account.phone }</td>
-                                        <td>${ users_pay[b].account.contact_emergencia.nombres }</td>
-                                        <td>${ users_pay[b].account.contact_emergencia.apellidos }</td>
-                                        <td>${ users_pay[b].account.contact_emergencia.telefono }</td>
-                                        <td>${ users_pay[b].account.contact_emergencia.email }</td>
-                                        <td>${ users_pay[b].account.status_purchare }</td>
-                                        <td>${ users_pay[b].account.fecha_creada }</td>
-                                        <td>${ users_pay[b].account.numero_pedido}</td>
-                                        <td>${ users_pay[b].account.ticket }</td>
-                                        <td>${ date_purchare_pretty }</td>
-                                        <td>${ users_pay[b].access }</td>
-                                    </tr>`;
-                    }
-                }
-            }
-
-            var template_all = `
-              <table>
-                <tr bgColor="#f0e7e7">
-                  ${ subtitle }
-                </tr>
-                ${ list_all }
-              </table>
-            `;
-
-            var template_pay = `
-              <table>
-                <tr bgColor="#f0e7e7">
-                  ${ subtitle }
-                </tr>
-                ${ list_pay }
-              </table>
-            `;
-
-            htmlTo(template_all, (err, file) => {
-              if (err) return console.error(err);
-              
-              file.saveAs()
-                .pipe(fs.createWriteStream('./uploads/news/tabi_users_all.xlsx'))
-                .on('finish', () => {
-                    console.log('Done tabi_users_all .');
-
-                    htmlTo(template_pay, (err, file) => {
-                      if (err) return console.error(err);
-                      
-                      file.saveAs()
-                        .pipe(fs.createWriteStream('./uploads/news/tabi_users_pay.xlsx'))
-                        .on('finish', () => {
-                            console.log('Done tabi_users_pay');
-
-                            var response = {
-                                type: false,
-                                sources: {
-                                    all: '/news/tabi_users_all.xlsx',
-                                    pay: '/news/tabi_users_pay.xlsx'
-                                },
-                                filter: filter_month
-                            };
-
-                            res.render('./admin/plataforma/descargar_excel/index.jade', response);
-
-                        });
-                    });
-
-                });
-            });
-
-        }
     })
     
+})
+
+
+
+
+route.post('/plataforma/usuarios', (req, res) => {
+  let filter_month = req.query.mes;
+  let month_select = 'todos';
+
+  let dateBody = {
+    inicio: req.body.inicio || new Date(),
+    final: req.body.final || new Date()
+  }
+  // current date
+  var startDate = new Date(dateBody.inicio)
+  var endDate = new Date(dateBody.final)
+
+  // Find Purcharses - Filter all users
+  Purchases.find((err, dataUser) => {
+    if(err) {
+      return res.status(400).json({
+        status: 'bat_request',
+        message: 'error code not valid'
+      })
+    }
+
+    /* Filter the users by date */
+    let users = filterByRangeDate(dataUser, startDate, endDate)
+
+    /* Generate excelfile */
+    if(users !== null) {
+
+        // filtrando a los usuarios pagos
+        var users_pay = users.filter((element) => {
+            return element.access === config.variables.typeUser.premium;
+        })
+
+        // Generando excel
+        var subtitle = '';
+        var list_all = '';
+        var list_pay = '';
+
+        // Generando subtitle
+        for(let u = 0; u <= element_title.length - 1; u++) {
+            subtitle += `<td>${ element_title[u] }</td>`;
+        }
+
+        // Generando lista de todos
+        for(let a = 0; a <= users.length - 1; a++) {
+
+            // Evaluando pretty date creation purchare
+            let date_numero_pedido = users[a].account.numero_pedido;
+            let date_purchare = new Date(Number(date_numero_pedido.replace('NRAS000','')));
+
+            let date_purchare_pretty = `${ date_purchare.getDate() }-${ date_purchare.getMonth() + 1 }-${ date_purchare.getFullYear() }`;
+
+            // Setting Template
+            list_all += `<tr>
+                            <td>${ users[a].cotizator.origen }</td>
+                            <td>${ users[a].cotizator.destino }</td>
+                            <td>${ users[a].cotizator.tipo_viaje }</td>
+                            <td>${ users[a].cotizator.salida }</td>
+                            <td>${ users[a].cotizator.regreso }</td>
+                            <td>${ users[a].cotizator.dias }</td>
+                            <td>${ users[a].cotizator.pasajero }</td>
+                            <td>${ users[a].cotizator.adulto_mayor }</td>
+                            <td>${ users[a].cotizator.promocion }</td>
+                            <td>${ users[a].cotizator.email }</td>
+                            <td>${ users[a].pack_selected.title }</td>
+                            <td>${ users[a].pack_selected.dias }</td>
+                            <td>${ users[a].pack_selected.tarifa }</td>
+                            <td>${ users[a].account.names }</td>
+                            <td>${ users[a].account.last_names }</td>
+                            <td>${ users[a].account.full_name }</td>
+                            <td>${ users[a].account.tipo_doc }</td>
+                            <td>${ users[a].account.doc_number }</td>
+                            <td>${ users[a].account.email }</td>
+                            <td>${ users[a].account.domicilio }</td>
+                            <td>${ users[a].account.permiso }</td>
+                            <td>${ users[a].account.ciudad }</td>
+                            <td>${ users[a].account.address }</td>
+                            <td>${ users[a].account.phone }</td>
+                            <td>${ users[a].account.contact_emergencia.nombres }</td>
+                            <td>${ users[a].account.contact_emergencia.apellidos }</td>
+                            <td>${ users[a].account.contact_emergencia.telefono }</td>
+                            <td>${ users[a].account.contact_emergencia.email }</td>
+                            <td>${ users[a].account.status_purchare }</td>
+                            <td>${ users[a].account.fecha_creada }</td>
+                            <td>${ users[a].account.numero_pedido}</td>
+                            <td>${ users[a].account.ticket }</td>
+                            <td>${ date_purchare_pretty }</td>
+                            <td>${ users[a].access }</td>
+                        </tr>`;
+        }
+
+        // Generando lista de pagos
+        for(let b = 0; b <= users_pay.length - 1; b++) {
+
+            // Evaluando pretty date creation purchare
+            let date_numero_pedido = users_pay[b].account.numero_pedido;
+            let date_purchare = new Date(Number(date_numero_pedido.replace('NRAS000','')));
+
+            let date_purchare_pretty = `${ date_purchare.getDate() }-${ date_purchare.getMonth() + 1 }-${ date_purchare.getFullYear() }`;
+
+            list_pay += `<tr>
+                            <td>${ users_pay[b].cotizator.origen }</td>
+                            <td>${ users_pay[b].cotizator.destino }</td>
+                            <td>${ users_pay[b].cotizator.tipo_viaje }</td>
+                            <td>${ users_pay[b].cotizator.salida }</td>
+                            <td>${ users_pay[b].cotizator.regreso }</td>
+                            <td>${ users_pay[b].cotizator.dias }</td>
+                            <td>${ users_pay[b].cotizator.pasajero }</td>
+                            <td>${ users_pay[b].cotizator.adulto_mayor }</td>
+                            <td>${ users_pay[b].cotizator.promocion }</td>
+                            <td>${ users_pay[b].cotizator.email }</td>
+                            <td>${ users_pay[b].pack_selected.title }</td>
+                            <td>${ users_pay[b].pack_selected.dias }</td>
+                            <td>${ users_pay[b].pack_selected.tarifa }</td>
+                            <td>${ users_pay[b].account.names }</td>
+                            <td>${ users_pay[b].account.last_names }</td>
+                            <td>${ users_pay[b].account.full_name }</td>
+                            <td>${ users_pay[b].account.tipo_doc }</td>
+                            <td>${ users_pay[b].account.doc_number }</td>
+                            <td>${ users_pay[b].account.email }</td>
+                            <td>${ users_pay[b].account.domicilio }</td>
+                            <td>${ users_pay[b].account.permiso }</td>
+                            <td>${ users_pay[b].account.ciudad }</td>
+                            <td>${ users_pay[b].account.address }</td>
+                            <td>${ users_pay[b].account.phone }</td>
+                            <td>${ users_pay[b].account.contact_emergencia.nombres }</td>
+                            <td>${ users_pay[b].account.contact_emergencia.apellidos }</td>
+                            <td>${ users_pay[b].account.contact_emergencia.telefono }</td>
+                            <td>${ users_pay[b].account.contact_emergencia.email }</td>
+                            <td>${ users_pay[b].account.status_purchare }</td>
+                            <td>${ users_pay[b].account.fecha_creada }</td>
+                            <td>${ users_pay[b].account.numero_pedido}</td>
+                            <td>${ users_pay[b].account.ticket }</td>
+                            <td>${ date_purchare_pretty }</td>
+                            <td>${ users_pay[b].access }</td>
+                        </tr>`;
+
+        }
+
+        var template_all = `
+          <table>
+            <tr bgColor="#f0e7e7">
+              ${ subtitle }
+            </tr>
+            ${ list_all }
+          </table>
+        `;
+
+        var template_pay = `
+          <table>
+            <tr bgColor="#f0e7e7">
+              ${ subtitle }
+            </tr>
+            ${ list_pay }
+          </table>
+        `;
+
+        htmlTo(template_all, (err, file) => {
+          if (err) return console.error(err);
+          
+          file.saveAs()
+            .pipe(fs.createWriteStream('./uploads/news/tabi_users_all.xlsx'))
+            .on('finish', () => {
+                console.log('Done tabi_users_all .');
+
+                htmlTo(template_pay, (err, file) => {
+                  if (err) return console.error(err);
+                  
+                  file.saveAs()
+                    .pipe(fs.createWriteStream('./uploads/news/tabi_users_pay.xlsx'))
+                    .on('finish', () => {
+                        console.log('Done tabi_users_pay');
+
+                        var response = {
+                            type: false,
+                            sources: {
+                                all: '/news/tabi_users_all.xlsx',
+                                pay: '/news/tabi_users_pay.xlsx'
+                            },
+                            filter: filter_month
+                        };
+
+                        res.render('./admin/plataforma/descargar_excel/index.jade', response);
+
+                    });
+                });
+
+            });
+        });
+
+    } else {
+      /* Filter by Date creation */
+      return res.status(200).json({
+        statis: 'No hay usuarios registrados'
+      })
+    }
+
+
+  })
 })
 
 /*
