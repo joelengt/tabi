@@ -151,101 +151,33 @@ route.post('/auth/plataforma', ensureAuthorized, function (req, res) {
 /*
 * Users API
 */
-route.get('/plataforma/usuarios/dasd/dfdsfds', function (req, res) {
-    // do something with req.user
-
-    var filter_month = req.query.mes;
-    console.log('MES');
-    console.log(filter_month);
-
-    var month_select = 'todos';
-
-    if(filter_month !== undefined && 
-       filter_month !== null) {
-
-        switch(filter_month) {
-            case 'enero':
-                month_select = 1;
-                break;
-
-            case 'febrero':
-                month_select = 2;
-                break;
-
-            case 'marzo':
-                month_select = 3;
-                break;
-
-            case 'abril':
-                month_select = 4;
-                break;
-
-            case 'mayo':
-                month_select = 5;
-                break;
-
-            case 'junio':
-                month_select = 6;
-                break;
-
-            case 'julio':
-                month_select = 7;
-                break;
-
-            case 'agosto':
-                month_select = 8;
-                break;
-
-            case 'septiembre':
-                month_select = 9;
-                break;
-
-            case 'octubre':
-                month_select = 10;
-                break;
-
-            case 'noviembre':
-                month_select = 11;
-                break;
-
-            case 'diciembre':
-                month_select = 12;
-                break;
-        }
-
-    }
-
-    // fecha actual
-    var data_actual = new Date();
-
-    // Consultando base de datos
-    Purchases.find((err, users) => {
-        if(err) {
-            return res.status(400).json({
-                status: 'bat_request',
-                message: 'error code not valid'
-            })
-        }
-
-
-    })
-    
-})
-
-
-
-
 route.post('/plataforma/usuarios', (req, res) => {
   let filter_month = req.query.mes;
   let month_select = 'todos';
 
   let dateBody = {
-    inicio: req.body.inicio || new Date(),
-    final: req.body.final || new Date()
+    inicio: req.body.inicio,
+    final: req.body.final
   }
+
   // current date
   var startDate = new Date(dateBody.inicio)
   var endDate = new Date(dateBody.final)
+
+  console.log('Datos =>>>>>>>>', dateBody)
+  if (dateBody.inicio === undefined && dateBody.final === undefined) {
+    var response = {
+        type: false,
+        sources: {
+            all: null,
+            pay: null
+        },
+        dates: dateBody,
+        filter: filter_month
+    };
+
+    return res.render('./admin/plataforma/descargar_excel/index.jade', response);
+  }
 
   // Find Purcharses - Filter all users
   Purchases.find((err, dataUser) => {
@@ -408,11 +340,12 @@ route.post('/plataforma/usuarios', (req, res) => {
                         console.log('Done tabi_users_pay');
 
                         var response = {
-                            type: false,
+                            type: true,
                             sources: {
                                 all: '/news/tabi_users_all.xlsx',
                                 pay: '/news/tabi_users_pay.xlsx'
                             },
+                            dates: dateBody,
                             filter: filter_month
                         };
 

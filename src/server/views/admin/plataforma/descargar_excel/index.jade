@@ -28,6 +28,31 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
       script(src='./js/respond.src.js')
     //- if lt IE 9
       link(rel='stylesheet', type='text/css', media='all', href='./css/ie8.css')
+    
+    style.
+        .filter__content {
+            display: block;
+            background: #f4f4f4;
+            border-radius: 20px;
+            padding: 1rem;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .filter__block {
+            display: inline-block;
+            margin-right: 2rem;
+        }
+
+        .filter__block label {
+            margin: 0;
+        }
+
+        .filter__block input {
+            border-radius: 20px;
+            border: 0 solid transparent;
+        }
+
   body
     header(class="HeaderMain")
         div(class="HeaderMain__LogoMain")
@@ -40,35 +65,39 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
         div(class="PricingElements__title")
             h2 Admin Plataforma - Usuarios
 
-        div(class="Admin_box Admin")
+        div(class="Admin_box Admin" style="padding-bottom: 3rem; width: 800px;")
             div(class="actions")
-                p Filtrando Usuarios de : #{ filter }
-
-                form(action="/admin/plataforma/usuarios" method="post")
-                    div
-                        input(type="hidden" id="DayValueSelected" value="#{ filter }")
-                        label(for="input_salida") Inicio
-                        //- input(id="input_salida" name="salida" type="date")
-                        input(id="input_salida" name="inicio" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa")
-
-                    div
-                        label(for="input_salida") Final
-                        //- input(id="input_salida" name="salida" type="date")
-                        input(id="input_salida" name="final" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa")
-
-                    button(class="btn btn-info") Buscar
-                br
-                br
-
-                p Descargar Reporte de Usuarios en Excel:
-
-                div(class="Admin__box__left")
-                    form(action="#{sources.all}")
-                        button(class="button") Descargar reporte de (#{ filter })
+                p Filtrando Usuarios del #[strong #{ dates.inicio }] al #[strong #{ dates.final }]
                 
-                div(class="Admin__box__right")
-                    form(action="#{sources.pay}")
-                        button(class="button") Descargar solo Usuarios pagos (#{ filter })
+                div(class="filter__content")
+                    form(action="/admin/plataforma/usuarios" method="post" id="formMain")
+                        div(class="filter__block")
+                            label(for="input_salida") Inicio
+                            //- input(id="input_salida" name="salida" type="date")
+                            input(id="input_salida" name="inicio" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa" value="#{ dates.inicio }") 
+
+                        div(class="filter__block")
+                            label(for="input_llegada") Final
+                            //- input(id="input_salida" name="salida" type="date")
+                            input(id="input_regreso" name="final" type="date" data-date="" data-date-format="DD MMMM YYYY" data-date-inline-picker="false" data-date-open-on-focus="true" min="" placeholder="dd/mm/aaaa" value="#{ dates.final }")
+                        
+                        div(class="filter__block")
+                            button(class="btn btn-info" id="btnToSearch") Buscar
+                br
+                br
+                
+                if type
+                    div(id="blockDateFilterResults" style="width: 500px; margin: 0 auto;")
+                        p Se han encontrado Resultados entre las fechas!
+                        p (*) Descargar Reporte en Excel:
+
+                        div(class="Admin__box__left")
+                            form(action="#{sources.all}")
+                                button(class="button") Descargar todos los reportes
+                        
+                        div(class="Admin__box__right")
+                            form(action="#{sources.pay}")
+                                button(class="button") Descargar solo reportes pagados
 
 
 
@@ -79,6 +108,21 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
     script.
         $( window ).on( "load", function() {
-            var currentFilterSelected = $('#DayValueSelected').val()
-            $('#input_select_mes').val(currentFilterSelected)
+            $('#btnToSearch').click(function (e) {
+                e.preventDefault()
+
+                if ( $('#input_salida').val() !== '' &&
+                    $('#input_regreso').val() !== '' ) {
+
+                    $('#blockDateFilterResults').html('<p>Buscando...</p>')
+
+                    $('#formMain').submit()
+
+                } else {
+                    alert('Neceistas seleccionar un rango de fechas!')
+                }
+                
+            })
         })
+
+
