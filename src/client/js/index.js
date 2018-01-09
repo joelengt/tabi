@@ -76,9 +76,4 @@ pay();
 // sendFormContact();
 
 
-/* button create */
-$('#btnCreateNewOrder').click(() => {
-    /* Create store state */
-    localStorage.setItem('currentView', 'admin')
-})
 

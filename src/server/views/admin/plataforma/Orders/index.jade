@@ -41,8 +41,8 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
 
         div(class="Admin_box Admin")
             div(class="actions")
-                form(action="/admin/plataforma/orders/create" method="post")
-                    button(class="btn btn-success" id="btnCreateNewOrder") Crear/Registrar Nueva Order
+                button(class="btn btn-success" id="btnCreateNewOrder") Crear/Registrar Nueva Order
+                form(action="/admin/plataforma/orders/create" method="post" id="formToCreateAdminOrder")
             
             br
             br
@@ -77,4 +77,11 @@ html(xmlns='http://www.w3.org/1999/xhtml', lang='es')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js')
     script(src='https://afarkas.github.io/webshim/js-webshim/minified/polyfiller.js')
     
-
+    script.
+        /* button create */
+        $('#btnCreateNewOrder').click((e) => {
+            console.log('clikc??')
+            /* Create store state */
+            localStorage.setItem('currentView', 'admin')
+            $('#formToCreateAdminOrder').submit()
+        })
